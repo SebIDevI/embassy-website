@@ -48,7 +48,7 @@ export const Bell: React.FC<BellProp> = ({ color }) => {
     cursorVariant.changeVariant("default");
   }
   return (
-    <div className="text-2xl flex w-1/3 relative items-center justify-center">
+    <div className="text-2xl flex md:w-80 w-3/4 relative items-center justify-center">
       <div
         className={`relative after:w-3 after:border-2 after:border-${color} after:h-3 after:rounded-full after:bg-red-500 after:block after:absolute after:top-1/2 after:left-1/2 after:-translate-y-full notification-div`}
       >
@@ -69,7 +69,7 @@ export const Bell: React.FC<BellProp> = ({ color }) => {
             animate="visible"
             exit="hidden"
             className={`
-             notification-div text-center absolute top-[150%] right-0 border-2 border-gray-500 rounded-3xl bg-slate-100 w-[150%]`}
+             notification-div text-center absolute top-[150%] left-0 md:left-auto md:right-0 border-2 border-gray-500 rounded-3xl bg-slate-100 w-full md:w-[150%]`}
           >
             <div className="p-5">
               <h5 className="font-pro text-xl">FREE ONLINE SETUP 🌐</h5>

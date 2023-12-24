@@ -1,4 +1,5 @@
 import useMouse from "@react-hook/mouse-position";
+import { CSSProperties } from "react";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -17,7 +18,30 @@ export const useCursorVariant = create<cursorState>()(
   )
 );
 
-export const useVariants = (ref: React.MutableRefObject<null>) => {
+type Variant = {
+  opacity: number;
+  height?: number;
+  width?: number;
+  fontSize?: string;
+  backgroundColor?: string;
+  mixBlendMode: CSSProperties["mixBlendMode"];
+  x: number;
+  y: number;
+  color?: string;
+  transition?: {
+    type: string;
+    mass: number;
+    // ... other transition properties
+  };
+};
+
+type Variants = {
+  default: Variant;
+  buy: Variant;
+  sell: Variant;
+};
+
+export const useVariants = (ref: React.MutableRefObject<null>): Variants => {
   const mouse = useMouse(ref, {
     enterDelay: 50,
     leaveDelay: 50,
@@ -53,7 +77,7 @@ export const useVariants = (ref: React.MutableRefObject<null>) => {
     buy: {
       opacity: 1,
       backgroundColor: "#fff",
-      mixBlendMode: "difference",
+      mixBlendMode: "difference" as CSSProperties["mixBlendMode"],
       color: "#000",
       height: 30,
       width: 30,
@@ -64,7 +88,7 @@ export const useVariants = (ref: React.MutableRefObject<null>) => {
     sell: {
       opacity: 1,
       backgroundColor: "#EF5151",
-      mixBlendMode: "normal",
+      mixBlendMode: "normal" as CSSProperties["mixBlendMode"],
       color: "#000",
       height: 64,
       width: 64,
