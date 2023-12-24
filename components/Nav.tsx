@@ -9,7 +9,7 @@ import { Hamburger } from "./navbar/Hamburger";
 import logo from "@/public/logoBlack.png";
 
 import { useCursorVariant } from "@/config";
-import Bell from "./Bell";
+import { Bell } from "./Bell";
 
 function Nav() {
   const cursorVariant = useCursorVariant();
@@ -38,7 +38,9 @@ function Nav() {
       <ul className="w-full items-start justify-center hidden lg:flex">
         <NavBtns />
       </ul>
-      <Bell />
+      <div className="hidden lg:block">
+        <Bell color={"white"} />
+      </div>
       <div className="text-2xl flex lg:hidden w-1/3 items-center justify-end">
         <Hamburger />
       </div>

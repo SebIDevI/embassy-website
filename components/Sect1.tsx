@@ -23,11 +23,7 @@ const data = [
 
 function Sect1() {
   const { scrollYProgress } = useScroll();
-  const y = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
+  const y = useSpring(scrollYProgress);
 
   return (
     <div className="w-full bg-transparent lg:px-40">
@@ -59,7 +55,7 @@ function Sect1() {
             )
           )}
         </ul>
-        <motion.div className="w-auto h-auto md:visible hidden" style={{ y }}>
+        <motion.div className="w-auto h-auto md:block hidden" style={{ y }}>
           <Image
             src={qs}
             alt={"question mark"}

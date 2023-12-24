@@ -11,7 +11,12 @@ const notif: Variants = {
   visible: { opacity: 1 },
   hidden: { opacity: 0 },
 };
-function Bell() {
+
+interface BellProp {
+  color: string;
+}
+
+export const Bell: React.FC<BellProp> = ({ color }) => {
   const [bell, setBell] = useState(false);
 
   useEffect(() => {
@@ -43,8 +48,10 @@ function Bell() {
     cursorVariant.changeVariant("default");
   }
   return (
-    <div className="text-2xl hidden lg:flex w-1/3 relative items-center justify-end">
-      <div className="relative after:w-3 after:border-2 after:border-white after:h-3 after:rounded-full after:bg-red-500 after:block after:absolute after:top-1/2 after:left-1/2 after:-translate-y-full notification-div">
+    <div className="text-2xl flex w-1/3 relative items-center justify-center">
+      <div
+        className={`relative after:w-3 after:border-2 after:border-${color} after:h-3 after:rounded-full after:bg-red-500 after:block after:absolute after:top-1/2 after:left-1/2 after:-translate-y-full notification-div`}
+      >
         <FaBell
           onMouseEnter={() => sellEnter()}
           onMouseLeave={() => sellLeave()}
@@ -98,6 +105,4 @@ function Bell() {
       </Link>
     </div>
   );
-}
-
-export default Bell;
+};

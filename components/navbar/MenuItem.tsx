@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Link from "next/link";
+import { Bell } from "@/components/Bell";
 
 const variants = {
   open: {
@@ -132,9 +133,17 @@ export const MenuItem: React.FC<MenuItemProp> = ({ i }) => {
             </AccordionContent>
           </AccordionItem>
         ) : (
-          <p className="font-bold text-3xl font-pro text-slate-950 w-full text-center">
-            {text[i]?.title}
-          </p>
+          <div>
+            {i == text.length - 1 ? (
+              <div className="w-full flex justify-center">
+                <Bell color="blueEmb" />
+              </div>
+            ) : (
+              <p className="font-bold text-3xl font-pro text-slate-950 w-full text-center">
+                {text[i]?.title}
+              </p>
+            )}
+          </div>
         )}
       </Accordion>
     </motion.li>
