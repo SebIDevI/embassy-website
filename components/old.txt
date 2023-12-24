@@ -1,0 +1,70 @@
+//old sect1 
+
+     <div
+        // key={index}
+        className={`w-full flex flex-col lg:flex-row relative`}
+      >
+        <div className="flex flex-col lg:w-1/2 text-center w-full p-10 px-12">
+          <h4 className="font-extrabold font-pro text-2xl lg:text-3xl mb-6 bg-[linear-gradient(90deg,#000000,#004A7C)] bg-clip-text text-transparent">
+            {data[0].title}
+          </h4>
+          <p
+            dangerouslySetInnerHTML={{ __html: data[0].text }}
+            className="text-base lg:text-lg"
+          ></p>
+        </div>
+        <motion.div
+          className="absolute h-full lg:left-1/2 lg:-translate-x-1/2 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
+          // style={{ pathLength: scrollYProgress }}
+          animate={controls}
+        >
+          <Image
+            src={qs}
+            alt="Question Mark"
+            className="lg:h-[120%] w-auto opacity-30 rotate-6"
+          />
+        </motion.div>
+        <div
+          className={`w-full lg:w-1/2 text-center flex items-center relative lg:pt-52`}
+        >
+          <div className="flex flex-col w-full p-10 px-12">
+            <h4 className="font-extrabold font-pro text-2xl lg:text-3xl mb-6 bg-[linear-gradient(90deg,#004A7C,#000000)] bg-clip-text text-transparent">
+              {data[1].title}
+            </h4>
+            <p
+              dangerouslySetInnerHTML={{ __html: data[1].text }}
+              className="text-base lg:text-lg"
+            ></p>
+          </div>
+        </div>
+      </div>
+      <div className={`w-full flex items-center justify-center relative`}>
+        <div className="flex flex-col lg:w-1/2 w-full text-center p-10 px-12">
+          <h4 className="font-extrabold font-pro text-2xl lg:text-3xl mb-6 bg-[linear-gradient(90deg,#000000,#004A7C,#000000)] bg-clip-text text-transparent">
+            {data[2].title}
+          </h4>
+          <p
+            dangerouslySetInnerHTML={{ __html: data[2].text }}
+            className="text-base lg:text-lg"
+          ></p>
+        </div>
+      </div>
+
+//old data for sect1 
+const data = [
+  {
+    title: "Get Leads Using The Power of Social Media Ads",
+    text: "At Embassy Network, we're not just advertisers; we're storytellers. Whether you're in Automotive, Chiropractic Care, Healthcare, or a unique niche, we breathe life into your brand online.<br />Harness the power of Facebook, Instagram, and TikTok with us.<br />Oh, and here's the exciting part: we back our promise with a guarantee. If we don't perform, you don't pay. So, let's embark on this journey together, where every click, every like, and every lead tells the story of your success. It's not just marketing, it's a narrative that brings your brand to life.<br /><br />Average cost-per-lead reduction: <b>up to a 75%</b>",
+    img: { src: videoEmb, alt: "Camera Picture" },
+  },
+  {
+    title: "We only work with Premium Businesses",
+    text: "At Embassy Network, we're not for everyone – and we like it that way. We exclusively partner with premium businesses, chosen with care and passion. Unlike generic services, we're not spread thin; we focus on niches we know intimately.<br /> It's not just about reducing average costs; it's about elevating your business. <br /><br />Average cost-per-client reduction: <b>up to 80%</b>",
+    img: { src: alergareEmb, alt: "Running man" },
+  },
+  {
+    title: "Leads that convert over and over again. Quality.",
+    text: "At Embassy Network, we redefine leads – they're not just numbers; they're conversions that stand the test of time. Our customers attest that our leads are not only cost-effective and quick to close but also consistently reliable. We prioritize quality over quantity, ensuring your business attracts and retains valuable customers.<br />A testament to our commitment to delivering not just leads, but enduring relationships that fuel your business growth would be the:<br /><br /> Average cost-per-sale reduction: <b>up to 65%</b>",
+    img: { src: chachingEmb, alt: "Printing money" },
+  },
+];
