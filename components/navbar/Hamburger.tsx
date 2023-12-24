@@ -26,7 +26,6 @@ const sidebar = {
       stiffness: 400,
       damping: 40,
     },
-    float: "right",
   },
 };
 
