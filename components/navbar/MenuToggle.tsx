@@ -18,7 +18,11 @@ const Path = (
   />
 );
 
-export const MenuToggle = ({ toggle }) => {
+interface MenuToggleProps {
+  toggle: () => void;
+}
+
+export const MenuToggle: React.FC<MenuToggleProps> = ({ toggle }) => {
   const cursorVariant = useCursorVariant();
   function sellEnter() {
     cursorVariant.changeVariant("buy");
