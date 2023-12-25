@@ -26,12 +26,13 @@ function GrainedEffect() {
     const element = document.getElementById("your-element-id");
     const body = document.body;
     const html = document.documentElement;
+    const footer = document.querySelector("#footer");
     const height = Math.max(
-      body.scrollHeight - 400,
-      body.offsetHeight - 400,
-      html.clientHeight - 400,
-      html.scrollHeight - 400,
-      html.offsetHeight - 400
+      body.scrollHeight - footer?.scrollHeight!,
+      body.offsetHeight - footer?.clientHeight!,
+      html.clientHeight - footer?.clientHeight!,
+      html.scrollHeight - footer?.scrollHeight!,
+      html.offsetHeight - footer?.scrollHeight!
     );
 
     if (!element) {

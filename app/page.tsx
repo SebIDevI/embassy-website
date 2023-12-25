@@ -26,11 +26,8 @@ export default function Home() {
   const variants = useVariants(ref);
 
   return (
-    <>
-      <div
-        ref={ref}
-        className="cursor-default font-graphik scroll-smooth mb-[400px]"
-      >
+    <div ref={ref}>
+      <div className="cursor-default font-graphik scroll-smooth mb-[600px] lg:mb-[400px]">
         <GrainedEffect />
         <Nav />
         <Head />
@@ -51,6 +48,6 @@ export default function Home() {
       >
         <span className="cursorText"></span>
       </motion.div>
-    </>
+    </div>
   );
 }

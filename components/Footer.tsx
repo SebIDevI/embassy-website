@@ -17,7 +17,10 @@ function Footer() {
   }
 
   return (
-    <div className="bg-black fixed bottom-0 -z-50 w-full text-white flex flex-col items-center justify-center h-[600px] lg:h-[400px] pointer-events-auto">
+    <div
+      className="bg-black fixed bottom-0 -z-50 w-full text-white flex flex-col items-center justify-center h-[600px] lg:h-[400px] pointer-events-auto"
+      id="footer"
+    >
       {/* <h4 className="py-16 w-4/5 text-center text-4xl font-bold mx-auto">
         We offer a 100% ROI guarantee. If we don&apos;t perform, you don&apos;t
         pay. Simple as that.
