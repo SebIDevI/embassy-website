@@ -61,7 +61,7 @@ module.exports = {
       keyframes: {
         slide: {
           from: { transform: "translateX(0)" },
-          to: { transform: "translateX(-1680px)" },
+          to: { transform: "translateX(-2440px)" },
         },
         floating: {
           "0%": { bottom: "2.5rem" },

@@ -1,18 +1,29 @@
 import React from "react";
 import Image from "next/image";
 
-import sebdev from "@/public/logo.png";
 import godpod from "@/public/slider/godpod.jpg";
 import globalbox from "@/public/slider/logo globalbox.png";
-import cnp from "@/public/slider/Logo CNP.png";
+import cnp from "@/public/slider/hrLogo.png";
 import dus from "@/public/slider/dusss.png";
 import history from "@/public/slider/logo.png";
-import glob from "@/public/slider/globbbbb.png";
+import glob from "@/public/slider/globalFin.png";
 import virg from "@/public/slider/virgggg.png";
+import cyclon from "@/public/slider/logo_cyclon_200x200.svg";
+import tacos from "@/public/slider/LOGO_TB.png";
 
 function Slider() {
   // const imageArray = Array(8).fill(null);
-  const imageArray = [godpod, globalbox, dus, history, glob, virg];
+  const imageArray = [
+    godpod,
+    globalbox,
+    dus,
+    history,
+    glob,
+    virg,
+    cnp,
+    cyclon,
+    tacos,
+  ];
 
   return (
     <div className="flex justify-center w-full h-[20vh] min-h-[200px] relative my-32">
