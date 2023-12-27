@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useRef } from "react";
-import { motion, sync, useCycle } from "framer-motion";
+import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "./use-dimensions";
 import { MenuToggle } from "./MenuToggle";
 import { Navigation } from "./Navigation";
+import { useState, useEffect } from "react";
 
 import Image from "next/image";
-
 import logo from "@/public/logoBlack.png";
 
 const sidebar = {
@@ -31,8 +31,22 @@ const sidebar = {
 
 export const Hamburger = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
+  const [shouldHandleTransitionEnd, setShouldHandleTransitionEnd] =
+    useState(false);
+
+  const handleAnimationComplete = () => {
+    setShouldHandleTransitionEnd(isOpen);
+  };
+
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
+
+  useEffect(() => {
+    if (isOpen) {
+      // Handle transition end logic here
+      setShouldHandleTransitionEnd(true); // Reset the state after handling
+    }
+  }, [isOpen]);
 
   return (
     <motion.nav
@@ -40,14 +54,18 @@ export const Hamburger = () => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
-      className="absolute top-0 right-0 bottom-0 lg:w-96 w-full h-[88vh] z-[100]"
+      className={`absolute top-0 right-0 bottom-0 lg:w-96 w-full z-[100] ${
+        shouldHandleTransitionEnd ? "h-[88vh]" : ""
+      }`}
+      onAnimationComplete={() => handleAnimationComplete()}
     >
       <MenuToggle toggle={() => toggleOpen()} />
       <motion.div
-        className="absolute top-0 right-0 bottom-0 lg:w-96 w-screen h-[100vh] bg-blueEmb -z-10"
+        className={`absolute top-0 right-0 bottom-0 lg:w-96 w-screen h-[100vh] bg-blueEmb -z-10`}
         variants={sidebar}
-      />
-      <Navigation />
+      >
+        <Navigation />
+      </motion.div>
     </motion.nav>
   );
 };

@@ -1,6 +1,7 @@
 import * as React from "react";
-import { motion } from "framer-motion";
+import { motion, useCycle } from "framer-motion";
 import { MenuItem } from "./MenuItem";
+import { useState } from "react";
 
 const variants = {
   open: {
@@ -11,15 +12,24 @@ const variants = {
   },
 };
 
-export const Navigation = () => (
-  <motion.ul
-    variants={variants}
-    className="px-10 absolute top-24 w-full h-full overflow-y-scroll"
-  >
-    {itemIds.map((i) => (
-      <MenuItem i={i} key={i} />
-    ))}
-  </motion.ul>
-);
+export const Navigation = () => {
+  const [isVisible, changeIsVisible] = useCycle(false, true);
+
+  const handleTransitionEnd = () => {
+    changeIsVisible();
+  };
+
+  return (
+    <motion.ul
+      variants={variants}
+      onTransitionEnd={handleTransitionEnd}
+      className={`px-10 absolute top-24 w-full h-full overflow-y-scroll`}
+    >
+      {itemIds.map((i) => (
+        <MenuItem i={i} key={i} />
+      ))}
+    </motion.ul>
+  );
+};
 
 const itemIds = [0, 1, 2, 3, 4];

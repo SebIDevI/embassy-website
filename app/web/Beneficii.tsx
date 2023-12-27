@@ -6,7 +6,7 @@ function Beneficii() {
   return (
     <div className=" mx-auto text-center my-10 text-sm font-graphikLight">
       {/* <p>De la idee și concept la website </p> */}
-      <h3 className="font-pro text-4xl py-10 mx-6">
+      <h3 className="font-pro text-4xl py-10 mx-6 uppercase">
         De la idee și concept la website
       </h3>
       <p className="w-2/3 mx-auto mb-20">

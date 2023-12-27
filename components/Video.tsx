@@ -41,7 +41,7 @@ function Video() {
           loop
           muted
           controls={false}
-          controlsList="nodownload noremoteplayback noplaybackrate"
+          controlsList="nofullscreen nodownload noremoteplayback noplaybackrate foobar"
           disablePictureInPicture
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         >

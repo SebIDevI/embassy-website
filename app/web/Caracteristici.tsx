@@ -38,21 +38,21 @@ function Caracteristici() {
               }`}
             >
               <li
-                className={`flex gap-2 items-center justify-center ${
+                className={`flex gap-2 items-center ${
                   (i / 3) % 2 ? "md:justify-start md:flex-row-reverse" : ""
                 }`}
               >
                 <FaArrowDown className="text-blue-500" /> {text[i]}
               </li>
               <li
-                className={`flex gap-2 items-center justify-center ${
+                className={`flex gap-2 items-center ${
                   (i / 3) % 2 ? "md:justify-start md:flex-row-reverse" : ""
                 }`}
               >
                 <FaArrowDown className="text-blue-500" /> {text[i + 1]}
               </li>
               <li
-                className={`flex gap-2 items-center justify-center ${
+                className={`flex gap-2 items-center ${
                   (i / 3) % 2 ? "md:justify-start md:flex-row-reverse" : ""
                 }`}
               >

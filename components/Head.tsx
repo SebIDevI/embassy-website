@@ -18,7 +18,7 @@ function Head() {
     <section className="h-[100vh] relative px-4 pt-10 bg-[linear-gradient(90deg,#e8f1f5,#fafafa_100%)]">
       <div className="flex flex-col-reverse lg:flex-row lg:items-center lg:mx-40">
         <div className="font-extrabold text-2xl w-full text-center lg:text-left lg:text-4xl">
-          <h1 className="text-6xl lg:text-9xl text-blueEmb leading-[100%] font-pro">
+          <h1 className="text-6xl lg:text-8xl xl:text-9xl text-blueEmb leading-[100%] font-pro">
             Embassy
           </h1>
           <h3 className="py-10 font-pro">Fckin w yo mama since &apos;99</h3>
@@ -30,8 +30,8 @@ function Head() {
             Proiectele Noastre
           </button>
         </div>
-        <div className="w-full lg:h-[90vh]">
-          <div className="w-full h-full">
+        <div className="w-full lg:h-[90vh] flex justify-center items-center">
+          <div className="w-full h-full max-w-[350px] lg:max-w-none flex items-center">
             <Canvas />
           </div>
         </div>

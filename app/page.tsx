@@ -42,7 +42,7 @@ export default function Home() {
       <Footer />
       <motion.div
         variants={variants}
-        className="fixed z-50 flex flex-row content-center justify-center top-0 left-0 h-3 w-3 bg-slate-700 rounded-full pointer-events-none text-white text-center text-lg"
+        className="xl:flex fixed z-50 hidden flex-row content-center justify-center top-0 left-0 h-3 w-3 bg-slate-700 rounded-full pointer-events-none text-white text-center text-lg"
         animate={cursorVariant.variant}
         transition={spring}
       >

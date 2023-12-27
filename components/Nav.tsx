@@ -22,10 +22,10 @@ function Nav() {
   }
 
   return (
-    <div className="w-full py-5 lg:px-40 flex justify-between items-center fixed top-0 bg-[#fafafa] z-50">
+    <div className="w-full py-5 xl:px-40 flex justify-between items-center fixed top-0 bg-[#fafafa] z-50">
       <Link
         href="/"
-        className="w-1/3 flex items-center justify-start z-[110]"
+        className="w-1/3 flex items-center justify-center z-[110]"
         onMouseEnter={() => sellEnter()}
         onMouseLeave={() => sellLeave()}
       >
@@ -35,7 +35,7 @@ function Nav() {
           className="max-h-12 w-auto z-[110]"
         />
       </Link>
-      <ul className="w-full items-start justify-center hidden lg:flex">
+      <ul className="w-1/3 items-start justify-center hidden lg:flex">
         <NavBtns />
       </ul>
       <div className="hidden lg:block">

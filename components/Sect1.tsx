@@ -44,7 +44,7 @@ function Sect1() {
         <ul className={`w-full flex flex-col gap-4`}>
           {data.map((e, i) =>
             i % 2 == 0 ? (
-              <li className="flex gap-2 items-start" key={i}>
+              <li className="flex gap-2 items-start px-4" key={i}>
                 <p className="pt-[2px]">
                   <FaCheck className={"text-blue-600"} />
                 </p>
@@ -65,7 +65,7 @@ function Sect1() {
         <ul className="w-full flex flex-col gap-4">
           {data.map((e, i) =>
             i % 2 != 0 ? (
-              <li className="flex gap-2 items-start" key={i}>
+              <li className="flex gap-2 items-start px-4" key={i}>
                 <p className="pt-[2px]">
                   <FaCheck className={"text-blue-600"} />
                 </p>
