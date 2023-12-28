@@ -7,7 +7,7 @@ function Arrow() {
   return (
     <>
       <div className="container max-w-6xl font-pro text-xl">
-        <div className="grid grid-cols-5 gap-5">
+        <div className="md:grid hidden grid-cols-5 gap-5">
           {/* ----------------------- row 1 ---------------------- */}
           <div className="text-center max-h-40 flex items-center justify-center">
             <Image
@@ -28,13 +28,13 @@ function Arrow() {
           </div>
           {/* ----------------------- row 2 ---------------------- */}
           <div className="text-center">
-            <p>Strategii Social Media</p>
+            <p>Social Media Management</p>
           </div>
           <div className="col-span-3 row-span-5">
             <div className="w-auto h-full rounded-xl bg-gray-300 mx-12"></div>
           </div>
           <div className="text-center">
-            <p>Strategii Social Media</p>
+            <p>Content Creation / Editing</p>
           </div>
           {/* ----------------------- row 3 ---------------------- */}
           <div className="text-center  max-h-40 flex items-center justify-center">
@@ -108,6 +108,57 @@ function Arrow() {
               className="-scale-y-100 rotate-180 h-1/2"
             />
           </div>
+        </div>
+        <div className="md:hidden flex flex-col items-center justify-center gap-8">
+          <p className="text-center">Strategii Social Media</p>
+          <Image
+            src={strArr}
+            alt={"Round Arrow"}
+            className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
+          />
+          <p className="text-center">Content Creation / Editing</p>
+          <Image
+            src={strArr}
+            alt={"Round Arrow"}
+            className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
+          />
+          <p className="text-center">Meta / TikTok Ads</p>
+          <Image
+            src={strArr}
+            alt={"Round Arrow"}
+            className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
+          />
+          <p className="text-center">Appointment Setting (Optional)</p>
+          <Image
+            src={strArr}
+            alt={"Round Arrow"}
+            className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
+          />
+          <p className="text-center">Email Marketing</p>
+          <Image
+            src={strArr}
+            alt={"Round Arrow"}
+            className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
+          />
+          <p className="text-center">Google Review Campaign</p>
+          <Image
+            src={strArr}
+            alt={"Round Arrow"}
+            className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
+          />
+          <p className="text-center">Database Reactivation Campaign</p>
+          <Image
+            src={strArr}
+            alt={"Round Arrow"}
+            className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
+          />
+          <p className="text-center">Analytics</p>
+          <Image
+            src={strArr}
+            alt={"Round Arrow"}
+            className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
+          />
+          <p className="text-center">Social Media Management</p>
         </div>
       </div>
       <hr className="w-2/3 mx-auto border-4 my-10 rounded-full border-slate-500" />

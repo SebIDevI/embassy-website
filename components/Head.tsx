@@ -15,7 +15,7 @@ function Head() {
     cursorVariant.changeVariant("default");
   }
   return (
-    <section className="h-[100vh] relative px-4 pt-10 bg-[linear-gradient(90deg,#e8f1f5,#fafafa_100%)]">
+    <section className="h-[100vh] min-h-[850px] lg:block flex items-center justify-center relative px-4 lg:pt-10 bg-[linear-gradient(90deg,#e8f1f5,#fafafa_100%)]">
       <div className="flex flex-col-reverse lg:flex-row lg:items-center lg:mx-40">
         <div className="font-extrabold text-2xl w-full text-center lg:text-left lg:text-4xl">
           <h1 className="text-6xl lg:text-8xl xl:text-9xl text-blueEmb leading-[100%] font-pro">

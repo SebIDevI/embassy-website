@@ -14,7 +14,7 @@ function Fin() {
       </div>
       <div className="my-24 container">
         <p className="font-graphikLight text-center">Interesat?</p>
-        <h5 className="text-5xl font-proBlack py-5 text-center">
+        <h5 className="text-5xl font-proBlack py-5 text-center break-words">
           Contactează echipa noastră de vânzări
         </h5>
         <ContactForm />

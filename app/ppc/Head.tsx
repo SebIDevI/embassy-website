@@ -4,16 +4,16 @@ function Head() {
   return (
     <>
       <div className="min-h-[60vh]">
-        <div className="flex items-center px-40 py-40 mt-20">
-          <div className="w-1/2 font-graphik px-10">
+        <div className="flex flex-col md:flex-row items-center xl:px-40 py-40 md:mt-20">
+          <div className="md:w-1/2 w-full font-graphik px-10 mb-10 md:mb-0">
             <p className="font-graphikExtralight">
               <span className="font-graphik">Embassy</span> PPC
             </p>
-            <h4 className="text-7xl font-proBlack py-2">
+            <h4 className="2xl:text-7xl lg:text-5xl text-4xl font-proBlack py-2">
               Embassy PPC aduce o revoluție în sistemul de achizitie de clienți
               cu un pachet complet.
             </h4>
-            <p className="pt-10 text-base font-graphik">
+            <p className="pt-10 lg:text-base text-sm font-graphik">
               Embassy PPC redefinește accelerarea afacerii tale cu un pachet
               integral care depășește barierele marketingului digital – de la
               Social Media Management și Content Creation, la Meta/TikTok Ads,
@@ -21,7 +21,7 @@ function Head() {
               fiecare clic într-un pas concret către succesul tău.
             </p>
           </div>
-          <div className="w-1/2">
+          <div className="md:w-1/2 w-full">
             <div className="w-1/2 h-auto aspect-square bg-gray-300 rounded-xl mx-auto"></div>
           </div>
         </div>

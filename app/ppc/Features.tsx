@@ -9,8 +9,8 @@ function Features() {
   return (
     <div className="container">
       <h4 className="font-proBlack text-5xl py-10">Features</h4>
-      <div className="flex justify-between items-center">
-        <ul className="w-1/2 flex flex-col gap-4 text-2xl">
+      <div className="md:flex justify-between items-center">
+        <ul className="md:w-1/2 flex flex-col gap-4 text-2xl">
           <li className="flex gap-1 items-center">
             <FaCircle className="p-2 text-slate-800" /> Pachet & Strategii
             Complete
@@ -49,7 +49,7 @@ function Features() {
             </ul>
           </div>
         </ul>
-        <div className="w-1/2 h-full bg-slate-300 rounded-md"></div>
+        <div className="md:w-1/2 h-full bg-slate-300 rounded-md"></div>
       </div>
     </div>
   );
