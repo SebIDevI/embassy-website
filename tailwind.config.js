@@ -143,7 +143,7 @@ module.exports = {
         },
       },
       animation: {
-        slide: "slide 40s linear infinite",
+        slide: "slide 60s linear infinite",
         floating: "floating 2s cubic-bezier(1, .26, .26, .9) infinite",
         floatingQ: "floatingQ 5s ease-in-out infinite",
         "accordion-down": "accordion-down 0.2s ease-out",

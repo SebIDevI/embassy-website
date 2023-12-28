@@ -27,7 +27,7 @@ function Canvas() {
       `./peleu/${(index + 1).toString()}.png`;
 
     const images: HTMLImageElement[] = [];
-    const imagesRev: HTMLImageElement[] = [];
+    // const imagesRev: HTMLImageElement[] = [];
     let ball = { frame: 0 };
 
     // Load all images and render when they're all loaded
@@ -50,25 +50,25 @@ function Canvas() {
         images.push(img);
       }
     };
-    const loadImagesRev = () => {
-      let imagesLoaded = 0;
+    // const loadImagesRev = () => {
+    //   let imagesLoaded = 0;
 
-      for (let i = frameCount - 1; i > -1; i--) {
-        const img = new Image();
-        img.src = currentFrame(i);
-        img.onload = () => {
-          imagesLoaded++;
+    //   for (let i = frameCount - 1; i > -1; i--) {
+    //     const img = new Image();
+    //     img.src = currentFrame(i);
+    //     img.onload = () => {
+    //       imagesLoaded++;
 
-          if (imagesLoaded === frameCount) {
-            // All images are loaded, now you can render
-            setIsLoading(false); //hide the loading animation
-            renderRev();
-          }
-        };
+    //       if (imagesLoaded === frameCount) {
+    //         // All images are loaded, now you can render
+    //         setIsLoading(false); //hide the loading animation
+    //         renderRev();
+    //       }
+    //     };
 
-        imagesRev.push(img);
-      }
-    };
+    //     imagesRev.push(img);
+    //   }
+    // };
 
     gsap.to(ball, {
       frame: frameCount - 1,
@@ -81,16 +81,16 @@ function Canvas() {
       // },
       onUpdate: render,
     });
-    gsap.to(ball, {
-      frame: frameCount > 76 ? 75 : frameCount - 1,
-      snap: "frame",
-      ease: "none",
-      scrollTrigger: {
-        scrub: true,
-        end: "50%",
-      },
-      onUpdate: renderRev,
-    });
+    // gsap.to(ball, {
+    //   frame: frameCount > 76 ? 75 : frameCount - 1,
+    //   snap: "frame",
+    //   ease: "none",
+    //   scrollTrigger: {
+    //     scrub: true,
+    //     end: "50%",
+    //   },
+    //   onUpdate: renderRev,
+    // });
 
     loadImages();
 
@@ -104,19 +104,19 @@ function Canvas() {
       context.drawImage(images[ball.frame], 0, 0);
     }
 
-    loadImagesRev();
+    // loadImagesRev();
 
-    console.log(imagesRev);
+    // console.log(imagesRev);
 
-    function renderRev() {
-      if (!context || imagesRev.length === 0) return;
+    // function renderRev() {
+    //   if (!context || imagesRev.length === 0) return;
 
-      canvas!.width = imagesRev[0].width;
-      canvas!.height = imagesRev[0].height;
+    //   canvas!.width = imagesRev[0].width;
+    //   canvas!.height = imagesRev[0].height;
 
-      context.clearRect(0, 0, canvas!.width, canvas!.height);
-      context.drawImage(imagesRev[ball.frame], 0, 0);
-    }
+    //   context.clearRect(0, 0, canvas!.width, canvas!.height);
+    //   context.drawImage(imagesRev[ball.frame], 0, 0);
+    // }
   }, []);
 
   return (
