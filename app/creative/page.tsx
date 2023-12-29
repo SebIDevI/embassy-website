@@ -32,7 +32,7 @@ function Page() {
         <Head />
         <Beneficii />
         <Pachet />
-        <Slider />
+        {/* <Slider /> */}
         <Fin />
       </div>
       <Footer />

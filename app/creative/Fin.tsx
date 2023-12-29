@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useCursorVariant } from "@/config";
+import Link from "next/link";
 
 function Fin() {
   const cursorVariant = useCursorVariant();
@@ -17,13 +18,14 @@ function Fin() {
       <h4 className="font-graphik text-4xl text-center">
         Începe acum alături de <b className="font-pro">Embassy</b>Crative
       </h4>
-      <button
-        className="bg-green-500 font-graphikLight text-3xl text-white p-2 px-7 rounded-lg"
+      <Link
+        href={"/contact"}
+        className="bg-blueEmb font-graphikLight text-xl text-white p-2 px-7 rounded-lg"
         onMouseEnter={() => sellEnter()}
         onMouseLeave={() => sellLeave()}
       >
         Contact
-      </button>
+      </Link>
     </div>
   );
 }

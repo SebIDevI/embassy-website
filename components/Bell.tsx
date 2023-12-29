@@ -48,7 +48,7 @@ export const Bell: React.FC<BellProp> = ({ color }) => {
     cursorVariant.changeVariant("default");
   }
   return (
-    <div className="text-2xl flex md:w-80 w-3/4 relative items-center justify-center">
+    <div className="text-2xl flex md:w-80 w-3/4 relative items-center justify-end">
       <div
         className={`relative after:w-3 after:border-2 after:border-${color} after:h-3 after:rounded-full after:bg-red-500 after:block after:absolute after:top-1/2 after:left-1/2 after:-translate-y-full notification-div`}
       >

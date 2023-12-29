@@ -1,10 +1,14 @@
 "use client";
 
 import * as React from "react";
+import { useState } from "react";
+
 import Link from "next/link";
 import Image from "next/image";
 
 import embassy from "@/public/logoBlack.png";
+
+import { AnimatePresence, Variants, motion } from "framer-motion";
 
 import { useCursorVariant } from "@/config";
 
@@ -19,6 +23,35 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { FaCaretRight } from "react-icons/fa";
+
+const variantsP: Variants = {
+  hidden: {
+    width: 0,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.3,
+    },
+  },
+  visible: {
+    width: "100%",
+    transition: {
+      ease: "easeInOut",
+      duration: 0.3,
+    },
+  },
+};
+
+const variantsIcon: Variants = {
+  small: {
+    fontSize: "16px",
+    transform: "translate(0px)",
+  },
+  big: {
+    fontSize: "20px",
+    transform: "translate(4px, -2px)",
+  },
+};
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -59,53 +92,61 @@ export default function NavBtns() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Servicii</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <Link
-                    className="flex h-full w-full select-none flex-col justify-between rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
-                  >
-                    {/* <Icons.logo className="h-6 w-6" /> */}
-                    <Image src={embassy} alt={"Embassy Logo"} />
-                    <div className="mb-2 mt-4 text-lg font-graphik leading-tight">
+            <div className="w-screen">
+              <ul className="flex gap-3 p-4 justify-start container">
+                {/* <li>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      className="flex h-full w-full max-w-xs select-none flex-col justify-between items-center rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                      href="/"
+                    >
+                      {/* <Icons.logo className="h-6 w-6" /> */}
+                {/* <Image
+                        src={embassy}
+                        alt={"Embassy Logo"}
+                        className="mb-5 max-w-sm p-10"
+                      /> */}
+                {/* <div className="mb-2 mt-4 text-lg font-graphik leading-tight">
                       Embassy Network
-                    </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      O descriere sumara despre Embassy Network in foarte putine
-                      cateva cuvinte
-                    </p>
-                  </Link>
-                </NavigationMenuLink>
-              </li>
-              <ListItem href="/creative" title="Creative">
-                Content Creation and Strategy
-              </ListItem>
-              <ListItem href="/web" title="WebExp">
-                Web development, <br />
-                Web design, SEO
-              </ListItem>
-              <ListItem href="/ppc" title="PPC">
-                Clients Acquisition System
-              </ListItem>
-            </ul>
+                    </div> */}
+                {/* <p className="text-sm leading-tight text-muted-foreground">
+                        O descriere sumara despre Embassy Network in foarte
+                        putine cateva cuvinte
+                      </p>
+                    </Link>
+                  </NavigationMenuLink>
+                </li> */}
+                <ListItem href="/creative" title="Creative">
+                  Content Creation and Strategy
+                </ListItem>
+                <ListItem href="/web" title="WebExp">
+                  Web development, <br />
+                  Web design, SEO
+                </ListItem>
+                <ListItem href="/ppc" title="PPC">
+                  Clients Acquisition System
+                </ListItem>
+              </ul>
+            </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>MBC Productions</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-3 lg:w-[600px] ">
-              {components.map((component) => (
-                <ListItem2
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  <p className="uppercase italic mb-2 mt-3">Coming soon</p>
-                  {component.description}
-                </ListItem2>
-              ))}
-            </ul>
+            <div className="w-screen">
+              <ul className="flex gap-3 p-4 justify-start container">
+                {components.map((component) => (
+                  <ListItem2
+                    key={component.title}
+                    title={component.title}
+                    href={component.href}
+                  >
+                    <p className="uppercase italic mb-2 mt-3">Coming soon</p>
+                    {component.description}
+                  </ListItem2>
+                ))}
+              </ul>
+            </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
@@ -124,8 +165,9 @@ const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
 >(({ className, title, children, ...props }, ref) => {
+  const [isMOver, setIsMOver] = useState(false);
   return (
-    <li>
+    <li className="w-auto">
       <NavigationMenuLink asChild>
         <a
           ref={ref}
@@ -135,9 +177,60 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <div className="text-base font-medium leading-none font-graphik">
+            <b>{title}</b>
+          </div>
+          <p className="text-sm leading-snug text-muted-foreground font-graphikLight">
             {children}
+            <div className="flex text-black pt-3 gap-1 relative w-auto">
+              <AnimatePresence mode="wait">
+                <div
+                  className="flex gap-1"
+                  onMouseEnter={() => setIsMOver(true)}
+                  onMouseLeave={() => setIsMOver(false)}
+                >
+                  <div className="w-auto relative">
+                    {isMOver ? (
+                      <motion.div
+                        variants={variantsP}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                        className="absolute -bottom-1 left-0 w-0 h-[3px] bg-blueEmb"
+                      ></motion.div>
+                    ) : (
+                      <motion.div
+                        variants={variantsP}
+                        initial="hidden"
+                        animate="hidden"
+                        exit="hidden"
+                        className="absolute -bottom-1 left-0 w-0 h-[3px] bg-blueEmb"
+                      ></motion.div>
+                    )}
+                    <p className="font-graphik">Descoperă</p>
+                  </div>{" "}
+                  {isMOver ? (
+                    <motion.div
+                      variants={variantsIcon}
+                      initial="small"
+                      animate="big"
+                      exit="small"
+                    >
+                      <FaCaretRight className="text-blueEmb" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      variants={variantsIcon}
+                      initial="small"
+                      animate="small"
+                      exit="small"
+                    >
+                      <FaCaretRight className="text-blueEmb" />
+                    </motion.div>
+                  )}
+                </div>
+              </AnimatePresence>
+            </div>
           </p>
         </a>
       </NavigationMenuLink>
@@ -151,12 +244,12 @@ const ListItem2 = React.forwardRef<
   React.ComponentPropsWithoutRef<"a">
 >(({ className, title, children, ...props }, ref) => {
   return (
-    <li>
+    <li className="max-w-xs">
       <NavigationMenuLink asChild>
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 text-center rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 text-start rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
