@@ -2,6 +2,7 @@ import React from "react";
 
 import { useCursorVariant } from "@/config";
 import Link from "next/link";
+import { ButtonAnim } from "@/components/ButtonAnim";
 
 function Fin() {
   const cursorVariant = useCursorVariant();
@@ -18,14 +19,16 @@ function Fin() {
       <h4 className="font-graphik text-4xl text-center">
         Începe acum alături de <b className="font-pro">Embassy</b>Crative
       </h4>
-      <Link
-        href={"/contact"}
-        className="bg-blueEmb font-graphikLight text-xl text-white p-2 px-7 rounded-lg"
-        onMouseEnter={() => sellEnter()}
-        onMouseLeave={() => sellLeave()}
-      >
-        Contact
-      </Link>
+      <div onMouseEnter={() => sellEnter()} onMouseLeave={() => sellLeave()}>
+        <ButtonAnim
+          color1="blueEmb"
+          color2="blue-300"
+          link="/contact"
+          className="text-xl p-2 px-7 font-graphikLight"
+        >
+          Contact
+        </ButtonAnim>
+      </div>
     </div>
   );
 }

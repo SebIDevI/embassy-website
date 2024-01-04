@@ -11,17 +11,17 @@ function Head() {
             </p>
 
             <div className="py-2">
-              <h4 className="2xl:text-5xl lg:text-3xl text-2xl font-proBlack overflow-hidden bg-transparent py-2 tracking-tighter">
+              <h4 className="2xl:text-5xl lg:text-3xl text-2xl font-proBlack overflow-hidden bg-transparent py-2">
                 <span className="translate-y-full animate-ttlSld inline-block delay-5">
                   Cele mai bune unelte pentru a transforma
                 </span>
               </h4>
-              <h4 className="2xl:text-5xl lg:text-3xl text-2xl font-proBlack overflow-hidden bg-transparent py-2 tracking-tighter">
+              <h4 className="2xl:text-5xl lg:text-3xl text-2xl font-proBlack overflow-hidden bg-transparent py-2">
                 <span className="translate-y-full animate-ttlSld inline-block delay-7">
                   ideile in povesti vizuale
                 </span>
               </h4>
-              <h4 className="2xl:text-5xl lg:text-3xl text-2xl font-proBlack overflow-hidden bg-transparent py-2 tracking-tighter">
+              <h4 className="2xl:text-5xl lg:text-3xl text-2xl font-proBlack overflow-hidden bg-transparent py-2">
                 <span className="translate-y-full animate-ttlSld inline-block delay-9">
                   pe social media
                 </span>

@@ -87,8 +87,8 @@ function Categories() {
   }
 
   return (
-    <div className="w-full lg:h-24 py-10 bg-white lg:sticky top-10 lg:top-[88px] z-30 border-t-4 border-t-[#2770a13e]">
-      <div className="h-full flex flex-col font-pro lg:flex-row justify-around items-center gap-10">
+    <div className="min-w-full lg:h-24 py-10 bg-white lg:sticky top-10 lg:top-[88px] z-30 border-t-4 border-t-[#2770a13e]">
+      <div className="h-full container flex flex-col font-pro lg:flex-row justify-around items-center gap-10">
         <div
           className="relative"
           ref={containerRef1}

@@ -127,13 +127,13 @@ module.exports = {
             transform: "translateY(0)",
             borderRadius: "0",
           },
-          "99%": {
-            transform: "translateY(0)",
-            borderRadius: "0",
-          },
+          // "50%": {
+          //   transform: "translateY(0)",
+          //   borderRadius: "0",
+          // },
           "100%": {
             transform: "translateY(100%)",
-            borderRadius: 0,
+            borderRadius: "100%",
           },
         },
         ttlSld: {

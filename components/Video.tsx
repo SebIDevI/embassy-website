@@ -16,7 +16,7 @@ function Video() {
 
   return (
     <div
-      className="flex relative my-10"
+      className="flex relative mt-10"
       //   style={{ background: 'url("../public/G Cars Animation.mp4")' }}
     >
       <div className="w-full"></div>

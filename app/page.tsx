@@ -12,11 +12,12 @@ import Sect1 from "@/components/Sect1";
 import Slider from "@/components/Slider";
 import GrainedEffect from "@/components/Grained";
 import Categories from "@/components/Categories";
-import Wwu from "@/components/Wwu";
-import Reviews from "@/components/Reviews";
+// import Wwu from "@/components/Wwu";
+// import Reviews from "@/components/Reviews";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Video from "@/components/Video";
+import CarouselContainer from "@/components/CarouselContainer";
 
 export default function Home() {
   const cursorVariant = useCursorVariant();
@@ -34,9 +35,10 @@ export default function Home() {
         <Slider />
         <Categories />
         <Sect1 />
+        <CarouselContainer />
         <Video />
-        <Wwu />
-        <Reviews />
+        {/* <Wwu /> */}
+        {/* <Reviews /> */}
         <Faq />
       </div>
       <Footer />

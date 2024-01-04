@@ -6,6 +6,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 
 import { useCursorVariant } from "@/config";
 import Link from "next/link";
+import { ButtonAnim } from "./ButtonAnim";
 
 const notif: Variants = {
   visible: { opacity: 1 },
@@ -50,14 +51,20 @@ export const Bell: React.FC<BellProp> = ({ color }) => {
   return (
     <div className="text-2xl flex md:w-80 w-3/4 relative items-center justify-end">
       <div
-        className={`relative after:w-3 after:border-2 after:border-${color} after:h-3 after:rounded-full after:bg-red-500 after:block after:absolute after:top-1/2 after:left-1/2 after:-translate-y-full notification-div`}
+        className={`relative after:w-4 after:content-['2'] after:text-white after:text-[10px] after:flex after:justify-center after:items-center after:h-4 after:font-bold after:rounded-full after:bg-red-500 after:absolute after:-top-1 after:-right-1 notification-div`}
+        onMouseEnter={() => sellEnter()}
+        onMouseLeave={() => sellLeave()}
       >
-        <FaBell
-          onMouseEnter={() => sellEnter()}
-          onMouseLeave={() => sellLeave()}
-          onClick={() => (bell ? setBell(false) : setBell(true))}
-          className="cursor-pointer"
-        />
+        <ButtonAnim
+          color1="blueEmb"
+          color2="blue-300"
+          className="text-xl text-center text-black relative px-2 py-2 aspect-square"
+        >
+          <FaBell
+            onClick={() => (bell ? setBell(false) : setBell(true))}
+            className="cursor-pointer"
+          />
+        </ButtonAnim>
       </div>
       <AnimatePresence mode="wait">
         {bell && (
@@ -95,14 +102,24 @@ export const Bell: React.FC<BellProp> = ({ color }) => {
           </motion.div>
         )}
       </AnimatePresence>
-      <Link
+      <div onMouseEnter={() => sellEnter()} onMouseLeave={() => sellLeave()}>
+        <ButtonAnim
+          color1="blueEmb"
+          color2="blue-300"
+          link="/contact"
+          className="ml-3 py-2 px-5"
+        >
+          Contact
+        </ButtonAnim>
+      </div>
+      {/* <Link
         href={"/contact"}
         className="text-sm p-1 text-white px-4 bg-blue-700 rounded-lg mx-4"
         onMouseEnter={() => sellEnter()}
         onMouseLeave={() => sellLeave()}
       >
         Contact
-      </Link>
+      </Link> */}
     </div>
   );
 };

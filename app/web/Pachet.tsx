@@ -2,15 +2,11 @@
 
 import React from "react";
 import { FaArrowDown } from "react-icons/fa";
+import Image from "next/image";
 
-import { useState } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
-import Modal from "./Modal";
-
-const backdrop: Variants = {
-  visible: { backdropFilter: "blur(12px)" },
-  hidden: { backdropFilter: "blur(0px)" },
-};
+import p1 from "@/public/WebDev 1.png";
+import p2 from "@/public/WebDev 2.png";
+import p3 from "@/public/WebDev 3.png";
 
 const tt = [
   {
@@ -43,35 +39,16 @@ const tt = [
 ];
 
 function Pachet() {
-  const [showModal, setShowModal] = useState(false);
-  const [text, setText] = useState("");
-  const [titlu, setTitlu] = useState("");
-
   return (
-    <>
-      <Modal
-        showModal={showModal}
-        setShowModal={setShowModal}
-        titlu={titlu}
-        text={text}
-      />
-
-      <div className="flex container md:flex-row items-start md:items-center flex-col">
-        <div className="md:min-w-[33%] md:pe-10 min-w-[50%]">
+    <div className="container mb-40">
+      <div className="flex md:flex-row gap-4 flex-col items-center px-10 md:px-0 md:gap-10 mt-10 text-2xl">
+        <div className="md:min-w-[10%] md:pe-5 min-w-[50%]">
           <ul>
             {tt.map((e, i) =>
               i < 3 ? (
-                <li
-                  className="py-4 flex items-start gap-2"
-                  onClick={() => {
-                    setShowModal(true);
-                    setText(e.text);
-                    setTitlu(e.titlu);
-                  }}
-                  key={i}
-                >
+                <li className="py-4 flex items-start gap-2" key={i}>
                   <div>
-                    <FaArrowDown className="text-blue-500 mt-1" />
+                    <FaArrowDown className="text-blue-500 mt-[4px]" />
                   </div>
                   <span>{e.titlu}</span>
                 </li>
@@ -81,22 +58,30 @@ function Pachet() {
             )}
           </ul>
         </div>
-        <div className="w-1/3 md:block hidden"></div>
-        <div className="md:min-w-[33%] md:ps-10 min-w-[50%]">
+        <div className="w-4/5 h-full md:block hidden relative aspect-square">
+          <Image
+            src={p1}
+            alt="Picture1"
+            className="absolute top-0 left-0 w-1/2 h-1/2 -rotate-12"
+          />
+          <Image
+            src={p2}
+            alt="Picture2"
+            className="absolute top-1/2 right-0 w-1/2 h-1/2 rotate-12 -translate-y-2/3"
+          />
+          <Image
+            src={p3}
+            alt="Picture3"
+            className="absolute bottom-0 left-1/2 w-1/2 h-1/2 -translate-x-1/2"
+          />
+        </div>
+        <div className="md:min-w-[10%] md:ps-5 min-w-[50%]">
           <ul>
             {tt.map((e, i) =>
               i >= 3 ? (
-                <li
-                  className="py-4 flex items-start gap-2"
-                  onClick={() => {
-                    setShowModal(true);
-                    setText(e.text);
-                    setTitlu(e.titlu);
-                  }}
-                  key={i}
-                >
+                <li className="py-4 flex items-start gap-2" key={i}>
                   <div>
-                    <FaArrowDown className="text-blue-500 mt-1" />
+                    <FaArrowDown className="text-blue-500 mt-[4px]" />
                   </div>
                   <span>{e.titlu}</span>
                 </li>
@@ -107,7 +92,7 @@ function Pachet() {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

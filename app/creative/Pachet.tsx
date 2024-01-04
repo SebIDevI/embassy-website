@@ -5,12 +5,17 @@ import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Modal from "./Modal";
 
+import { useCursorVariant } from "@/config";
+import Image from "next/image";
+
+import coze1 from "@/public/CXE05641.jpg";
+import coze2 from "@/public/Frame-29-12-2023-07-40-28.jpg";
+import coze3 from "@/public/IMG_2931.jpg";
+
 const backdrop: Variants = {
   visible: { backdropFilter: "blur(12px)" },
   hidden: { backdropFilter: "blur(0px)" },
 };
-
-import { useCursorVariant } from "@/config";
 
 const tt = [
   {
@@ -108,33 +113,8 @@ function Pachet() {
         text={text}
       /> */}
 
-      <div className="flex lg:w-2/3 w-full md:flex-row items-center flex-col mx-auto">
-        {/* <div className="md:w-1/3 px-10 min-w-[50%]">
-          <ul>
-            {tt.map((e, i) =>
-              i < 4 ? (
-                <li
-                  className="py-4 flex items-center gap-2 cursor-pointer"
-                  onClick={() => {
-                    setShowModal(true);
-                    setModal(i);
-                    setText(e.text);
-                    setTitlu(e.titlu);
-                  }}
-                  onMouseEnter={() => sellEnter()}
-                  onMouseLeave={() => sellLeave()}
-                  key={i}
-                >
-                  <FaArrowDown className="text-blue-500" />
-                  {e.titlu}
-                </li>
-              ) : (
-                ""
-              )
-            )}
-          </ul>
-        </div> */}
-        <div className="md:w-1/3 px-10 min-w-[50%]">
+      <div className="grid grid-cols-1 lg:w-2/3 w-full md:grid-cols-3 items-center flex-col mx-auto">
+        <div className="md:min-w-[33%] px-10 min-w-[50%]">
           <ul>
             {tt.map((e, i) =>
               i < 4 ? (
@@ -168,16 +148,19 @@ function Pachet() {
                               sellEnter();
                               setModal(i);
                             }}
-                            className="flex items-center gap-2 cursor-pointer z-50"
+                            className="flex items-start gap-2 cursor-pointer text-start z-50"
                           >
                             <FaArrowRight
-                              className={`text-blue-500 animate-slideX delay-${
+                              className={`text-blue-500 animate-slideX mt-1 delay-${
                                 i + 1
                               }`}
                             />
                             {e.titlu}
                           </button>
-                          <p className="pt-4 text-sm">{e.text}</p>
+                          <p
+                            className="pt-4 text-sm"
+                            dangerouslySetInnerHTML={{ __html: e.text }}
+                          />
                         </div>
                       </motion.div>
                     ) : (
@@ -208,16 +191,19 @@ function Pachet() {
                               sellEnter();
                               setModal(i);
                             }}
-                            className="flex items-center gap-2 cursor-pointer z-50"
+                            className="flex items-start gap-2 cursor-pointer text-start tr z-50"
                           >
                             <FaArrowRight
-                              className={`text-blue-500 animate-slideX delay-${
+                              className={`text-blue-500 animate-slideX mt-1 delay-${
                                 i + 1
                               }`}
                             />
-                            {e.titlu}
+                            <span className="line-clamp-1">{e.titlu}</span>
                           </button>
-                          <p className="pt-4 text-sm">{e.text}</p>
+                          <p
+                            className="pt-4 text-sm"
+                            dangerouslySetInnerHTML={{ __html: e.text }}
+                          />
                         </div>
                       </motion.div>
                     )}
@@ -229,7 +215,23 @@ function Pachet() {
             )}
           </ul>
         </div>
-        <div className="w-1/3 md:block hidden"></div>
+        <div className="w-full h-full md:block hidden relative aspect-square">
+          <Image
+            src={coze1}
+            alt="Picture1"
+            className="absolute top-0 left-0 w-1/2 h-1/2 -rotate-12"
+          />
+          <Image
+            src={coze2}
+            alt="Picture2"
+            className="absolute top-1/2 right-0 w-1/2 h-1/2 rotate-12 -translate-y-2/3"
+          />
+          <Image
+            src={coze3}
+            alt="Picture3"
+            className="absolute bottom-0 left-1/2 w-1/2 h-1/2 -translate-x-1/2"
+          />
+        </div>
         <AnimatePresence mode="wait">
           {showModal && (
             <motion.div
@@ -245,7 +247,7 @@ function Pachet() {
             ></motion.div>
           )}
         </AnimatePresence>
-        <div className="md:w-1/3 px-10 min-w-[50%]">
+        <div className="md:min-w-[33%] px-10 min-w-[50%]">
           <ul>
             {tt.map((e, i) =>
               i >= 4 ? (
@@ -279,16 +281,19 @@ function Pachet() {
                               sellEnter();
                               setModal(i);
                             }}
-                            className="flex items-center gap-2 cursor-pointer z-50"
+                            className="flex items-start gap-2 cursor-pointer text-start tr z-50"
                           >
                             <FaArrowRight
-                              className={`text-blue-500 animate-slideX delay-${
+                              className={`text-blue-500 animate-slideX mt-1 delay-${
                                 i + 1
                               }`}
                             />
-                            {e.titlu}
+                            <span className="">{e.titlu}</span>
                           </button>
-                          <p className="pt-4 text-sm">{e.text}</p>
+                          <p
+                            className="pt-4 text-sm"
+                            dangerouslySetInnerHTML={{ __html: e.text }}
+                          />
                         </div>
                       </motion.div>
                     ) : (
@@ -319,16 +324,19 @@ function Pachet() {
                               sellEnter();
                               setModal(i);
                             }}
-                            className="flex items-center gap-2 cursor-pointer z-50"
+                            className="flex items-start gap-2 cursor-pointer text-start  z-50"
                           >
                             <FaArrowRight
-                              className={`text-blue-500 animate-slideX delay-${
+                              className={`text-blue-500 animate-slideX mt-1 delay-${
                                 i + 1
                               }`}
                             />
-                            {e.titlu}
+                            <span className="line-clamp-1">{e.titlu}</span>
                           </button>
-                          <p className="pt-4 text-sm">{e.text}</p>
+                          <p
+                            className="pt-4 text-sm"
+                            dangerouslySetInnerHTML={{ __html: e.text }}
+                          />
                         </div>
                       </motion.div>
                     )}

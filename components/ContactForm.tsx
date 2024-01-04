@@ -5,8 +5,6 @@ import * as z from "zod";
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -29,6 +27,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";
 
 import { useCursorVariant } from "@/config";
+import { ButtonAnim } from "./ButtonAnim";
 
 const formSchema = z.object({
   famName: z
@@ -88,16 +87,31 @@ function ContactForm() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    // toast({
+    //   title: "You submitted the following values:",
+    //   description: (
+    //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+    //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+    //     </pre>
+    //   ),
+    // });
+    const response = await fetch("/api/sendEmail", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        username: data.famName + " " + data.preName,
+        email: data.email,
+        company: data.company,
+        country: data.country,
+        phone: data.phone,
+        website: data.website,
+        message: data.message,
+      }),
     });
-    console.log(data);
+    console.log(await response.json());
   }
 
   const cursorVariant = useCursorVariant();
@@ -277,13 +291,16 @@ function ContactForm() {
             </FormItem>
           )}
         />
-        <Button
-          type="submit"
-          onMouseEnter={() => sellEnter()}
-          onMouseLeave={() => sellLeave()}
-        >
-          Sunt interesat/ă, contactați-mă
-        </Button>
+        <div onMouseEnter={() => sellEnter()} onMouseLeave={() => sellLeave()}>
+          <ButtonAnim
+            color1="blueEmb"
+            color2="blue-300"
+            className="p-2 px-7"
+            type="submit"
+          >
+            Sunt interesat/ă, contactați-mă
+          </ButtonAnim>
+        </div>
         {(form.getFieldState("famName").invalid ||
           form.getFieldState("company").invalid ||
           form.getFieldState("country").invalid ||

@@ -9,6 +9,7 @@ import { FaCheck } from "react-icons/fa";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 import qs from "@/public/questionMark.png";
+import mark from "@/public/ppppggg.png";
 
 const data = [
   "La Embassy Network, nu suntem doar advertiseri; suntem povestitori. Indiferent dacă te afli în domeniul Auto, Chiropractic, Healthcare sau o nișă unică, dăm viață brandului tău online prin strategiile noastre.",
@@ -40,8 +41,8 @@ function Sect1() {
         realizate pentru proiecte personale, astazi lucram pentru a contura
         povestea brandului tau pe social media
       </p>
-      <div className="flex md:flex-row gap-4 flex-col px-10 md:px-0 md:gap-0 mt-10 text-sm">
-        <ul className={`w-full flex flex-col gap-4`}>
+      <div className="flex md:flex-row gap-4 flex-col px-10 md:px-0 md:gap-10 mt-10 text-sm">
+        <ul className={`w-1/3 flex flex-col gap-5`}>
           {data.map((e, i) =>
             i % 2 == 0 ? (
               <li className="flex gap-2 items-start px-4" key={i}>
@@ -55,14 +56,17 @@ function Sect1() {
             )
           )}
         </ul>
-        <motion.div className="w-auto h-auto md:block hidden" style={{ y }}>
+        <motion.div
+          className="w-1/3 h-auto md:flex hidden items-center justify-center"
+          style={{ y }}
+        >
           <Image
-            src={qs}
-            alt={"question mark"}
-            className="max-h-[1000px] w-auto opacity-60 px-10"
+            src={mark}
+            alt={"Mark"}
+            className="max-h-[700px] w-auto px-10"
           />
         </motion.div>
-        <ul className="w-full flex flex-col gap-4">
+        <ul className="w-1/3 flex flex-col gap-5">
           {data.map((e, i) =>
             i % 2 != 0 ? (
               <li className="flex gap-2 items-start px-4" key={i}>

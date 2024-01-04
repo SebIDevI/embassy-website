@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import roundArr from "@/public/arrows/round2.svg";
+import mana from "@/public/mana aia buna raw.png";
 
 import { FaCircle } from "react-icons/fa";
 
@@ -49,7 +50,9 @@ function Features() {
             </ul>
           </div>
         </ul>
-        <div className="md:w-1/2 h-full bg-slate-300 rounded-md"></div>
+        <div className="md:w-1/2 h-full rounded-md">
+          <Image src={mana} alt="Mana" />
+        </div>
       </div>
     </div>
   );

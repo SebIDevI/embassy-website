@@ -4,6 +4,7 @@ import React from "react";
 import Canvas from "./Canvas";
 import { useCursorVariant } from "@/config";
 import { BsChevronDown } from "react-icons/bs";
+import { ButtonAnim } from "./ButtonAnim";
 
 function Head() {
   const cursorVariant = useCursorVariant();
@@ -22,13 +23,19 @@ function Head() {
             Embassy
           </h1>
           <h3 className="py-10 font-pro">Fckin w yo mama since &apos;99</h3>
-          <button
-            className="relative rounded-full text-lg tracking-wider font-graphikThin px-10 py-3 text-white bg-blueEmb before:absolute before:top-0 before:left-0 before:w-full before:h-full before:rounded-[100%] before:-z-[1] before:bg-blue-400 before:translate-y-[100%] before:animate-anim-out-acc hover:before:animate-anim-in-acc"
-            onMouseEnter={sellEnter}
-            onMouseLeave={sellLeave}
+          <div
+            onMouseEnter={() => sellEnter()}
+            onMouseLeave={() => sellLeave()}
           >
-            Proiectele Noastre
-          </button>
+            <ButtonAnim
+              color1="blueEmb"
+              color2="blue-300"
+              link="#proiecte"
+              className="py-3 px-10 text-lg font-graphikThin"
+            >
+              Proiectele noastre
+            </ButtonAnim>
+          </div>
         </div>
         <div className="w-full lg:h-[90vh] flex justify-center items-center">
           <div className="w-full h-full max-w-[350px] lg:max-w-none flex items-center">

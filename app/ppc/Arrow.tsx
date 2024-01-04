@@ -3,6 +3,8 @@ import Image from "next/image";
 
 import strArr from "@/public/arrows/arrStr.svg";
 import roundArr from "@/public/arrows/round2.svg";
+import mid from "@/public/ff.jpg";
+import mana from "@/public/mana aia buna raw.png";
 function Arrow() {
   return (
     <>
@@ -31,7 +33,9 @@ function Arrow() {
             <p>Social Media Management</p>
           </div>
           <div className="col-span-3 row-span-5">
-            <div className="w-auto h-full rounded-xl bg-gray-300 mx-12"></div>
+            <div className="w-auto h-full rounded-xl overflow-hidden bg-contain mx-12">
+              <Image src={mid} alt="Chart" className="w-full h-full" />
+            </div>
           </div>
           <div className="text-center">
             <p>Content Creation / Editing</p>
