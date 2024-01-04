@@ -3,6 +3,8 @@
 # dependencies
 /node_modules
 /.pnp
+/.react-email
+/emails
 .pnp.js
 .yarn/install-state.gz
 
