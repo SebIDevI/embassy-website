@@ -113,7 +113,7 @@ function Footer() {
                   onMouseEnter={() => sellEnter()}
                   onMouseLeave={() => sellLeave()}
                 >
-                  ✉️embassy@agency.ro
+                  valentin@embassy-agency.com
                 </a>
               </li>
             </ul>
@@ -126,7 +126,7 @@ function Footer() {
                   onMouseEnter={() => sellEnter()}
                   onMouseLeave={() => sellLeave()}
                 >
-                  📞 +40 742 069 699
+                  📞 +40 720 846 002
                 </a>
               </li>
               <li>
@@ -135,7 +135,7 @@ function Footer() {
                   onMouseEnter={() => sellEnter()}
                   onMouseLeave={() => sellLeave()}
                 >
-                  ✉️embassy@agency.ro
+                  cosmin@embassy-agency.com
                 </a>
               </li>
             </ul>
