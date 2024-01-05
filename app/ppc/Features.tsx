@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 
 import roundArr from "@/public/arrows/round2.svg";
 import mana from "@/public/mana aia buna raw.png";
 
 import { FaCircle } from "react-icons/fa";
+
+import { motion, useScroll, useTransform } from "framer-motion";
+
+function Item() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "start start"],
+  });
+  const y = useTransform(scrollYProgress, (latest) => latest * -300);
+
+  return (
+    <div ref={ref} className="md:w-1/2 h-full rounded-md">
+      <motion.div style={{ translateY: y }}>
+        <Image
+          src={mana}
+          alt={"Mână embassy"}
+          className="max-h-[700px] w-auto px-10 mt-32"
+        />
+      </motion.div>
+    </div>
+  );
+}
 
 function Features() {
   return (
@@ -50,9 +73,7 @@ function Features() {
             </ul>
           </div>
         </ul>
-        <div className="md:w-1/2 h-full rounded-md">
-          <Image src={mana} alt="Mana" />
-        </div>
+        <Item />
       </div>
     </div>
   );

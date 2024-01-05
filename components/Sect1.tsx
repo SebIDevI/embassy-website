@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import videoEmb from "@/public/videoEmb.png";
 import alergareEmb from "@/public/alergareEmb.png";
 import chachingEmb from "@/public/chachingEmb.png";
-import { useRef } from "react";
-import { useEffect } from "react";
 import { FaCheck } from "react-icons/fa";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 import qs from "@/public/questionMark.png";
 import mark from "@/public/ppppggg.png";
@@ -22,10 +20,31 @@ const data = [
   "Fie ca vorbim de poze profesionale, animatii sau grafice, clientii nostri beneficiaza de exclusivitatea ",
 ];
 
-function Sect1() {
-  const { scrollYProgress } = useScroll();
-  const y = useSpring(scrollYProgress);
+function Item() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "start start"],
+  });
+  const y = useTransform(scrollYProgress, (latest) => latest * -200);
 
+  return (
+    <div
+      ref={ref}
+      className="w-1/3 h-auto md:flex hidden items-center justify-center"
+    >
+      <motion.div style={{ translateY: y }}>
+        <Image
+          src={mark}
+          alt={"Mark"}
+          className="max-h-[700px] w-auto px-10 mt-32"
+        />
+      </motion.div>
+    </div>
+  );
+}
+
+function Sect1() {
   return (
     <div className="w-full bg-transparent lg:px-40">
       <p className="text-center font-extralight text-[#353535] pt-16 pb-8 text-sm">
@@ -56,16 +75,7 @@ function Sect1() {
             )
           )}
         </ul>
-        <motion.div
-          className="w-1/3 h-auto md:flex hidden items-center justify-center"
-          style={{ y }}
-        >
-          <Image
-            src={mark}
-            alt={"Mark"}
-            className="max-h-[700px] w-auto px-10"
-          />
-        </motion.div>
+        <Item />
         <ul className="w-1/3 flex flex-col gap-5">
           {data.map((e, i) =>
             i % 2 != 0 ? (

@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 /.react-email
+/app/test
 .pnp.js
 .yarn/install-state.gz
 

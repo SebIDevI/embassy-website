@@ -4,7 +4,7 @@ import { Carwsel } from "./Carwsel";
 function CarouselContainer() {
   return (
     <div
-      className="w-full flex items-center flex-col justify-center mt-20 gap-10 bg-white py-20"
+      className="w-full flex items-center flex-col justify-center gap-10 bg-white py-20"
       id="proiecte"
     >
       <p className="font-pro text-5xl text-center leading-snug">
