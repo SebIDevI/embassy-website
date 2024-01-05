@@ -94,26 +94,52 @@ function Footer() {
         </div>
         <div className="lg:text-start text-center lg:w-1/3">
           <p className="text-2xl uppercase font-bold pb-3">CONTACT US</p>
-          <ul>
-            <li>
-              <a
-                href={"tel:+40742069699"}
-                onMouseEnter={() => sellEnter()}
-                onMouseLeave={() => sellLeave()}
-              >
-                📞 +40 742 069 699
-              </a>
-            </li>
-            <li>
-              <a
-                href="mailto:embassy@agency.ro"
-                onMouseEnter={() => sellEnter()}
-                onMouseLeave={() => sellLeave()}
-              >
-                ✉️embassy@agency.ro
-              </a>
-            </li>
-          </ul>
+          <div className="flex gap-6">
+            <ul>
+              <li className="font-graphik font-bold text-xl">Baciu Valentin</li>
+              <hr className="w-2/3 border-gray-400 my-2" />
+              <li>
+                <a
+                  href={"tel:+40742069699"}
+                  onMouseEnter={() => sellEnter()}
+                  onMouseLeave={() => sellLeave()}
+                >
+                  📞 +40 742 069 699
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:embassy@agency.ro"
+                  onMouseEnter={() => sellEnter()}
+                  onMouseLeave={() => sellLeave()}
+                >
+                  ✉️embassy@agency.ro
+                </a>
+              </li>
+            </ul>
+            <ul>
+              <li className="font-graphik font-bold text-xl">Ene Cosmin</li>
+              <hr className="w-2/3 border-gray-400 my-2" />
+              <li>
+                <a
+                  href={"tel:+40742069699"}
+                  onMouseEnter={() => sellEnter()}
+                  onMouseLeave={() => sellLeave()}
+                >
+                  📞 +40 742 069 699
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:embassy@agency.ro"
+                  onMouseEnter={() => sellEnter()}
+                  onMouseLeave={() => sellLeave()}
+                >
+                  ✉️embassy@agency.ro
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       <div className="py-16 px-4 text-center">
@@ -143,7 +169,7 @@ function Footer() {
           </Link>
         </p>
         <p className="font-bold pt-2">
-          © 2023 embassy-agency.com. All rights reserved.
+          © 2024 embassy-agency.com. All rights reserved.
         </p>
       </div>
     </div>

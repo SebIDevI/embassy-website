@@ -18,6 +18,7 @@ import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Video from "@/components/Video";
 import CarouselContainer from "@/components/CarouselContainer";
+import Hvq from "@/components/Hvq";
 
 export default function Home() {
   const cursorVariant = useCursorVariant();
@@ -37,9 +38,10 @@ export default function Home() {
         <Sect1 />
         <CarouselContainer />
         <Video />
+        <Hvq />
         {/* <Wwu /> */}
         {/* <Reviews /> */}
-        <Faq />
+        {/* <Faq /> */}
       </div>
       <Footer />
       <motion.div
