@@ -174,7 +174,7 @@ function GrainedEffect({ ...props }) {
         <div
           className={`absolute w-full h-full top-0 left-0 ${
             props.theme == "dark"
-              ? "bg-black"
+              ? "bg-[#171717]"
               : props.theme == "blue"
               ? "bg-fixed bg-[radial-gradient(circle_at_top_left,#351fba,#18285c);]"
               : "bg-white"
@@ -185,7 +185,7 @@ function GrainedEffect({ ...props }) {
         id="your-element-id"
         className={`w-full absolute top-0 left-0 mb-96 ${
           props.theme == "dark"
-            ? "bg-black"
+            ? "bg-[#171717]"
             : props.theme == "blue"
             ? "bg-fixed bg-[radial-gradient(circle_at_top_left,#351fba,#18285c);]"
             : "bg-white"
