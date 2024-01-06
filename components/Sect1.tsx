@@ -8,6 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 import qs from "@/public/questionMark.png";
 import mark from "@/public/ppppggg.png";
+import { TtlSlide } from "./TtlSlide";
 
 const data = [
   "La Embassy Network, nu suntem doar advertiseri; suntem povestitori. Indiferent dacă te afli în domeniul Auto, Chiropractic, Healthcare sau o nișă unică, dăm viață brandului tău online prin strategiile noastre.",
@@ -47,9 +48,9 @@ function Sect1() {
         {/* de adaugat font subtire ✅ */}
         De ce să lucrezi cu noi?
       </p>
-      <h3 className="text-center font-pro text-slate-900 text-5xl font-extrabold">
+      <TtlSlide className="text-5xl text-center text-slate-900 font-extrabold">
         Avantajele de a lucra cu Embassy
-      </h3>
+      </TtlSlide>
       <p className="text-center font-extralight text-[#353535] pt-10 text-sm max-w-[80%] mx-auto">
         Embassy este o echipă tânără care contribuie la digitalizarea business
         urilor din diferite nise. Pornind de la clipuri virale pe social media

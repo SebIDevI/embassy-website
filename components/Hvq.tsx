@@ -5,6 +5,7 @@ import { FaCaretRight } from "react-icons/fa";
 
 import { useCursorVariant } from "@/config";
 import Link from "next/link";
+import { TtlSlide } from "./TtlSlide";
 
 const variantsP: Variants = {
   hidden: {
@@ -49,7 +50,7 @@ function Hvq() {
     <div className="py-20">
       <div className="container text-center">
         <p className="font-graphikLight">Suport</p>
-        <h5 className="text-5xl font-pro py-10">Aveți Întrebări?</h5>
+        <TtlSlide className="text-5xl">Aveți Întrebări?</TtlSlide>
         <p className="w-2/5 mx-auto mb-10">
           Suntem aici să ne asigurăm că profitați cât mai mult de experiența
           Embassy Network. Vă rugăm contactați echipa pentru orice întrebări,

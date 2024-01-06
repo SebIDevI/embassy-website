@@ -7,6 +7,7 @@ import mana from "@/public/mana aia buna raw.png";
 import { FaCircle } from "react-icons/fa";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import { TtlSlide } from "@/components/TtlSlide";
 
 function Item() {
   const ref = useRef(null);
@@ -32,7 +33,8 @@ function Item() {
 function Features() {
   return (
     <div className="container">
-      <h4 className="font-proBlack text-5xl py-10">Features</h4>
+      {/* <h4 className="font-proBlack text-5xl py-10">Features</h4> */}
+      <TtlSlide className="font-proBlack text-5xl px-0 mx-0">Features</TtlSlide>
       <div className="md:flex justify-between items-center">
         <ul className="md:w-1/2 flex flex-col gap-4 text-2xl">
           <li className="flex gap-1 items-center">

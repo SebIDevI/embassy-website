@@ -11,6 +11,7 @@ import p3 from "@/public/WebDev 3.png";
 import pirelli from "@/public/pirelli-website.jpeg";
 import rhyminem from "@/public/rhyminem.png";
 import CarouselContainer from "./CarouselContainer";
+import { TtlSlide } from "@/components/TtlSlide";
 
 const text = [
   "Soluții Personalizate",
@@ -29,11 +30,9 @@ const imgs = [pirelli, rhyminem, p3];
 function Caracteristici() {
   return (
     <div className="container mt-20">
-      <h4 className="sm:text-4xl text-2xl font-pro my-10 md:text-center text-center">
-        Caracteristici
-      </h4>
+      <TtlSlide className="md:text-center text-center">Caracteristici</TtlSlide>
       <div className={`w-full relative mb-10`}>
-        <ul className="text-black p-5 grid grid-cols-4 gap-8 text-xl z-10 items-center">
+        <ul className="text-black p-5 grid grid-cols-4 gap-8 text-base z-10 items-center">
           {text.map((e, i) => (
             <li
               key={i}

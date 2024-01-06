@@ -3,6 +3,7 @@
 import React from "react";
 
 import ContactForm from "@/components/ContactForm";
+import { TtlSlide } from "@/components/TtlSlide";
 
 function Fin() {
   return (
@@ -13,10 +14,10 @@ function Fin() {
         <hr className="w-1/4 border-black" />
       </div>
       <div className="my-24 container">
-        <p className="font-graphikLight text-center">Interesat?</p>
-        <h5 className="text-5xl font-proBlack py-5 text-center break-words">
+        <p className="font-graphikLight text-center mt-10 mb-4">Interesat?</p>
+        <TtlSlide className="text-center">
           Contactează echipa noastră de vânzări
-        </h5>
+        </TtlSlide>
         <ContactForm />
       </div>
     </>

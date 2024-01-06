@@ -1,15 +1,14 @@
-"use client";
-
-import React from "react";
 import ContactForm from "@/components/ContactForm";
+import { TtlSlide } from "@/components/TtlSlide";
+import React from "react";
 
 function Fin() {
   return (
-    <div className="my-24 container">
-      <p className="font-graphikLight text-center">Interesat?</p>
-      <h5 className="md:text-5xl text-3xl font-proBlack py-5 text-center">
+    <div className="container mt-40">
+      <p className="font-graphikLight text-center mt-10 mb-4">Interesat?</p>
+      <TtlSlide className="text-center">
         Contactează echipa noastră de vânzări
-      </h5>
+      </TtlSlide>
       <ContactForm />
     </div>
   );

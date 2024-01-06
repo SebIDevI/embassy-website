@@ -19,7 +19,7 @@ declare global {
   }
 }
 
-function GrainedEffect() {
+function GrainedEffect({ ...props }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -171,11 +171,17 @@ function GrainedEffect() {
   return (
     <>
       {isLoading && (
-        <div className="absolute w-full h-full top-0 left-0 bg-white -z-10 scroll-smooth"></div>
+        <div
+          className={`absolute w-full h-full top-0 left-0 ${
+            props.theme == "dark" ? "bg-black" : "bg-white"
+          } -z-10 scroll-smooth`}
+        ></div>
       )}
       <div
         id="your-element-id"
-        className="w-full absolute top-0 left-0 mb-96 bg-white"
+        className={`w-full absolute top-0 left-0 mb-96 ${
+          props.theme == "dark" ? "bg-black" : "bg-white"
+        }`}
       >
         {/* <Body /> */}
       </div>

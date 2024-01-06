@@ -3,8 +3,7 @@ import Image from "next/image";
 
 import strArr from "@/public/arrows/arrStr.svg";
 import roundArr from "@/public/arrows/round2.svg";
-import mid from "@/public/ff.jpg";
-import mana from "@/public/mana aia buna raw.png";
+import mid from "@/public/ff.png";
 function Arrow() {
   return (
     <>
@@ -165,7 +164,7 @@ function Arrow() {
           <p className="text-center">Social Media Management</p>
         </div>
       </div>
-      <hr className="w-2/3 mx-auto border-4 my-10 rounded-full border-slate-500" />
+      <hr className="w-2/3 mx-auto border-4 my-10 rounded-full border-slate-300" />
     </>
   );
 }

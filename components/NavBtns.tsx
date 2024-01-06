@@ -4,9 +4,12 @@ import * as React from "react";
 import { useState } from "react";
 
 import Link from "next/link";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 import embassy from "@/public/logoBlack.png";
+import creative from "@/public/creative-nav.png";
+import web from "@/public/web-nav.png";
+import ppc from "@/public/ppc.png";
 
 import { AnimatePresence, Variants, motion } from "framer-motion";
 
@@ -93,7 +96,7 @@ export default function NavBtns() {
           <NavigationMenuTrigger>Servicii</NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="w-screen">
-              <ul className="flex gap-3 p-4 justify-start container">
+              <ul className="flex gap-3 p-4 justify-between container">
                 {/* <li>
                   <NavigationMenuLink asChild>
                     <Link
@@ -116,14 +119,14 @@ export default function NavBtns() {
                     </Link>
                   </NavigationMenuLink>
                 </li> */}
-                <ListItem href="/creative" title="Creative">
+                <ListItem href="/creative" title="Creative" image={creative}>
                   Content Creation and Strategy
                 </ListItem>
-                <ListItem href="/web" title="WebExp">
+                <ListItem href="/web" title="WebExp" image={web}>
                   Web development, <br />
                   Web design, SEO
                 </ListItem>
-                <ListItem href="/ppc" title="PPC">
+                <ListItem href="/ppc" title="PPC" image={ppc}>
                   Clients Acquisition System
                 </ListItem>
               </ul>
@@ -163,8 +166,11 @@ export default function NavBtns() {
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a"> & {
+    title: string;
+    image: StaticImageData;
+  }
+>(({ className, title, image, children, ...props }, ref) => {
   const [isMOver, setIsMOver] = useState(false);
   return (
     <li className="w-auto">
@@ -172,12 +178,17 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:text-accent-foreground focus:text-accent-foreground",
             className
           )}
           {...props}
         >
-          <div className="text-base font-medium leading-none font-graphik">
+          <Image
+            src={image}
+            alt={"Image " + title}
+            className="w-full max-w-[200px]"
+          />
+          <div className="text-base font-medium leading-none font-graphik py-2">
             <b>{title}</b>
           </div>
           <p className="text-sm leading-snug text-muted-foreground font-graphikLight">

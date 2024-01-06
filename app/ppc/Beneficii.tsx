@@ -1,12 +1,11 @@
+import { TtlSlide } from "@/components/TtlSlide";
 import React from "react";
 
 function Beneficii() {
   return (
     <div className=" mx-auto text-center my-10 text-sm font-graphikLight">
       <p>Beneficii Cheie</p>
-      <h3 className="font-pro text-4xl py-10">
-        Afacerea ta la nivelul următor...
-      </h3>
+      <TtlSlide>Afacerea ta la nivelul următor...</TtlSlide>
       <p className="w-2/3 mx-auto">
         Embassy PPC nu este doar un pachet de servicii, este un parteneriat
         activ și angajat pentru succesul tău online. Acesta reprezintă alegerea

@@ -1,14 +1,16 @@
 "use client";
 
+import { TtlSlide } from "@/components/TtlSlide";
 import React from "react";
 
 function Beneficii() {
   return (
     <div className=" mx-auto text-center my-10 text-sm font-graphikLight">
       {/* <p>De la idee și concept la website </p> */}
-      <h3 className="font-pro text-4xl py-10 mx-6 uppercase">
+      {/* !!!!!!!!!!!!!!!!!!!!!!!!aici vine!!!!!!!!!!!!!!!!!!!!!!!! */}
+      <TtlSlide className="uppercase">
         De la idee și concept la website
-      </h3>
+      </TtlSlide>
       <p className="w-2/3 mx-auto mb-20">
         Fie ca vorbim de website-uri de prezentare, shop-uri online sau
         portaluri, <b className="font-graphik">Embassy</b> WebExp este varianta
@@ -19,7 +21,7 @@ function Beneficii() {
         experiență online remarcabilă.
       </p>
       <p>Beneficii cheie </p>
-      <h3 className="font-pro text-4xl py-5">Beneficii WebExp</h3>
+      <TtlSlide>Beneficii WebExp</TtlSlide>
     </div>
   );
 }

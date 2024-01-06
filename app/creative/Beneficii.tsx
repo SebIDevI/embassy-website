@@ -1,12 +1,16 @@
+import { TtlSlide } from "@/components/TtlSlide";
 import React from "react";
 
 function Beneficii() {
   return (
-    <div className=" mx-auto text-center my-10 text-sm font-graphikLight">
+    <div className="mx-auto text-center my-10 text-sm font-graphikLight text-white">
       <p>Beneficii Cheie</p>
-      <h3 className="font-pro text-4xl py-10 px-16">
+      <TtlSlide className="px-16">
         Construit si adaptat pentru afacerea ta
-      </h3>
+      </TtlSlide>
+      {/* <h3 className="font-pro text-4xl py-10 px-16">
+        Construit si adaptat pentru afacerea ta
+      </h3> */}
       <p className="w-2/3 mx-auto">
         Embassy Creative reprezintă inovația, pasiunea și excelența în domeniul
         marketingului digital, oferind un pachet complet și captivant de

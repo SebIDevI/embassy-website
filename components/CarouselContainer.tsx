@@ -1,5 +1,6 @@
 import React from "react";
 import { Carwsel } from "./Carwsel";
+import { TtlSlide } from "./TtlSlide";
 
 function CarouselContainer() {
   return (
@@ -7,9 +8,17 @@ function CarouselContainer() {
       className="w-full flex items-center flex-col justify-center gap-10 bg-white py-20"
       id="proiecte"
     >
-      <p className="font-pro text-5xl text-center leading-snug">
+      <div className="my-10">
+        <TtlSlide className="text-5xl text-center -my-4">
+          Caracteristicile care fac Embassy Network
+        </TtlSlide>
+        <TtlSlide delay={0.3} className="text-5xl text-center -my-4">
+          Opțiunea #1
+        </TtlSlide>
+      </div>
+      {/* <p className="font-pro text-5xl text-center leading-snug">
         Caracteristicile care fac Embassy Network <br /> Opțiunea #1
-      </p>
+      </p> */}
       <hr className="my-5 h-[2px] w-full container border-gray-300" />
       <Carwsel />
     </div>

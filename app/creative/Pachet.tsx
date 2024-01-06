@@ -65,7 +65,7 @@ const textVariant: Variants = {
     transformOrigin: "center center",
     overflow: "hidden",
     position: "initial",
-    backgroundColor: "#fcfcfc00",
+    backgroundColor: "#0f0f0f00",
     transform: "translate(0%)",
     // padding: "20px",
     zIndex: "10",
@@ -80,7 +80,7 @@ const textVariant: Variants = {
     position: "absolute",
     transformOrigin: "center center",
     transform: "translate(-10px, -25%)",
-    backgroundColor: "#fcfcfc",
+    backgroundColor: "#0c0c0c",
     // padding: "20px",
     zIndex: "49",
     transition: {
@@ -115,7 +115,7 @@ function Pachet() {
         text={text}
       /> */}
 
-      <div className="grid grid-cols-1 lg:w-2/3 w-full md:grid-cols-3 items-center flex-col mx-auto">
+      <div className="grid grid-cols-1 lg:w-2/3 w-full md:grid-cols-3 items-center flex-col mx-auto text-white">
         <div className="md:min-w-[33%] px-10 min-w-[50%]">
           <ul>
             {tt.map((e, i) =>

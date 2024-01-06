@@ -41,8 +41,8 @@ const tt = [
 function Pachet() {
   return (
     <div className="container mb-40">
-      <div className="flex md:flex-row gap-4 flex-col items-center px-10 md:px-0 md:gap-10 mt-10 text-2xl">
-        <div className="md:min-w-[10%] md:pe-5 min-w-[50%]">
+      <div className="flex md:flex-row gap-4 flex-col items-center px-10 md:px-0 md:gap-10 mt-10 text-base">
+        <div className="md:min-w-[25%] md:pe-5 min-w-[50%]">
           <ul>
             {tt.map((e, i) =>
               i < 3 ? (
@@ -58,24 +58,24 @@ function Pachet() {
             )}
           </ul>
         </div>
-        <div className="w-4/5 h-full md:block hidden relative aspect-square">
+        <div className="w-1/2 h-full md:block hidden relative aspect-square">
           <Image
             src={p1}
             alt="Picture1"
-            className="absolute top-0 left-0 w-1/2 h-1/2 -rotate-12"
+            className="absolute top-0 left-0 w-3/4 h-3/4 -z-10"
           />
           <Image
             src={p2}
             alt="Picture2"
-            className="absolute top-1/2 right-0 w-1/2 h-1/2 rotate-12 -translate-y-2/3"
+            className="absolute top-1/4 right-0 w-1/2 h-1/2 z-10"
           />
           <Image
             src={p3}
             alt="Picture3"
-            className="absolute bottom-0 left-1/2 w-1/2 h-1/2 -translate-x-1/2"
+            className="absolute bottom-0 left-1/2 w-1/2 h-1/2 -translate-x-1/2 z-0"
           />
         </div>
-        <div className="md:min-w-[10%] md:ps-5 min-w-[50%]">
+        <div className="md:min-w-[25%] md:ps-5 min-w-[50%]">
           <ul>
             {tt.map((e, i) =>
               i >= 3 ? (

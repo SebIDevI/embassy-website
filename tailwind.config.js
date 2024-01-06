@@ -138,7 +138,7 @@ module.exports = {
         },
         ttlSld: {
           from: {
-            transform: "translateY(100%)",
+            transform: "translateY(200%)",
             display: "inline-block",
           },
           to: {
