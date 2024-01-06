@@ -36,7 +36,7 @@ function Arrow() {
             <p>Social Media Management</p>
           </div>
           <div className="col-span-3 row-span-5">
-            <div className="w-auto h-full rounded-xl overflow-hidden bg-contain mx-12">
+            <div className="w-auto h-full rounded-xl overflow-hidden bg-contain mx-12 -scale-x-100">
               {/* <Image src={mid} alt="Chart" className="w-full h-full" /> */}
               <LottieControl animationData={anim4} />
             </div>
