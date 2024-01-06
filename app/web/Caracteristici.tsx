@@ -29,10 +29,10 @@ const imgs = [pirelli, rhyminem, p3];
 
 function Caracteristici() {
   return (
-    <div className="container mt-20">
+    <div className="container mt-20 text-slate-200">
       <TtlSlide className="md:text-center text-center">Caracteristici</TtlSlide>
       <div className={`w-full relative mb-10`}>
-        <ul className="text-black p-5 grid grid-cols-4 gap-8 text-base z-10 items-center">
+        <ul className="p-5 grid grid-cols-4 gap-8 text-base z-10 items-center">
           {text.map((e, i) => (
             <li
               key={i}
@@ -42,7 +42,7 @@ function Caracteristici() {
             </li>
           ))}
         </ul>
-        <div className="z-0 rounded-2xl overflow-hidden w-2/3 mx-auto mt-10">
+        <div className="z-0 rounded-2xl overflow-hidden w-2/3 mx-auto mt-10 dark">
           <CarouselContainer />
         </div>
       </div>
