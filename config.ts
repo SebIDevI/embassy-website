@@ -1,5 +1,5 @@
 import useMouse from "@react-hook/mouse-position";
-import { CSSProperties } from "react";
+import { CSSProperties, useCallback, useEffect, useRef } from "react";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -31,7 +31,6 @@ type Variant = {
   transition?: {
     type: string;
     mass: number;
-    // ... other transition properties
   };
 };
 
@@ -47,28 +46,49 @@ export const useVariants = (ref: React.MutableRefObject<null>): Variants => {
     leaveDelay: 50,
   });
 
-  let mouseXPosition = 0;
-  let mouseYPosition = 0;
+  const mouseXPosition = useRef(0);
+  const mouseYPosition = useRef(0);
+
+  let cursorOpacity = 0;
   if (mouse.clientX !== null) {
-    mouseXPosition = mouse.clientX;
+    mouseXPosition.current = mouse.clientX;
+    cursorOpacity = 1;
   }
 
   if (mouse.clientY !== null) {
-    mouseYPosition = mouse.clientY;
+    mouseYPosition.current = mouse.clientY;
+    cursorOpacity = 1;
   }
+
+  const handleMouseMove = useCallback((event: MouseEvent) => {
+    mouseXPosition.current = event.clientX;
+    mouseYPosition.current = event.clientY;
+  }, []);
+
+  useEffect(() => {
+    const element = ref.current as HTMLElement | null;
+    if (element) {
+      element.addEventListener("mousemove", handleMouseMove);
+    }
+    return () => {
+      if (element) {
+        element.removeEventListener("mousemove", handleMouseMove);
+      }
+    };
+  }, [handleMouseMove, ref]);
   // console.log(mouse.clientX);
   // console.log(mouse.clientX);
 
   return {
     default: {
-      opacity: 1,
+      opacity: cursorOpacity,
       height: 10,
       width: 10,
       fontSize: "20px",
       backgroundColor: "#000",
       mixBlendMode: "normal",
-      x: mouseXPosition - 5,
-      y: mouseYPosition - 5,
+      x: mouseXPosition.current - 5,
+      y: mouseYPosition.current - 5,
       transition: {
         type: "spring",
         mass: 0.2,
@@ -82,8 +102,8 @@ export const useVariants = (ref: React.MutableRefObject<null>): Variants => {
       height: 30,
       width: 30,
       fontSize: "32px",
-      x: mouseXPosition - 15,
-      y: mouseYPosition - 15,
+      x: mouseXPosition.current - 15,
+      y: mouseYPosition.current - 15,
     },
     sell: {
       opacity: 1,
@@ -93,8 +113,8 @@ export const useVariants = (ref: React.MutableRefObject<null>): Variants => {
       height: 64,
       width: 64,
       fontSize: "32px",
-      x: mouseXPosition - 48,
-      y: mouseYPosition - 48,
+      x: mouseXPosition.current - 48,
+      y: mouseYPosition.current - 48,
     },
   };
 };

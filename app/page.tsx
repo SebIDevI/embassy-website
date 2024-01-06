@@ -14,7 +14,7 @@ import GrainedEffect from "@/components/Grained";
 import Categories from "@/components/Categories";
 // import Wwu from "@/components/Wwu";
 // import Reviews from "@/components/Reviews";
-import Faq from "@/components/Faq";
+// import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Video from "@/components/Video";
 import CarouselContainer from "@/components/CarouselContainer";
