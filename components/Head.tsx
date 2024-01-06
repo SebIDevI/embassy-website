@@ -35,7 +35,7 @@ function Head() {
           >
             <ButtonAnim
               color1="blueEmb"
-              color2="blue-300"
+              color2="blueEmbDark"
               link="#proiecte"
               className="py-3 px-10 text-lg font-graphikThin"
             >

@@ -22,7 +22,7 @@ function Fin() {
       <div onMouseEnter={() => sellEnter()} onMouseLeave={() => sellLeave()}>
         <ButtonAnim
           color1="blueEmb"
-          color2="blue-300"
+          color2="blueEmbDark"
           link="/contact"
           className="text-xl p-2 px-7 font-graphikLight"
         >

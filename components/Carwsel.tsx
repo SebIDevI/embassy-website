@@ -48,7 +48,7 @@ export function Carwsel() {
                     </p>
                     <ButtonAnim
                       color1="blueEmb"
-                      color2="blue-300"
+                      color2="blueEmbDark"
                       link="/"
                       className="p-2 px-6 mt-10 text-base"
                     >

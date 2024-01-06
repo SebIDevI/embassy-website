@@ -4,7 +4,7 @@ function Head() {
   return (
     <div className="container mt-40">
       <h4 className="font-pro text-center my-10 text-4xl overflow-hidden">
-        <span className="translate-y-full inline-block animate-ttlSld delay-8">
+        <span className="translate-y-full inline-block animate-ttlSld delay-3">
           Povestea noastră
         </span>
       </h4>

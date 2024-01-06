@@ -294,7 +294,7 @@ function ContactForm() {
         <div onMouseEnter={() => sellEnter()} onMouseLeave={() => sellLeave()}>
           <ButtonAnim
             color1="blueEmb"
-            color2="blue-300"
+            color2="blueDarkEmb"
             className="p-2 px-7"
             type="submit"
           >
