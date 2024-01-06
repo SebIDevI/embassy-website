@@ -24,7 +24,7 @@ function Item() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "center center"],
+    offset: ["start end", "start center"],
   });
   const y = useTransform(scrollYProgress, (latest) => 200 + latest * -200);
 
