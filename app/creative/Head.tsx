@@ -1,5 +1,5 @@
 import React from "react";
-import LottieControl from "../test/lottie/page";
+import LottieControl from "@/components/lottie/page";
 import animationData from "@/public/lottie/anim1.json";
 
 function Head() {
