@@ -4,6 +4,10 @@ import Image from "next/image";
 import strArr from "@/public/arrows/arrStr.svg";
 import roundArr from "@/public/arrows/round2.svg";
 import mid from "@/public/ff.png";
+
+import anim4 from "@/public/lottie/anim4.json";
+import LottieControl from "@/components/lottie/page";
+
 function Arrow() {
   return (
     <>
@@ -33,7 +37,8 @@ function Arrow() {
           </div>
           <div className="col-span-3 row-span-5">
             <div className="w-auto h-full rounded-xl overflow-hidden bg-contain mx-12">
-              <Image src={mid} alt="Chart" className="w-full h-full" />
+              {/* <Image src={mid} alt="Chart" className="w-full h-full" /> */}
+              <LottieControl animationData={anim4} />
             </div>
           </div>
           <div className="text-center">

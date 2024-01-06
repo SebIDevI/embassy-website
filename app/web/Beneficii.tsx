@@ -6,8 +6,6 @@ import React from "react";
 function Beneficii() {
   return (
     <div className=" mx-auto text-center my-10 text-sm font-graphikLight">
-      {/* <p>De la idee și concept la website </p> */}
-      {/* !!!!!!!!!!!!!!!!!!!!!!!!aici vine!!!!!!!!!!!!!!!!!!!!!!!! */}
       <TtlSlide className="uppercase">
         De la idee și concept la website
       </TtlSlide>

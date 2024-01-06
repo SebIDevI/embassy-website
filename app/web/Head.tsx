@@ -39,7 +39,7 @@ function Head() {
             </p>
           </div>
           <div className="w-1/3">
-            <div className="w-1/2 h-auto aspect-square bg-gray-300 rounded-xl mx-auto">
+            <div className="w-1/2 h-auto aspect-square rounded-xl mx-auto">
               <LottieControl animationData={animationData} />
             </div>
           </div>

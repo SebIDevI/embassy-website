@@ -8,6 +8,9 @@ import p1 from "@/public/WebDev 1.png";
 import p2 from "@/public/WebDev 2.png";
 import p3 from "@/public/WebDev 3.png";
 
+import anim3 from "@/public/lottie/anim3.json";
+import LottieControl from "@/components/lottie/page";
+
 const tt = [
   {
     titlu: "Nu lucram cu template-uri",
@@ -59,7 +62,7 @@ function Pachet() {
           </ul>
         </div>
         <div className="w-1/2 h-full md:block hidden relative aspect-square">
-          <Image
+          {/* <Image
             src={p1}
             alt="Picture1"
             className="absolute top-0 left-0 w-3/4 h-3/4 -z-10"
@@ -73,7 +76,8 @@ function Pachet() {
             src={p3}
             alt="Picture3"
             className="absolute bottom-0 left-1/2 w-1/2 h-1/2 -translate-x-1/2 z-0"
-          />
+          /> */}
+          <LottieControl animationData={anim3} />
         </div>
         <div className="md:min-w-[25%] md:ps-5 min-w-[50%]">
           <ul>

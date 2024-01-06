@@ -28,7 +28,7 @@ function Page() {
         {!(<GrainedEffect />) && (
           <div className="absolute w-full h-full top-0 left-0 bg-white -z-10"></div>
         )}
-        <GrainedEffect />
+        <GrainedEffect theme="blue" />
         <Nav />
         <Head />
         <Beneficii />

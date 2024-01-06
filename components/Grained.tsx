@@ -57,7 +57,7 @@ function GrainedEffect({ ...props }) {
       animate: true,
       patternWidth: 100,
       patternHeight: 100,
-      grainOpacity: 0.08,
+      grainOpacity: 0.06,
       grainDensity: 1,
       grainWidth: 1,
       grainHeight: 1,
@@ -173,14 +173,22 @@ function GrainedEffect({ ...props }) {
       {isLoading && (
         <div
           className={`absolute w-full h-full top-0 left-0 ${
-            props.theme == "dark" ? "bg-black" : "bg-white"
+            props.theme == "dark"
+              ? "bg-black"
+              : props.theme == "blue"
+              ? "bg-fixed bg-[radial-gradient(circle_at_top_left,#351fba,#18285c);]"
+              : "bg-white"
           } -z-10 scroll-smooth`}
         ></div>
       )}
       <div
         id="your-element-id"
         className={`w-full absolute top-0 left-0 mb-96 ${
-          props.theme == "dark" ? "bg-black" : "bg-white"
+          props.theme == "dark"
+            ? "bg-black"
+            : props.theme == "blue"
+            ? "bg-fixed bg-[radial-gradient(circle_at_top_left,#351fba,#18285c);]"
+            : "bg-white"
         }`}
       >
         {/* <Body /> */}
