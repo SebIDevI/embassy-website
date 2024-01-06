@@ -3,9 +3,9 @@ import React from "react";
 
 function Beneficii() {
   return (
-    <div className="mx-auto text-center my-10 text-sm font-graphikLight text-white">
+    <div className="mx-auto text-center mt-28 text-sm font-graphikLight text-white">
       <p>Beneficii Cheie</p>
-      <TtlSlide className="px-16">
+      <TtlSlide className="my-6">
         Construit si adaptat pentru afacerea ta
       </TtlSlide>
       {/* <h3 className="font-pro text-4xl py-10 px-16">

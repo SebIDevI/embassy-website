@@ -57,7 +57,7 @@ export const Bell: React.FC<BellProp> = ({ color }) => {
       >
         <ButtonAnim
           color1="blueEmb"
-          color2="blue-300"
+          color2="blueEmbDark"
           className="text-xl text-center text-white relative px-2 py-2 aspect-square"
         >
           <FaBell
@@ -105,7 +105,7 @@ export const Bell: React.FC<BellProp> = ({ color }) => {
       <div onMouseEnter={() => sellEnter()} onMouseLeave={() => sellLeave()}>
         <ButtonAnim
           color1="blueEmb"
-          color2="blue-300"
+          color2="blueEmbDark"
           link="/contact"
           className="ml-3 py-2 px-5"
         >

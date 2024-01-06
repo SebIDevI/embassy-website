@@ -12,6 +12,10 @@ import coze1 from "@/public/CXE05641.jpg";
 import coze2 from "@/public/Frame-29-12-2023-07-40-28.jpg";
 import coze3 from "@/public/IMG_2931.jpg";
 
+import anim5 from "@/public/lottie/anim5.json";
+import animPointer from "@/public/lottie/anim_pointer.json";
+import LottieControl from "@/components/lottie/page";
+
 const backdrop: Variants = {
   visible: { backdropFilter: "blur(12px)" },
   hidden: { backdropFilter: "blur(0px)" },
@@ -89,6 +93,37 @@ const textVariant: Variants = {
     },
   },
 };
+const textVariant2: Variants = {
+  hidden: {
+    height: 33,
+    width: "100%",
+    transformOrigin: "center center",
+    overflow: "hidden",
+    position: "initial",
+    backgroundColor: "#0f0f0f00",
+    transform: "translate(0%)",
+    // padding: "20px",
+    zIndex: "10",
+    transition: {
+      duration: 0.4, // Set the duration of the transition in seconds
+      ease: "easeInOut", // Set the easing function (optional)
+    },
+  },
+  visible: {
+    height: "auto",
+    width: "415px",
+    position: "absolute",
+    transformOrigin: "center center",
+    transform: "translate(10%, -25%)",
+    backgroundColor: "#0c0c0c",
+    // padding: "20px",
+    zIndex: "49",
+    transition: {
+      duration: 0.4, // Set the duration of the transition in seconds
+      ease: "easeInOut", // Set the easing function (optional)
+    },
+  },
+};
 
 function Pachet() {
   const [showModal, setShowModal] = useState(false);
@@ -116,7 +151,10 @@ function Pachet() {
       /> */}
 
       <div className="grid grid-cols-1 w-full md:grid-cols-3 items-center flex-col text-white">
-        <div className="md:min-w-[33%] px-10 min-w-[50%]">
+        <div className="md:min-w-[25%] relative px-10 min-w-[50%]">
+          <div className="absolute bottom-0 left-1/2 translate-y-1/3 max-w-[30px]">
+            <LottieControl animationData={animPointer} />
+          </div>
           <ul>
             {tt.map((e, i) =>
               i < 4 ? (
@@ -232,7 +270,7 @@ function Pachet() {
           </ul>
         </div>
         <div className="w-full h-full md:block hidden relative aspect-square">
-          <Image
+          {/* <Image
             src={coze1}
             alt="Picture1"
             className="absolute top-0 left-0 w-1/2 h-1/2 -rotate-12"
@@ -246,7 +284,10 @@ function Pachet() {
             src={coze3}
             alt="Picture3"
             className="absolute bottom-0 left-1/2 w-1/2 h-1/2 -translate-x-1/2"
-          />
+          /> */}
+          <div className="scale-150">
+            <LottieControl animationData={anim5} />
+          </div>
         </div>
         <AnimatePresence mode="wait">
           {showModal && (
@@ -263,7 +304,7 @@ function Pachet() {
             ></motion.div>
           )}
         </AnimatePresence>
-        <div className="md:min-w-[33%] px-10 min-w-[50%]">
+        <div className="md:min-w-[25%] min-w-[50%]">
           <ul>
             {tt.map((e, i) =>
               i >= 4 ? (
@@ -271,14 +312,14 @@ function Pachet() {
                   <AnimatePresence>
                     {modal === i ? (
                       <motion.div
-                        variants={textVariant}
+                        variants={textVariant2}
                         initial="hidden"
                         animate="visible"
                         exit="hidden"
                         className="rounded-xl"
                       >
                         <div
-                          className="m-3"
+                          className="m-3 text-end"
                           onMouseLeave={() => {
                             setShowModal(false);
                             sellLeave();
@@ -297,14 +338,14 @@ function Pachet() {
                               sellEnter();
                               setModal(i);
                             }}
-                            className="flex items-start gap-2 cursor-pointer text-start tr z-50"
+                            className="flex items-start gap-2 cursor-pointer text-end justify-end w-full z-50"
                           >
+                            <span className="">{e.titlu}</span>
                             <FaArrowRight
-                              className={`text-blue-500 animate-slideX mt-1 delay-${
+                              className={`text-blue-500 animate-slideX2 mt-1 rotate-180 delay-${
                                 i + 1
                               }`}
                             />
-                            <span className="">{e.titlu}</span>
                           </button>
                           <motion.div
                             variants={backdrop2}
@@ -313,7 +354,7 @@ function Pachet() {
                             exit="hidden"
                           >
                             <p
-                              className="pt-4 text-sm w-[400px]"
+                              className="pt-4 text-sm w-[400px] pe-2"
                               dangerouslySetInnerHTML={{ __html: e.text }}
                             />
                           </motion.div>
@@ -321,14 +362,14 @@ function Pachet() {
                       </motion.div>
                     ) : (
                       <motion.div
-                        variants={textVariant}
+                        variants={textVariant2}
                         initial="hidden"
                         animate="hidden"
                         exit="hidden"
                         className="rounded-xl"
                       >
                         <div
-                          className="m-3"
+                          className="m-3 text-end"
                           onMouseLeave={() => {
                             setShowModal(false);
                             sellLeave();
@@ -347,14 +388,14 @@ function Pachet() {
                               sellEnter();
                               setModal(i);
                             }}
-                            className="flex items-start gap-2 cursor-pointer text-start  z-50"
+                            className="flex items-start gap-2 cursor-pointer text-end justify-end z-50 w-full"
                           >
+                            <span className="line-clamp-1">{e.titlu}</span>
                             <FaArrowRight
-                              className={`text-blue-500 animate-slideX mt-1 delay-${
+                              className={`text-blue-500 animate-slideX2 mt-1 rotate-180 delay-${
                                 i + 1
                               }`}
                             />
-                            <span className="line-clamp-1">{e.titlu}</span>
                           </button>
                           <motion.div
                             variants={backdrop2}
@@ -363,7 +404,7 @@ function Pachet() {
                             exit="hidden"
                           >
                             <p
-                              className="pt-4 text-sm w-[400px]"
+                              className="pt-4 text-sm w-[400px] pe-2"
                               dangerouslySetInnerHTML={{ __html: e.text }}
                             />
                           </motion.div>

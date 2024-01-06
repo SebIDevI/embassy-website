@@ -14,6 +14,7 @@ import Footer from "@/components/Footer";
 import Beneficii from "./Beneficii";
 import Pachet from "./Pachet";
 import Fin from "./Fin";
+import CarouselContainer from "./CarouselContainer";
 
 function Page() {
   const cursorVariant = useCursorVariant();
@@ -34,6 +35,7 @@ function Page() {
           <Head />
           <Beneficii />
           <Pachet />
+          <CarouselContainer />
           {/* <Slider /> */}
           <Fin />
         </div>

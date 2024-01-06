@@ -73,6 +73,11 @@ module.exports = {
           "50%": { transform: "translateX(-6px)" },
           "100%": { transform: "translateX(0)" },
         },
+        slideX2: {
+          "0%": { transform: "translateX(0) rotate(180deg)" },
+          "50%": { transform: "translateX(6px) rotate(180deg)" },
+          "100%": { transform: "translateX(0) rotate(180deg)" },
+        },
         floatingQ: {
           "0%": { marginTop: "0px" },
           // "25%": { marginTop: "-7px", paddingLeft: "0px" },
@@ -150,6 +155,7 @@ module.exports = {
       animation: {
         slide: "slide 60s linear infinite",
         slideX: "slideX 2s cubic-bezier(1, .26, .26, .9) infinite",
+        slideX2: "slideX2 2s cubic-bezier(1, .26, .26, .9) infinite",
         floating: "floating 2s cubic-bezier(1, .26, .26, .9) infinite",
         floatingQ: "floatingQ 5s ease-in-out infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
