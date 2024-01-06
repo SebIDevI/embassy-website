@@ -5,7 +5,7 @@ import React from "react";
 
 function Beneficii() {
   return (
-    <div className=" mx-auto text-center my-10 text-sm font-graphikLight text-slate-200">
+    <div className="mx-auto text-center my-10 text-sm font-graphikLight text-slate-200">
       <TtlSlide className="uppercase">
         De la idee și concept la website
       </TtlSlide>

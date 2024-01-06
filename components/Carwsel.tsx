@@ -18,7 +18,7 @@ export function Carwsel() {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-2/3 xl:max-w-6xl lg:max-w-4xl md:max-w-xl mb-10 mt-5"
+      className="xl:max-w-6xl lg:max-w-4xl md:max-w-xl mb-10 mt-5"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >

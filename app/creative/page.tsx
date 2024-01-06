@@ -30,11 +30,13 @@ function Page() {
         )}
         <GrainedEffect theme="dark" />
         <Nav />
-        <Head />
-        <Beneficii />
-        <Pachet />
-        {/* <Slider /> */}
-        <Fin />
+        <div className="container">
+          <Head />
+          <Beneficii />
+          <Pachet />
+          {/* <Slider /> */}
+          <Fin />
+        </div>
       </div>
       <Footer />
       <motion.div

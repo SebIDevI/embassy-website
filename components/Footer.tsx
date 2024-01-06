@@ -42,7 +42,7 @@ function Footer() {
           />
         </svg>
       </div> */}
-      <div className="flex flex-col lg:flex-row gap-10 w-4/5 lg:items-start items-center mt-14">
+      <div className="flex flex-col lg:flex-row gap-10 container lg:items-start items-center mt-14">
         <Link
           href={"/"}
           className="lg:w-1/3 flex lg:justify-end justify-center"

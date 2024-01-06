@@ -29,7 +29,7 @@ const imgs = [pirelli, rhyminem, p3];
 
 function Caracteristici() {
   return (
-    <div className="container mt-20 text-slate-200">
+    <div className="mt-20 text-slate-200">
       <TtlSlide className="md:text-center text-center">Caracteristici</TtlSlide>
       <div className={`w-full relative mb-10`}>
         <ul className="p-5 grid grid-cols-4 gap-8 text-base z-10 items-center">

@@ -115,7 +115,7 @@ function Pachet() {
         text={text}
       /> */}
 
-      <div className="grid grid-cols-1 lg:w-2/3 w-full md:grid-cols-3 items-center flex-col mx-auto text-white">
+      <div className="grid grid-cols-1 w-full md:grid-cols-3 items-center flex-col text-white">
         <div className="md:min-w-[33%] px-10 min-w-[50%]">
           <ul>
             {tt.map((e, i) =>

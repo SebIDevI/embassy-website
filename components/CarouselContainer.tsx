@@ -19,7 +19,7 @@ function CarouselContainer() {
       {/* <p className="font-pro text-5xl text-center leading-snug">
         Caracteristicile care fac Embassy Network <br /> Opțiunea #1
       </p> */}
-      <hr className="my-5 h-[2px] w-full container border-gray-300" />
+      <hr className="my-5 h-[2px] w-full border-gray-300" />
       <Carwsel />
     </div>
   );

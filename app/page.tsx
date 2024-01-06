@@ -35,8 +35,10 @@ export default function Home() {
         <Head />
         <Slider />
         <Categories />
-        <Sect1 />
-        <CarouselContainer />
+        <div className="container">
+          <Sect1 />
+          <CarouselContainer />
+        </div>
         <Video />
         <Hvq />
         {/* <Wwu /> */}
