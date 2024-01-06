@@ -96,7 +96,7 @@ export default function NavBtns() {
           <NavigationMenuTrigger>Servicii</NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="w-screen">
-              <ul className="flex gap-3 p-4 justify-between container">
+              <ul className="flex gap-40 p-4 justify-center container">
                 {/* <li>
                   <NavigationMenuLink asChild>
                     <Link
@@ -172,8 +172,23 @@ const ListItem = React.forwardRef<
   }
 >(({ className, title, image, children, ...props }, ref) => {
   const [isMOver, setIsMOver] = useState(false);
+
+  const imgVariants: Variants = {
+    in: {
+      scale: 1.2,
+    },
+    out: {
+      scale: 1,
+    },
+  };
+
+  const [isOver, setIsOver] = useState(false);
   return (
-    <li className="w-auto">
+    <li
+      className="w-auto"
+      onMouseEnter={() => setIsOver(true)}
+      onMouseLeave={() => setIsOver(false)}
+    >
       <NavigationMenuLink asChild>
         <a
           ref={ref}
@@ -183,15 +198,41 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <Image
-            src={image}
-            alt={"Image " + title}
-            className="w-full max-w-[200px]"
-          />
-          <div className="text-base font-medium leading-none font-graphik py-2">
+          <AnimatePresence mode="wait">
+            {isOver ? (
+              <motion.div
+                variants={imgVariants}
+                initial="out"
+                animate="in"
+                exit="out"
+                className="z-0 duration-200"
+              >
+                <Image
+                  src={image}
+                  alt={"Image " + title}
+                  className="w-full max-w-[200px]"
+                />
+              </motion.div>
+            ) : (
+              <motion.div
+                variants={imgVariants}
+                initial="out"
+                animate="out"
+                exit="out"
+                className="z-0 duration-200"
+              >
+                <Image
+                  src={image}
+                  alt={"Image " + title}
+                  className="w-full max-w-[200px]"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <div className="text-base font-medium leading-none font-graphik py-2 z-10 relative">
             <b>{title}</b>
           </div>
-          <p className="text-sm leading-snug text-muted-foreground font-graphikLight">
+          <p className="text-sm leading-snug text-muted-foreground font-graphikLight z-10 relative">
             {children}
             <div className="flex text-black pt-3 gap-1 relative w-auto">
               <AnimatePresence mode="wait">

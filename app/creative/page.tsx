@@ -14,6 +14,7 @@ import Footer from "@/components/Footer";
 import Beneficii from "./Beneficii";
 import Pachet from "./Pachet";
 import Fin from "./Fin";
+
 function Page() {
   const cursorVariant = useCursorVariant();
 

@@ -1,4 +1,6 @@
 import React from "react";
+import LottieControl from "../test/lottie/page";
+import animationData from "@/public/lottie/anim1.json";
 
 function Head() {
   return (
@@ -35,7 +37,9 @@ function Head() {
             </p>
           </div>
           <div className="md:w-1/3 w-full">
-            <div className="w-1/2 h-auto aspect-square bg-gray-300 rounded-xl mx-auto"></div>
+            <div className="w-1/2 h-auto aspect-square rounded-xl mx-auto">
+              <LottieControl animationData={animationData} />
+            </div>
           </div>
         </div>
         <hr className="w-[90vw] mx-auto border-2" />
