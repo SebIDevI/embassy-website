@@ -12,18 +12,18 @@ function Head() {
               <span className="font-graphik">Embassy</span> WebExp
             </p>
             <div className="py-2">
-              <h4 className="2xl:text-5xl lg:text-3xl text-2xl font-proBlack overflow-hidden bg-transparent py-2">
-                <span className="translate-y-full animate-ttlSld inline-block delay-7">
+              <h4 className="2xl:text-5xl lg:text-3xl text-2xl font-proBlack overflow-hidden bg-transparent my-2">
+                <span className="translate-y-full animate-ttlSld inline-block delay-3">
                   Fiecare linie de cod devine o poveste,
                 </span>
               </h4>
-              <h4 className="2xl:text-5xl lg:text-3xl text-2xl font-proBlack overflow-hidden bg-transparent py-2">
-                <span className="translate-y-full animate-ttlSld inline-block delay-8">
+              <h4 className="2xl:text-5xl lg:text-3xl text-2xl font-proBlack overflow-hidden bg-transparent my-2">
+                <span className="translate-y-full animate-ttlSld inline-block delay-4">
                   fiecare design devine o expresie,
                 </span>
               </h4>
-              <h4 className="2xl:text-5xl lg:text-3xl text-2xl font-proBlack overflow-hidden bg-transparent py-2">
-                <span className="translate-y-full animate-ttlSld inline-block delay-9">
+              <h4 className="2xl:text-5xl lg:text-3xl text-2xl font-proBlack overflow-hidden bg-transparent my-2">
+                <span className="translate-y-full animate-ttlSld inline-block delay-5">
                   iar fiecare strategie SEO devine un ghid.
                 </span>
               </h4>

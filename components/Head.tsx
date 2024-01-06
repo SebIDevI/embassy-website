@@ -26,7 +26,7 @@ function Head() {
           </h1>
           <h3 className="my-5 mb-7 font-pro overflow-hidden">
             <span className="translate-y-full inline-block animate-ttlSld delay-9">
-              Un Domino Strategic
+              Un Domino Digital
             </span>
           </h3>
           <div

@@ -58,7 +58,7 @@ export const Bell: React.FC<BellProp> = ({ color }) => {
         <ButtonAnim
           color1="blueEmb"
           color2="blue-300"
-          className="text-xl text-center text-black relative px-2 py-2 aspect-square"
+          className="text-xl text-center text-white relative px-2 py-2 aspect-square"
         >
           <FaBell
             onClick={() => (bell ? setBell(false) : setBell(true))}

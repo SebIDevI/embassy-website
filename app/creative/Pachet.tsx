@@ -61,6 +61,7 @@ const backdrop2: Variants = {
 const textVariant: Variants = {
   hidden: {
     height: 33,
+    width: "100%",
     transformOrigin: "center center",
     overflow: "hidden",
     position: "initial",
@@ -75,6 +76,7 @@ const textVariant: Variants = {
   },
   visible: {
     height: "auto",
+    width: "415px",
     position: "absolute",
     transformOrigin: "center center",
     transform: "translate(-10px, -25%)",
@@ -157,10 +159,17 @@ function Pachet() {
                             />
                             {e.titlu}
                           </button>
-                          <p
-                            className="pt-4 text-sm"
-                            dangerouslySetInnerHTML={{ __html: e.text }}
-                          />
+                          <motion.div
+                            variants={backdrop2}
+                            initial="hidden"
+                            animate="visible"
+                            exit="hidden"
+                          >
+                            <p
+                              className="pt-4 text-sm w-[400px]"
+                              dangerouslySetInnerHTML={{ __html: e.text }}
+                            />
+                          </motion.div>
                         </div>
                       </motion.div>
                     ) : (
@@ -200,10 +209,17 @@ function Pachet() {
                             />
                             <span className="line-clamp-1">{e.titlu}</span>
                           </button>
-                          <p
-                            className="pt-4 text-sm"
-                            dangerouslySetInnerHTML={{ __html: e.text }}
-                          />
+                          <motion.div
+                            variants={backdrop2}
+                            initial="hidden"
+                            animate="hidden"
+                            exit="hidden"
+                          >
+                            <p
+                              className="pt-4 text-sm w-[400px]"
+                              dangerouslySetInnerHTML={{ __html: e.text }}
+                            />
+                          </motion.div>
                         </div>
                       </motion.div>
                     )}
@@ -290,10 +306,17 @@ function Pachet() {
                             />
                             <span className="">{e.titlu}</span>
                           </button>
-                          <p
-                            className="pt-4 text-sm"
-                            dangerouslySetInnerHTML={{ __html: e.text }}
-                          />
+                          <motion.div
+                            variants={backdrop2}
+                            initial="hidden"
+                            animate="visible"
+                            exit="hidden"
+                          >
+                            <p
+                              className="pt-4 text-sm w-[400px]"
+                              dangerouslySetInnerHTML={{ __html: e.text }}
+                            />
+                          </motion.div>
                         </div>
                       </motion.div>
                     ) : (
@@ -333,10 +356,17 @@ function Pachet() {
                             />
                             <span className="line-clamp-1">{e.titlu}</span>
                           </button>
-                          <p
-                            className="pt-4 text-sm"
-                            dangerouslySetInnerHTML={{ __html: e.text }}
-                          />
+                          <motion.div
+                            variants={backdrop2}
+                            initial="hidden"
+                            animate="hidden"
+                            exit="hidden"
+                          >
+                            <p
+                              className="pt-4 text-sm w-[400px]"
+                              dangerouslySetInnerHTML={{ __html: e.text }}
+                            />
+                          </motion.div>
                         </div>
                       </motion.div>
                     )}

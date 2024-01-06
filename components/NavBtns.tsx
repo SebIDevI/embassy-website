@@ -134,7 +134,7 @@ export default function NavBtns() {
           <NavigationMenuTrigger>MBC Productions</NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="w-screen">
-              <ul className="flex gap-3 p-4 justify-start container">
+              <ul className="flex gap-3 p-4 justify-center container">
                 {components.map((component) => (
                   <ListItem2
                     key={component.title}
