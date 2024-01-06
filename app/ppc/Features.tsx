@@ -12,9 +12,9 @@ function Item() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "start start"],
+    offset: ["start end", "center center"],
   });
-  const y = useTransform(scrollYProgress, (latest) => latest * -300);
+  const y = useTransform(scrollYProgress, (latest) => 300 + latest * -300);
 
   return (
     <div ref={ref} className="md:w-1/2 h-full rounded-md">
@@ -22,7 +22,7 @@ function Item() {
         <Image
           src={mana}
           alt={"Mână embassy"}
-          className="max-h-[700px] w-auto px-10 mt-32"
+          className="max-h-[700px] w-auto px-10"
         />
       </motion.div>
     </div>

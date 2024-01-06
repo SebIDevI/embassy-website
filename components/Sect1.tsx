@@ -24,9 +24,9 @@ function Item() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "start start"],
+    offset: ["start end", "center center"],
   });
-  const y = useTransform(scrollYProgress, (latest) => latest * -200);
+  const y = useTransform(scrollYProgress, (latest) => 200 + latest * -200);
 
   return (
     <div
@@ -34,11 +34,7 @@ function Item() {
       className="w-1/3 h-auto md:flex hidden items-center justify-center"
     >
       <motion.div style={{ translateY: y }}>
-        <Image
-          src={mark}
-          alt={"Mark"}
-          className="max-h-[700px] w-auto px-10 mt-32"
-        />
+        <Image src={mark} alt={"Mark"} className="max-h-[700px] w-auto px-10" />
       </motion.div>
     </div>
   );
