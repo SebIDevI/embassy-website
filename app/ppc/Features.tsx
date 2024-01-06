@@ -32,7 +32,7 @@ function Item() {
 
 function Features() {
   return (
-    <div className="container">
+    <>
       {/* <h4 className="font-proBlack text-5xl py-10">Features</h4> */}
       <TtlSlide className="font-proBlack text-5xl px-0 mx-0">Features</TtlSlide>
       <div className="md:flex justify-between items-center">
@@ -77,7 +77,7 @@ function Features() {
         </ul>
         <Item />
       </div>
-    </div>
+    </>
   );
 }
 

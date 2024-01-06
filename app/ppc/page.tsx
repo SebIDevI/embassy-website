@@ -29,11 +29,13 @@ function Page() {
         )}
         <GrainedEffect />
         <Nav />
-        <Head />
-        <Beneficii />
-        <Arrow />
-        <Features />
-        <Fin />
+        <div className="container">
+          <Head />
+          <Beneficii />
+          <Arrow />
+          <Features />
+          <Fin />
+        </div>
       </div>
       <Footer />
       <motion.div

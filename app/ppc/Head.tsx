@@ -4,8 +4,8 @@ function Head() {
   return (
     <>
       <div className="min-h-[60vh]">
-        <div className="flex flex-col md:flex-row items-center xl:px-40 py-40 md:mt-20">
-          <div className="md:w-1/2 w-full font-graphik px-10 mb-10 md:mb-0">
+        <div className="flex flex-col md:flex-row items-center py-40 md:mt-20">
+          <div className="md:w-1/2 w-full font-graphik mb-10 md:mb-0">
             <p className="font-graphikExtralight">
               <span className="font-graphik">Embassy</span> PPC
             </p>
@@ -25,7 +25,7 @@ function Head() {
             <div className="w-1/2 h-auto aspect-square bg-gray-300 rounded-xl mx-auto"></div>
           </div>
         </div>
-        <hr className="w-[90vw] mx-auto border-2 opacity-60" />
+        <hr className="w-full mx-auto border-2 opacity-60" />
       </div>
     </>
   );

@@ -11,7 +11,7 @@ import LottieControl from "@/components/lottie/page";
 function Arrow() {
   return (
     <>
-      <div className="container max-w-6xl font-pro text-xl">
+      <div className="max-w-6xl font-pro text-xl mx-auto">
         <div className="md:grid hidden grid-cols-5 gap-5">
           {/* ----------------------- row 1 ---------------------- */}
           <div className="text-center max-h-40 flex items-center justify-center">
