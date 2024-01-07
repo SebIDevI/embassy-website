@@ -5,7 +5,7 @@ import strArr from "@/public/arrows/arrStr.svg";
 import roundArr from "@/public/arrows/round2.svg";
 import mid from "@/public/ff.png";
 
-import anim4 from "@/public/lottie/anim4.json";
+import anim4 from "@/public/lottie/anim7.json";
 import LottieControl from "@/components/lottie/page";
 
 function Arrow() {
@@ -36,8 +36,8 @@ function Arrow() {
             <p>Analiza rezultatelor</p>
           </div>
           <div className="col-span-3 row-span-3">
-            <div className="w-auto h-96 aspect-square rounded-xl relative bg-contain mx-12 -scale-x-100">
-              <div className="absolute w-full h-full top-0 left-0 -translate-x-[10%] scale-125">
+            <div className="w-auto h-full rounded-xl relative bg-contain mx-12 overflow-hidden">
+              <div className="-translate-x-[20%]">
                 {/* <Image src={mid} alt="Chart" className="w-full h-full" /> */}
                 <LottieControl animationData={anim4} />
               </div>
