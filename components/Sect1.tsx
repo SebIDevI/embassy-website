@@ -35,7 +35,11 @@ function Item() {
       className="w-1/3 h-auto md:flex hidden items-center justify-center"
     >
       <motion.div style={{ translateY: y }}>
-        <Image src={mark} alt={"Mark"} className="max-h-[700px] w-auto px-10" />
+        <Image
+          src={mark}
+          alt={"Mark"}
+          className="max-h-[700px] w-auto px-10 scale-[1.60] lg:scale-100"
+        />
       </motion.div>
     </div>
   );
@@ -48,7 +52,7 @@ function Sect1() {
         {/* de adaugat font subtire ✅ */}
         De ce să lucrezi cu noi?
       </p>
-      <TtlSlide className="text-5xl text-center text-slate-900 font-extrabold">
+      <TtlSlide className="text-5xl text-center text-slate-900 font-extrabold break-words">
         Avantajele de a lucra cu Embassy
       </TtlSlide>
       <p className="text-center font-extralight text-[#353535] pt-10 text-sm max-w-[80%] mx-auto">
@@ -58,10 +62,10 @@ function Sect1() {
         povestea brandului tau pe social media
       </p>
       <div className="flex md:flex-row gap-4 flex-col px-10 md:px-0 md:gap-10 mt-10 text-sm">
-        <ul className={`w-1/3 flex flex-col gap-5`}>
+        <ul className={`md:w-1/3 w-full flex flex-col gap-5`}>
           {data.map((e, i) =>
             i % 2 == 0 ? (
-              <li className="flex gap-2 items-start px-4" key={i}>
+              <li className="flex gap-2 items-start sm:px-4 px-2" key={i}>
                 <p className="pt-[2px]">
                   <FaCheck className={"text-blue-600"} />
                 </p>
@@ -73,10 +77,10 @@ function Sect1() {
           )}
         </ul>
         <Item />
-        <ul className="w-1/3 flex flex-col gap-5">
+        <ul className="md:w-1/3 w-full flex flex-col gap-5">
           {data.map((e, i) =>
             i % 2 != 0 ? (
-              <li className="flex gap-2 items-start px-4" key={i}>
+              <li className="flex gap-2 items-start sm:px-4 px-2" key={i}>
                 <p className="pt-[2px]">
                   <FaCheck className={"text-blue-600"} />
                 </p>

@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <div ref={ref}>
-      <div className="cursor-default font-graphik scroll-smooth mb-[600px] lg:mb-[400px]">
+      <div className="cursor-default font-graphik scroll-smooth mb-[700px] lg:mb-[500px]">
         <GrainedEffect />
         <Nav />
         <Head />
@@ -37,8 +37,8 @@ export default function Home() {
         <Categories />
         <div className="container">
           <Sect1 />
-          <CarouselContainer />
         </div>
+        <CarouselContainer />
         <Video />
         <Hvq />
         {/* <Wwu /> */}

@@ -17,7 +17,7 @@ import Image from "next/image";
 const imgs = [
   coze1,
   vali,
-  "/slider_creative/coze2_edit.mp4",
+  "/slider_creative/clip1.mp4",
   "/slider_creative/coze3_edit.mp4",
 ];
 

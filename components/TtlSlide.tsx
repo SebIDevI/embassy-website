@@ -5,7 +5,9 @@ import { motion, Variants } from "framer-motion";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-const titleVariants = cva(`font-pro text-4xl my-10 mx-6 overflow-hidden py-2`);
+const titleVariants = cva(
+  `font-pro text-4xl my-10 mx-6 overflow-hidden py-2 break-words`
+);
 
 interface TitleProps {
   children: React.ReactNode;
@@ -43,8 +45,8 @@ export const TtlSlide: React.FC<TitleProps> = ({
       viewport={{ once: false, amount: 0.8 }}
     >
       <h5 className={cn(titleVariants(), className)}>
-        <motion.div className="inline-block" variants={variants}>
-          <span>{children}</span>
+        <motion.div className="inline-block w-full" variants={variants}>
+          <span className="break-words">{children}</span>
         </motion.div>
       </h5>
     </motion.div>

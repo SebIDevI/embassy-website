@@ -5,6 +5,16 @@ import logo from "@/public/embLogo.png";
 import Link from "next/link";
 
 import { useCursorVariant } from "@/config";
+import {
+  FaDiscord,
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaTiktok,
+  FaTwitter,
+  FaWhatsapp,
+  FaYoutube,
+} from "react-icons/fa";
 
 function Footer() {
   const cursorVariant = useCursorVariant();
@@ -18,7 +28,7 @@ function Footer() {
 
   return (
     <div
-      className="bg-black fixed bottom-0 -z-50 w-full text-white flex flex-col items-center justify-center h-[600px] lg:h-[400px] pointer-events-auto"
+      className="bg-[#323232] fixed bottom-0 -z-50 w-full text-white flex flex-col items-center justify-center h-[700px] lg:h-[500px] pointer-events-auto"
       id="footer"
     >
       {/* <h4 className="py-16 w-4/5 text-center text-4xl font-bold mx-auto">
@@ -43,61 +53,104 @@ function Footer() {
         </svg>
       </div> */}
       <div className="flex flex-col lg:flex-row gap-10 container lg:items-start items-center mt-14">
-        <Link
+        {/* <Link
           href={"/"}
-          className="lg:w-1/3 flex lg:justify-end justify-center"
+          className="lg:w-1/5 flex lg:justify-end justify-center"
           onMouseEnter={() => sellEnter()}
           onMouseLeave={() => sellLeave()}
         >
           <Image src={logo} alt="Logo Embassy" className="w-4/5" />
-        </Link>
-        <div className="text-center lg:w-1/3">
-          <p className="text-2xl uppercase font-bold pb-3">BRANCHES</p>
-          <ul>
-            <li>
-              <Link
-                href={"/"}
-                onMouseEnter={() => sellEnter()}
-                onMouseLeave={() => sellLeave()}
-              >
-                Health & Beauty
-              </Link>
-            </li>
-            <li>
-              <Link
-                href={"/"}
-                onMouseEnter={() => sellEnter()}
-                onMouseLeave={() => sellLeave()}
-              >
-                Chiropractors
-              </Link>
-            </li>
-            <li>
-              <Link
-                href={"/"}
-                onMouseEnter={() => sellEnter()}
-                onMouseLeave={() => sellLeave()}
-              >
-                Automotive
-              </Link>
-            </li>
-            <li>
-              <Link
-                href={"/"}
-                onMouseEnter={() => sellEnter()}
-                onMouseLeave={() => sellLeave()}
-              >
-                New branch
-              </Link>
-            </li>
-          </ul>
+        </Link> */}
+        <div className="w-1/3">
+          <p className="text-2xl uppercase font-bold pb-5">Follow us</p>
+          <div className="flex gap-10 text-3xl">
+            <FaFacebook />
+            <FaInstagram />
+            <FaTiktok />
+            <FaLinkedin />
+          </div>
+        </div>
+        <div className="w-1/3 flex gap-10">
+          <div className="relative text-end lg:w-1/2 after:absolute after:top-0 after:left-5 after:w-full after:h-full after:border-e after:border-[#fcfcfc]">
+            <p className="text-2xl uppercase font-bold pb-3">BRANCHES</p>
+            <ul>
+              <li>
+                <Link
+                  href={"/"}
+                  onMouseEnter={() => sellEnter()}
+                  onMouseLeave={() => sellLeave()}
+                >
+                  Health & Beauty
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={"/"}
+                  onMouseEnter={() => sellEnter()}
+                  onMouseLeave={() => sellLeave()}
+                >
+                  Chiropractors
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={"/"}
+                  onMouseEnter={() => sellEnter()}
+                  onMouseLeave={() => sellLeave()}
+                >
+                  Automotive
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={"/"}
+                  onMouseEnter={() => sellEnter()}
+                  onMouseLeave={() => sellLeave()}
+                >
+                  New branch
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="text-start lg:w-1/2">
+            <p className="text-2xl uppercase font-bold pb-3">SERVICES</p>
+            <ul>
+              <li>
+                <Link
+                  href={"/creative"}
+                  onMouseEnter={() => sellEnter()}
+                  onMouseLeave={() => sellLeave()}
+                >
+                  Creative
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={"/web"}
+                  onMouseEnter={() => sellEnter()}
+                  onMouseLeave={() => sellLeave()}
+                >
+                  WebExp
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={"/ppc"}
+                  onMouseEnter={() => sellEnter()}
+                  onMouseLeave={() => sellLeave()}
+                >
+                  PPC
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="lg:text-start text-center lg:w-1/3">
           <p className="text-2xl uppercase font-bold pb-3">CONTACT US</p>
-          <div className="flex gap-6">
+          <div className="flex gap-6 flex-col">
             <ul>
               <li className="font-graphik font-bold text-xl">Baciu Valentin</li>
-              <hr className="w-2/3 border-gray-400 my-2" />
+              <hr className="w-1/3 border-gray-400 my-2" />
               <li>
                 <a
                   href={"tel:+40742069699"}
@@ -119,7 +172,7 @@ function Footer() {
             </ul>
             <ul>
               <li className="font-graphik font-bold text-xl">Ene Cosmin</li>
-              <hr className="w-2/3 border-gray-400 my-2" />
+              <hr className="w-1/3 border-gray-400 my-2" />
               <li>
                 <a
                   href={"tel:+40742069699"}

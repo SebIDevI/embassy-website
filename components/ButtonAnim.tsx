@@ -51,7 +51,7 @@ export const ButtonAnim: React.FC<ButtonProps> = ({
   const [isMOver, setIsMOver] = useState(false);
 
   return props.link ? (
-    <Link href={props.link} className="flex">
+    <Link href={props.link}>
       <AnimatePresence mode="wait">
         <div
           className={cn(buttonVariants(), className, `bg-${props.color1}`)}

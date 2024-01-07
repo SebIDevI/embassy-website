@@ -20,7 +20,7 @@ function Head() {
       <div className="flex flex-col-reverse lg:flex-row lg:items-center container">
         <div className="font-extrabold text-2xl w-full text-center lg:text-left lg:text-4xl">
           <h1 className="text-6xl lg:text-8xl xl:text-9xl text-blueEmb leading-[100%] font-pro overflow-hidden">
-            <span className="translate-y-[200%] py-4 inline-block animate-ttlSld delay-7">
+            <span className="translate-y-[200%] py-4 inline-block animate-ttlSld delay-7 break-words">
               Embassy
             </span>
           </h1>
@@ -29,18 +29,20 @@ function Head() {
               Un Domino Digital
             </span>
           </h3>
-          <div
-            onMouseEnter={() => sellEnter()}
-            onMouseLeave={() => sellLeave()}
-          >
-            <ButtonAnim
-              color1="blueEmb"
-              color2="blueEmbDark"
-              link="#proiecte"
-              className="py-3 px-10 text-lg font-graphikThin"
+          <div className="flex lg:justify-start justify-center">
+            <div
+              onMouseEnter={() => sellEnter()}
+              onMouseLeave={() => sellLeave()}
             >
-              Proiectele noastre
-            </ButtonAnim>
+              <ButtonAnim
+                color1="blueEmb"
+                color2="blueEmbDark"
+                link="#proiecte"
+                className="py-3 px-10 text-lg font-graphikThin"
+              >
+                Proiectele noastre
+              </ButtonAnim>
+            </div>
           </div>
         </div>
         <div className="w-full lg:h-[90vh] flex justify-center items-center">
