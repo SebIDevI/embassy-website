@@ -32,7 +32,7 @@ function Head() {
               </h4>
             </div>
             <p className="pt-10 lg:text-base text-sm font-graphik">
-              De la shop-uri online pana la website-uri de prezentare, de la
+              De la website-uri de prezentare pana la shop-uri online, de la
               integrarea de plati, pana la conexiuni avansate de gestionare de
               stocuri si baze de date, <b className="font-graphik">Embassy</b>{" "}
               WebExp este aici pentru a va contura website-ul asa cum doriti.
@@ -44,7 +44,7 @@ function Head() {
             </div>
           </div>
         </div>
-        {/* <hr className="w-[90vw] mx-auto border-2" /> */}
+        <hr className="w-full mx-auto border my-10 mb-20 opacity-50" />
       </div>
     </>
   );

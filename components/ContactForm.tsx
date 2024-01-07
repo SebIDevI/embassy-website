@@ -291,15 +291,20 @@ function ContactForm() {
             </FormItem>
           )}
         />
-        <div onMouseEnter={() => sellEnter()} onMouseLeave={() => sellLeave()}>
-          <ButtonAnim
-            color1="blueEmb"
-            color2="blueEmbDark"
-            className="p-2 px-7"
-            type="submit"
+        <div className="flex">
+          <div
+            onMouseEnter={() => sellEnter()}
+            onMouseLeave={() => sellLeave()}
           >
-            Sunt interesat/ă, contactați-mă
-          </ButtonAnim>
+            <ButtonAnim
+              color1="blueEmb"
+              color2="blueEmbDark"
+              className="p-2 px-7"
+              type="submit"
+            >
+              Sunt interesat/ă, contactați-mă
+            </ButtonAnim>
+          </div>
         </div>
         {(form.getFieldState("famName").invalid ||
           form.getFieldState("company").invalid ||

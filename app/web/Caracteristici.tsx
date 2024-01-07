@@ -14,13 +14,12 @@ import CarouselContainer from "./CarouselContainer";
 import { TtlSlide } from "@/components/TtlSlide";
 
 const text = [
-  "Soluții Personalizate",
+  "Tehnologii Moderne",
   "Funcționalități Avansate",
   "Performanță și Viteză",
   "Estetică Modernă",
   "Interactivitate și Angajament",
-  "Adaptabilitate și Coerență",
-  // "Strategii Personalizate",
+  "Soluții Personalizate",
   "Analize Periodice",
   "Conținut Optimizat",
 ];

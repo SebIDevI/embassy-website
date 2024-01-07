@@ -35,7 +35,6 @@ function Page() {
           <Beneficii />
           <Pachet />
           <Caracteristici />
-
           <Fin />
         </div>
       </div>

@@ -1,10 +1,13 @@
 import React from "react";
 
+import anim6 from "@/public/lottie/anim6.json";
+import LottieControl from "@/components/lottie/page";
+
 function Head() {
   return (
     <>
       <div className="min-h-[60vh]">
-        <div className="flex flex-col md:flex-row items-center py-40 md:mt-20">
+        <div className="flex flex-col gap-10 md:flex-row items-center py-40 md:mt-20">
           <div className="md:w-1/2 w-full font-graphik mb-10 md:mb-0">
             <p className="font-graphikExtralight">
               <span className="font-graphik">Embassy</span> PPC
@@ -22,7 +25,9 @@ function Head() {
             </p>
           </div>
           <div className="md:w-1/2 w-full">
-            <div className="w-1/2 h-auto aspect-square bg-gray-300 rounded-xl mx-auto"></div>
+            <div className="w-full h-auto aspect-square rounded-xl mx-auto">
+              <LottieControl animationData={anim6} />
+            </div>
           </div>
         </div>
         <hr className="w-full mx-auto border-2 opacity-60" />
