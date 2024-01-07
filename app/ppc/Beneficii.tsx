@@ -14,7 +14,7 @@ function Beneficii() {
   }
 
   return (
-    <div className="mx-auto text-center my-10 text-sm font-graphikLight">
+    <div className="mx-auto text-center my-10 mb-28 text-sm font-graphikLight">
       <p>Beneficii Cheie</p>
       <TtlSlide>Afacerea ta la nivelul următor...</TtlSlide>
       <p className="w-2/3 mx-auto">

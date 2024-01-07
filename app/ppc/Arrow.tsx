@@ -37,7 +37,7 @@ function Arrow() {
           </div>
           <div className="col-span-3 row-span-3">
             <div className="w-auto h-96 aspect-square rounded-xl relative bg-contain mx-12 -scale-x-100">
-              <div className="absolute w-full h-full top-0 left-0 -translate-x-[20%]">
+              <div className="absolute w-full h-full top-0 left-0 -translate-x-[10%] scale-125">
                 {/* <Image src={mid} alt="Chart" className="w-full h-full" /> */}
                 <LottieControl animationData={anim4} />
               </div>
@@ -77,7 +77,7 @@ function Arrow() {
             />
           </div>
           <div className="text-center flex items-end">
-            <p>Google Review Campaign</p>
+            <p>Potențiali clienți</p>
           </div>
           <div className="text-center max-h-20 flex items-end justify-center">
             <Image
@@ -87,7 +87,7 @@ function Arrow() {
             />
           </div>
           <div className="text-center flex items-end pb-4">
-            <p>Email Marketing</p>
+            <p>Testare ads</p>
           </div>
           <div className="text-center  max-h-20 flex items-center justify-center">
             <Image
@@ -149,7 +149,7 @@ function Arrow() {
           <p className="text-center">Social Media Management</p>
         </div>
       </div>
-      <hr className="w-2/3 mx-auto border-4 my-10 rounded-full border-slate-300" />
+      <hr className="w-full mx-auto border-2 opacity-50 my-28" />
     </>
   );
 }
