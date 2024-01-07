@@ -12,108 +12,88 @@ function Arrow() {
   return (
     <>
       <div className="max-w-6xl font-pro text-xl mx-auto">
-        <div className="md:grid hidden grid-cols-5 gap-5">
+        <div className="md:grid hidden grid-cols-5 grid-rows-5 gap-0">
           {/* ----------------------- row 1 ---------------------- */}
-          <div className="text-center max-h-40 flex items-center justify-center">
+          <div className="text-center max-h-20 flex items-center justify-center">
             <Image
               src={roundArr}
               alt={"Round Arrow"}
-              className="-scale-y-100 translate-x-1/4 h-1/2"
+              className="-scale-y-100 translate-x-1/4 h-full"
             />
           </div>
           <div className="text-center col-span-3">
-            <p>Strategii Social Media</p>
+            <p>Strategii Ads</p>
           </div>
-          <div className="text-center max-h-40 flex items-center justify-center">
+          <div className="text-center max-h-20 flex items-center justify-center">
             <Image
               src={roundArr}
               alt={"Round Arrow"}
-              className="-scale-y-100 -translate-x-1/4 h-1/2 rotate-90"
+              className="-scale-y-100 -translate-x-1/4 h-full rotate-90"
             />
           </div>
           {/* ----------------------- row 2 ---------------------- */}
-          <div className="text-center">
-            <p>Social Media Management</p>
+          <div className="text-center flex items-center justify-center">
+            <p>Analiza rezultatelor</p>
           </div>
-          <div className="col-span-3 row-span-5">
-            <div className="w-auto h-full rounded-xl overflow-hidden bg-contain mx-12 -scale-x-100">
-              {/* <Image src={mid} alt="Chart" className="w-full h-full" /> */}
-              <LottieControl animationData={anim4} />
+          <div className="col-span-3 row-span-3">
+            <div className="w-auto h-96 aspect-square rounded-xl relative bg-contain mx-12 -scale-x-100">
+              <div className="absolute w-full h-full top-0 left-0 -translate-x-[20%]">
+                {/* <Image src={mid} alt="Chart" className="w-full h-full" /> */}
+                <LottieControl animationData={anim4} />
+              </div>
             </div>
           </div>
-          <div className="text-center">
-            <p>Content Creation / Editing</p>
+          <div className="text-center flex items-center justify-center">
+            <p>Creare de content</p>
           </div>
           {/* ----------------------- row 3 ---------------------- */}
-          <div className="text-center  max-h-40 flex items-center justify-center">
+          <div className="text-center max-h-20 flex items-center justify-center">
             <Image
               src={strArr}
               alt={"Round Arrow"}
-              className="-rotate-[45deg] -scale-y-100 h-1/2"
+              className="-rotate-[45deg] -scale-y-100 h-full"
             />
           </div>
-          <div className="text-center  max-h-40 flex items-center justify-center">
+          <div className="text-center max-h-20 flex items-center justify-center">
             <Image
               src={strArr}
               alt={"Round Arrow"}
-              className="rotate-[135deg] -scale-y-100 h-1/2"
+              className="rotate-[135deg] -scale-y-100 h-full"
             />
           </div>
           {/* ----------------------- row 4 ---------------------- */}
-          <div className="text-center">
-            <p>Analytics</p>
+          <div className="text-center flex items-center justify-center">
+            <p>Vânzare</p>
           </div>
-          <div className="text-center">
-            <p>Meta / TikTok Ads</p>
+          <div className="text-center flex items-center justify-center">
+            <p>Implementare Instagram / Facebook / TikTok Ads</p>
           </div>
           {/* ----------------------- row 5 ---------------------- */}
-          <div className="text-center  max-h-40 flex items-center justify-center">
-            <Image
-              src={strArr}
-              alt={"Round Arrow"}
-              className="-rotate-[45deg] -scale-y-100 h-1/2"
-            />
-          </div>
-          <div className="text-center  max-h-40 flex items-center justify-center">
-            <Image
-              src={strArr}
-              alt={"Round Arrow"}
-              className="rotate-[135deg] -scale-y-100 h-1/2"
-            />
-          </div>
-          {/* ----------------------- row 6 ---------------------- */}
-          <div className="text-center">
-            <p>Database Reactivation Campaign</p>
-          </div>
-          <div className="text-center">
-            <p>Appointment Setting (Optional)</p>
-          </div>
-          {/* ----------------------- row 7 ---------------------- */}
-          <div className="text-center  max-h-40 flex items-center justify-center">
+          <div className="text-center  max-h-20 flex items-center justify-center">
             <Image
               src={roundArr}
               alt={"Round Arrow"}
-              className="-scale-y-100 -rotate-90 h-1/2"
+              className="-scale-y-100 -rotate-90 h-full"
             />
           </div>
           <div className="text-center flex items-end">
             <p>Google Review Campaign</p>
           </div>
-          <div className="text-center  max-h-40 flex items-end justify-center">
+          <div className="text-center max-h-20 flex items-end justify-center">
             <Image
               src={strArr}
               alt={"Round Arrow"}
-              className="-rotate-[135deg] -scale-y-100 h-1/3"
+              className="-rotate-[135deg] -scale-y-100 h-full translate-y-2/3"
             />
           </div>
           <div className="text-center flex items-end pb-4">
             <p>Email Marketing</p>
           </div>
-          <div className="text-center  max-h-40 flex items-center justify-center">
+          <div className="text-center  max-h-20 flex items-center justify-center">
             <Image
               src={roundArr}
               alt={"Round Arrow"}
-              className="-scale-y-100 rotate-180 h-1/2"
+              className="-scale-y-100 rotate-180 h-full"
             />
           </div>
         </div>
