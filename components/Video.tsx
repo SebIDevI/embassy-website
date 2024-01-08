@@ -3,6 +3,7 @@ import React from "react";
 import { FaPlayCircle } from "react-icons/fa";
 
 import { useCursorVariant } from "@/config";
+import Link from "next/link";
 
 function Video() {
   const cursorVariant = useCursorVariant();
@@ -25,14 +26,18 @@ function Video() {
         <h4 className="text-6xl font-proBlack py-2 md:pe-20">
           Discover the power of animation to bring stories to life
         </h4>
-        {/* <button
-          onMouseEnter={() => sellEnter()}
-          onMouseLeave={() => sellLeave()}
-          className="flex pt-12 items-center gap-2 hover:scale-125 transition-transform ease-in-out duration-500"
-        >
-          <FaPlayCircle className="text-blue-500" />
-          Watch now
-        </button> */}
+        <div className="mt-12">
+          <Link href="/creative">
+            <button
+              onMouseEnter={() => sellEnter()}
+              onMouseLeave={() => sellLeave()}
+              className="flex items-center gap-2 hover:scale-125 transition-transform ease-in-out duration-500"
+            >
+              <FaPlayCircle className="text-blue-500" />
+              Află mai multe
+            </button>
+          </Link>
+        </div>
       </div>
       <div className="absolute top-0 left-0 w-full h-full bg-[#00000000] z-10"></div>
       <div className="absolute w-full h-full top-0 left-0 z-0">
