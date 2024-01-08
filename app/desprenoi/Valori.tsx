@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import vali from "@/public/vali-dsp.jpg";
 import coze from "@/public/coze-dsp.jpg";
-import sebi from "@/public/sebi-dsp.jpg";
+import sebi from "@/public/sebi-dspr.jpg";
 
 function Valori() {
   return (
@@ -49,7 +49,7 @@ function Valori() {
           </div>
           <div className="w-full aspect-square">
             <div className="relative w-full h-full">
-              <div className="absolute top-0 left-1/4 -translate-x-1/4 w-1/2 h-1/2 border-[25px] border-b-[75px] border-out border-white rounded-lg shadow-xl">
+              <div className="absolute top-4 left-1/4 -translate-x-1/4 w-1/2 h-1/2 border-[25px] border-b-[75px] border-out border-white rounded-lg shadow-xl">
                 <Image
                   src={vali}
                   alt="Valentin Poza"
