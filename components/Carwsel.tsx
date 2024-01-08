@@ -16,30 +16,42 @@ import prezentare3 from "@/public/prezentare3.png";
 
 export function Carwsel() {
   const plugin = React.useRef(
-    Autoplay({ delay: 10000, stopOnInteraction: true })
+    Autoplay({ delay: 5000, stopOnInteraction: true })
   );
 
   const datas = [
     {
       title:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat!",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati optio autem deserunt, nulla laudantium fugit suscipit incidunt harum voluptate accusamus consectetur numquam est minus non rem, doloremque, quas magnam amet.",
+        "Chiar și un simplu clip cu o mașină poate prinde viață în viziunea noastră!",
+      text: "Pachetul Embassy Creative poate oferi viață bussiness-ului tău printr-o identitate unică pe care o creăm pe social media. Pentru noi calitatea este imperativă.",
       img: "../G Cars Animation.mp4",
-      dtt: "By Embassy Blog team - Ian 02, 2024",
+      dtt: "By Embassy Blog team - Iunie 11, 2023",
+      link: "/creative",
+      btnTxt: "Citește mai mult",
     },
     {
-      title:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat!",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati optio autem deserunt, nulla laudantium fugit suscipit incidunt harum voluptate accusamus consectetur numquam est minus non rem, doloremque, quas magnam amet.",
+      title: "Ne place să experimentăm lucruri noi!",
+      text: "Mereu încercăm să ieșim din zona de comfort. Astfel a luat naștere propriul nostru proiect, @chiropractor.ro unde promovăm chiropracticieni din toată țara.",
       img: "../Clip_4.mp4",
-      dtt: "By Embassy Blog team - Ian 02, 2024",
+      dtt: "By Embassy Blog team - Ian 08, 2024",
+      link: "https://www.instagram.com/chiropractor.ro",
+      btnTxt: "Chiropractor.ro",
     },
     {
-      title:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat!",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati optio autem deserunt, nulla laudantium fugit suscipit incidunt harum voluptate accusamus consectetur numquam est minus non rem, doloremque, quas magnam amet.",
+      title: "Implicare în proiecte de caritate",
+      text: "Ne-am simțit onorați să surprindem emoția evenimentului prin obiectivele camerelor noastre, dar și să asigurăm graficile pentru steaguri/tricouri/banner etc.",
+      img: "../Clip_4.mp4",
+      dtt: "By Embassy Blog team - Iunie 07, 2023",
+      link: "/desprenoi",
+      btnTxt: "Despre noi",
+    },
+    {
+      title: "De la idee și concept la propriul tău brand!",
+      text: "Fie că vorbim de logo, setup al paginilor de social media, creare de content sau website, Embassy Network îți asigură pachetul complet, totul personalizat pentru bussiness-ul tău.",
       img: "../G Cars Animation.mp4",
-      dtt: "By Embassy Blog team - Ian 02, 2024",
+      dtt: "By Embassy Blog team - Sep 21, 2023",
+      link: "/web",
+      btnTxt: "WebExp",
     },
   ];
 
@@ -59,8 +71,10 @@ export function Carwsel() {
                   <div className="flex md:flex-row flex-col items-center justify-center gap-2 h-full relative">
                     <div className="md:w-1/2 h-full min-h-[500px] w-full md:aspect-square relative">
                       <div className="h-full w-full bg-blue-300 absolute top-0 left-0">
-                        {index == 2 ? (
+                        {index == 3 ? (
                           <div className="w-full h-full bg-[url('/prezentare3.png')] bg-cover bg-center"></div>
+                        ) : index == 2 ? (
+                          <div className="w-full h-full bg-[url('/BeFunky-collage.jpg')] bg-cover bg-center"></div>
                         ) : (
                           <video
                             autoPlay
@@ -82,24 +96,24 @@ export function Carwsel() {
                       </div>
                     </div>
                     <div className="md:w-1/2 px-5 py-10">
-                      <p className="text-sm font-graphikLight font-bold">
+                      {/* <p className="text-sm font-graphikLight font-bold">
                         Blog
-                      </p>
+                      </p> */}
                       <h5 className="text-4xl font-pro py-2">{e.title}</h5>
                       <p className="py-4 text-sm text-slate-500 font-graphikLight font-bold">
                         {e.dtt}
                       </p>
-                      <p className="text-sm my-3 font-graphikLight font-bold line-clamp-2">
+                      <p className="text-sm my-3 font-graphikLight font-bold">
                         {e.text}
                       </p>
                       <div className="flex">
                         <ButtonAnim
                           color1="blueEmb"
                           color2="blueEmbDark"
-                          link="/"
+                          link={e.link}
                           className="p-2 px-6 mt-10 text-base"
                         >
-                          Read more
+                          {e.btnTxt}
                         </ButtonAnim>
                       </div>
                     </div>
