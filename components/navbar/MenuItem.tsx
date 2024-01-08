@@ -74,6 +74,7 @@ const text = [
   },
   {
     title: "Despre noi",
+    href: "/desprenoi",
   },
   {
     title: "Final",
@@ -132,6 +133,14 @@ export const MenuItem: React.FC<MenuItemProp> = ({ i }) => {
               ))}
             </AccordionContent>
           </AccordionItem>
+        ) : text[i]?.href ? (
+          <div>
+            <Link href={text[i].href as string}>
+              <p className="text-slate-950 font-pro text-3xl no-underline text-center">
+                {text[i].title}
+              </p>
+            </Link>
+          </div>
         ) : (
           <div>
             {i == text.length - 1 ? (

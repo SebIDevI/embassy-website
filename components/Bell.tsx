@@ -49,7 +49,7 @@ export const Bell: React.FC<BellProp> = ({ color }) => {
     cursorVariant.changeVariant("default");
   }
   return (
-    <div className="text-2xl flex md:w-80 w-3/4 relative items-center justify-end">
+    <div className="text-2xl flex md:w-80 w-3/4 relative items-center justify-center lg:justify-end">
       <div
         className={`relative after:w-4 after:content-['2'] after:text-white after:text-[10px] after:flex after:justify-center after:items-center after:h-4 after:font-bold after:rounded-full after:bg-red-500 after:absolute after:-top-1 after:-right-1 notification-div`}
         onMouseEnter={() => sellEnter()}

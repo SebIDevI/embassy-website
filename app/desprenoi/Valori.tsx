@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import vali from "@/public/vali-dsp.png";
 import coze from "@/public/coze-dsp.png";
-import sebi from "@/public/sebi-dspr.jpg";
+import sebi from "@/public/sebi-dspr.png";
 
 function Valori() {
   return (
@@ -63,8 +63,12 @@ function Valori() {
                   className="w-auto h-full rounded-lg shadow-xl"
                 />
               </div>
-              <div className="absolute top-full -translate-y-full left-1/2 -translate-x-1/2 w-1/2 h-1/2 border-[25px] border-b-[75px] border-out border-white rounded-lg shadow-xl">
-                <Image src={sebi} alt="Sebi Poza" className="w-full h-full" />
+              <div className="absolute top-full -translate-y-full left-1/2 -translate-x-1/2 w-1/2 h-1/2">
+                <Image
+                  src={sebi}
+                  alt="Sebi Poza"
+                  className="w-auto h-full rounded-lg shadow-xl"
+                />
               </div>
               {/* <Image src={} alt='Sebi Poza' /> */}
             </div>

@@ -61,7 +61,7 @@ export const Hamburger = () => {
     >
       <MenuToggle toggle={() => toggleOpen()} />
       <motion.div
-        className={`absolute top-0 right-0 bottom-0 lg:w-96 w-screen h-[100vh] bg-blueEmb -z-10`}
+        className={`absolute top-0 right-0 bottom-0 lg:w-96 w-screen h-[100vh] bg-[#fafafa] -z-10`}
         variants={sidebar}
       >
         <Navigation />
