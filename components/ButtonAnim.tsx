@@ -40,6 +40,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color2: string;
   textColor?: string | undefined;
   link?: string;
+  disabled?: boolean;
   className?: string;
 }
 
@@ -88,7 +89,7 @@ export const ButtonAnim: React.FC<ButtonProps> = ({
       </AnimatePresence>
     </Link>
   ) : (
-    <button className="flex">
+    <button className="flex" disabled={props.disabled}>
       <AnimatePresence mode="wait">
         <div
           className={cn(buttonVariants(), className, `bg-${props.color1}`)}
@@ -117,9 +118,11 @@ export const ButtonAnim: React.FC<ButtonProps> = ({
               ></motion.div>
             </>
           )}
-          <span className="z-0 text-transparent">{children}</span>
+          <span className="z-0 text-transparent">
+            {props.disabled ? "Procesare..." : children}
+          </span>
           <span className="w-full h-full flex items-center justify-center z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            {children}
+            {props.disabled ? "Procesare..." : children}
           </span>
         </div>
       </AnimatePresence>

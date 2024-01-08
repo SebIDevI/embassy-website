@@ -1,6 +1,8 @@
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 
+import Image from "next/image";
+
 import {
   Carousel,
   CarouselContent,
@@ -10,10 +12,36 @@ import {
 } from "@/components/ui/carousel";
 import { ButtonAnim } from "./ButtonAnim";
 
+import prezentare3 from "@/public/prezentare3.png";
+
 export function Carwsel() {
   const plugin = React.useRef(
     Autoplay({ delay: 10000, stopOnInteraction: true })
   );
+
+  const datas = [
+    {
+      title:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat!",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati optio autem deserunt, nulla laudantium fugit suscipit incidunt harum voluptate accusamus consectetur numquam est minus non rem, doloremque, quas magnam amet.",
+      img: "../G Cars Animation.mp4",
+      dtt: "By Embassy Blog team - Ian 02, 2024",
+    },
+    {
+      title:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat!",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati optio autem deserunt, nulla laudantium fugit suscipit incidunt harum voluptate accusamus consectetur numquam est minus non rem, doloremque, quas magnam amet.",
+      img: "../Clip_4.mp4",
+      dtt: "By Embassy Blog team - Ian 02, 2024",
+    },
+    {
+      title:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat!",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati optio autem deserunt, nulla laudantium fugit suscipit incidunt harum voluptate accusamus consectetur numquam est minus non rem, doloremque, quas magnam amet.",
+      img: "../G Cars Animation.mp4",
+      dtt: "By Embassy Blog team - Ian 02, 2024",
+    },
+  ];
 
   return (
     <div className="container">
@@ -25,29 +53,44 @@ export function Carwsel() {
       >
         <div className="bg-white">
           <CarouselContent>
-            {Array.from({ length: 5 }).map((_, index) => (
+            {datas.map((e, index) => (
               <CarouselItem key={index}>
                 <div className="">
                   <div className="flex md:flex-row flex-col items-center justify-center gap-2 h-full relative">
                     <div className="md:w-1/2 h-full min-h-[500px] aspect-square relative">
-                      <div className="h-full w-full bg-blue-300 absolute top-0 left-0"></div>
+                      <div className="h-full w-full bg-blue-300 absolute top-0 left-0">
+                        {index == 2 ? (
+                          <div className="w-full h-full bg-[url('/prezentare3.png')] bg-cover bg-center"></div>
+                        ) : (
+                          <video
+                            autoPlay
+                            loop
+                            muted
+                            controls={false}
+                            controlsList="nofullscreen nodownload noremoteplayback noplaybackrate foobar"
+                            disablePictureInPicture
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                            }}
+                          >
+                            <source src={e.img} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
+                        )}
+                      </div>
                     </div>
                     <div className="md:w-1/2 px-5 py-10">
                       <p className="text-sm font-graphikLight font-bold">
                         Blog
                       </p>
-                      <h5 className="text-4xl font-pro py-2">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Placeat!
-                      </h5>
+                      <h5 className="text-4xl font-pro py-2">{e.title}</h5>
                       <p className="py-4 text-sm text-slate-500 font-graphikLight font-bold">
-                        By Embassy Blog team - Ian 02, 2024
+                        {e.dtt}
                       </p>
                       <p className="text-sm my-3 font-graphikLight font-bold line-clamp-2">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Obcaecati optio autem deserunt, nulla laudantium fugit
-                        suscipit incidunt harum voluptate accusamus consectetur
-                        numquam est minus non rem, doloremque, quas magnam amet.
+                        {e.text}
                       </p>
                       <div className="flex">
                         <ButtonAnim

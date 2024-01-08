@@ -9,6 +9,9 @@ import { useRef } from "react";
 import { useCursorVariant } from "@/config";
 import GrainedEffect from "@/components/Grained";
 import Footer from "@/components/Footer";
+import Misiune from "./Misiune";
+import Valori from "./Valori";
+import Viziune from "./Viziune";
 function Page() {
   const cursorVariant = useCursorVariant();
 
@@ -24,7 +27,12 @@ function Page() {
         )}
         <GrainedEffect />
         <Nav />
-        <Head />
+        <div className="container">
+          <Head />
+          <Misiune />
+          <Valori />
+          <Viziune />
+        </div>
       </div>
       <Footer />
       <motion.div
