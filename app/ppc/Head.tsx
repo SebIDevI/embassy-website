@@ -7,7 +7,7 @@ function Head() {
   return (
     <>
       <div className="min-h-[60vh]">
-        <div className="flex flex-col gap-10 md:flex-row items-center md:mt-40">
+        <div className="flex flex-col gap-10 md:flex-row items-center md:mt-40 mt-28">
           <div className="md:w-1/2 w-full font-graphik mb-10 md:mb-0">
             <p className="font-graphikExtralight 2xl:text-3xl lg:text-xl text-lg mb-5">
               <span className="font-graphik">Embassy</span> PPC

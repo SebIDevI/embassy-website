@@ -51,7 +51,7 @@ function Hvq() {
       <div className="container text-center">
         <p className="font-graphikLight">Suport</p>
         <TtlSlide className="text-5xl">Aveți Întrebări?</TtlSlide>
-        <p className="w-2/5 mx-auto mb-10">
+        <p className="sm:w-2/5 w-[90%] mx-auto mb-10">
           Suntem aici să ne asigurăm că profitați cât mai mult de experiența
           Embassy Network. Vă rugăm contactați echipa pentru orice întrebări,
           sau pentru a obține ajutor de la echipa noastră.

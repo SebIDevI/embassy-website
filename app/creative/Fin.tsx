@@ -16,7 +16,7 @@ function Fin() {
 
   return (
     <div className="my-20  flex flex-col gap-10 justify-center items-center text-white">
-      <h4 className="font-graphik text-4xl text-center">
+      <h4 className="font-graphik sm:text-4xl text-2xl text-center">
         Începe acum alături de <b className="font-pro">Embassy</b>Creative
       </h4>
       <div onMouseEnter={() => sellEnter()} onMouseLeave={() => sellLeave()}>

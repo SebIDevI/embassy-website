@@ -78,7 +78,16 @@ const graphikLight = GraphikLight({
 
 export const metadata: Metadata = {
   title: "Embassy Agency",
-  description: "The best marketing agency in the world",
+  description:
+    "Embassy contribuie la digitalizarea afacerilor. Pornind de la clipuri pe social media, astazi lucram pentru a contura povestea brandului tau.",
+  applicationName: "Embassy Agency",
+  authors: [
+    { name: "Baciu Valentin" },
+    { name: "Ene Cosmin" },
+    { name: "Catrina Sebastian" },
+  ],
+  creator: "Catrina Sebastian",
+  publisher: "Embassy Agency",
 };
 
 export default function RootLayout({

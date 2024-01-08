@@ -7,9 +7,9 @@ function Viziune() {
   return (
     <>
       <div className="md:min-h-[60vh] h-auto text-black">
-        <div className="flex flex-col md:flex-row items-center md:mt-28">
-          <div className="w-full">
-            <div className="w-full h-auto rounded-xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center md:mt-28 gap-10 sm:gap-0">
+          <div className="w-full overflow-hidden">
+            <div className="w-full h-auto rounded-xl mx-auto sm:scale-100 scale-150">
               <LottieControl animationData={animationData} />
             </div>
           </div>
@@ -27,7 +27,7 @@ function Viziune() {
             </p>
           </div>
         </div>
-        <hr className="w-full mx-auto border-2 mt-28" />
+        {/* <hr className="w-full mx-auto border-2 mt-28" /> */}
       </div>
     </>
   );

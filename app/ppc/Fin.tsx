@@ -8,9 +8,9 @@ import { TtlSlide } from "@/components/TtlSlide";
 function Fin() {
   return (
     <>
-      <div className="flex items-center justify-center gap-20 my-24">
+      <div className="md:flex hidden items-center justify-center gap-20 my-24">
         <hr className="w-1/4 border-black" />
-        <p className="text-3xl ">For more details</p>
+        <p className="text-3xl">For more details</p>
         <hr className="w-1/4 border-black" />
       </div>
       <div className="my-24">

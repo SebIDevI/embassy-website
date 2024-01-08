@@ -9,12 +9,12 @@ export async function POST(req) {
       await req.json();
 
     const transporter = nodemailer.createTransport({
-      host: "mail.privateemail.com",
-      port: 465,
+      host: process.env.EM_HOST,
+      port: process.env.EM_PORT,
       secure: true,
       auth: {
-        user: "hello@embassy-agency.com",
-        pass: "x:=BS%7D,fi4E=A",
+        user: process.env.EM_USER,
+        pass: process.env.EM_PASS,
       },
     });
 
@@ -32,7 +32,7 @@ export async function POST(req) {
 
     const options = {
       from: "hello@embassy-agency.com",
-      to: "sebi.catrina05@gmail.com",
+      to: "hello@embassy-agency.com",
       subject: username + " dorește să vă trimită un mesaj",
       html: emailHtml,
     };

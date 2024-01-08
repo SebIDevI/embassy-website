@@ -30,7 +30,7 @@ const Modal: React.FC<ModalProps> = ({
           exit="hidden"
           onClick={() => setShowModal(false)}
         >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-200 rounded-lg text-black p-10">
+          <div className="absolute top-1/2 left-1/2 w-[90%] max-h-[80%] overflow-y-auto -translate-x-1/2 -translate-y-1/2 bg-slate-200 rounded-lg text-black p-10">
             <h5 className="font-pro text-3xl pb-5">{titlu}</h5>
             <div dangerouslySetInnerHTML={{ __html: text }} />
           </div>

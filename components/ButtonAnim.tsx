@@ -82,7 +82,13 @@ export const ButtonAnim: React.FC<ButtonProps> = ({
             </>
           )}
           <span className="z-0 text-transparent">{children}</span>
-          <span className="w-full text-center z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <span
+            className={`${
+              className?.includes("px-")
+                ? "px-" + className[className.indexOf("px-") + 3]
+                : ""
+            } w-full h-full flex items-center justify-center text-center z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
+          >
             {children}
           </span>
         </div>
@@ -121,7 +127,13 @@ export const ButtonAnim: React.FC<ButtonProps> = ({
           <span className="z-0 text-transparent">
             {props.disabled ? "Procesare..." : children}
           </span>
-          <span className="w-full h-full flex items-center justify-center z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <span
+            className={`${
+              className?.includes("px-")
+                ? "px-" + className[className.indexOf("px-") + 1]
+                : ""
+            } w-full h-full flex items-center justify-center z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
+          >
             {props.disabled ? "Procesare..." : children}
           </span>
         </div>

@@ -31,7 +31,7 @@ function Caracteristici() {
     <div className="mt-20 text-slate-200">
       <TtlSlide className="md:text-center text-center">Caracteristici</TtlSlide>
       <div className={`w-full relative mb-10`}>
-        <ul className="p-5 grid grid-cols-4 gap-8 text-base z-10 items-center">
+        <ul className="p-5 grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-8 text-base z-10 items-center">
           {text.map((e, i) => (
             <li
               key={i}
@@ -41,7 +41,7 @@ function Caracteristici() {
             </li>
           ))}
         </ul>
-        <div className="z-0 rounded-2xl overflow-hidden w-2/3 mx-auto mt-10 dark">
+        <div className="z-0 rounded-2xl sm:overflow-hidden lg:w-2/3 w-full mx-auto mt-10 dark">
           <CarouselContainer />
         </div>
       </div>

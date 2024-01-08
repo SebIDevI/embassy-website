@@ -19,8 +19,8 @@ function Head() {
     <section className="h-[100vh] min-h-[850px] lg:block flex items-center justify-center relative lg:pt-10 bg-[linear-gradient(90deg,#e8f1f5,#fafafa_100%)]">
       <div className="flex flex-col-reverse lg:flex-row lg:items-center container">
         <div className="font-extrabold text-2xl w-full text-center lg:text-left lg:text-4xl">
-          <h1 className="text-6xl lg:text-8xl xl:text-9xl text-blueEmb leading-[100%] font-pro overflow-hidden">
-            <span className="translate-y-[200%] py-4 inline-block animate-ttlSld delay-7 break-words">
+          <h1 className="text-4xl sm:text-6xl lg:text-8xl xl:text-9xl text-blueEmb font-pro overflow-hidden">
+            <span className="translate-y-[200%] py-4 inline-block animate-ttlSld delay-7">
               Embassy
             </span>
           </h1>
@@ -38,7 +38,7 @@ function Head() {
                 color1="blueEmb"
                 color2="blueEmbDark"
                 link="#proiecte"
-                className="py-3 px-10 text-lg font-graphikThin"
+                className="py-3 px-9 text-base sm:text-lg font-graphikThin"
               >
                 Proiectele noastre
               </ButtonAnim>

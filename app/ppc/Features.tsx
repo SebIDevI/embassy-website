@@ -55,11 +55,15 @@ function Features() {
             <FaCircle className="p-2 text-slate-800" /> Proces &quot;Online
             Setup&quot;
           </li>
-          <div className="flex items-center justify-center">
-            <div className="w-1/3 flex items-center justify-center h-full">
-              <Image src={roundArr} alt={"Round Arrow"} className="w-1/3" />
+          <div className="flex sm:items-center justify-center">
+            <div className="sm:w-1/3 w-1/4 flex sm:mt-0 mt-6 items-center justify-center h-full">
+              <Image
+                src={roundArr}
+                alt={"Round Arrow"}
+                className="sm:w-1/3 w-full"
+              />
             </div>
-            <ul className="w-2/3 flex flex-col gap-2 pt-5 text-lg">
+            <ul className="sm:w-2/3 3/4 flex flex-col gap-2 pt-5 text-lg">
               <li className="flex items-center gap-1">
                 <FaCircle className="p-[6px] text-gray-500 opacity-50" /> Logo
                 Creation

@@ -17,7 +17,7 @@ function Beneficii() {
     <div className="mx-auto text-center my-10 mb-28 text-sm font-graphikLight">
       <p>Beneficii Cheie</p>
       <TtlSlide>Afacerea ta la nivelul următor...</TtlSlide>
-      <p className="w-2/3 mx-auto">
+      <p className="md:w-2/3 w-full mx-auto">
         Embassy PPC nu este doar un pachet de servicii, este un parteneriat
         activ și angajat pentru succesul tău online. Acesta reprezintă alegerea
         clară pentru afacerile care aspiră la o{" "}

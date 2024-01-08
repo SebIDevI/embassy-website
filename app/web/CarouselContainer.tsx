@@ -3,7 +3,7 @@ import { Carwsel } from "./Carwsel";
 
 function CarouselContainer() {
   return (
-    <div className="w-full flex items-center flex-col justify-center gap-10">
+    <div className="md:w-full w-[80%] mx-auto md:mx-0 flex items-center flex-col justify-center gap-10">
       <Carwsel />
     </div>
   );

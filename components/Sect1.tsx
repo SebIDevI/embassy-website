@@ -61,7 +61,7 @@ function Sect1() {
         realizate pentru proiecte personale, astazi lucram pentru a contura
         povestea brandului tau pe social media
       </p>
-      <div className="flex md:flex-row gap-4 flex-col px-10 md:px-0 md:gap-10 mt-10 text-sm">
+      <div className="flex md:flex-row gap-4 flex-col px-0 sm:px-10 md:px-0 md:gap-10 mt-10 text-sm">
         <ul className={`md:w-1/3 w-full flex flex-col gap-5`}>
           {data.map((e, i) =>
             i % 2 == 0 ? (

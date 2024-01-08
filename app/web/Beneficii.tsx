@@ -9,7 +9,7 @@ function Beneficii() {
       <TtlSlide className="uppercase">
         De la idee și concept la website
       </TtlSlide>
-      <p className="w-2/3 mx-auto mb-20">
+      <p className="sm:w-2/3 w-full mx-auto mb-20">
         Fie ca vorbim de website-uri de prezentare, shop-uri online sau
         portaluri, <b className="font-graphik">Embassy</b> WebExp este varianta
         personalizată pentru afacerea ta. WebDev nu este doar un serviciu; este

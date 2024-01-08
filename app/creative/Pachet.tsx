@@ -143,134 +143,135 @@ function Pachet() {
 
   return (
     <>
-      {/* <Modal
+      <Modal
         showModal={showModal}
         setShowModal={setShowModal}
         titlu={titlu}
         text={text}
-      /> */}
+      />
 
       <div className="grid grid-cols-1 w-full md:grid-cols-3 items-center flex-col text-white">
-        <div className="md:min-w-[25%] relative px-10 min-w-[50%]">
-          <div className="absolute bottom-0 left-1/2 translate-y-1/3 max-w-[30px]">
-            <LottieControl animationData={animPointer} />
+        <div className="md:block hidden">
+          <div className="md:min-w-[25%] relative px-10 min-w-[50%] mx-auto md:mx-0">
+            <div className="absolute bottom-0 left-1/2 translate-y-1/3 max-w-[30px]">
+              <LottieControl animationData={animPointer} />
+            </div>
+            <ul>
+              {tt.map((e, i) =>
+                i < 4 ? (
+                  <li className="relative h-10" key={i}>
+                    <AnimatePresence>
+                      {modal === i ? (
+                        <motion.div
+                          variants={textVariant}
+                          initial="hidden"
+                          animate="visible"
+                          exit="hidden"
+                          className="rounded-xl"
+                        >
+                          <div
+                            className="m-3"
+                            onMouseLeave={() => {
+                              setShowModal(false);
+                              sellLeave();
+                              setModal(9);
+                            }}
+                          >
+                            <button
+                              onClick={() => {
+                                setShowModal(true);
+
+                                setText(e.text);
+                                setTitlu(e.titlu);
+                              }}
+                              onMouseEnter={() => {
+                                setShowModal(true);
+                                sellEnter();
+                                setModal(i);
+                              }}
+                              className="flex items-start gap-2 cursor-pointer text-start z-50"
+                            >
+                              <FaArrowRight
+                                className={`text-blue-500 animate-slideX mt-1 delay-${
+                                  i + 1
+                                }`}
+                              />
+                              {e.titlu}
+                            </button>
+                            <motion.div
+                              variants={backdrop2}
+                              initial="hidden"
+                              animate="visible"
+                              exit="hidden"
+                            >
+                              <p
+                                className="pt-4 text-sm w-[400px]"
+                                dangerouslySetInnerHTML={{ __html: e.text }}
+                              />
+                            </motion.div>
+                          </div>
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          variants={textVariant}
+                          initial="hidden"
+                          animate="hidden"
+                          exit="hidden"
+                          className="rounded-xl"
+                        >
+                          <div
+                            className="m-3"
+                            onMouseLeave={() => {
+                              setShowModal(false);
+                              sellLeave();
+                              setModal(9);
+                            }}
+                          >
+                            <button
+                              onClick={() => {
+                                setShowModal(true);
+
+                                setText(e.text);
+                                setTitlu(e.titlu);
+                              }}
+                              onMouseEnter={() => {
+                                setShowModal(true);
+                                sellEnter();
+                                setModal(i);
+                              }}
+                              className="flex items-start gap-2 cursor-pointer text-start tr z-50"
+                            >
+                              <FaArrowRight
+                                className={`text-blue-500 animate-slideX mt-1 delay-${
+                                  i + 1
+                                }`}
+                              />
+                              <span className="line-clamp-1">{e.titlu}</span>
+                            </button>
+                            <motion.div
+                              variants={backdrop2}
+                              initial="hidden"
+                              animate="hidden"
+                              exit="hidden"
+                            >
+                              <p
+                                className="pt-4 text-sm w-[400px]"
+                                dangerouslySetInnerHTML={{ __html: e.text }}
+                              />
+                            </motion.div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </li>
+                ) : (
+                  ""
+                )
+              )}
+            </ul>
           </div>
-          <ul>
-            {tt.map((e, i) =>
-              i < 4 ? (
-                <li className="relative h-10" key={i}>
-                  <AnimatePresence>
-                    {modal === i ? (
-                      <motion.div
-                        variants={textVariant}
-                        initial="hidden"
-                        animate="visible"
-                        exit="hidden"
-                        className="rounded-xl"
-                      >
-                        <div
-                          className="m-3"
-                          onMouseLeave={() => {
-                            setShowModal(false);
-                            sellLeave();
-                            setModal(9);
-                          }}
-                        >
-                          <button
-                            onClick={() => {
-                              setShowModal(true);
-
-                              setText(e.text);
-                              setTitlu(e.titlu);
-                            }}
-                            onMouseEnter={() => {
-                              setShowModal(true);
-                              sellEnter();
-                              setModal(i);
-                            }}
-                            className="flex items-start gap-2 cursor-pointer text-start z-50"
-                          >
-                            <FaArrowRight
-                              className={`text-blue-500 animate-slideX mt-1 delay-${
-                                i + 1
-                              }`}
-                            />
-                            {e.titlu}
-                          </button>
-                          <motion.div
-                            variants={backdrop2}
-                            initial="hidden"
-                            animate="visible"
-                            exit="hidden"
-                          >
-                            <p
-                              className="pt-4 text-sm w-[400px]"
-                              dangerouslySetInnerHTML={{ __html: e.text }}
-                            />
-                          </motion.div>
-                        </div>
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        variants={textVariant}
-                        initial="hidden"
-                        animate="hidden"
-                        exit="hidden"
-                        className="rounded-xl"
-                      >
-                        <div
-                          className="m-3"
-                          onMouseLeave={() => {
-                            setShowModal(false);
-                            sellLeave();
-                            setModal(9);
-                          }}
-                        >
-                          <button
-                            onClick={() => {
-                              setShowModal(true);
-
-                              setText(e.text);
-                              setTitlu(e.titlu);
-                            }}
-                            onMouseEnter={() => {
-                              setShowModal(true);
-                              sellEnter();
-                              setModal(i);
-                            }}
-                            className="flex items-start gap-2 cursor-pointer text-start tr z-50"
-                          >
-                            <FaArrowRight
-                              className={`text-blue-500 animate-slideX mt-1 delay-${
-                                i + 1
-                              }`}
-                            />
-                            <span className="line-clamp-1">{e.titlu}</span>
-                          </button>
-                          <motion.div
-                            variants={backdrop2}
-                            initial="hidden"
-                            animate="hidden"
-                            exit="hidden"
-                          >
-                            <p
-                              className="pt-4 text-sm w-[400px]"
-                              dangerouslySetInnerHTML={{ __html: e.text }}
-                            />
-                          </motion.div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </li>
-              ) : (
-                ""
-              )
-            )}
-          </ul>
-        </div>
-        <div className="w-full h-full md:block hidden relative aspect-square">
-          {/* <Image
+          <div className="w-full h-full md:block hidden relative aspect-square">
+            {/* <Image
             src={coze1}
             alt="Picture1"
             className="absolute top-0 left-0 w-1/2 h-1/2 -rotate-12"
@@ -285,139 +286,174 @@ function Pachet() {
             alt="Picture3"
             className="absolute bottom-0 left-1/2 w-1/2 h-1/2 -translate-x-1/2"
           /> */}
-          <div className="scale-150">
-            <LottieControl animationData={anim5} />
+            <div className="scale-150">
+              <LottieControl animationData={anim5} />
+            </div>
+          </div>
+          <AnimatePresence mode="wait">
+            {showModal && (
+              <motion.div
+                className="fixed top-0 left-0 w-full h-full bg-[#00000080] z-30"
+                variants={backdrop2}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                onClick={() => {
+                  setShowModal(false);
+                  setModal(9);
+                }}
+              ></motion.div>
+            )}
+          </AnimatePresence>
+          <div className="md:min-w-[25%] px-10 md:px-0 min-w-[50%] mx-auto md:mx-0">
+            <ul>
+              {tt.map((e, i) =>
+                i >= 4 ? (
+                  <li className="relative h-10" key={i}>
+                    <AnimatePresence>
+                      {modal === i ? (
+                        <motion.div
+                          variants={textVariant2}
+                          initial="hidden"
+                          animate="visible"
+                          exit="hidden"
+                          className="rounded-xl"
+                        >
+                          <div
+                            className="m-3 md:text-end"
+                            onMouseLeave={() => {
+                              setShowModal(false);
+                              sellLeave();
+                              setModal(9);
+                            }}
+                          >
+                            <button
+                              onClick={() => {
+                                setShowModal(true);
+
+                                setText(e.text);
+                                setTitlu(e.titlu);
+                              }}
+                              onMouseEnter={() => {
+                                setShowModal(true);
+                                sellEnter();
+                                setModal(i);
+                              }}
+                              className="flex flex-row-reverse md:flex-row items-center gap-2 cursor-pointer text-end justify-end w-full z-50"
+                            >
+                              <span className="">{e.titlu}</span>
+                              <FaArrowRight
+                                className={`text-blue-500 animate-slideX md:animate-slideX2 mt-1 md:rotate-180 delay-${
+                                  i + 1
+                                }`}
+                              />
+                            </button>
+                            <motion.div
+                              variants={backdrop2}
+                              initial="hidden"
+                              animate="visible"
+                              exit="hidden"
+                            >
+                              <p
+                                className="pt-4 text-sm w-[400px] pe-2"
+                                dangerouslySetInnerHTML={{ __html: e.text }}
+                              />
+                            </motion.div>
+                          </div>
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          variants={textVariant2}
+                          initial="hidden"
+                          animate="hidden"
+                          exit="hidden"
+                          className="rounded-xl"
+                        >
+                          <div
+                            className="m-3 md:text-end"
+                            onMouseLeave={() => {
+                              setShowModal(false);
+                              sellLeave();
+                              setModal(9);
+                            }}
+                          >
+                            <button
+                              onClick={() => {
+                                setShowModal(true);
+
+                                setText(e.text);
+                                setTitlu(e.titlu);
+                              }}
+                              onMouseEnter={() => {
+                                setShowModal(true);
+                                sellEnter();
+                                setModal(i);
+                              }}
+                              className="flex flex-row-reverse md:flex-row items-center gap-2 cursor-pointer text-end justify-end z-50 w-full"
+                            >
+                              <span className="line-clamp-1">{e.titlu}</span>
+                              <FaArrowRight
+                                className={`text-blue-500 animate-slideX md:animate-slideX2 mt-1 md:rotate-180 delay-${
+                                  i + 1
+                                }`}
+                              />
+                            </button>
+                            <motion.div
+                              variants={backdrop2}
+                              initial="hidden"
+                              animate="hidden"
+                              exit="hidden"
+                            >
+                              <p
+                                className="pt-4 text-sm w-[400px] pe-2"
+                                dangerouslySetInnerHTML={{ __html: e.text }}
+                              />
+                            </motion.div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </li>
+                ) : (
+                  ""
+                )
+              )}
+            </ul>
           </div>
         </div>
-        <AnimatePresence mode="wait">
-          {showModal && (
-            <motion.div
-              className="fixed top-0 left-0 w-full h-full bg-[#00000080] z-30"
-              variants={backdrop2}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              onClick={() => {
-                setShowModal(false);
-                setModal(9);
-              }}
-            ></motion.div>
-          )}
-        </AnimatePresence>
-        <div className="md:min-w-[25%] px-10 md:px-0 min-w-[50%]">
-          <ul>
-            {tt.map((e, i) =>
-              i >= 4 ? (
-                <li className="relative h-10" key={i}>
-                  <AnimatePresence>
-                    {modal === i ? (
-                      <motion.div
-                        variants={textVariant2}
-                        initial="hidden"
-                        animate="visible"
-                        exit="hidden"
-                        className="rounded-xl"
-                      >
-                        <div
-                          className="m-3 md:text-end"
-                          onMouseLeave={() => {
-                            setShowModal(false);
-                            sellLeave();
-                            setModal(9);
-                          }}
-                        >
-                          <button
-                            onClick={() => {
-                              setShowModal(true);
-
-                              setText(e.text);
-                              setTitlu(e.titlu);
-                            }}
-                            onMouseEnter={() => {
-                              setShowModal(true);
-                              sellEnter();
-                              setModal(i);
-                            }}
-                            className="flex flex-row-reverse md:flex-row items-center gap-2 cursor-pointer text-end justify-end w-full z-50"
-                          >
-                            <span className="">{e.titlu}</span>
-                            <FaArrowRight
-                              className={`text-blue-500 animate-slideX md:animate-slideX2 mt-1 md:rotate-180 delay-${
-                                i + 1
-                              }`}
-                            />
-                          </button>
-                          <motion.div
-                            variants={backdrop2}
-                            initial="hidden"
-                            animate="visible"
-                            exit="hidden"
-                          >
-                            <p
-                              className="pt-4 text-sm w-[400px] pe-2"
-                              dangerouslySetInnerHTML={{ __html: e.text }}
-                            />
-                          </motion.div>
+        <div className="md:hidden block">
+          <div className="min-w-[50%] mx-auto">
+            <ul className="relative">
+              {tt.map((e, i) => (
+                <li className={`relative py-2`} key={i}>
+                  <button
+                    onClick={() => {
+                      setShowModal(true);
+                      setText(e.text);
+                      setTitlu(e.titlu);
+                    }}
+                    className={`flex flex-row items-start gap-2 cursor-pointer text-start justify-start mx-auto z-50 w-full max-w-[270px]`}
+                  >
+                    <FaArrowRight
+                      className={`text-blue-500 animate-slideX mt-1 delay-${
+                        i + 1
+                      }`}
+                    />
+                    <span
+                      className={`${i == 7 && "relative overflow-visible"}`}
+                    >
+                      {i == 7 && (
+                        <div className="absolute bottom-3 right-1 translate-x-full translate-y-full max-w-[30px]">
+                          <LottieControl animationData={animPointer} />
                         </div>
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        variants={textVariant2}
-                        initial="hidden"
-                        animate="hidden"
-                        exit="hidden"
-                        className="rounded-xl"
-                      >
-                        <div
-                          className="m-3 md:text-end"
-                          onMouseLeave={() => {
-                            setShowModal(false);
-                            sellLeave();
-                            setModal(9);
-                          }}
-                        >
-                          <button
-                            onClick={() => {
-                              setShowModal(true);
-
-                              setText(e.text);
-                              setTitlu(e.titlu);
-                            }}
-                            onMouseEnter={() => {
-                              setShowModal(true);
-                              sellEnter();
-                              setModal(i);
-                            }}
-                            className="flex flex-row-reverse md:flex-row items-center gap-2 cursor-pointer text-end justify-end z-50 w-full"
-                          >
-                            <span className="line-clamp-1">{e.titlu}</span>
-                            <FaArrowRight
-                              className={`text-blue-500 animate-slideX md:animate-slideX2 mt-1 md:rotate-180 delay-${
-                                i + 1
-                              }`}
-                            />
-                          </button>
-                          <motion.div
-                            variants={backdrop2}
-                            initial="hidden"
-                            animate="hidden"
-                            exit="hidden"
-                          >
-                            <p
-                              className="pt-4 text-sm w-[400px] pe-2"
-                              dangerouslySetInnerHTML={{ __html: e.text }}
-                            />
-                          </motion.div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                      )}
+                      {e.titlu}
+                    </span>
+                  </button>
                 </li>
-              ) : (
-                ""
-              )
-            )}
-          </ul>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </>

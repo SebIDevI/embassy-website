@@ -8,7 +8,7 @@ import LottieControl from "@/components/lottie/page";
 function Head() {
   return (
     <>
-      <div className="md:min-h-[60vh] h-auto text-slate-200">
+      <div className="md:min-h-[60vh] h-auto text-slate-200 mt-40 md:mt-0">
         <div className="flex flex-col md:flex-row items-center md:mt-40">
           <div className="w-full font-graphik mb-10 md:mb-0">
             <p className="font-graphikExtralight 2xl:text-3xl lg:text-xl text-lg mb-5">

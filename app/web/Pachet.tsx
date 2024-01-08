@@ -38,7 +38,7 @@ function Pachet() {
   return (
     <>
       <div className="mb-14 text-slate-200">
-        <div className="flex md:flex-row gap-4 flex-col items-center px-10 md:px-0 md:gap-10 mt-10 text-base">
+        <div className="flex md:flex-row gap-4 flex-col items-center sm:px-10 px-2 md:px-0 md:gap-10 mt-10 text-base">
           <div className="md:min-w-[25%] md:pe-5 min-w-[50%]">
             <ul>
               {tt.map((e, i) =>

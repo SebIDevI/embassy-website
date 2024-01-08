@@ -28,7 +28,7 @@ function Footer() {
 
   return (
     <div
-      className="bg-[#323232] fixed bottom-0 -z-50 w-full text-white flex flex-col items-center justify-center h-[700px] lg:h-[500px] pointer-events-auto"
+      className="bg-[#323232] fixed bottom-0 -z-50 w-full text-white flex flex-col  justify-center h-screen overflow-y-auto max-h-[750px] lg:max-h-[500px] pointer-events-auto"
       id="footer"
     >
       {/* <h4 className="py-16 w-4/5 text-center text-4xl font-bold mx-auto">
@@ -61,16 +61,18 @@ function Footer() {
         >
           <Image src={logo} alt="Logo Embassy" className="w-4/5" />
         </Link> */}
-        <div className="w-1/3">
-          <p className="text-2xl uppercase font-bold pb-5">Follow us</p>
-          <div className="flex gap-10 text-3xl">
+        <div className="lg:w-1/3">
+          <p className="text-2xl uppercase font-bold pb-5 lg:text-left text-center">
+            Follow us
+          </p>
+          <div className="flex gap-10 text-3xl justify-center lg:justify-start">
             <FaFacebook />
             <FaInstagram />
             <FaTiktok />
             <FaLinkedin />
           </div>
         </div>
-        <div className="w-1/3 flex gap-10">
+        <div className="w-1/3 flex gap-10 justify-center">
           <div className="relative text-end lg:w-1/2 after:absolute after:top-0 after:left-5 after:w-full after:h-full after:border-e after:border-[#fcfcfc]">
             <p className="text-2xl uppercase font-bold pb-3">BRANCHES</p>
             <ul>
@@ -150,7 +152,7 @@ function Footer() {
           <div className="flex gap-6 flex-col">
             <ul>
               <li className="font-graphik font-bold text-xl">Baciu Valentin</li>
-              <hr className="w-1/3 border-gray-400 my-2" />
+              <hr className="w-1/3 border-gray-400 my-2 lg:mx-0 mx-auto" />
               <li>
                 <a
                   href={"tel:+40742069699"}
@@ -172,7 +174,7 @@ function Footer() {
             </ul>
             <ul>
               <li className="font-graphik font-bold text-xl">Ene Cosmin</li>
-              <hr className="w-1/3 border-gray-400 my-2" />
+              <hr className="w-1/3 border-gray-400 my-2 lg:mx-0 mx-auto" />
               <li>
                 <a
                   href={"tel:+40742069699"}

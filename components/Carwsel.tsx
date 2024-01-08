@@ -16,7 +16,7 @@ import prezentare3 from "@/public/prezentare3.png";
 
 export function Carwsel() {
   const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
+    Autoplay({ delay: 9000, stopOnInteraction: false })
   );
 
   const datas = [
@@ -99,7 +99,9 @@ export function Carwsel() {
                       {/* <p className="text-sm font-graphikLight font-bold">
                         Blog
                       </p> */}
-                      <h5 className="text-4xl font-pro py-2">{e.title}</h5>
+                      <h5 className="sm:text-4xl text-2xl font-pro py-2">
+                        {e.title}
+                      </h5>
                       <p className="py-4 text-sm text-slate-500 font-graphikLight font-bold">
                         {e.dtt}
                       </p>
@@ -109,7 +111,7 @@ export function Carwsel() {
                           color1="blueEmb"
                           color2="blueEmbDark"
                           link={e.link}
-                          className="p-2 px-6 mt-10 text-base"
+                          className="p-2 px-6 mt-10 sm:text-base text-sm"
                         >
                           {e.btnTxt}
                         </ButtonAnim>

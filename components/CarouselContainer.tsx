@@ -9,10 +9,13 @@ function CarouselContainer() {
       id="proiecte"
     >
       <div className="my-10">
-        <TtlSlide className="text-5xl text-center -my-4">
+        <TtlSlide className="md:text-5xl text-3xl text-center -my-4">
           Caracteristicile care fac Embassy Network
         </TtlSlide>
-        <TtlSlide delay={0.3} className="text-5xl text-center -my-4">
+        <TtlSlide
+          delay={0.3}
+          className="md:text-5xl text-3xl text-center -my-4"
+        >
           Opțiunea #1
         </TtlSlide>
       </div>

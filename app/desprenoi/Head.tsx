@@ -5,7 +5,7 @@ import animationData from "@/public/lottie/anim9.json";
 function Head() {
   return (
     <>
-      <div className="md:min-h-[60vh] h-auto text-black">
+      <div className="md:min-h-[60vh] h-auto text-black mt-28 md:mt-0">
         <div className="flex flex-col md:flex-row items-center md:mt-20">
           <div className="w-full font-graphik px-1 mb-10 md:mb-0">
             <div className="py-2">

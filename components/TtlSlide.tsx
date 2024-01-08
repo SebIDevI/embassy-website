@@ -46,7 +46,7 @@ export const TtlSlide: React.FC<TitleProps> = ({
     >
       <h5 className={cn(titleVariants(), className)}>
         <motion.div className="inline-block w-full" variants={variants}>
-          <span className="break-words">{children}</span>
+          <span>{children}</span>
         </motion.div>
       </h5>
     </motion.div>

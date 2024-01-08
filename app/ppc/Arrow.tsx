@@ -98,55 +98,45 @@ function Arrow() {
           </div>
         </div>
         <div className="md:hidden flex flex-col items-center justify-center gap-8">
-          <p className="text-center">Strategii Social Media</p>
+          <p className="text-center">Strategii Ads</p>
           <Image
             src={strArr}
             alt={"Round Arrow"}
             className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
           />
-          <p className="text-center">Content Creation / Editing</p>
+          <p className="text-center">Creare de content</p>
           <Image
             src={strArr}
             alt={"Round Arrow"}
             className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
           />
-          <p className="text-center">Meta / TikTok Ads</p>
+          <p className="text-center">
+            Implementare Instagram / Facebook / TikTok Ads
+          </p>
           <Image
             src={strArr}
             alt={"Round Arrow"}
             className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
           />
-          <p className="text-center">Appointment Setting (Optional)</p>
+          <p className="text-center">Testare ads</p>
           <Image
             src={strArr}
             alt={"Round Arrow"}
             className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
           />
-          <p className="text-center">Email Marketing</p>
+          <p className="text-center">Potențiali clienți</p>
           <Image
             src={strArr}
             alt={"Round Arrow"}
             className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
           />
-          <p className="text-center">Google Review Campaign</p>
+          <p className="text-center">Vânzare</p>
           <Image
             src={strArr}
             alt={"Round Arrow"}
             className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
           />
-          <p className="text-center">Database Reactivation Campaign</p>
-          <Image
-            src={strArr}
-            alt={"Round Arrow"}
-            className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
-          />
-          <p className="text-center">Analytics</p>
-          <Image
-            src={strArr}
-            alt={"Round Arrow"}
-            className="rotate-[135deg] -scale-y-100 h-1/2 max-h-[50px]"
-          />
-          <p className="text-center">Social Media Management</p>
+          <p className="text-center">Analiza rezultatelor</p>
         </div>
       </div>
       <hr className="w-full mx-auto border-2 opacity-50 my-28" />
