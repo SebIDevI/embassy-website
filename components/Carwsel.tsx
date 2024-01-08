@@ -57,7 +57,7 @@ export function Carwsel() {
               <CarouselItem key={index}>
                 <div className="">
                   <div className="flex md:flex-row flex-col items-center justify-center gap-2 h-full relative">
-                    <div className="md:w-1/2 h-full min-h-[500px] aspect-square relative">
+                    <div className="md:w-1/2 h-full min-h-[500px] w-full md:aspect-square relative">
                       <div className="h-full w-full bg-blue-300 absolute top-0 left-0">
                         {index == 2 ? (
                           <div className="w-full h-full bg-[url('/prezentare3.png')] bg-cover bg-center"></div>

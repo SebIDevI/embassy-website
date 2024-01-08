@@ -304,7 +304,7 @@ function Pachet() {
             ></motion.div>
           )}
         </AnimatePresence>
-        <div className="md:min-w-[25%] min-w-[50%]">
+        <div className="md:min-w-[25%] px-10 md:px-0 min-w-[50%]">
           <ul>
             {tt.map((e, i) =>
               i >= 4 ? (
@@ -319,7 +319,7 @@ function Pachet() {
                         className="rounded-xl"
                       >
                         <div
-                          className="m-3 text-end"
+                          className="m-3 md:text-end"
                           onMouseLeave={() => {
                             setShowModal(false);
                             sellLeave();
@@ -338,11 +338,11 @@ function Pachet() {
                               sellEnter();
                               setModal(i);
                             }}
-                            className="flex items-start gap-2 cursor-pointer text-end justify-end w-full z-50"
+                            className="flex flex-row-reverse md:flex-row items-center gap-2 cursor-pointer text-end justify-end w-full z-50"
                           >
                             <span className="">{e.titlu}</span>
                             <FaArrowRight
-                              className={`text-blue-500 animate-slideX2 mt-1 rotate-180 delay-${
+                              className={`text-blue-500 animate-slideX md:animate-slideX2 mt-1 md:rotate-180 delay-${
                                 i + 1
                               }`}
                             />
@@ -369,7 +369,7 @@ function Pachet() {
                         className="rounded-xl"
                       >
                         <div
-                          className="m-3 text-end"
+                          className="m-3 md:text-end"
                           onMouseLeave={() => {
                             setShowModal(false);
                             sellLeave();
@@ -388,11 +388,11 @@ function Pachet() {
                               sellEnter();
                               setModal(i);
                             }}
-                            className="flex items-start gap-2 cursor-pointer text-end justify-end z-50 w-full"
+                            className="flex flex-row-reverse md:flex-row items-center gap-2 cursor-pointer text-end justify-end z-50 w-full"
                           >
                             <span className="line-clamp-1">{e.titlu}</span>
                             <FaArrowRight
-                              className={`text-blue-500 animate-slideX2 mt-1 rotate-180 delay-${
+                              className={`text-blue-500 animate-slideX md:animate-slideX2 mt-1 md:rotate-180 delay-${
                                 i + 1
                               }`}
                             />

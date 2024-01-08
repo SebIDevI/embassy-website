@@ -21,7 +21,7 @@ function Viziune() {
             </div>
             <p className="pt-10 lg:text-base text-sm font-graphik">
               Viziunea noastră este de a avea o echipă de producție suficient de
-              mare astfel încât să aducem pe planșa de social din românia
+              mare astfel încât să aducem pe planșa de social din România
               propriul nostru content demn de standardele, ideile și așteptările
               Embassy. NEXT LEVEL CONTENT IS COMING.
             </p>

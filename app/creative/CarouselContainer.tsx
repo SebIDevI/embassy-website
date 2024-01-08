@@ -6,7 +6,7 @@ import { ButtonAnim } from "@/components/ButtonAnim";
 function CarouselContainer() {
   return (
     <>
-      <div className="flex w-full items-center">
+      <div className="flex md:flex-row flex-col-reverse mt-20 md:mt-0 w-full items-center">
         <div className="w-full flex items-center flex-col justify-center gap-10 mt-10">
           <Carwsel />
         </div>
