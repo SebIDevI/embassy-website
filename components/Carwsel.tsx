@@ -103,9 +103,7 @@ export function Carwsel() {
                       <p className="py-4 text-sm text-slate-500 font-graphikLight font-bold">
                         {e.dtt}
                       </p>
-                      <p className="text-sm my-3 font-graphikLight font-bold">
-                        {e.text}
-                      </p>
+                      <p className="text-sm my-3 font-graphik">{e.text}</p>
                       <div className="flex">
                         <ButtonAnim
                           color1="blueEmb"
