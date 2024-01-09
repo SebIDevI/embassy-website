@@ -150,8 +150,8 @@ function Pachet() {
         text={text}
       />
 
-      <div className="grid grid-cols-1 w-full md:grid-cols-3 items-center flex-col text-white">
-        <div className="md:block hidden">
+      <div className="grid grid-cols-1 w-full items-center flex-col text-white">
+        <div className="grid w-full grid-cols-3 items-center flex-col text-white">
           <div className="md:min-w-[25%] relative px-10 min-w-[50%] mx-auto md:mx-0">
             <div className="absolute bottom-0 left-1/2 translate-y-1/3 max-w-[30px]">
               <LottieControl animationData={animPointer} />

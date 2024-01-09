@@ -23,7 +23,7 @@ const Modal: React.FC<ModalProps> = ({
     <AnimatePresence mode="wait">
       {showModal && (
         <motion.div
-          className="fixed top-0 left-0 w-full h-full z-50 bg-[#00000084]"
+          className="fixed top-0 left-0 w-full h-full block lg:hidden z-50 bg-[#00000084]"
           variants={backdrop}
           initial="hidden"
           animate="visible"
