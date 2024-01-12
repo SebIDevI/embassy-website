@@ -31,6 +31,7 @@ function CarouselContainer() {
                 color1="blueEmb"
                 color2="blueEmbDark"
                 className="px-9 py-3 text-base"
+                link="/desprenoi"
               >
                 Despre noi
               </ButtonAnim>

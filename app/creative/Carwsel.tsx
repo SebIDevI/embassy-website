@@ -18,7 +18,7 @@ const imgs = [
   coze1,
   vali,
   "/slider_creative/clip1.mp4",
-  "/slider_creative/coze3_edit.mp4",
+  "/slider_creative/clip2.mp4",
 ];
 
 export function Carwsel() {

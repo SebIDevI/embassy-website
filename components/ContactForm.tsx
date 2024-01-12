@@ -146,7 +146,7 @@ function ContactForm() {
                       </FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Hatzu"
+                          placeholder=""
                           className="focus:ring-offset-0 focus-visible:ring-offset-0"
                           {...field}
                         />
@@ -167,7 +167,7 @@ function ContactForm() {
                         Prenume <span className="text-red-500">*</span>
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Dorian" {...field} />
+                        <Input placeholder="" {...field} />
                       </FormControl>
                       {/* <FormDescription>
                   Acesta este numele dvs. de familie.
@@ -186,7 +186,7 @@ function ContactForm() {
                       Email <span className="text-red-500">*</span>
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="dory@hat.zu" {...field} />
+                      <Input placeholder="email@example.com" {...field} />
                     </FormControl>
                     {/* <FormDescription>
                   Acesta este numele dvs. de familie.
@@ -205,7 +205,7 @@ function ContactForm() {
                         Oraș <span className="text-red-500">*</span>
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Domnești" {...field} />
+                        <Input placeholder="" {...field} />
                       </FormControl>
                       {/* <FormMessage /> */}
                     </FormItem>
@@ -220,7 +220,7 @@ function ContactForm() {
                         Telefon <span className="text-red-500">*</span>
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="0712345698" {...field} />
+                        <Input placeholder="0712345678" {...field} />
                       </FormControl>
                       {/* <FormDescription>
                   Acesta este numele dvs. de familie.
@@ -237,10 +237,7 @@ function ContactForm() {
                   <FormItem className="w-full">
                     <FormLabel>Website</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder="https://www.hatz.shop.ro"
-                        {...field}
-                      />
+                      <Input placeholder="https://www.example.com" {...field} />
                     </FormControl>
                     {/* <FormDescription>
                   Acesta este numele dvs. de familie.
@@ -256,7 +253,7 @@ function ContactForm() {
                   <FormItem className="w-full">
                     <FormLabel>Companie</FormLabel>
                     <FormControl>
-                      <Input placeholder="Hatz Residence SRL" {...field} />
+                      <Input placeholder="" {...field} />
                     </FormControl>
                     {/* <FormDescription>
                   Acesta este numele dvs. de familie.
@@ -275,7 +272,7 @@ function ContactForm() {
                     </FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Bună ziua..."
+                        placeholder=""
                         className="resize-none"
                         {...field}
                       />
