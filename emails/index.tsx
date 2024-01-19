@@ -26,7 +26,7 @@ interface TwitchResetPasswordEmailProps {
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
-  : "";
+  : "https://www.embassy-agency.com";
 
 export const Email = ({
   username = "zenorocha",
