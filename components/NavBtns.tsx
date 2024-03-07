@@ -58,15 +58,15 @@ const variantsIcon: Variants = {
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Racehub",
-    href: "/",
-    description: "Un spatiu si o comunitate destinata pasionatiilor de masini",
-  },
-  {
     title: "Chiropractor.ro",
     href: "/",
     description:
       "Un loc gandit cu si pentru chiropracticienii din Romania unde isi pot creste vizibilitatea in online",
+  },
+  {
+    title: "Racehub",
+    href: "/",
+    description: "Un spatiu si o comunitate destinata pasionatiilor de masini",
   },
   {
     title: "Tash Animations",
