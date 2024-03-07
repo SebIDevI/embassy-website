@@ -144,7 +144,11 @@ export default function NavBtns() {
                     title={component.title}
                     href={component.href}
                   >
-                    <p className="uppercase italic mb-2 mt-3">Coming soon</p>
+                    <p className="uppercase italic mb-2 mt-3">
+                      {component.title !== "Chiropractor.ro"
+                        ? "Coming soon"
+                        : ""}
+                    </p>
                     {component.description}
                   </ListItem2>
                 ))}

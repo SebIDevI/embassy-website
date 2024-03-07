@@ -6,6 +6,7 @@ import car from "@/public/car.png";
 
 import { motion, AnimatePresence, useCycle, Variants } from "framer-motion";
 import { useCursorVariant } from "@/config";
+import Link from "next/link";
 
 function Categories() {
   const [isInTopHalf, setIsInTopHalf] = useState(true);
@@ -183,7 +184,7 @@ function Categories() {
             onMouseLeave={sellLeave}
             className="cursor-pointer ps-12 bg-[#E8F1F5] rounded-2xl p-3 uppercase font-bold text-md"
           >
-            Chiropractors
+            Chiropracticieni
           </h3>
           <div
             onMouseEnter={sellEnter}
@@ -193,49 +194,13 @@ function Categories() {
             <Image src={bone} alt="Bone" className="h-full w-auto" />
           </div>
         </div>
-        <div
-          className="relative"
-          ref={containerRef3}
-          onClick={() => setIsClicked3(!isClicked3)}
-        >
-          <AnimatePresence mode="wait">
-            {isClicked3 && (
-              <motion.div
-                variants={comingSoon}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                className={`absolute ${
-                  !isInTopHalf ? "-top-4" : "-bottom-4"
-                } left-1/2 -translate-x-1/2 ${
-                  !isInTopHalf ? "-translate-y-full" : "translate-y-full"
-                } w-full h-auto bg-slate-50 flex items-center justify-center border-black ${
-                  !isInTopHalf ? "border-b-[1px]" : "border-t-[1px]"
-                }`}
-              >
-                <div
-                  className={`absolute w-4 h-4 ${
-                    !isInTopHalf ? "-bottom-[1px]" : "-top-[1px]"
-                  } rotate-45 left-1/2 -translate-x-1/2 ${
-                    !isInTopHalf ? "translate-y-1/2" : "-translate-y-1/2"
-                  } bg-slate-50 ${
-                    !isInTopHalf ? "border-b-[1px]" : "border-t-[1px]"
-                  } ${
-                    !isInTopHalf ? "border-r-[1px]" : "border-l-[1px]"
-                  } border-black`}
-                ></div>
-                <p className="uppercase italic text-lg text-center font-graphik px-4 py-2">
-                  Coming soon
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
+        <Link href="/creative" className="relative">
           <h3
             onMouseEnter={sellEnter}
             onMouseLeave={sellLeave}
             className="cursor-pointer ps-12 bg-[#E8F1F5] rounded-2xl p-3 uppercase font-bold text-md"
           >
-            Health & beauty
+            Alte Bussiness-uri
           </h3>
           <div
             onMouseEnter={sellEnter}
@@ -244,7 +209,7 @@ function Categories() {
           >
             <Image src={FirstAid} alt="First Aid" className="h-full w-auto" />
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

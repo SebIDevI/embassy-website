@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import Link from "next/link";
 import { Bell } from "@/components/Bell";
+import { ButtonAnim } from "../ButtonAnim";
 
 const variants = {
   open: {
@@ -53,16 +54,16 @@ const text = [
     title: "MBC Productions",
     subtitles: [
       {
-        title: "Racehub",
-        href: "/",
-        description:
-          "Un spatiu si o comunitate destinata pasionatiilor de masini",
-      },
-      {
         title: "Chiropractor.ro",
         href: "/",
         description:
           "Un loc gandit cu si pentru chiropracticienii din Romania unde isi pot creste vizibilitatea in online",
+      },
+      {
+        title: "Racehub",
+        href: "/",
+        description:
+          "Un spatiu si o comunitate destinata pasionatiilor de masini",
       },
       {
         title: "Tash Animations",
@@ -112,31 +113,33 @@ export const MenuItem: React.FC<MenuItemProp> = ({ i }) => {
       >
         {text[i]?.subtitles ? (
           <AccordionItem value={`item-1`} className="border-0">
-            <AccordionTrigger className="text-slate-950 font-pro text-3xl no-underline m-0 p-0 gap-2 justify-center">
+            <p className="text-slate-950 font-graphik font-bold text-3xl no-underline m-0 p-0 gap-2 justify-center">
               {text[i]?.title}
-            </AccordionTrigger>
-            <AccordionContent className="py-6">
+            </p>
+            <div className="py-6">
               {text[i]?.subtitles?.map((e, j) => (
-                <div key={j} className="my-2">
+                <div key={j} className={`${j === 1 ? "my-5" : ""}`}>
                   <Link href={e.href}>
-                    <p className="text-2xl font-pro">{e.title}</p>
-                    {i === 1 ? (
-                      <p className="uppercase italic text-lg py-2">
+                    <p className="text-xl font-graphik">{e.title}</p>
+                    {i === 1 && j !== 0 ? (
+                      <p className="uppercase italic text-sm py-2">
                         Coming soon
                       </p>
                     ) : (
                       ""
                     )}
-                    <p>{e.description}</p>
+                    {/* <p className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                      {e.description}
+                    </p> */}
                   </Link>
                 </div>
               ))}
-            </AccordionContent>
+            </div>
           </AccordionItem>
         ) : text[i]?.href ? (
           <div>
             <Link href={text[i].href as string}>
-              <p className="text-slate-950 font-pro text-3xl no-underline text-center">
+              <p className="text-slate-950 font-graphik font-bold text-3xl no-underline text-start">
                 {text[i].title}
               </p>
             </Link>
@@ -144,11 +147,23 @@ export const MenuItem: React.FC<MenuItemProp> = ({ i }) => {
         ) : (
           <div>
             {i == text.length - 1 ? (
-              <div className="w-full flex justify-center">
-                <Bell color="blueEmb" />
+              <div className="w-full flex justify-start pb-20">
+                <div
+                  onMouseEnter={() => sellEnter()}
+                  onMouseLeave={() => sellLeave()}
+                >
+                  <ButtonAnim
+                    color1="blueEmb"
+                    color2="blueEmbDark"
+                    link="/contact"
+                    className="ml-0 py-2 px-5"
+                  >
+                    Contact
+                  </ButtonAnim>
+                </div>
               </div>
             ) : (
-              <p className="font-bold text-3xl font-pro text-slate-950 w-full text-center">
+              <p className="font-bold text-3xl font-graphik text-slate-950 w-full text-start">
                 {text[i]?.title}
               </p>
             )}

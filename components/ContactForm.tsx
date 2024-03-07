@@ -300,6 +300,10 @@ function ContactForm() {
                   </ButtonAnim>
                 </div>
               </div>
+              <p className="text-sm">
+                Câmpurile marcate cu steluță (
+                <span className="text-red-500">*</span>) sunt obligatorii!
+              </p>
               {(form.getFieldState("famName").invalid ||
                 form.getFieldState("company").invalid ||
                 form.getFieldState("country").invalid ||
