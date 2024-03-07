@@ -142,43 +142,11 @@ function Categories() {
             <Image src={car} alt="Car" className="h-full w-auto" />
           </div>
         </div>
-        <div
+        <Link
+          href={"/clienti/chiropracticieni"}
           className="relative"
-          ref={containerRef2}
           onClick={() => setIsClicked2(!isClicked2)}
         >
-          <AnimatePresence mode="wait">
-            {isClicked2 && (
-              <motion.div
-                variants={comingSoon}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                className={`absolute ${
-                  !isInTopHalf ? "-top-4" : "-bottom-4"
-                } left-1/2 -translate-x-1/2 ${
-                  !isInTopHalf ? "-translate-y-full" : "translate-y-full"
-                } w-full h-auto bg-slate-50 flex items-center justify-center border-black ${
-                  !isInTopHalf ? "border-b-[1px]" : "border-t-[1px]"
-                }`}
-              >
-                <div
-                  className={`absolute w-4 h-4 ${
-                    !isInTopHalf ? "-bottom-[1px]" : "-top-[1px]"
-                  } rotate-45 left-1/2 -translate-x-1/2 ${
-                    !isInTopHalf ? "translate-y-1/2" : "-translate-y-1/2"
-                  } bg-slate-50 ${
-                    !isInTopHalf ? "border-b-[1px]" : "border-t-[1px]"
-                  } ${
-                    !isInTopHalf ? "border-r-[1px]" : "border-l-[1px]"
-                  } border-black`}
-                ></div>
-                <p className="uppercase italic text-lg text-center font-graphik px-4 py-2">
-                  Coming soon
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
           <h3
             onMouseEnter={sellEnter}
             onMouseLeave={sellLeave}
@@ -193,7 +161,7 @@ function Categories() {
           >
             <Image src={bone} alt="Bone" className="h-full w-auto" />
           </div>
-        </div>
+        </Link>
         <Link href="/creative" className="relative">
           <h3
             onMouseEnter={sellEnter}

@@ -25,7 +25,7 @@ function Beneficii() {
       </p>
       <div className="flex justify-center gap-8 my-10 text-3xl">
         <Link
-          href="#"
+          href="https://www.instagram.com/chiropractor.ro?igsh=MTF6eGlhcGdhY2w4NQ=="
           className="hover:text-red-600 transition"
           onMouseEnter={() => sellEnter()}
           onMouseLeave={() => sellLeave()}
@@ -33,7 +33,7 @@ function Beneficii() {
           <FaInstagram />
         </Link>
         <Link
-          href="#"
+          href="https://youtube.com/@ChiropractorRO?si=4UnKZYwPNhSc8fqp"
           className="hover:text-red-600 transition"
           onMouseEnter={() => sellEnter()}
           onMouseLeave={() => sellLeave()}
@@ -41,7 +41,7 @@ function Beneficii() {
           <FaYoutube />
         </Link>
         <Link
-          href="#"
+          href="https://www.tiktok.com/@chiropractor.ro?_t=8kUMK6EmsAy&_r=1"
           className="hover:text-gray-900 transition"
           onMouseEnter={() => sellEnter()}
           onMouseLeave={() => sellLeave()}
@@ -49,7 +49,7 @@ function Beneficii() {
           <FaTiktok />
         </Link>
         <Link
-          href="#"
+          href="https://www.facebook.com/profile.php?id=61556015995297"
           className="hover:text-blue-600 transition"
           onMouseEnter={() => sellEnter()}
           onMouseLeave={() => sellLeave()}
