@@ -32,15 +32,20 @@ function Item() {
   return (
     <div
       ref={ref}
-      className="w-1/3 h-auto md:flex hidden items-center justify-center"
+      className="w-1/3 h-auto md:flex hidden items-center justify-center relative"
     >
-      <motion.div style={{ translateY: y }}>
+      <motion.div className="absolute top-0" style={{ translateY: y }}>
         <Image
           src={mark}
           alt={"Mark"}
           className="max-h-[700px] w-auto px-10 scale-[1.60] lg:scale-100"
         />
       </motion.div>
+      <Image
+        src={mark}
+        alt={"Mark"}
+        className="max-h-[700px] w-auto px-10 scale-[1.60] lg:scale-100 opacity-0"
+      />
     </div>
   );
 }
