@@ -18,8 +18,8 @@ function Item() {
   const y = useTransform(scrollYProgress, (latest) => 300 + latest * -300);
 
   return (
-    <div ref={ref} className="md:w-1/2 h-full rounded-md">
-      <motion.div style={{ translateY: y }}>
+    <div ref={ref} className="md:w-1/2 relative rounded-md">
+      <motion.div className="absolute -top-[300px]" style={{ translateY: y }}>
         <Image
           src={mana}
           alt={"Mână embassy"}
@@ -34,7 +34,9 @@ function Features() {
   return (
     <>
       {/* <h4 className="font-proBlack text-5xl py-10">Features</h4> */}
-      <TtlSlide className="font-proBlack text-5xl px-0 mx-0">Features</TtlSlide>
+      <TtlSlide className="font-proBlack text-5xl px-0 mx-0 mb-10">
+        Features
+      </TtlSlide>
       <div className="md:flex justify-between items-center">
         <ul className="md:w-1/2 flex flex-col gap-4 text-2xl">
           <li className="flex gap-1 items-center">

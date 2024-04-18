@@ -25,7 +25,7 @@ function Page() {
     <div ref={ref}>
       <div className="cursor-default font-graphik scroll-smooth mb-[850px] lg:mb-[600px]">
         {!(<GrainedEffect />) && (
-          <div className="absolute w-full h-full top-0 left-0 bg-white -z-10"></div>
+          <div className="absolute w-full h-full top-0 left-0 bg-black -z-10"></div>
         )}
         <GrainedEffect />
         <Nav />
