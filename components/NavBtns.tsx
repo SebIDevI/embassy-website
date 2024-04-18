@@ -59,7 +59,7 @@ const variantsIcon: Variants = {
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Chiropractor.ro",
-    href: "/clienti/chiropracticieni",
+    href: "/chiropracticieni",
     description:
       "Un loc gandit cu si pentru chiropracticienii din Romania unde isi pot creste vizibilitatea in online",
   },

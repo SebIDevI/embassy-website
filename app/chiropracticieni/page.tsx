@@ -13,7 +13,7 @@ import Footer from "@/components/Footer";
 import IdeeConcept from "./IdeeConcept";
 import Fin from "./Fin";
 import Slider from "./Slider";
-import Brosura from "../../Brosura";
+import Brosura from "../Brosura";
 import Beneficii from "./Beneficii";
 import Types from "./Types";
 function Page() {

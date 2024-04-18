@@ -143,7 +143,7 @@ function Categories() {
           </div>
         </div>
         <Link
-          href={"/clienti/chiropracticieni"}
+          href={"/chiropracticieni"}
           className="relative"
           onClick={() => setIsClicked2(!isClicked2)}
         >
