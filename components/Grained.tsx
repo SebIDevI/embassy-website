@@ -32,8 +32,14 @@ function GrainedEffect({ ...props }) {
       body.offsetHeight - footer?.clientHeight!,
       html.clientHeight - footer?.clientHeight!,
       html.scrollHeight - footer?.scrollHeight!,
-      html.offsetHeight - footer?.scrollHeight!
+      html.offsetHeight - footer?.clientHeight!
     );
+    console.log("heights: ");
+    console.log(body.scrollHeight - footer?.scrollHeight!);
+    console.log(body.offsetHeight - footer?.clientHeight!);
+    console.log(html.clientHeight - footer?.clientHeight!);
+    console.log(html.scrollHeight - footer?.scrollHeight!);
+    console.log(html.offsetHeight - footer?.clientHeight!);
 
     if (!element) {
       console.error("Grained: cannot find the element with id your-element-id");
