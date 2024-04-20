@@ -55,7 +55,7 @@ const text = [
     subtitles: [
       {
         title: "Chiropractor.ro",
-        href: "/chiropracticieni",
+        href: "/chiropractor.ro",
         description:
           "Un loc gandit cu si pentru chiropracticienii din Romania unde isi pot creste vizibilitatea in online",
       },

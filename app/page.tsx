@@ -41,9 +41,6 @@ export default function Home() {
         <CarouselContainer />
         <Video />
         <Hvq />
-        {/* <Wwu /> */}
-        {/* <Reviews /> */}
-        {/* <Faq /> */}
       </div>
       <Footer />
       <motion.div
