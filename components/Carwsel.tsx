@@ -77,6 +77,7 @@ export function Carwsel() {
                           <div className="w-full h-full bg-[url('/BeFunky-collage.jpg')] bg-cover bg-center"></div>
                         ) : (
                           <video
+                            src={e.img}
                             loop
                             muted
                             autoPlay
@@ -84,15 +85,13 @@ export function Carwsel() {
                             controls={false}
                             controlsList="nofullscreen nodownload noremoteplayback noplaybackrate foobar"
                             disablePictureInPicture
+                            webkit-playsinline
                             style={{
                               width: "100%",
                               height: "100%",
                               objectFit: "cover",
                             }}
-                          >
-                            <source src={e.img} type="video/mp4" />
-                            Your browser does not support the video tag.
-                          </video>
+                          ></video>
                         )}
                       </div>
                     </div>
