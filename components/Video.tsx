@@ -42,9 +42,10 @@ function Video() {
       <div className="absolute top-0 left-0 w-full h-full bg-[#00000000] z-10"></div>
       <div className="absolute w-full h-full top-0 left-0 z-0">
         <video
-          autoPlay
           loop
           muted
+          autoPlay
+          playsInline
           controls={false}
           controlsList="nofullscreen nodownload noremoteplayback noplaybackrate foobar"
           disablePictureInPicture
