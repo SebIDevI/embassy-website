@@ -48,9 +48,10 @@ export function Carwsel() {
               <CarouselItem key={index}>
                 <div className="h-full aspect-square rounded-xl overflow-hidden">
                   <video
-                    autoPlay
                     loop
                     muted
+                    autoPlay
+                    playsInline
                     controls={false}
                     controlsList="nofullscreen nodownload noremoteplayback noplaybackrate foobar"
                     disablePictureInPicture
