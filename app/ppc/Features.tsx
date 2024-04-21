@@ -18,7 +18,7 @@ function Item() {
   const y = useTransform(scrollYProgress, (latest) => 300 + latest * -300);
 
   return (
-    <div ref={ref} className="md:w-1/2 relative rounded-md">
+    <div ref={ref} className="md:w-1/2 relative rounded-md hidden md:block">
       <motion.div className="absolute -top-[300px]" style={{ translateY: y }}>
         <Image
           src={mana}
