@@ -77,9 +77,10 @@ export function Carwsel() {
                           <div className="w-full h-full bg-[url('/BeFunky-collage.jpg')] bg-cover bg-center"></div>
                         ) : (
                           <video
-                            autoPlay
                             loop
                             muted
+                            autoPlay
+                            playsInline
                             controls={false}
                             controlsList="nofullscreen nodownload noremoteplayback noplaybackrate foobar"
                             disablePictureInPicture
