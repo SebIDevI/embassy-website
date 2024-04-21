@@ -13,6 +13,7 @@ import Graphik from "next/font/local";
 import GraphikThin from "next/font/local";
 import GraphikExtralight from "next/font/local";
 import GraphikLight from "next/font/local";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -121,6 +122,7 @@ export default function RootLayout({
         className={`${montserrat.className} ${coolvetica.variable} ${dopestyle.variable} ${franky.variable} ${comic.variable} ${holyfat.variable} ${monday.variable} ${lemonmilk.variable} ${pro.variable} ${proBlack.variable} ${graphik.variable} ${graphikThin.variable} ${graphikExtralight.variable} ${graphikLight.variable}`}
       >
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
