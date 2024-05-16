@@ -48,6 +48,18 @@ function Head() {
         <div className="w-full lg:h-[90vh] flex justify-center items-center">
           <div className="w-full h-full max-w-[350px] lg:max-w-none flex items-center">
             <Canvas />
+            {/* <video
+              muted
+              autoPlay
+              playsInline
+              controls={false}
+              controlsList="nofullscreen nodownload noremoteplayback noplaybackrate foobar"
+              disablePictureInPicture
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            >
+              <source src="../0416.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video> */}
           </div>
         </div>
       </div>
