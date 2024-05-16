@@ -15,7 +15,7 @@ function Beneficii() {
   }
 
   return (
-    <div className="mx-auto text-center my-10 mb-28 text-sm font-graphikLight">
+    <div className="mx-auto text-center my-10 md:mb-28 text-sm font-graphikLight">
       <p>Beneficii Cheie</p>
       <TtlSlide>Beneficiile Chiropractor.ro</TtlSlide>
       <p className="md:w-2/3 w-full mx-auto">

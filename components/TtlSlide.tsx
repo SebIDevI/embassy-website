@@ -34,7 +34,7 @@ export const TtlSlide: React.FC<TitleProps> = ({
       transition: {
         ease: "easeInOut",
         duration: 0.4,
-        delay: props.delay ? props.delay : 0.2,
+        // delay: props.delay ? props.delay : 0.2,
       },
     },
   };

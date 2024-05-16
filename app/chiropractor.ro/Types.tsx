@@ -30,14 +30,17 @@ function Types() {
   return (
     <>
       <div className="mb-14">
-        <div className="flex md:flex-row gap-4 flex-col items-center sm:px-10 px-2 md:px-0 md:gap-10 mt-10 text-base">
+        <div className="flex md:flex-row flex-col items-center sm:px-10 px-2 md:px-0 md:gap-10 md:mt-10 text-base">
           <div className="md:min-w-[25%] md:pe-5 min-w-[50%]">
             <ul>
               {tt.map((e, i) =>
                 i < 3 ? (
-                  <li className="py-4 flex items-start gap-2" key={i}>
+                  <li
+                    className="py-4 flex items-start justify-center gap-2 text-center"
+                    key={i}
+                  >
                     <div>
-                      <FaArrowDown className="text-blue-500 mt-[4px]" />
+                      <FaArrowDown className="text-blue-500 -rotate-90 md:rotate-0 mt-[4px]" />
                     </div>
                     <span>{e.titlu}</span>
                   </li>
@@ -69,9 +72,12 @@ function Types() {
             <ul>
               {tt.map((e, i) =>
                 i >= 3 ? (
-                  <li className="py-4 flex items-start gap-2" key={i}>
+                  <li
+                    className="py-4 flex justify-center items-start gap-2 text-center"
+                    key={i}
+                  >
                     <div>
-                      <FaArrowDown className="text-blue-500 mt-[4px]" />
+                      <FaArrowDown className="text-blue-500 -rotate-90 md:rotate-0 mt-[4px]" />
                     </div>
                     <span>{e.titlu}</span>
                   </li>

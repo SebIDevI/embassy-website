@@ -14,7 +14,7 @@ function Brosura() {
     cursorVariant.changeVariant("default");
   }
   return (
-    <div className="w-full bg-[#1a1a1a] py-20 my-60">
+    <div className="w-full bg-[#1a1a1a] py-20 md:my-60 my-20">
       <div className="container md:flex flex-row">
         <div className="relative flex md:w-1/2 w-full flex-col justify-center items-center md:justify-start md:items-start">
           <h4 className="text-white font-proBlack text-5xl mb-10 text-center md:text-left">

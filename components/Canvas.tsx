@@ -122,7 +122,7 @@ function Canvas() {
   return (
     <>
       {/* Display a loading animation or message while the images are loading */}
-      <div className={`loading-animation h-full ${isLoading ? "" : "hidden"}`}>
+      {/* <div className={`loading-animation h-full ${isLoading ? "" : "hidden"}`}>
         <div className="waves h-full flex justify-center items-center">
           <div className="w-[2px] h-[5%] bg-[linear-gradient(45deg,#005691,#004A7C)] m-[2px] animate-wave rounded-3xl scale-0"></div>
           <div className="w-[2px] h-[5%] bg-[linear-gradient(45deg,#005691,#004A7C)] m-[2px] animate-wave rounded-3xl scale-0 delay-1"></div>
@@ -135,7 +135,7 @@ function Canvas() {
           <div className="w-[2px] h-[5%] bg-[linear-gradient(45deg,#005691,#004A7C)] m-[2px] animate-wave rounded-3xl scale-0 delay-8"></div>
           <div className="w-[2px] h-[5%] bg-[linear-gradient(45deg,#005691,#004A7C)] m-[2px] animate-wave rounded-3xl scale-0 delay-9"></div>
         </div>
-      </div>
+      </div> */}
       <canvas
         ref={canvasRef}
         className={`canvas w-full ${isLoading ? "hidden" : ""}`}

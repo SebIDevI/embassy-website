@@ -16,7 +16,8 @@ function Head() {
     cursorVariant.changeVariant("default");
   }
   return (
-    <section className="h-[100vh] min-h-[850px] lg:block flex items-center justify-center relative lg:pt-10 bg-[linear-gradient(90deg,#e8f1f5,#fafafa_100%)]">
+    // bg: bg-[linear-gradient(90deg,#e8f1f5,#fafafa_100%)]
+    <section className="h-[100vh] min-h-[850px] lg:block flex items-center justify-center relative lg:pt-10 bg-[#e8f1f5]">
       <div className="flex flex-col-reverse lg:flex-row lg:items-center container">
         <div className="font-extrabold text-2xl w-full text-center lg:text-left lg:text-4xl">
           <h1 className="text-4xl sm:text-6xl lg:text-8xl xl:text-9xl text-blueEmb font-pro overflow-hidden">
@@ -46,7 +47,7 @@ function Head() {
           </div>
         </div>
         <div className="w-full lg:h-[90vh] flex justify-center items-center">
-          <div className="w-full h-full max-w-[350px] lg:max-w-none flex items-center">
+          <div className="w-full h-full max-w-[350px] lg:max-w-none flex items-center relative">
             <Canvas />
             {/* <video
               muted
@@ -57,7 +58,10 @@ function Head() {
               disablePictureInPicture
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             >
-              <source src="../0416.mp4" type="video/mp4" />
+              <source
+                src="../embassy triangle animation +BG.mp4"
+                type="video/mp4"
+              />
               Your browser does not support the video tag.
             </video> */}
           </div>
