@@ -50,7 +50,6 @@ function Head() {
           <div className="w-full h-full max-w-[350px] lg:max-w-none flex items-center relative">
             {/* <Canvas /> */}
             <video
-              loop
               muted
               autoPlay
               playsInline
