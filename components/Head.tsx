@@ -48,22 +48,22 @@ function Head() {
         </div>
         <div className="w-full lg:h-[90vh] flex justify-center items-center">
           <div className="w-full h-full max-w-[350px] lg:max-w-none flex items-center relative">
-            <Canvas />
-            {/* <video
+            {/* <Canvas /> */}
+            <video
               muted
               autoPlay
               playsInline
               controls={false}
               controlsList="nofullscreen nodownload noremoteplayback noplaybackrate foobar"
               disablePictureInPicture
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              style={{ width: "100%", height: "100%", objectFit: "contain" }}
             >
               <source
-                src="../embassy triangle animation +BG.mp4"
+                src="../Embassy network_triangle Animation.mp4"
                 type="video/mp4"
               />
               Your browser does not support the video tag.
-            </video> */}
+            </video>
           </div>
         </div>
       </div>
