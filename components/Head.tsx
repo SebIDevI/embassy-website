@@ -27,7 +27,7 @@ function Head() {
           </h1>
           <h3 className="my-5 mb-7 font-pro overflow-hidden">
             <span className="translate-y-[200%] py-2 inline-block animate-ttlSld delay-9">
-              Un Domino Digital
+              OFFICE FOR CREATIVE DIRECTION
             </span>
           </h3>
           <div className="flex lg:justify-start justify-center">
@@ -50,6 +50,7 @@ function Head() {
           <div className="w-full h-full max-w-[350px] lg:max-w-none flex items-center relative">
             {/* <Canvas /> */}
             <video
+              loop
               muted
               autoPlay
               playsInline
