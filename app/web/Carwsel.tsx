@@ -9,11 +9,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ButtonAnim } from "@/components/ButtonAnim";
+import osteopath from "@/public/osteopath-firstPage.png";
 import pirelli from "@/public/pirelli-website.jpeg";
 import rhyminem from "@/public/rhyminem.png";
 import Image from "next/image";
 
-const imgs = [pirelli, rhyminem];
+const imgs = [pirelli, osteopath, rhyminem];
 
 export function Carwsel() {
   const plugin = React.useRef(
