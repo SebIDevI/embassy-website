@@ -41,6 +41,7 @@ const CustomVideo: React.FC<CustomVideoProps> = ({ videoSrc, poster, alt }) => {
         controlsList="nofullscreen nodownload noremoteplayback noplaybackrate foobar"
         disablePictureInPicture
         style={{ width: "100%", height: "100%", objectFit: "contain" }}
+        className="hideControls"
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
