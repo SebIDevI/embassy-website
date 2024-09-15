@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import Canvas from "./Canvas";
 import { useCursorVariant } from "@/config";
 import { BsChevronDown } from "react-icons/bs";
 import { ButtonAnim } from "./ButtonAnim";
+import CustomVideo from "./videos/component";
 
 function Head() {
   const cursorVariant = useCursorVariant();
@@ -49,10 +49,12 @@ function Head() {
         <div className="w-full lg:h-[90vh] flex justify-center items-center">
           <div className="w-full h-full max-w-[350px] lg:max-w-none flex items-center relative">
             {/* <Canvas /> */}
-            <video
-              muted
+            {/* <video
+            preload="none"
+            role="img"
+            muted
+            playsInline
               autoPlay
-              playsInline
               controls={false}
               controlsList="nofullscreen nodownload noremoteplayback noplaybackrate foobar"
               disablePictureInPicture
@@ -63,7 +65,12 @@ function Head() {
                 type="video/mp4"
               />
               Your browser does not support the video tag.
-            </video>
+            </video> */}
+            <CustomVideo
+              videoSrc="../Embassy network_triangle Animation.mp4"
+              poster="/videoz/hero_image 926px.png"
+              alt="Video Marafaka"
+            />
           </div>
         </div>
       </div>
