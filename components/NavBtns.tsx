@@ -132,7 +132,7 @@ export default function NavBtns() {
                   <></>
                 </ListItem>
                 <ListItem href="/ppc" title="PPC" image={ppc}>
-                  Clients Acquisition System
+                  <></>
                 </ListItem>
               </ul>
             </div>
@@ -202,7 +202,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:text-accent-foreground focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md p-1 leading-none no-underline outline-none transition-colors hover:text-accent-foreground focus:text-accent-foreground",
             className
           )}
           {...props}
@@ -238,7 +238,7 @@ const ListItem = React.forwardRef<
               </motion.div>
             )}
           </AnimatePresence> */}
-          <div className="text-xl font-medium leading-none font-graphik py-2 z-10 relative">
+          <div className="text-xl font-medium leading-none font-graphik pb-2 z-10 relative">
             <b>{title}</b>
           </div>
           <p className="text-base leading-snug text-muted-foreground font-graphikLight z-10 relative">
@@ -310,7 +310,7 @@ const ListItem2 = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 text-start rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 text-start rounded-md p-1 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
