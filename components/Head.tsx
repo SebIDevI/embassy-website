@@ -25,7 +25,7 @@ function Head() {
               Embassy
             </span>
           </h1>
-          <h3 className="mb-7 font-pro overflow-hidden scale-[1.2]">
+          <h3 className="mb-7 font-pro overflow-hidden">
             <span className="translate-y-[200%] py-2 inline-block animate-ttlSld delay-9">
               OFFICE FOR CREATIVE DIRECTION
             </span>
