@@ -11,7 +11,7 @@ function CarouselContainer() {
       id="proiecte"
     >
       <div className="my-10">
-        <div className="container">
+        {/* <div className="container">
           <p className="font-pro text-4xl max-w-[960px] mx-auto">
             Branding? Grafică 3D? Motion Graphics? <br />
           </p>
@@ -23,7 +23,7 @@ function CarouselContainer() {
             alt="Colaj proiecte Embassy"
             className="mb-20 mx-auto"
           />
-        </div>
+        </div> */}
         <TtlSlide className="md:text-5xl text-3xl text-center -my-4">
           Caracteristicile care fac Embassy Network
         </TtlSlide>
