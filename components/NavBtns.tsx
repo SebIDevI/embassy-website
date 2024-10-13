@@ -315,7 +315,7 @@ const ListItem2 = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-2xl font-medium leading-none font-graphik break-words">
+          <div className="text-xl font-medium leading-none font-graphik break-words">
             {title}
           </div>
           <p className="text-sm leading-snug text-muted-foreground">
