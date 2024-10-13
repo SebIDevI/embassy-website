@@ -96,7 +96,7 @@ export default function NavBtns() {
           <NavigationMenuTrigger>Servicii</NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="w-screen">
-              <ul className="flex gap-40 p-4 justify-center container">
+              <ul className="p-4 space-y-4 container">
                 {/* <li>
                   <NavigationMenuLink asChild>
                     <Link
@@ -202,7 +202,7 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <AnimatePresence mode="wait">
+          {/* <AnimatePresence mode="wait">
             {isOver ? (
               <motion.div
                 variants={imgVariants}
@@ -232,7 +232,7 @@ const ListItem = React.forwardRef<
                 />
               </motion.div>
             )}
-          </AnimatePresence>
+          </AnimatePresence> */}
           <div className="text-base font-medium leading-none font-graphik py-2 z-10 relative">
             <b>{title}</b>
           </div>
@@ -263,7 +263,7 @@ const ListItem = React.forwardRef<
                         className="absolute -bottom-1 left-0 w-0 h-[3px] bg-blueEmb"
                       ></motion.div>
                     )}
-                    <p className="font-graphik">Descoperă</p>
+                    {/* <p className="font-graphik">Descoperă</p> */}
                   </div>{" "}
                   {isMOver ? (
                     <motion.div
