@@ -16,8 +16,10 @@ function CarouselContainer() {
         <div className="w-full h-full bg-gray-200 row-span-2"></div>
         <div className="w-full h-full bg-gray-200"></div>
         <div className="w-full h-full bg-gray-200 row-span-2"></div>
-        <div className="w-full h-full bg-gray-200"></div>
         <div className="w-full h-full bg-gray-200 row-span-2"></div>
+        <div className="w-full h-full bg-gray-200"></div>
+        <div className="w-full h-full bg-gray-200"></div>
+        <div className="w-full h-full bg-gray-200"></div>
       </div>
     </div>
   );
