@@ -151,6 +151,19 @@ module.exports = {
             display: "inline-block",
           },
         },
+        waterAnim: {
+          "0%": {
+            transform: "translate(0%, 25%) rotate(0deg)",
+            top: "-30%",
+          },
+          "50%": {
+            top: "-50%",
+          },
+          "100%": {
+            transform: "translate(0%, 25%) rotate(360deg)",
+            top: "-30%",
+          },
+        },
       },
       animation: {
         slide: "slide 60s linear infinite",
@@ -166,6 +179,7 @@ module.exports = {
         "anim-out-acc": "out-acc 1.2s cubic-bezier(.19, 1, .22, 1) forwards",
         "anim-in-acc": "in-acc 1.2s cubic-bezier(.19, 1, .22, 1) forwards",
         ttlSld: "ttlSld 0.8s cubic-bezier(.19, 1, .22, 1) forwards",
+        waterWave: "waterAnim 5s linear infinite",
       },
       animationDelay: {
         1: "0.1s",

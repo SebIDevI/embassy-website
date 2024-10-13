@@ -119,7 +119,11 @@ export default function NavBtns() {
                     </Link>
                   </NavigationMenuLink>
                 </li> */}
-                <ListItem href="/creative" title="Content Creation and Strategy" image={creative}>
+                <ListItem
+                  href="/creative"
+                  title="Content Creation and Strategy"
+                  image={creative}
+                >
                   <></>
                 </ListItem>
                 <ListItem href="/creative" title="Branding" image={creative}>
@@ -154,7 +158,7 @@ export default function NavBtns() {
                         ? "Coming soon"
                         : ""}
                     </p>
-{/*                     {component.description} */}
+                    {/*                     {component.description} */}
                   </ListItem2>
                 ))}
               </ul>
@@ -202,7 +206,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-1 leading-none no-underline outline-none transition-colors hover:text-accent-foreground focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md p-1 leading-none no-underline outline-none transition-all hover:text-accent-foreground focus:text-accent-foreground hover:scale-x-110 origin-left",
             className
           )}
           {...props}
@@ -243,7 +247,7 @@ const ListItem = React.forwardRef<
           </div>
           <p className="text-base leading-snug text-muted-foreground font-graphikLight z-10 relative">
             {children}
-{/*             <div className="flex text-black pt-3 gap-1 relative w-auto">
+            {/*             <div className="flex text-black pt-3 gap-1 relative w-auto">
               <AnimatePresence mode="wait">
                 <div
                   className="flex gap-1"
@@ -310,12 +314,12 @@ const ListItem2 = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 text-start rounded-md p-1 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 text-start rounded-md p-1 leading-none no-underline outline-none transition-all hover:scale-110 origin-left",
             className
           )}
           {...props}
         >
-          <div className="text-xl font-medium leading-none font-graphik break-words">
+          <div className="text-xl font-bold leading-none font-graphik break-words">
             {title}
           </div>
           <p className="text-sm leading-snug text-muted-foreground">

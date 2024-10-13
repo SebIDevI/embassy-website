@@ -17,29 +17,29 @@ function Video() {
 
   return (
     <div
-      className="relative mt-20"
+      className="relative mt-20 sm:block hidden"
       //   style={{ background: 'url("../public/G Cars Animation.mp4")' }}
     >
       <div className="flex container">
-      <div className="w-full"></div>
-      <div className="w-full z-20 py-20 text-white md:px-0 px-8 break-words">
-        <p className="font-graphikq">Studio Showreel 2024</p>
-        <h4 className="text-6xl font-proBlack py-2 md:pe-20">
-          Discover the power of animation to bring stories to life
-        </h4>
-        <div className="mt-12">
-          <Link href="/creative">
-            <button
-              onMouseEnter={() => sellEnter()}
-              onMouseLeave={() => sellLeave()}
-              className="flex items-center gap-2 hover:scale-125 transition-transform ease-in-out duration-500"
-            >
-              <FaPlayCircle className="text-blue-500" />
-              Află mai multe
-            </button>
-          </Link>
+        <div className="w-full"></div>
+        <div className="w-full z-20 py-20 text-white md:px-0 px-8 break-words">
+          <p className="font-graphikq">Studio Showreel 2024</p>
+          <h4 className="text-6xl font-proBlack py-2 md:pe-20">
+            Discover the power of animation to bring stories to life
+          </h4>
+          <div className="mt-12">
+            <Link href="/creative">
+              <button
+                onMouseEnter={() => sellEnter()}
+                onMouseLeave={() => sellLeave()}
+                className="flex items-center gap-2 hover:scale-125 transition-transform ease-in-out duration-500"
+              >
+                <FaPlayCircle className="text-blue-500" />
+                Află mai multe
+              </button>
+            </Link>
+          </div>
         </div>
-      </div>
       </div>
       <div className="absolute top-0 left-0 w-full h-full bg-[#00000000] z-10"></div>
       <div className="absolute w-full h-full top-0 left-0 z-0">

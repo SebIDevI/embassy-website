@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 
-import godpod from "@/public/slider/godpod.jpg";
+// import godpod from "@/public/slider/godpod.jpg";
 import globalbox from "@/public/slider/logo globalbox.png";
 import cnp from "@/public/slider/hrLogo.png";
-import dus from "@/public/slider/dusss.png";
+// import dus from "@/public/slider/dusss.png";
 import history from "@/public/slider/logo.png";
 import glob from "@/public/slider/globalFin.png";
 import virg from "@/public/slider/virgggg.png";
@@ -14,9 +14,9 @@ import tacos from "@/public/slider/LOGO_TB.png";
 function Slider() {
   // const imageArray = Array(8).fill(null);
   const imageArray = [
-    godpod,
+    // godpod,
     globalbox,
-    dus,
+    // dus,
     history,
     glob,
     virg,
@@ -26,7 +26,7 @@ function Slider() {
   ];
 
   return (
-    <div className="flex justify-center w-full h-[20vh] min-h-[200px] relative my-32">
+    <div className="flex justify-center w-full h-[20vh] min-h-[200px] relative my-4">
       <div className="w-full h-full overflow-hidden relative flex">
         <div className="flex items-center w-full h-full animate-slide absolute left-0 top-0">
           {imageArray.map((e, i) => (
@@ -34,9 +34,7 @@ function Slider() {
               key={i}
               src={e}
               alt="Sebdev logo"
-              className={`${
-                e == godpod ? "w-[125px] h-[125px]" : "w-[200px] h-[200px]"
-              } object-fit mx-[40px] filter ${
+              className={`${"w-[200px] h-[200px]"} object-fit mx-[40px] filter ${
                 e != virg ? "grayscale contrast-[.5]" : ""
               } opacity-70`}
             />
@@ -46,9 +44,7 @@ function Slider() {
               key={i}
               src={e}
               alt="Sebdev logo"
-              className={`${
-                e == godpod ? "w-[125px] h-[125px]" : "w-[200px] h-[200px]"
-              } object-fit mx-[40px] filter ${
+              className={`${"w-[200px] h-[200px]"} object-fit mx-[40px] filter ${
                 e != virg ? "grayscale contrast-[.5]" : ""
               } opacity-70`}
             />

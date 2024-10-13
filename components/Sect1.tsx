@@ -1,14 +1,14 @@
+"use client";
+
 import React, { useRef } from "react";
 import Image from "next/image";
-import videoEmb from "@/public/videoEmb.png";
-import alergareEmb from "@/public/alergareEmb.png";
-import chachingEmb from "@/public/chachingEmb.png";
 import { FaCheck } from "react-icons/fa";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import qs from "@/public/questionMark.png";
 import mark from "@/public/ppppggg.png";
 import { TtlSlide } from "./TtlSlide";
+import embLogo from "@/public/Push-notification-list-iOS-remix1-ezgif.com-crop.gif";
 
 const data = [
   "La Embassy Network, nu suntem doar advertiseri; suntem povestitori. Indiferent de nișa în care activezi, dăm viață brandului tău online prin strategiile noastre.",
@@ -66,24 +66,26 @@ function Sect1() {
         realizate pentru proiecte personale, astazi lucram pentru a contura
         povestea brandului tau pe social media
       </p>
-      <div className="flex md:flex-row gap-4 flex-col px-0 sm:px-10 md:px-0 md:gap-10 mt-10 text-sm">
-        <ul className={`md:w-1/3 w-full flex flex-col gap-5`}>
-          {data.map((e, i) =>
-            i % 2 == 0 ? (
-              <li className="flex gap-2 items-start sm:px-4 px-2" key={i}>
-                <p className="pt-[2px]">
-                  <FaCheck className={"text-blue-600"} />
-                </p>
-                <p>{e}</p>
-              </li>
-            ) : (
-              ""
-            )
-          )}
-        </ul>
-        <Item />
-        <ul className="md:w-1/3 w-full flex flex-col gap-5">
-          {data.map((e, i) =>
+      <div className="flex md:flex-row gap-4 flex-col px-0 sm:px-10 md:px-0 md:gap-10 mt-10 text-sm relative">
+        <div className="md:w-1/2 w-full md:sticky top-28 h-full flex items-center justify-center">
+          {/* <div className="bg-gray-200 rounded-[32px] shadow-md relative overflow-hidden"> */}
+          <Image src={embLogo} alt="Embassy Logo" className="z-10 relative" />
+          {/* <div className="absolute z-0 w-full h-full top-0 left-0 before:rounded-[45%] before:w-[200%] before:aspect-square before:bg-blue-500 before:absolute before:-top-1/2 before:-left-1/2 before:animate-waterWave after:rounded-[45%] after:w-[200%] after:aspect-square after:bg-blue-400 after:absolute after:-top-1/2 after:-left-1/2 after:animate-waterWave after:delay-1000 after:z-0 before:z-10"></div> */}
+          {/* </div> */}
+        </div>
+        <ul className={`md:w-1/2 w-full flex flex-col gap-5 text-lg`}>
+          {data.map((e, i) => (
+            <li className="flex gap-4 items-start sm:px-4 px-2" key={i}>
+              <div className="shadow-md aspect-square rounded-full px-3 flex items-center justify-center bg-gray-300 text-white font-bold">
+                <p className="pt-[1.5px]">{i + 1}</p>
+              </div>
+              <p className="pt-[4px]">{e}</p>
+            </li>
+          ))}
+          {/* </ul> */}
+          {/* <Item /> */}
+          {/* <ul className="md:w-1/3 w-full flex flex-col gap-5"> */}
+          {/* {data.map((e, i) =>
             i % 2 != 0 ? (
               <li className="flex gap-2 items-start sm:px-4 px-2" key={i}>
                 <p className="pt-[2px]">
@@ -94,7 +96,7 @@ function Sect1() {
             ) : (
               ""
             )
-          )}
+          )} */}
         </ul>
       </div>
     </div>

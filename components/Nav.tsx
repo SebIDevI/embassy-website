@@ -6,7 +6,7 @@ import Link from "next/link";
 import NavBtns from "./NavBtns";
 import { Hamburger } from "./navbar/Hamburger";
 
-import logo from "@/public/logoBlack.png";
+import logo from "@/public/Embassy_Network_Black_Logovvvv.png";
 
 import { useCursorVariant } from "@/config";
 import { Bell } from "./Bell";
@@ -33,7 +33,7 @@ function Nav() {
           <Image
             src={logo}
             alt="Logo Embassy"
-            className="max-h-12 w-auto z-[110]"
+            className="max-h-8 w-auto z-[110]"
           />
         </Link>
         <ul className="w-1/3 items-start justify-center hidden lg:flex">

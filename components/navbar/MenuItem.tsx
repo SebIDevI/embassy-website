@@ -34,12 +34,22 @@ const text = [
     title: "Servicii",
     subtitles: [
       {
-        title: "Creative",
+        title: "Content Creation and Strategy",
         href: "/creative",
         description: "Content Creation and Strategy",
       },
       {
-        title: "WebExp",
+        title: "Branding",
+        href: "/creative",
+        description: "Content Creation and Strategy",
+      },
+      {
+        title: "Web Development",
+        href: "/web",
+        description: "Web development, Web design, SEO",
+      },
+      {
+        title: "SEO and Maintenance",
         href: "/web",
         description: "Web development, Web design, SEO",
       },
@@ -118,7 +128,7 @@ export const MenuItem: React.FC<MenuItemProp> = ({ i }) => {
             </p>
             <div className="py-6">
               {text[i]?.subtitles?.map((e, j) => (
-                <div key={j} className={`${j === 1 ? "my-5" : ""}`}>
+                <div key={j} className={`${j >= 1 && j < 4 ? "my-5" : ""}`}>
                   <Link href={e.href}>
                     <p className="text-xl font-graphik">{e.title}</p>
                     {i === 1 && j !== 0 ? (
