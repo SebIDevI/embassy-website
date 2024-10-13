@@ -96,7 +96,7 @@ export default function NavBtns() {
           <NavigationMenuTrigger>Servicii</NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="w-screen">
-              <ul className="p-4 space-y-4 container">
+              <ul className="p-4 container">
                 {/* <li>
                   <NavigationMenuLink asChild>
                     <Link
@@ -119,12 +119,17 @@ export default function NavBtns() {
                     </Link>
                   </NavigationMenuLink>
                 </li> */}
-                <ListItem href="/creative" title="Creative" image={creative}>
-                  Content Creation and Strategy
+                <ListItem href="/creative" title="Content Creation and Strategy" image={creative}>
+                  <></>
                 </ListItem>
-                <ListItem href="/web" title="WebExp" image={web}>
-                  Web development, <br />
-                  Web design, SEO
+                <ListItem href="/creative" title="Branding" image={creative}>
+                  <></>
+                </ListItem>
+                <ListItem href="/web" title="Web Development" image={web}>
+                  <></>
+                </ListItem>
+                <ListItem href="/web" title="SEO and Maintenance" image={web}>
+                  <></>
                 </ListItem>
                 <ListItem href="/ppc" title="PPC" image={ppc}>
                   Clients Acquisition System
@@ -233,10 +238,10 @@ const ListItem = React.forwardRef<
               </motion.div>
             )}
           </AnimatePresence> */}
-          <div className="text-base font-medium leading-none font-graphik py-2 z-10 relative">
+          <div className="text-xl font-medium leading-none font-graphik py-2 z-10 relative">
             <b>{title}</b>
           </div>
-          <p className="text-sm leading-snug text-muted-foreground font-graphikLight z-10 relative">
+          <p className="text-base leading-snug text-muted-foreground font-graphikLight z-10 relative">
             {children}
 {/*             <div className="flex text-black pt-3 gap-1 relative w-auto">
               <AnimatePresence mode="wait">
