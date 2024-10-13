@@ -142,19 +142,19 @@ export default function NavBtns() {
           <NavigationMenuTrigger>MBC Productions</NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="w-screen">
-              <ul className="flex gap-3 p-4 justify-center container">
+              <ul className="p-4 container">
                 {components.map((component) => (
                   <ListItem2
                     key={component.title}
                     title={component.title}
                     href={component.href}
                   >
-                    <p className="uppercase italic mb-2 mt-3">
+                    <p className="uppercase italic mb-2 mt-1">
                       {component.title !== "Chiropractor.ro"
                         ? "Coming soon"
                         : ""}
                     </p>
-                    {component.description}
+{/*                     {component.description} */}
                   </ListItem2>
                 ))}
               </ul>
