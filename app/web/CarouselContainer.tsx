@@ -8,7 +8,7 @@ function CarouselContainer() {
   const imgs = [pirelli, osteopath, rhyminem];
 
   return (
-    <div className="md:w-full h-80 mx-auto md:mx-0 flex items-center flex-col justify-center gap-10">
+    <div className="md:w-full mx-auto md:mx-0 flex items-center flex-col justify-center gap-10">
       <Carwsel />
       {/* <div className="grid grid-cols-3 grid-rows-6 h-80 w-full gap-4">
         <div className="w-full h-full bg-gray-200"></div>
