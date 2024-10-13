@@ -70,6 +70,7 @@ function Head() {
               videoSrc="../Embassy network_triangle Animation.mp4"
               poster="/videoz/hero_image 926px.png"
               alt="Video Marafaka"
+              className="scale-[1.2]"
             />
           </div>
         </div>
