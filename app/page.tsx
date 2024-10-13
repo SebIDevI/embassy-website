@@ -31,7 +31,7 @@ export default function Home() {
         <Nav />
         <Head />
         <Slider />
-        <Categories />
+        {/* <Categories /> */}
         <div className="container">
           <Sect1 />
         </div>
