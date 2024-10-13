@@ -238,7 +238,7 @@ const ListItem = React.forwardRef<
           </div>
           <p className="text-sm leading-snug text-muted-foreground font-graphikLight z-10 relative">
             {children}
-            <div className="flex text-black pt-3 gap-1 relative w-auto">
+{/*             <div className="flex text-black pt-3 gap-1 relative w-auto">
               <AnimatePresence mode="wait">
                 <div
                   className="flex gap-1"
@@ -263,7 +263,7 @@ const ListItem = React.forwardRef<
                         className="absolute -bottom-1 left-0 w-0 h-[3px] bg-blueEmb"
                       ></motion.div>
                     )}
-                    {/* <p className="font-graphik">Descoperă</p> */}
+                    <p className="font-graphik">Descoperă</p>
                   </div>{" "}
                   {isMOver ? (
                     <motion.div
@@ -286,7 +286,7 @@ const ListItem = React.forwardRef<
                   )}
                 </div>
               </AnimatePresence>
-            </div>
+            </div> */}
           </p>
         </a>
       </NavigationMenuLink>
