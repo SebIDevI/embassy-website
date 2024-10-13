@@ -20,7 +20,7 @@ function Video() {
       className="relative mt-20"
       //   style={{ background: 'url("../public/G Cars Animation.mp4")' }}
     >
-      <div className="flex container"
+      <div className="flex container">
       <div className="w-full"></div>
       <div className="w-full z-20 py-20 text-white md:px-0 px-8 break-words">
         <p className="font-graphikq">Studio Showreel 2024</p>
