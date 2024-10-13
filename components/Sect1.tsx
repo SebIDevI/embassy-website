@@ -52,7 +52,7 @@ function Item() {
 
 function Sect1() {
   return (
-    <div className="w-full bg-transparent">
+    <div className="w-full bg-transparent mb-10">
       <p className="text-center font-extralight text-[#353535] pt-16 pb-8 text-sm">
         {/* de adaugat font subtire ✅ */}
         De ce să lucrezi cu noi?
