@@ -11,14 +11,14 @@ import mark from "@/public/ppppggg.png";
 import { TtlSlide } from "./TtlSlide";
 
 const data = [
-  "La Embassy Network, nu suntem doar advertiseri; suntem povestitori. Indiferent dacă te afli în domeniul Auto, Chiropractic, Healthcare sau o nișă unică, dăm viață brandului tău online prin strategiile noastre.",
-  "La Embassy Network, nu suntem pentru toți - și ne place așa. Colaborăm exclusiv cu afaceri premium, selectate cu grijă și pasiune. Spre deosebire de serviciile generice, nu ne risipim; ne focusăm pe nișele pe care le cunoaștem intim.",
-  "Profită de puterea Facebook, Instagram și TikTok cu noi.",
+  "La Embassy Network, nu suntem doar advertiseri; suntem povestitori. Indiferent de nișa în care activezi, dăm viață brandului tău online prin strategiile noastre.",
+  "La Embassy Network, nu suntem pentru toți - și ne place așa. Colaborăm exclusiv cu afaceri premium, selectate cu grijă și pasiune. Spre deosebire de serviciile generice, nu ne risipim.",
+  "Profită de puterea Instagram, TikTok, YouTube și Facebook cu noi.",
   "Prioritizăm calitatea în fața cantității, asigurându-ne că afacerea ta atrage și reține clienți valoroși.",
-  "Fie ca vorbim de website-uri, Seo sau productie foto video, creativitatea este asul nostru principal.",
+  "Fie ca vorbim de website-uri, Seo sau Productie Foto-Video, creativitatea este asul nostru principal.",
   "Economisesti timp si bani.",
-  "Oferim pachete complete pentru a oferi o vizibilitate cat mai mare business-ului tau.",
-  "Fie ca vorbim de poze profesionale, animatii sau grafice, clientii nostri beneficiaza de exclusivitatea ",
+  "Oferim pachete complete de branding pentru a oferi o vizibilitate cat mai mare business-ului tau.",
+  "Fie ca vorbim de fotografii profesionale, animatii sau grafice, clientii nostri beneficiaza de exclusivitatea pachetelor Embassy Network.",
 ];
 
 function Item() {
