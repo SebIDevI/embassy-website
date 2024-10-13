@@ -17,7 +17,7 @@ function Head() {
   }
   return (
     // bg: bg-[linear-gradient(90deg,#e8f1f5,#fafafa_100%)]
-    <section className="h-[100vh] min-h-[850px] lg:block flex items-center justify-center relative lg:pt-10 bg-[#ecf3f8]">
+    <section className="h-[100vh] min-h-[700px] lg:block flex items-center justify-center relative lg:pt-10 bg-[#ecf3f8]">
       <div className="flex flex-col-reverse lg:flex-row lg:items-center container">
         <div className="font-extrabold text-2xl w-full text-center lg:text-left lg:text-4xl">
           <h1 className="text-3xl sm:text-6xl lg:text-8xl xl:text-7xl text-blueEmb font-pro overflow-hidden">
@@ -74,10 +74,10 @@ function Head() {
           </div>
         </div>
       </div>
-      <div className="w-full absolute bottom-10 left-0 flex flex-col justify-center items-center animate-floating">
+      {/* <div className="w-full absolute bottom-10 left-0 flex flex-col justify-center items-center animate-floating">
         <p className="font-bold">Scroll to continue</p>
         <BsChevronDown />
-      </div>
+      </div> */}
     </section>
   );
 }
