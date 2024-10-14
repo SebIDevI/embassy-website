@@ -50,8 +50,8 @@ export function Carwsel() {
       text: "Fie că vorbim de logo, setup al paginilor de social media, creare de content sau website, Embassy Network îți asigură pachetul complet, totul personalizat pentru bussiness-ul tău.",
       img: "../G Cars Animation.mp4",
       dtt: "By Embassy Blog team - Sep 21, 2023",
-      link: "/web",
-      btnTxt: "WebExp",
+      link: "/creative",
+      btnTxt: "Creative",
     },
   ];
 

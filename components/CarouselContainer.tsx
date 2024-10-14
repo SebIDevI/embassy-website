@@ -23,7 +23,7 @@ function CarouselContainer() {
             autoPlay
             playsInline
             controls={false}
-            className="mb-20"
+            className="mb-28"
             preload={"auto"}
             controlsList="nofullscreen nodownload noremoteplayback noplaybackrate foobar"
             disablePictureInPicture

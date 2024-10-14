@@ -163,7 +163,9 @@ export const Hamburger = () => {
         className={`absolute top-0 right-0 bottom-0 lg:w-96 w-screen h-[100vh] bg-[#fafafa] -z-10`}
         variants={sidebar}
       >
-        <Navigation />
+        <div onClick={() => toggleOpen(0)}>
+          <Navigation />
+        </div>
       </motion.div>
     </motion.nav>
   );
