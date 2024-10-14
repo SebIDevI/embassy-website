@@ -124,8 +124,8 @@ export function Carwsel() {
             ))}
           </CarouselContent>
         </div>
-        <CarouselPrevious className="bg-blueEmb hover:bg-blueEmbDark text-[#f2f2f2] hover:text-white" />
-        <CarouselNext className="bg-blueEmb hover:bg-blueEmbDark text-[#f2f2f2] hover:text-white" />
+        <CarouselPrevious className="bg-blueEmb hover:bg-blueEmbDark text-[#f2f2f2] hover:text-white md:top-1/2 top-1/4" />
+        <CarouselNext className="bg-blueEmb hover:bg-blueEmbDark text-[#f2f2f2] hover:text-white md:top-1/2 top-1/4" />
       </Carousel>
     </div>
   );
