@@ -19,7 +19,6 @@ function CarouselContainer() {
             La Embassy Network avem orice unealtă de comunicare în marketing
           </p>
           <video
-            loop
             muted
             autoPlay
             playsInline
