@@ -11,19 +11,33 @@ function CarouselContainer() {
       id="proiecte"
     >
       <div className="my-10">
-        {/* <div className="container">
+        <div className="container">
           <p className="font-pro text-4xl max-w-[960px] mx-auto">
             Branding? Grafică 3D? Motion Graphics? <br />
           </p>
           <p className="text-2xl font-normal leading-2 mb-10 mt-2">
             La Embassy Network avem orice unealtă de comunicare în marketing
           </p>
-          <Image
-            src={colaj}
-            alt="Colaj proiecte Embassy"
-            className="mb-20 mx-auto"
-          />
-        </div> */}
+          <video
+            loop
+            muted
+            autoPlay
+            playsInline
+            controls={false}
+            className="mb-20"
+            preload={"auto"}
+            controlsList="nofullscreen nodownload noremoteplayback noplaybackrate foobar"
+            disablePictureInPicture
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          >
+            <source src={"../colaj.mp4"} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <TtlSlide className="md:text-5xl text-3xl text-center -my-4">
           Caracteristicile care fac Embassy Network
         </TtlSlide>

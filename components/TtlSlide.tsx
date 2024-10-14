@@ -42,7 +42,7 @@ export const TtlSlide: React.FC<TitleProps> = ({
     <motion.div
       initial="offscreen"
       whileInView="onscreen"
-      viewport={{ once: false, amount: 0.8 }}
+      viewport={{ once: true, amount: 0.8 }}
     >
       <h5 className={cn(titleVariants(), className)}>
         <motion.div className="inline-block w-full" variants={variants}>

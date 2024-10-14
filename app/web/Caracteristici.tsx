@@ -41,7 +41,7 @@ function Caracteristici() {
             </li>
           ))}
         </ul>
-        <div className="z-0 rounded-2xl sm:overflow-hidden lg:w-2/3 w-full mx-auto mt-10 dark">
+        <div className="z-0 sm:overflow-hidden lg:w-full w-full mx-auto mt-10 dark">
           <CarouselContainer />
         </div>
       </div>

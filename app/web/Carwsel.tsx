@@ -10,11 +10,12 @@ import {
 } from "@/components/ui/carousel";
 import { ButtonAnim } from "@/components/ButtonAnim";
 import osteopath from "@/public/osteopath-firstPage.png";
-import pirelli from "@/public/pirelli-website.jpeg";
+import pirelli from "@/public/web_colaj/pirelli first page.png";
+import platforma from "@/public/web_colaj/platform pp.png";
 import rhyminem from "@/public/rhyminem.png";
 import Image from "next/image";
 
-const imgs = [pirelli, osteopath, rhyminem];
+const imgs = [pirelli, platforma, osteopath, rhyminem];
 
 export function Carwsel() {
   const plugin = React.useRef(
@@ -35,7 +36,7 @@ export function Carwsel() {
               <Image
                 src={e}
                 alt="Website Image"
-                className="rounded-xl w-full h-full"
+                className="rounded-xl w-full h-full object-cover"
               />
             </CarouselItem>
           ))}
