@@ -155,11 +155,11 @@ function Footer() {
               <hr className="w-1/3 border-gray-400 my-2 lg:mx-0 mx-auto" />
               <li>
                 <a
-                  href={"tel:+40742069699"}
+                  href={"tel:+40770458136"}
                   onMouseEnter={() => sellEnter()}
                   onMouseLeave={() => sellLeave()}
                 >
-                  📞 +40 742 069 699
+                  📞 +40 770 458 136
                 </a>
               </li>
               <li>
@@ -177,7 +177,7 @@ function Footer() {
               <hr className="w-1/3 border-gray-400 my-2 lg:mx-0 mx-auto" />
               <li>
                 <a
-                  href={"tel:+40742069699"}
+                  href={"tel:+40720846002"}
                   onMouseEnter={() => sellEnter()}
                   onMouseLeave={() => sellLeave()}
                 >
