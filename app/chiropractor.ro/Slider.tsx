@@ -28,13 +28,13 @@ function Slider() {
                 className="max-w-[200px] w-[90%] mx-auto h-auto object-fit md:mx-[40px] filter opacity-70"
               />
             </div>
-            <div className="w-auto h-full max-w-[200px] flex justify-center items-center">
+            {/* <div className="w-auto h-full max-w-[200px] flex justify-center items-center">
               <Image
                 src={Bodyadjustment}
                 alt="Chiropractor Logo"
                 className="max-w-[200px] w-[90%] mx-auto h-auto object-fit md:mx-[40px] filter opacity-70 invert"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
