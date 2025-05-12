@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import OsteopathLogo from "@/public/logo osteopath concept black.png";
 import KinetoLogo from "@/public/Logo KinetoLin.png";
-import Bodyadjustment from "@/public/White_Bodyadjustment.png";
+import Virgil from "@/public/pavelv.webp";
 
 function Slider() {
   return (
@@ -17,24 +17,24 @@ function Slider() {
             <div className="w-auto h-full max-w-[200px] flex justify-center items-center">
               <Image
                 src={OsteopathLogo}
-                alt="Chiropractor Logo"
+                alt="Osteopath Concept Logo"
                 className="max-w-[200px] w-[90%] mx-auto h-auto object-fit md:mx-[40px] filter opacity-80"
               />
             </div>
             <div className="w-auto h-full max-w-[200px] flex justify-center items-center">
               <Image
                 src={KinetoLogo}
-                alt="Chiropractor Logo"
+                alt="KinetoLin Logo"
                 className="max-w-[200px] w-[90%] mx-auto h-auto object-fit md:mx-[40px] filter opacity-70"
               />
             </div>
-            {/* <div className="w-auto h-full max-w-[200px] flex justify-center items-center">
+            <div className="w-auto h-full max-w-[200px] flex justify-center items-center">
               <Image
-                src={Bodyadjustment}
-                alt="Chiropractor Logo"
-                className="max-w-[200px] w-[90%] mx-auto h-auto object-fit md:mx-[40px] filter opacity-70 invert"
+                src={Virgil}
+                alt="Pavel Virgil Logo"
+                className="max-w-[200px] w-[90%] mx-auto h-auto object-fit md:mx-[40px] filter opacity-70"
               />
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
