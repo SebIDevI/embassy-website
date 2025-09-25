@@ -36,13 +36,13 @@ function Nav() {
             className="max-h-8 w-auto z-[110]"
           />
         </Link>
-        <ul className="w-1/3 items-start justify-center hidden lg:flex">
+        <ul className="w-full flex-1 items-start justify-center hidden lg:flex">
           <NavBtns />
         </ul>
         <div className="hidden lg:block">
           <Bell color={"white"} />
         </div>
-        <div className="text-2xl flex lg:hidden w-1/3 items-center justify-end">
+        <div className="text-2xl flex lg:hidden items-center justify-end">
           <Hamburger />
         </div>
       </div>
