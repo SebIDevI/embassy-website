@@ -8,6 +8,7 @@ import SplitLines from "./SplitLines";
 import SplitWords from "./SplitWords";
 import DetailCards from "./DetailCards";
 import Typewriter from "./Typewriter";
+import { useInViewport } from "./use-in-view";
 
 /* ── data ───────────────────────────────────────────────────────────────
    Placeholder Unsplash images are kept from the original mockup — swap the
@@ -314,9 +315,60 @@ function useIsMobile() {
   return mobile;
 }
 
+/* Lazy autoplay video. Shows the poster immediately but only attaches the
+   <source> once the element is within 400px of the viewport (or right away for
+   `eager`, above-the-fold clips) — a long page never fetches every video at
+   once. Picks exactly ONE encode, phone OR desktop, never both: src stays unset
+   until after mount, by which point the breakpoint is resolved. */
+function LazyVideo({
+  base,
+  className,
+  eager = false,
+  loop = true,
+  forceMobile,
+  onEnded,
+}: {
+  base: string;
+  className?: string;
+  eager?: boolean;
+  loop?: boolean;
+  forceMobile?: boolean;
+  onEnded?: () => void;
+}) {
+  const auto = useIsMobile();
+  const mobile = forceMobile ?? auto;
+  const [ref, inView] = useInViewport<HTMLVideoElement>({
+    amount: 0,
+    rootMargin: "400px",
+    once: true,
+  });
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const active = mounted && (eager || inView);
+  useEffect(() => {
+    if (active && ref.current) primeVideo(ref.current);
+  }, [active, ref]);
+
+  return (
+    <video
+      ref={ref}
+      className={className}
+      src={active ? encodeURI(videoVariant(base, mobile)) : undefined}
+      poster={encodeURI(videoPoster(base))}
+      autoPlay
+      muted
+      loop={loop}
+      playsInline
+      preload={eager ? "auto" : "none"}
+      onEnded={onEnded}
+    />
+  );
+}
+
 /* portrait reels as a hero background — desktop: all side by side in one panel;
-   mobile: one at a time, advancing to the next when each ends. (GOC, TDC) */
-function ReelsHero({ videos }: { videos: string[] }) {
+   mobile: one at a time, advancing to the next when each ends. (GOC, TDC)
+   `eager` loads immediately (first project, above the fold); others lazy-load. */
+function ReelsHero({ videos, eager = false }: { videos: string[]; eager?: boolean }) {
   const isMobile = useIsMobile();
   const [idx, setIdx] = useState(0);
 
@@ -324,15 +376,12 @@ function ReelsHero({ videos }: { videos: string[] }) {
     return (
       <div className="goc-reels-mobile">
         {/* key remounts on index change so the next reel loads + autoplays from 0 */}
-        <video
+        <LazyVideo
           key={idx}
-          ref={primeVideo}
-          src={encodeURI(videoVariant(videos[idx], isMobile))}
-          poster={encodeURI(videoPoster(videos[idx]))}
-          autoPlay
-          muted
-          playsInline
-          preload="auto"
+          base={videos[idx]}
+          forceMobile
+          eager={eager}
+          loop={false}
           onEnded={() => setIdx((i) => (i + 1) % videos.length)}
         />
       </div>
@@ -342,18 +391,7 @@ function ReelsHero({ videos }: { videos: string[] }) {
   return (
     <div className="goc-reels">
       {videos.map((v) => (
-        <video
-          key={v}
-          ref={primeVideo}
-          className="goc-reel"
-          src={encodeURI(videoVariant(v, isMobile))}
-          poster={encodeURI(videoPoster(v))}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-        />
+        <LazyVideo key={v} base={v} className="goc-reel" forceMobile={false} eager={eager} />
       ))}
     </div>
   );
@@ -399,7 +437,6 @@ export default function Portfolio() {
   const [scrolled, setScrolled] = useState(false);
   const [modalSrc, setModalSrc] = useState<string | null>(null);
   const closeModal = useCallback(() => setModalSrc(null), []);
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -484,23 +521,13 @@ export default function Portfolio() {
       </div>
 
       {/* PROJECT SCENES */}
-      {PROJECTS.map((p) => (
+      {PROJECTS.map((p, i) => (
         <Fragment key={p.id}>
           <div className="ps" id={p.id}>
             {p.heroReels ? (
-              <ReelsHero videos={p.heroReels} />
+              <ReelsHero videos={p.heroReels} eager={i === 0} />
             ) : p.bgVideo ? (
-              <video
-                className="ps-bg-video"
-                ref={primeVideo}
-                src={encodeURI(videoVariant(p.bgVideo, isMobile))}
-                poster={encodeURI(videoPoster(p.bgVideo))}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-              />
+              <LazyVideo base={p.bgVideo} className="ps-bg-video" />
             ) : (
               <div className="ps-bg" style={{ backgroundImage: `url('${img(p.bg, 2000)}')` }} />
             )}
@@ -542,7 +569,7 @@ export default function Portfolio() {
                   onClick={() => setModalSrc(v)}
                   aria-label="Redă videoclipul pe tot ecranul"
                 >
-                  <video ref={primeVideo} src={encodeURI(videoVariant(v, isMobile))} poster={encodeURI(videoPoster(v))} autoPlay muted loop playsInline preload="metadata" />
+                  <LazyVideo base={v} />
                   <span className="reel-play" aria-hidden>
                     ⤢
                   </span>
@@ -562,7 +589,7 @@ export default function Portfolio() {
                   onClick={() => setModalSrc(v)}
                   aria-label="Redă videoclipul pe tot ecranul"
                 >
-                  <video ref={primeVideo} src={encodeURI(videoVariant(v, isMobile))} poster={encodeURI(videoPoster(v))} autoPlay muted loop playsInline preload="metadata" />
+                  <LazyVideo base={v} />
                   <span className="si-play" aria-hidden>
                     ⤢
                   </span>

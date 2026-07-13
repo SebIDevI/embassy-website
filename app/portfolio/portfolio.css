@@ -1344,9 +1344,24 @@
     padding-left: 24px;
     padding-right: 24px;
   }
+  /* mobile nav: shrink the oversized logo + tighten so it clears the hero */
+  .embassy-portfolio nav {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
   .embassy-portfolio nav.scrolled {
     padding-left: 24px;
     padding-right: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .nav-logo {
+    width: 96px;
+  }
+  .nav-back {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
   }
   .intro,
   .promo-intro,
