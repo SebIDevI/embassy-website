@@ -14,14 +14,16 @@ import { useInViewport } from "./use-in-view";
    Placeholder Unsplash images are kept from the original mockup — swap the
    ids / phLabel entries for real assets later; markup below stays untouched. */
 
+/* Unsplash id → CDN url; a local path ("/GOG.webp") is served as-is. */
 const img = (id: string, w: number) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+  id.startsWith("/")
+    ? id
+    : `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 const HERO_STATS = [
   { n: "8", l: "Proiecte" },
-  { n: "72K", l: "Flystack reach" },
   { n: "4", l: "Industrii" },
-  { n: "5+", l: "Ani experiență" },
+  { n: "4+", l: "Ani experiență" },
 ];
 
 const MARQUEE = [
@@ -34,18 +36,22 @@ type Detail = { label: string; value: string; text: string; tags: string[] };
 type Project = {
   id: string;
   bg: string;
-  index: string;
   cat: string;
   name: string[];
   headline: string;
   desc: string;
   details: [Detail, Detail, Detail];
   results: { n: string; l: string }[];
-  strip: [string, string];
+  /* "<unsplash id | local path>" + optional "|<object-position>". The strip cell
+     is landscape, so a portrait shot keeps only a ~46%-tall band of its height —
+     the focal hint aims that band at the subject instead of the frame centre.
+     1 entry → full-width cell, 2 → side by side. Omit for a video-only scene. */
+  strip?: string[];
   bgVideo?: string;
   stripVideos?: string[]; // landscape (16:9) videos in the strip cells (1–2)
   reels?: [string, string]; // portrait (9:16) videos in the reels band
   heroReels?: string[]; // portrait reels shown as the hero background (GOC / TDC)
+  youtube?: { id: string; poster: string }; // clip too big to self-host — links out
   next?: string;
 };
 
@@ -53,23 +59,22 @@ const PROJECTS: Project[] = [
   {
     id: "goc",
     bg: "photo-1596462502278-27bfdc403348",
-    index: "01 / 07",
-    cat: "Beauty · Cosmetics · Influencer",
+    cat: "Beauty · Brand Strategy · Social Media",
     name: ["GIRLS OWN", "COSMETICS"],
-    headline: "De la audit la strategie națională în 90 de zile",
-    desc: "Brand premium de cosmetice fondat de artista Lora. Strategie editorială completă, redesign feed, sistem creator și producție Reels — cont @girlsowncosmetics crescut la 21K followers.",
+    headline: "90 de zile. O strategie mai clară. Vânzări mai mari.",
+    desc: "Pentru Girls Own Cosmetics, am construit o strategie de comunicare orientată spre conversie, de la direcție editorială și concepte creative, până la producție: reels, campanii și comunicarea produselor. Rezultatul: o prezență mai coerentă, un brand mai bine poziționat și o creștere a vânzărilor.",
     details: [
-      { label: "Ce am făcut", value: "Full SM", text: "Audit brand, redesign feed Instagram, strategie 12 luni, plan creator cu Lora, producție Reels lunare.", tags: ["Instagram", "Reels", "Creator Strategy"] },
-      { label: "Rezultate", value: "+6.2K", text: "Followers organici în 6 luni. Reach mediu Reel crescut cu 340%. Engagement rate: 4.6%.", tags: ["Organic", "+340% Reach"] },
-      { label: "Status", value: "Activ", text: "Colaborare continuă. @girlsowncosmetics · 21K followers · 540 postări gestionate.", tags: ["Ongoing", "@girlsowncosmetics"] },
+      { label: "Ce am făcut", value: "Brand & Social Strategy", text: "Audit de brand, strategie de comunicare, direcție creativă, concepte de campanie, producție foto-video, copywriting, management social media, campanii Paid Ads, randări și optimizarea website.", tags: ["Strategy", "Content", "Paid Media", "Web"] },
+      { label: "Rezultate", value: "3,5M Views", text: "În doar 3 luni, strategia de conținut a generat peste 3,5 milioane de vizualizări și a atras organic 1,9K urmăritori noi, consolidând vizibilitatea și comunitatea brandului.", tags: ["3 Months", "+1.9K Followers"] },
+      { label: "Status", value: "Activ", text: "Colaborare în desfășurare, cu peste 50 de postări gestionate în 3 luni, de la strategie și producție, până la publicare, promovare și optimizare.", tags: ["Ongoing", "50+ Posts Managed"] },
     ],
     results: [
-      { n: "21K", l: "Followers actuali" },
-      { n: "4.6%", l: "Engagement rate" },
-      { n: "+340%", l: "Reach per Reel" },
-      { n: "540", l: "Postări gestionate" },
+      { n: "3,5M", l: "Vizualizări în 3 luni" },
+      { n: "+1,9K", l: "Urmăritori noi" },
+      { n: "50+", l: "Postări gestionate" },
+      { n: "90 de zile", l: "De strategie & creștere" },
     ],
-    strip: ["photo-1522335789203-aabd1fc54bc9", "photo-1620916566398-39f1143ab7be"],
+    strip: ["/GOG.webp|center 25%", "/GOG2.webp|center 30%"],
     heroReels: [
       "/Reel 1 Sf Elena - GOC16052026 - 2.mp4",
       "/0606 (1)(26).mp4",
@@ -80,23 +85,21 @@ const PROJECTS: Project[] = [
   {
     id: "maves",
     bg: "photo-1629909613654-28e377c37b09",
-    index: "02 / 07",
     cat: "Medical · Dental · Premium",
     name: ["MAVES", "DENTAL"],
-    headline: "O clinică dentară devenită brand de lifestyle",
-    desc: "Clinică stomatologică premium — Dr. Veronica Manole. Am construit prezența digitală de la zero: identitate vizuală, sistem de conținut pe 5 piloni, Reels educaționale și de rezultate.",
+    headline: "De la idee la identitate.",
+    desc: "Clinică stomatologică premium, cu un brand construit de la zero: de la logo, brandbook și identitate vizuală, până la poziționare, direcție de comunicare și strategie de conținut.",
     details: [
-      { label: "Ce am făcut", value: "Build 0→1", text: "Identitate vizuală Instagram, sistem 5 piloni de conținut, producție Reels, raportare lunară.", tags: ["Visual ID", "Content System", "Reels"] },
-      { label: "Rezultate", value: "3.2K", text: "Followers în primele 4 luni de la zero. Reach mediu Reel: 22K. Save rate postări: 8.4%.", tags: ["0 → 3.2K", "22K reach/Reel"] },
-      { label: "Tip proiect", value: "SM + ID", text: "Social media management complet + identitate vizuală digitală. Brand book inclus.", tags: ["Ongoing", "București"] },
+      { label: "Ce am făcut", value: "Brand 0→1", text: "Am construit întregul ecosistem de brand: logo, brandbook, identitate vizuală, website, sistem de conținut pe 5 piloni și producție lunară de Reels.", tags: ["Brand ID", "Website", "Content System"] },
+      { label: "Rezultate", value: "240K Views", text: "În doar 3 luni, am generat 240K vizualizări și am atras 390 de urmăritori organici noi, printr-o strategie de conținut coerentă și constantă.", tags: ["3 Months", "+390 Organic Followers"] },
+      { label: "Tip proiect", value: "Brand + Digital", text: "Identitate de brand, website și management social media, reunite într-o prezență digitală premium, recognoscibilă și orientată spre rezultate.", tags: ["Ongoing", "București"] },
     ],
     results: [
-      { n: "3.2K", l: "Followers / 4 luni" },
-      { n: "22K", l: "Reach mediu Reel" },
-      { n: "8.4%", l: "Save rate" },
-      { n: "5", l: "Piloni conținut" },
+      { n: "240K", l: "Vizualizări în 3 luni" },
+      { n: "+390", l: "Urmăritori organici" },
+      { n: "5", l: "Piloni de conținut" },
+      { n: "1", l: "Brand construit de la zero" },
     ],
-    strip: ["photo-1588776814546-1ffedbe47425", "photo-1609840114035-3c981b782dfe"],
     bgVideo: "/maves/Maves v3.mp4",
     reels: ["/maves/2.mp4", "/maves/Maves feedback.mp4"],
     next: "03 — True Dental Care →",
@@ -104,30 +107,28 @@ const PROJECTS: Project[] = [
   {
     id: "tdc",
     bg: "photo-1606811971618-4486d14f3f99",
-    index: "03 / 07",
-    cat: "Medical · Dental · Paid",
+    cat: "Medical · Dental",
     name: ["TRUE", "DENTAL", "CARE"],
-    headline: "Organic + Meta Ads cu CPL sub media industriei",
-    desc: "Management complet de social media, campanii Meta Ads orientate pe lead generation și producție de conținut editorial lunar coordonat printr-un singur plan de comunicare.",
+    headline: "O clinică dentară futuristă. Un mesaj clar.",
+    desc: "Am redefinit comunicarea unui brand existent, făcând-o mai clară, mai relevantă și mai ușor de înțeles pentru public.",
     details: [
-      { label: "Ce am făcut", value: "SM + ADS", text: "Social media management, Meta Ads lead gen + awareness, producție conținut, raportare lunară.", tags: ["Meta Ads", "Lead Gen", "Raportare"] },
-      { label: "Rezultate", value: "-38%", text: "Sub media CPL a industriei. 480 leads în prima lună de campanie la 12 RON/lead.", tags: ["480 Leads/lună", "CPL 12 RON"] },
-      { label: "Canale", value: "Meta", text: "Instagram + Facebook + Meta Ads. Buget media gestionat cu optimizare continuă pe date.", tags: ["Instagram", "Facebook", "Paid"] },
+      { label: "Ce am făcut", value: "Brand + Social", text: "Logo, direcție vizuală, strategie de comunicare, sistem editorial, producție foto-video și management complet de social media.", tags: ["Brand ID", "Content", "Social Media"] },
+      { label: "Rezultate", value: "102K Views", text: "În doar 3 luni, strategia de conținut a generat 102K vizualizări organice și 143 de urmăritori noi.", tags: ["3 Months", "+143 Organic Followers"] },
+      { label: "Tip proiect", value: "Brand Direction", text: "Identitate vizuală și comunicare digitală pentru o clinică dentară futuristă, construite în jurul clarității, încrederii și experienței pacientului.", tags: ["Ongoing", "Cotroceni"] },
     ],
     results: [
-      { n: "480", l: "Leads / primă lună" },
-      { n: "12₺", l: "Cost per lead (RON)" },
-      { n: "-38%", l: "Sub media industriei" },
-      { n: "2x", l: "ROI campanii" },
+      { n: "102K", l: "Vizualizări organice" },
+      { n: "+143", l: "Urmăritori noi" },
+      { n: "3", l: "Luni de colaborare" },
+      { n: "100%", l: "Creștere organică" },
     ],
-    strip: ["photo-1588776814546-ec1b5e48b4b0", "photo-1460925895917-afdab827c52f"],
+    strip: ["/truedental/image.webp|center 42%", "/truedental/image2.webp|center 62%"],
     heroReels: ["/truedental/1.mp4", "/truedental/2.mp4", "/truedental/4.mp4"],
     next: "04 — Osteopath Concept →",
   },
   {
     id: "osteopath",
-    bg: "photo-1544367567-0f2fcb009e0b",
-    index: "04 / 07",
+    bg: "/osteopath/CXE05967.webp", // fallback — bgVideo is the live background
     cat: "Medical · Osteopatie · Chiropractică",
     name: ["OSTEOPATH", "CONCEPT"],
     headline: "4 locații. Un singur brand. O singură voce.",
@@ -143,60 +144,58 @@ const PROJECTS: Project[] = [
       { n: "3", l: "Pachete wellness" },
       { n: "B2B", l: "Corporate Wellness" },
     ],
-    strip: ["photo-1576091160550-2173dba999ef", "photo-1571019613454-1cb2f99b2d8b"],
+    bgVideo: "/osteopath/video prezentare website.mp4",
+    reels: ["/osteopath/0306(1).mp4", "/osteopath/Laurentiu-7septembrie-3.mp4"],
     next: "05 — Chiropractor.ro →",
   },
   {
     id: "chiropractor",
     bg: "photo-1519824145371-296894a0daa9",
-    index: "05 / 07",
     cat: "Medical · Chiropractică · Community",
     name: ["CHIRO", "PRACTOR", ".RO"],
-    headline: "O comunitate medicală construită de la zero",
-    desc: 'Cont dedicat comunității de specialiști și pacienți în chiropractică din România — creat și gestionat de Embassy Network. @chiropractor.ro — "by @embassy.network".',
+    headline: "Comunitate medicală de specialiști",
+    desc: "Un hub creat de Embassy Network, care reunește expertiza într-un singur loc, prin educație, claritate și încredere.",
     details: [
-      { label: "Ce am făcut", value: "Community", text: "Creare cont, strategie de conținut educațional, producție 521 postări, management comunitate de specialiști și pacienți.", tags: ["Community Build", "Educational", "521 Postări"] },
-      { label: "Rezultate", value: "2K+", text: "Followers pe @chiropractor.ro pornind de la zero. Cont 100% organic, fără paid. 521 postări publicate.", tags: ["0 → 2K+", "100% Organic"] },
-      { label: "Tip", value: "Owned", text: "Cont deținut și operat de Embassy Network. Colaborează cu specialiști: hello@embassy-agency.com", tags: ["Embassy Owned", "Medical Niche"] },
+      { label: "Ce am făcut", value: "Medical Hub", text: "Am creat și dezvoltat un hub care reunește specialiștii într-un singur loc, prin strategie, conținut educațional și management de comunitate.", tags: ["Community", "Education", "Content"] },
+      { label: "Rezultate", value: "46K+ Followers", text: "O comunitate de peste 46K urmăritori pe Facebook și 2K+ pe Instagram, crescută organic prin 500+ postări și o strategie constantă de conținut.", tags: ["Organic"] },
+      { label: "Tip proiect", value: "Embassy Owned", text: "Proiect dezvoltat și gestionat integral de Embassy Network, conceput ca un punct de întâlnire între specialiști și public.", tags: ["Medical Niche", "Ongoing"] },
     ],
     results: [
-      { n: "2K+", l: "Followers" },
+      { n: "48K+", l: "Urmăritori" },
       { n: "521", l: "Postări publicate" },
-      { n: "34", l: "Following (cont curat)" },
       { n: "100%", l: "Creștere organică" },
+      { n: "1 hub", l: "De specialiști medicali" },
     ],
-    strip: ["photo-1559757175-5700dde675bc", "photo-1530026405186-ed1f139313f8"],
+    strip: ["/chiropactor/IMG_5310.webp", "/chiropactor/IMG_5190.webp|center bottom"],
     heroReels: ["/chiropactor/1.mp4", "/chiropactor/Clip 13.mp4", "/chiropactor/Clip 5.mp4"],
     next: "06 — Flystack Drone Shows →",
   },
   {
     id: "flystack",
     bg: "photo-1473968512647-3e447244af8f",
-    index: "06 / 07",
     cat: "Tech · Events · Entertainment",
     name: ["FLYSTACK", "DRONE", "SHOWS"],
-    headline: "Website, brand digital și 72K followers",
-    desc: "Furnizor premium global de spectacole cu drone — București & Londra. Embassy Agency a construit digital-ul complet: website, strategie social media și 72K followers organici.",
+    headline: "Din cer, într-o prezență digitală completă",
+    desc: "Furnizor premium de spectacole cu drone. Am realizat website-ul, strategia și managementul social media, producția foto-video, aftermovie-uri, filmarea show-urilor și clipuri cu randări 3D.",
     details: [
-      { label: "Ce am făcut", value: "Full Stack", text: "Website complet, strategie și management social media, producție conținut video, creștere audiență organică la 72K.", tags: ["Web", "Social", "Video", "Brand"] },
-      { label: "Rezultate", value: "72K", text: "Followers pe @flystackdroneshows. 335 postări. Cont pornit de la zero, 100% organic.", tags: ["0 → 72K", "Organic"] },
-      { label: "Credit", value: "Official", text: '"powered by Embassy Agency" — menționat public pe flystackdroneshows.com. Client activ global.', tags: ["București & Londra", "Ongoing"] },
+      { label: "Ce am făcut", value: "Full Digital", text: "Website, strategie și management social media, producție foto-video, aftermovie-uri, filmarea show-urilor cu drone și clipuri cu randări 3D.", tags: ["Web", "Social", "Video", "3D"] },
+      { label: "Rezultate", value: "Brand in Motion", text: "Am transformat spectacolele Flystack într-o prezență digitală completă, de la vizualizarea conceptelor în 3D până la conținutul final de eveniment.", tags: ["Digital Presence", "Multi-Format Content"] },
+      { label: "Status", value: "Completed", text: "Colaborare finalizată, cu livrabile dezvoltate pentru proiectele brandului din București și Londra.", tags: ["București & Londra", "Project Completed"] },
     ],
     results: [
-      { n: "72K", l: "Followers Instagram" },
-      { n: "335", l: "Postări produse" },
       { n: "1", l: "Website construit" },
+      { n: "Live Shows", l: "Filmări & aftermovies" },
+      { n: "360°", l: "Producție foto-video & 3D" },
       { n: "Global", l: "Prezență internațională" },
     ],
-    strip: ["photo-1506947411487-a56738267384", "photo-1527977966376-1c8408f9f108"],
     bgVideo: "/flystack/NOVA RENDER FINAL CUTS (1).mp4",
     stripVideos: ["/flystack/Aftermovie Neversea x Flystack (1).mp4"],
+    youtube: { id: "egpt7b7ICoY", poster: "/flystack/youtube-egpt7b7ICoY.webp" },
     next: "07 — Driving Hero →",
   },
   {
     id: "drivinghero",
     bg: "photo-1568772585407-9361f9bf3a87",
-    index: "07 / 07",
     cat: "Auto · Events · Festival",
     name: ["DRIVING", "HERO"],
     headline: "Primul festival auto de conducere defensivă din România",
@@ -212,9 +211,30 @@ const PROJECTS: Project[] = [
       { n: "5K€", l: "Premiu mare" },
       { n: "25K", l: "Audiență RDE" },
     ],
-    strip: ["photo-1541348263662-e068662d82af", "photo-1558618666-fcd25c85cd64"],
     bgVideo: "/drivinghero/POST 1 (1) (1).mp4",
     stripVideos: ["/drivinghero/Post 1 (2).mp4", "/drivinghero/Post 1 (1) (2).mp4"],
+    next: "08 — Race Box →",
+  },
+  /* TODO: placeholder copy + borrowed Unsplash imagery — swap for real assets. */
+  {
+    id: "racebox",
+    bg: "photo-1568772585407-9361f9bf3a87",
+    cat: "Auto · Tech · Motorsport",
+    name: ["RACE", "BOX"],
+    headline: "Lorem ipsum dolor sit amet, consectetur.",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    details: [
+      { label: "Ce am făcut", value: "Lorem Ipsum", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua veniam quis.", tags: ["Lorem", "Ipsum", "Dolor"] },
+      { label: "Rezultate", value: "000K Views", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", tags: ["3 Months", "+000 Followers"] },
+      { label: "Status", value: "Lorem", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.", tags: ["Ongoing", "Lorem Ipsum"] },
+    ],
+    results: [
+      { n: "000K", l: "Lorem ipsum dolor" },
+      { n: "+000", l: "Consectetur adipiscing" },
+      { n: "00", l: "Sed do eiusmod" },
+      { n: "100%", l: "Tempor incididunt" },
+    ],
+    strip: ["photo-1552519507-da3b142c6e3d", "photo-1492144534655-ae79c964c9d7"],
   },
 ];
 
@@ -229,12 +249,20 @@ const GRAFICA = [
   { phLabel: ["Logo Design", "Vascony Atelier", "— upload imagine —"], tag: "Logo · Fashion Atelier", name: ["VASCONY", "ATELIER"], desc: "Design de logo pentru atelier de modă — identitate premium cu caracter artizanal și eleganță contemporană.", delay: "d1" },
 ];
 
+/* Each card shows real work: `video` when that's all the project shot, otherwise
+   a still. The clips are purpose-built encodes (public/webcards) — the sources
+   are 16:9, 9:16 and 1:1, and none of them fit a 16:10 browser mockup; each is
+   letterboxed into frame over a blurred fill of itself. `img` is the fallback. */
 const WEBSITES = [
-  { url: "flystackdroneshows.com", href: "https://flystackdroneshows.com", img: "photo-1506947411487-a56738267384", alt: "Flystack website", tag: "Tech · Entertainment", name: "FLYSTACK DRONE SHOWS", desc: "Website complet pentru furnizorul premium global de spectacole cu drone. Design cinematic, animații, secțiuni de proiecte și contact.", delay: "" },
-  { url: "osteopathconcept.com", href: "https://osteopathconcept.com", img: "photo-1576091160550-2173dba999ef", alt: "Osteopath website", tag: "Medical · Multi-locație", name: "OSTEOPATH CONCEPT", desc: "Website pentru rețea de clinici de osteopatie și chiropractică — 4 locații, programări online, prezentare servicii și echipă.", delay: "d1" },
-  { url: "chiropractor.ro", href: "https://chiropractor.ro", img: "photo-1559757175-5700dde675bc", alt: "Chiropractor website", tag: "Medical · Community", name: "CHIROPRACTOR.RO", desc: "Platformă de comunitate pentru specialiști și pacienți în chiropractică. Creat și operat de Embassy Network.", delay: "" },
-  { url: "drivinghero.ro", href: "https://drivinghero.ro", img: "photo-1568772585407-9361f9bf3a87", alt: "Driving Hero website", tag: "Auto · Festival", name: "DRIVING HERO", desc: "Website festival și competiție — inscrieri, program, bilete. Design auto dinamic adaptat publicului tânăr și pasionat.", delay: "d1" },
+  { url: "flystackdroneshows.com", href: "https://flystackdroneshows.com", img: "photo-1506947411487-a56738267384", video: "/webcards/flystack.mp4", alt: "Flystack website", tag: "Tech · Entertainment", name: "FLYSTACK DRONE SHOWS", desc: "Website complet pentru furnizorul premium global de spectacole cu drone. Design cinematic, animații, secțiuni de proiecte și contact.", delay: "" },
+  { url: "osteopathconcept.com", href: "https://osteopathconcept.com", img: "photo-1576091160550-2173dba999ef", video: "/webcards/osteopath.mp4", alt: "Osteopath website", tag: "Medical · Multi-locație", name: "OSTEOPATH CONCEPT", desc: "Website pentru rețea de clinici de osteopatie și chiropractică — 4 locații, programări online, prezentare servicii și echipă.", delay: "d1" },
+  { url: "chiropractor.ro", href: "https://chiropractor.ro", img: "/webcards/chiropractor.webp", video: "", alt: "Chiropractor website", tag: "Medical · Community", name: "CHIROPRACTOR.RO", desc: "Platformă de comunitate pentru specialiști și pacienți în chiropractică. Creat și operat de Embassy Network.", delay: "" },
+  { url: "drivinghero.ro", href: "https://drivinghero.ro", img: "photo-1568772585407-9361f9bf3a87", video: "/webcards/drivinghero.mp4", alt: "Driving Hero website", tag: "Auto · Festival", name: "DRIVING HERO", desc: "Website festival și competiție — inscrieri, program, bilete. Design auto dinamic adaptat publicului tânăr și pasionat.", delay: "d1" },
 ];
+
+/* "03 / 08" — derived from position so adding a project can't strand a stale count */
+const sceneIndex = (i: number, total: number) =>
+  `${String(i + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
 
 /* join strings with <br/> between them */
 function Lines({ items }: { items: string[] }) {
@@ -389,7 +417,10 @@ function ReelsHero({ videos, eager = false }: { videos: string[]; eager?: boolea
   }
 
   return (
-    <div className="goc-reels">
+    <div
+      className="goc-reels"
+      style={{ gridTemplateColumns: `repeat(${videos.length}, 1fr)` }}
+    >
       {videos.map((v) => (
         <LazyVideo key={v} base={v} className="goc-reel" forceMobile={false} eager={eager} />
       ))}
@@ -397,9 +428,36 @@ function ReelsHero({ videos, eager = false }: { videos: string[]; eager?: boolea
   );
 }
 
-/* Fullscreen video modal — opens with sound + controls (user gesture), closes
-   on backdrop click / × / Esc, and locks page scroll while open. */
-function VideoModal({ src, onClose }: { src: string | null; onClose: () => void }) {
+/* A clip too heavy to self-host, parked on YouTube. Rather than an iframe (a
+   third-party player that ignores the site's look and loads on sight), show
+   YouTube's own thumbnail: blurred to fill the band, sharp on the card, and a
+   plain link out. Costs one image. */
+function YouTubeCard({ id, poster }: { id: string; poster: string }) {
+  return (
+    <a
+      className="yt"
+      href={`https://www.youtube.com/watch?v=${id}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="yt-bg" src={poster} alt="" aria-hidden />
+      <div className="yt-card">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="yt-thumb" src={poster} alt="" />
+        <div className="yt-play" aria-hidden>
+          ▶
+        </div>
+      </div>
+      <div className="yt-cta">View on YouTube ↗</div>
+    </a>
+  );
+}
+
+/* Fullscreen media modal — video opens with sound + controls (user gesture),
+   stills open at full size. Closes on backdrop click / × / Esc, and locks page
+   scroll while open. */
+function MediaModal({ src, onClose }: { src: string | null; onClose: () => void }) {
   const isMobile = useIsMobile();
   useEffect(() => {
     if (!src) return;
@@ -420,15 +478,25 @@ function VideoModal({ src, onClose }: { src: string | null; onClose: () => void 
       <button className="vmodal-close" onClick={onClose} aria-label="Închide">
         ×
       </button>
-      <video
-        className="vmodal-video"
-        src={encodeURI(videoVariant(src, isMobile))}
-        poster={encodeURI(videoPoster(src))}
-        autoPlay
-        controls
-        playsInline
-        onClick={(e) => e.stopPropagation()}
-      />
+      {/\.mp4$/i.test(src) ? (
+        <video
+          className="vmodal-video"
+          src={encodeURI(videoVariant(src, isMobile))}
+          poster={encodeURI(videoPoster(src))}
+          autoPlay
+          controls
+          playsInline
+          onClick={(e) => e.stopPropagation()}
+        />
+      ) : (
+        /* eslint-disable-next-line @next/next/no-img-element */
+        <img
+          className="vmodal-img"
+          src={img(src, 2000)}
+          alt=""
+          onClick={(e) => e.stopPropagation()}
+        />
+      )}
     </div>
   );
 }
@@ -498,7 +566,7 @@ export default function Portfolio() {
         <div className="sl r">Portofoliu</div>
         <p className="intro-t r d1">
           <SplitWords className="dim" text="Fiecare proiect e o poveste." /><br />
-          Strategie pusă în practică, conținut construit cu intenție, rezultate care rămân.
+          O gândim strategic. O spunem creativ. O facem să conteze.
         </p>
       </section>
 
@@ -535,7 +603,7 @@ export default function Portfolio() {
             <div className="ov-l" />
             <div className="pc">
               <div className="r">
-                <div className="pi">{p.index}</div>
+                <div className="pi">{sceneIndex(i, PROJECTS.length)}</div>
                 <div className="p-ind">{p.cat}</div>
                 <SplitLines className="pn" items={p.name} />
               </div>
@@ -559,7 +627,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {p.reels ? (
+          {p.reels && (
             <div className="reels-band">
               {p.reels.map((v, i) => (
                 <button
@@ -576,7 +644,9 @@ export default function Portfolio() {
                 </button>
               ))}
             </div>
-          ) : p.stripVideos ? (
+          )}
+
+          {p.stripVideos ? (
             <div
               className="strip strip-video"
               style={{ gridTemplateColumns: `repeat(${p.stripVideos.length}, 1fr)` }}
@@ -596,16 +666,37 @@ export default function Portfolio() {
                 </button>
               ))}
             </div>
-          ) : (
-            <div className="strip">
-              {p.strip.map((s, i) => (
-                <div className="si" key={i}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={img(s, 900)} alt="" />
-                </div>
-              ))}
+          ) : p.strip ? (
+            <div
+              className="strip"
+              style={{ gridTemplateColumns: `repeat(${p.strip.length}, 1fr)` }}
+            >
+              {p.strip.map((s, i) => {
+                const [src, focal] = s.split("|");
+                return (
+                  <button
+                    type="button"
+                    className="si si-img"
+                    key={i}
+                    onClick={() => setModalSrc(src)}
+                    aria-label="Vezi imaginea pe tot ecranul"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={img(src, 900)}
+                      alt=""
+                      style={focal ? { objectPosition: focal } : undefined}
+                    />
+                    <span className="si-zoom" aria-hidden>
+                      ⤢
+                    </span>
+                  </button>
+                );
+              })}
             </div>
-          )}
+          ) : null}
+
+          {p.youtube && <YouTubeCard id={p.youtube.id} poster={p.youtube.poster} />}
 
           {p.next && (
             <div className="conn r">
@@ -710,8 +801,12 @@ export default function Portfolio() {
                 <div className="browser-url">{w.url}</div>
               </div>
               <div className="browser-body">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={img(w.img, 900)} alt={w.alt} />
+                {w.video ? (
+                  <LazyVideo base={w.video} />
+                ) : (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img src={img(w.img, 900)} alt={w.alt} />
+                )}
               </div>
             </div>
             <div className="wc-info">
@@ -753,7 +848,7 @@ export default function Portfolio() {
         </ul>
       </footer>
 
-      <VideoModal src={modalSrc} onClose={closeModal} />
+      <MediaModal src={modalSrc} onClose={closeModal} />
     </>
   );
 }

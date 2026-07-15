@@ -77,7 +77,7 @@
 .embassy-portfolio #hero-bg {
   position: absolute;
   inset: 0;
-  background: url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=2000&q=80") center/cover;
+  background: url("/hero.webp") center/cover;
   filter: brightness(0.3) contrast(1.15);
   transform: scale(1.05);
   transition: transform 14s ease;
@@ -579,7 +579,8 @@
   transform: scale(1.05);
   filter: brightness(0.8);
 }
-.si-video {
+.si-video,
+.si-img {
   border: 0;
   margin: 0;
   padding: 0;
@@ -588,6 +589,33 @@
   font: inherit;
   cursor: pointer;
   display: block;
+}
+/* stills carry the affordance in the corner, not over the subject's face */
+.si-zoom {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(242, 240, 234, 0.55);
+  border-radius: 50%;
+  background: rgba(8, 8, 8, 0.42);
+  backdrop-filter: blur(4px);
+  color: var(--white);
+  font-size: 15px;
+  line-height: 1;
+  opacity: 0.75;
+  transform: scale(0.9);
+  transition: opacity 0.3s, transform 0.3s, background 0.3s;
+}
+.si-img:hover .si-zoom,
+.si-img:focus-visible .si-zoom {
+  opacity: 1;
+  transform: scale(1);
+  background: rgba(8, 8, 8, 0.62);
 }
 .si-play {
   position: absolute;
@@ -623,6 +651,97 @@
 }
 .strip-video .si-video {
   aspect-ratio: 16 / 9;
+}
+
+/* YOUTUBE CARD — self-hosting this one is too heavy, so it links out. The same
+   thumbnail does both jobs: blurred + dimmed as the band fill, sharp on the
+   16:9 card. No iframe, no third-party player on load. */
+.yt {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  padding: 76px 64px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: var(--black);
+  text-decoration: none;
+}
+.yt-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* scale past the edges so the blur doesn't feather in from the band border */
+  transform: scale(1.15);
+  filter: blur(30px) brightness(0.32) saturate(1.15);
+  z-index: 0;
+}
+.yt-card {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 100%);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #000;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  transition: transform 0.5s ease;
+}
+.yt:hover .yt-card {
+  transform: translateY(-4px);
+}
+.yt-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.78) contrast(1.05);
+  transition: filter 0.4s;
+}
+.yt:hover .yt-thumb {
+  filter: brightness(0.95);
+}
+.yt-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* optical centring: the ▶ glyph carries dead space on its left */
+  padding-left: 4px;
+  border: 1px solid rgba(242, 240, 234, 0.55);
+  border-radius: 50%;
+  background: rgba(8, 8, 8, 0.42);
+  backdrop-filter: blur(4px);
+  color: var(--white);
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0.85;
+  transition: opacity 0.3s, transform 0.3s, background 0.3s;
+}
+.yt:hover .yt-play {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  background: rgba(8, 8, 8, 0.6);
+}
+.yt-cta {
+  position: relative;
+  z-index: 1;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.3s;
+}
+.yt:hover .yt-cta {
+  color: var(--white);
 }
 
 /* PORTRAIT REELS BAND — vertical (9:16) videos in phone-frame cards, centered;
@@ -722,13 +841,18 @@
     opacity: 1;
   }
 }
-.vmodal-video {
+.vmodal-video,
+.vmodal-img {
   max-width: 100%;
   max-height: 100%;
   width: auto;
   height: auto;
   background: #000;
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+}
+/* the strip crops these hard; full-size means uncropped, so let it breathe */
+.vmodal-img {
+  object-fit: contain;
 }
 /* globals.css hides -webkit-media-controls globally (!important) for the
    site's silent videos — win it back here so the modal keeps native controls */
@@ -763,9 +887,10 @@
   opacity: 1;
 }
 
-/* GOC REELS — the videos ARE the hero background of the .ps scene.
+/* HERO REELS — the videos ARE the hero background of the .ps scene.
    Fill it, sit behind the .ov-b/.ov-l overlays and .pc text.
-   Desktop: 3 side by side, seamless (no gap). Mobile: one cycling reel. */
+   Desktop: N side by side, seamless (no gap) — column count set inline by reel
+   count. Mobile: one cycling reel. */
 .goc-reels,
 .goc-reels-mobile {
   position: absolute;
@@ -776,7 +901,6 @@
 }
 .goc-reels {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
 }
 .goc-reel,
 .goc-reels-mobile video {
@@ -1130,15 +1254,18 @@
   overflow: hidden;
   position: relative;
 }
-.browser-body img {
+.browser-body img,
+.browser-body video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
   filter: brightness(0.7) contrast(1.05);
   transition: transform 6s ease;
+  display: block;
 }
-.wc:hover .browser-body img {
+.wc:hover .browser-body img,
+.wc:hover .browser-body video {
   transform: translateY(-10%);
 }
 .browser-placeholder {
@@ -1408,6 +1535,10 @@
   }
   .conn {
     padding: 36px 24px;
+  }
+  .yt {
+    padding: 44px 24px;
+    gap: 18px;
   }
   .hero-stats {
     flex-direction: column;
