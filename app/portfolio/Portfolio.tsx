@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Fragment, useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import CountUp from "./CountUp";
 import FillText from "./FillText";
 import SplitLines from "./SplitLines";
@@ -21,7 +21,7 @@ const img = (id: string, w: number) =>
     : `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 const HERO_STATS = [
-  { n: "8", l: "Proiecte" },
+  { n: "15+", l: "Proiecte" },
   { n: "4", l: "Industrii" },
   { n: "4+", l: "Ani experiență" },
 ];
@@ -47,9 +47,13 @@ type Project = {
      the focal hint aims that band at the subject instead of the frame centre.
      1 entry → full-width cell, 2 → side by side. Omit for a video-only scene. */
   strip?: string[];
+  /* portrait still gallery — 4-up single container on desktop, swipe carousel
+     on phone. Full brightness, no fullscreen modal (unlike `strip`). */
+  gallery?: string[];
   bgVideo?: string;
   stripVideos?: string[]; // landscape (16:9) videos in the strip cells (1–2)
-  reels?: [string, string]; // portrait (9:16) videos in the reels band
+  stripRatio?: string; // aspect-ratio for stripVideos cells; default "16 / 9". Square social clips → "1 / 1"
+  reels?: string[]; // portrait (9:16) videos in the reels band
   heroReels?: string[]; // portrait reels shown as the hero background (GOC / TDC)
   youtube?: { id: string; poster: string }; // clip too big to self-host — links out
   next?: string;
@@ -61,20 +65,20 @@ const PROJECTS: Project[] = [
     bg: "photo-1596462502278-27bfdc403348",
     cat: "Beauty · Brand Strategy · Social Media",
     name: ["GIRLS OWN", "COSMETICS"],
-    headline: "90 de zile. O strategie mai clară. Vânzări mai mari.",
-    desc: "Pentru Girls Own Cosmetics, am construit o strategie de comunicare orientată spre conversie, de la direcție editorială și concepte creative, până la producție: reels, campanii și comunicarea produselor. Rezultatul: o prezență mai coerentă, un brand mai bine poziționat și o creștere a vânzărilor.",
+    headline: "UN BRAND NU SE CONSTRUIEȘTE ÎNTR-O CAMPANIE.",
+    desc: "De aproape patru luni dezvoltăm comunicarea Girls Own Cosmetics printr-o strategie integrată, în care fiecare piesă de conținut contribuie la aceeași direcție. Rezultatul? O identitate mai coerentă, o comunitate mai implicată și o creștere constantă a vânzărilor.",
     details: [
-      { label: "Ce am făcut", value: "Brand & Social Strategy", text: "Audit de brand, strategie de comunicare, direcție creativă, concepte de campanie, producție foto-video, copywriting, management social media, campanii Paid Ads, randări și optimizarea website.", tags: ["Strategy", "Content", "Paid Media", "Web"] },
-      { label: "Rezultate", value: "3,5M Views", text: "În doar 3 luni, strategia de conținut a generat peste 3,5 milioane de vizualizări și a atras organic 1,9K urmăritori noi, consolidând vizibilitatea și comunitatea brandului.", tags: ["3 Months", "+1.9K Followers"] },
-      { label: "Status", value: "Activ", text: "Colaborare în desfășurare, cu peste 50 de postări gestionate în 3 luni, de la strategie și producție, până la publicare, promovare și optimizare.", tags: ["Ongoing", "50+ Posts Managed"] },
+      { label: "Rolul nostru", value: "Brand & Social Strategy", text: "Am construit direcția de comunicare a Girls Own Cosmetics, de la strategie și poziționare până la direcția creativă, producția de conținut și campaniile digitale. Fiecare acțiune face parte dintr-un sistem construit pentru creștere, nu din inițiative izolate.", tags: ["Strategy", "Content", "Paid Media", "Creative Direction"] },
+      { label: "Rezultate", value: "3,5M Views", text: "În primele trei luni ale colaborării, strategia de conținut a generat peste 3,5 milioane de vizualizări, a atras aproape 2.000 de urmăritori noi și a consolidat vizibilitatea brandului printr-o comunicare coerentă și orientată spre performanță.", tags: ["First 3 Months", "+1.9K Followers"] },
+      { label: "Status", value: "Parteneriat activ", text: "Colaborarea continuă prin dezvoltarea strategiei de comunicare, producția de conținut, optimizarea campaniilor și consolidarea prezenței digitale. Construim un brand cu o direcție clară și rezultate care evoluează în timp.", tags: ["Ongoing", "50+ Posts Managed"] },
     ],
     results: [
       { n: "3,5M", l: "Vizualizări în 3 luni" },
       { n: "+1,9K", l: "Urmăritori noi" },
       { n: "50+", l: "Postări gestionate" },
-      { n: "90 de zile", l: "De strategie & creștere" },
+      { n: "Activ", l: "Parteneriat în desfășurare" },
     ],
-    strip: ["/GOG.webp|center 25%", "/GOG2.webp|center 30%"],
+    gallery: ["/GOG.webp", "/GOG2.webp", "/GOG3.webp", "/GOG4.webp"],
     heroReels: [
       "/Reel 1 Sf Elena - GOC16052026 - 2.mp4",
       "/0606 (1)(26).mp4",
@@ -85,42 +89,42 @@ const PROJECTS: Project[] = [
   {
     id: "maves",
     bg: "photo-1629909613654-28e377c37b09",
-    cat: "Medical · Dental · Premium",
+    cat: "Medical · Dental · Brand Building",
     name: ["MAVES", "DENTAL"],
     headline: "De la idee la identitate.",
-    desc: "Clinică stomatologică premium, cu un brand construit de la zero: de la logo, brandbook și identitate vizuală, până la poziționare, direcție de comunicare și strategie de conținut.",
+    desc: "Maves Dental a început cu o viziune. Noi am transformat-o într-un brand. De la nume, logo și identitate vizuală, până la poziționare, website și direcția de comunicare, fiecare element a fost construit pentru a inspira încredere și a diferenția clinica încă din prima interacțiune.",
     details: [
-      { label: "Ce am făcut", value: "Brand 0→1", text: "Am construit întregul ecosistem de brand: logo, brandbook, identitate vizuală, website, sistem de conținut pe 5 piloni și producție lunară de Reels.", tags: ["Brand ID", "Website", "Content System"] },
-      { label: "Rezultate", value: "240K Views", text: "În doar 3 luni, am generat 240K vizualizări și am atras 390 de urmăritori organici noi, printr-o strategie de conținut coerentă și constantă.", tags: ["3 Months", "+390 Organic Followers"] },
-      { label: "Tip proiect", value: "Brand + Digital", text: "Identitate de brand, website și management social media, reunite într-o prezență digitală premium, recognoscibilă și orientată spre rezultate.", tags: ["Ongoing", "București"] },
+      { label: "Rolul nostru", value: "Brand 0→1", text: "Am construit fundația brandului Maves Dental, definind identitatea vizuală, poziționarea și ecosistemul digital. De la logo și brandbook, până la website, sistemul de conținut și direcția de comunicare, fiecare element a fost creat pentru a susține dezvoltarea clinicii pe termen lung.", tags: ["Brand Identity", "Website", "Content System"] },
+      { label: "Rezultate", value: "500K Views", text: "În primele trei luni de comunicare, strategia de conținut a generat peste 500.000 de vizualizări și a atras aproximativ 1000 de urmăritori organici, validând poziționarea și direcția brandului încă din etapa de lansare.", tags: ["First 3 Months", "+1000 Organic Followers"] },
+      { label: "Parteneriat", value: "Brand + Digital", text: "Colaborarea continuă prin dezvoltarea comunicării și optimizarea prezenței digitale. De la identitatea de brand la conținut și website, construim un ecosistem coerent, gândit să susțină creșterea clinicii în fiecare etapă.", tags: ["Ongoing", "Bucharest"] },
     ],
     results: [
-      { n: "240K", l: "Vizualizări în 3 luni" },
-      { n: "+390", l: "Urmăritori organici" },
+      { n: "500K", l: "Vizualizări în 3 luni" },
+      { n: "+1000", l: "Urmăritori organici" },
       { n: "5", l: "Piloni de conținut" },
       { n: "1", l: "Brand construit de la zero" },
     ],
     bgVideo: "/maves/Maves v3.mp4",
-    reels: ["/maves/2.mp4", "/maves/Maves feedback.mp4"],
+    reels: ["/maves/14.mp4", "/maves/2.mp4", "/maves/Maves feedback.mp4"],
     next: "03 — True Dental Care →",
   },
   {
     id: "tdc",
     bg: "photo-1606811971618-4486d14f3f99",
-    cat: "Medical · Dental",
-    name: ["TRUE", "DENTAL", "CARE"],
-    headline: "O clinică dentară futuristă. Un mesaj clar.",
-    desc: "Am redefinit comunicarea unui brand existent, făcând-o mai clară, mai relevantă și mai ușor de înțeles pentru public.",
+    cat: "Medical · Dental · Brand Refresh",
+    name: ["TRUE", "DENTAL CARE"],
+    headline: "Încrederea începe înaintea consultației.",
+    desc: "Am construit un sistem de comunicare care transformă primul contact cu brandul într-o experiență clară, coerentă și memorabilă.",
     details: [
-      { label: "Ce am făcut", value: "Brand + Social", text: "Logo, direcție vizuală, strategie de comunicare, sistem editorial, producție foto-video și management complet de social media.", tags: ["Brand ID", "Content", "Social Media"] },
-      { label: "Rezultate", value: "102K Views", text: "În doar 3 luni, strategia de conținut a generat 102K vizualizări organice și 143 de urmăritori noi.", tags: ["3 Months", "+143 Organic Followers"] },
-      { label: "Tip proiect", value: "Brand Direction", text: "Identitate vizuală și comunicare digitală pentru o clinică dentară futuristă, construite în jurul clarității, încrederii și experienței pacientului.", tags: ["Ongoing", "Cotroceni"] },
+      { label: "Rolul nostru", value: "Brand + Communication", text: "Am redefinit comunicarea True Dental Care printr-un sistem construit în jurul clarității, încrederii și consecvenței. De la direcția vizuală și strategia de conținut până la producția foto-video și gestionarea comunicării, fiecare element a fost gândit pentru a consolida percepția unui brand medical premium.", tags: ["Brand Strategy", "Content System", "Social Media"] },
+      { label: "Rezultate", value: "200K Views", text: "Strategia de conținut a generat peste 200.000 de vizualizări organice și a atras 500 de urmăritori noi, consolidând vizibilitatea brandului și susținând o comunicare mai clară și mai coerentă.", tags: ["First 3 Months", "+500 Organic Followers"] },
+      { label: "Parteneriat", value: "Brand Direction", text: "Colaborarea continuă prin dezvoltarea comunicării digitale și optimizarea constantă a conținutului. Construim o prezență coerentă, orientată spre încredere, educație și o experiență premium pentru fiecare pacient.", tags: ["Ongoing", "Cotroceni"] },
     ],
     results: [
-      { n: "102K", l: "Vizualizări organice" },
-      { n: "+143", l: "Urmăritori noi" },
-      { n: "3", l: "Luni de colaborare" },
-      { n: "100%", l: "Creștere organică" },
+      { n: "200K", l: "Vizualizări organice" },
+      { n: "+500", l: "Urmăritori noi" },
+      { n: "Ongoing", l: "Parteneriat activ" },
+      { n: "Premium", l: "Poziționare de brand" },
     ],
     strip: ["/truedental/image.webp|center 42%", "/truedental/image2.webp|center 62%"],
     heroReels: ["/truedental/1.mp4", "/truedental/2.mp4", "/truedental/4.mp4"],
@@ -131,18 +135,18 @@ const PROJECTS: Project[] = [
     bg: "/osteopath/CXE05967.webp", // fallback — bgVideo is the live background
     cat: "Medical · Osteopatie · Chiropractică",
     name: ["OSTEOPATH", "CONCEPT"],
-    headline: "4 locații. Un singur brand. O singură voce.",
-    desc: "Rețea multi-locație de osteopatie și chiropractică în București, Târgoviște, Ploiești și Constanța. Am construit infrastructura de comunicare digitală și strategia de marketing pentru toate locațiile simultan.",
+    headline: "4 locații. Un singur brand. O singură viziune.",
+    desc: "O rețea medicală aflată în continuă dezvoltare are nevoie de mai mult decât promovare. Are nevoie de consecvență. Pentru Osteopath Concept, construim un sistem unitar de comunicare care conectează fiecare locație sub aceeași identitate de brand.",
     details: [
-      { label: "Ce am făcut", value: "Multi-loc", text: "Strategie de marketing unificată pentru 4 locații, producție conținut adaptat per clinică, campanii de recuperare pacienți, pachet corporate wellness.", tags: ["4 Locații", "Strategie", "Corporate"] },
-      { label: "Rezultate", value: "+90 zile", text: "Plan de recuperare venit în 90 de zile implementat. Pachete wellness corporate Esențial/Recomandat/Premium lansate. Locația Ploiești — lansată și activă.", tags: ["Revenue Recovery", "B2B Wellness"] },
-      { label: "Status", value: "Activ", text: "Colaborare strategică continuă. Co-management activ locație București. Website: osteopathconcept.com", tags: ["Ongoing", "4 Cities"] },
+      { label: "Rolul nostru", value: "Brand Ecosystem", text: "Pentru Osteopath Concept dezvoltăm și coordonăm întregul ecosistem de comunicare al brandului. De la strategie, website și producție de conținut până la identitate vizuală, materiale pentru clinici și campanii digitale, fiecare element este construit pentru a susține dezvoltarea unei rețele medicale moderne.", tags: ["Brand Strategy", "Website", "Content System", "Creative"] },
+      { label: "Servicii", value: "360° Communication", text: "Website, social media, producție video, materiale print, branding interior și comunicare digitală integrate într-un singur sistem.", tags: ["360°", "Website", "Production"] },
+      { label: "Parteneriat", value: "Long-Term Development", text: "Colaborarea continuă prin dezvoltarea comunicării, lansarea noilor locații și consolidarea poziționării Osteopath Concept ca unul dintre cele mai puternice branduri din domeniul recuperării medicale.", tags: ["Ongoing", "Multi Location"] },
     ],
     results: [
-      { n: "4", l: "Locații active" },
-      { n: "90 z", l: "Plan recuperare venit" },
-      { n: "3", l: "Pachete wellness" },
-      { n: "B2B", l: "Corporate Wellness" },
+      { n: "4", l: "Locații" },
+      { n: "360°", l: "Comunicare" },
+      { n: "Ongoing", l: "Parteneriat activ" },
+      { n: "1", l: "Ecosistem de brand" },
     ],
     bgVideo: "/osteopath/video prezentare website.mp4",
     reels: ["/osteopath/0306(1).mp4", "/osteopath/Laurentiu-7septembrie-3.mp4"],
@@ -152,13 +156,13 @@ const PROJECTS: Project[] = [
     id: "chiropractor",
     bg: "photo-1519824145371-296894a0daa9",
     cat: "Medical · Chiropractică · Community",
-    name: ["CHIRO", "PRACTOR", ".RO"],
-    headline: "Comunitate medicală de specialiști",
+    name: ["CHIROPRACTOR.RO"],
+    headline: "Am construit mai mult decât un brand. Am construit un punct de referință.",
     desc: "Un hub creat de Embassy Network, care reunește expertiza într-un singur loc, prin educație, claritate și încredere.",
     details: [
-      { label: "Ce am făcut", value: "Medical Hub", text: "Am creat și dezvoltat un hub care reunește specialiștii într-un singur loc, prin strategie, conținut educațional și management de comunitate.", tags: ["Community", "Education", "Content"] },
-      { label: "Rezultate", value: "46K+ Followers", text: "O comunitate de peste 46K urmăritori pe Facebook și 2K+ pe Instagram, crescută organic prin 500+ postări și o strategie constantă de conținut.", tags: ["Organic"] },
-      { label: "Tip proiect", value: "Embassy Owned", text: "Proiect dezvoltat și gestionat integral de Embassy Network, conceput ca un punct de întâlnire între specialiști și public.", tags: ["Medical Niche", "Ongoing"] },
+      { label: "Rolul nostru", value: "Community Building", text: "Am creat Chiropractor.ro ca un proiect dedicat educației, informării și conectării comunității din jurul chiropracticii și terapiei manuale. Am dezvoltat întregul ecosistem: strategie, conținut, identitate digitală și managementul comunității.", tags: ["Education", "Community", "Content"] },
+      { label: "Rezultate", value: "50K+ Followers", text: "O comunitate construită exclusiv prin conținut educațional și creștere organică. Cu peste 50.000 de urmăritori, 500+ materiale publicate și o strategie consecventă, Chiropractor.ro a devenit cel mai urmărit proiect din nișa sa.", tags: ["100% Organic", "500+ Posts"] },
+      { label: "Proiect", value: "Embassy Original", text: "Un proiect inițiat și dezvoltat integral de Embassy Network, creat pentru a demonstra cum strategia, conținutul și consecvența pot transforma o nișă într-o comunitate activă și într-o sursă credibilă de informare.", tags: ["Owned Project", "Ongoing"] },
     ],
     results: [
       { n: "48K+", l: "Urmăritori" },
@@ -167,14 +171,14 @@ const PROJECTS: Project[] = [
       { n: "1 hub", l: "De specialiști medicali" },
     ],
     strip: ["/chiropactor/IMG_5310.webp", "/chiropactor/IMG_5190.webp|center bottom"],
-    heroReels: ["/chiropactor/1.mp4", "/chiropactor/Clip 13.mp4", "/chiropactor/Clip 5.mp4"],
+    heroReels: ["/chiropactor/Clip 22.mp4", "/chiropactor/giovani.mp4", "/chiropactor/Clip 5.mp4"],
     next: "06 — Flystack Drone Shows →",
   },
   {
     id: "flystack",
     bg: "photo-1473968512647-3e447244af8f",
     cat: "Tech · Events · Entertainment",
-    name: ["FLYSTACK", "DRONE", "SHOWS"],
+    name: ["FLYSTACK DRONE SHOWS"],
     headline: "Din cer, într-o prezență digitală completă",
     desc: "Furnizor premium de spectacole cu drone. Am realizat website-ul, strategia și managementul social media, producția foto-video, aftermovie-uri, filmarea show-urilor și clipuri cu randări 3D.",
     details: [
@@ -188,9 +192,8 @@ const PROJECTS: Project[] = [
       { n: "360°", l: "Producție foto-video & 3D" },
       { n: "Global", l: "Prezență internațională" },
     ],
-    bgVideo: "/flystack/NOVA RENDER FINAL CUTS (1).mp4",
-    stripVideos: ["/flystack/Aftermovie Neversea x Flystack (1).mp4"],
-    youtube: { id: "egpt7b7ICoY", poster: "/flystack/youtube-egpt7b7ICoY.webp" },
+    bgVideo: "/flystack/Aftermovie Neversea x Flystack (1).mp4",
+    stripVideos: ["/flystack/NOVA RENDER FINAL CUTS (1).mp4", "/flystack/Nova Render - No Sound.mp4"],
     next: "07 — Driving Hero →",
   },
   {
@@ -213,6 +216,7 @@ const PROJECTS: Project[] = [
     ],
     bgVideo: "/drivinghero/POST 1 (1) (1).mp4",
     stripVideos: ["/drivinghero/Post 1 (2).mp4", "/drivinghero/Post 1 (1) (2).mp4"],
+    stripRatio: "1 / 1", // these are 1280×1280 square social posts, not 16:9
     next: "08 — Race Box →",
   },
   /* TODO: placeholder copy + borrowed Unsplash imagery — swap for real assets. */
@@ -428,6 +432,43 @@ function ReelsHero({ videos, eager = false }: { videos: string[]; eager?: boolea
   );
 }
 
+/* Portrait still gallery: 4-up grid on desktop, swipe carousel on phone.
+   Arrows are the carousel affordance — shown only on the phone layout (CSS),
+   they scroll the native snap container by ~one card. */
+function Gallery({ items }: { items: string[] }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const scroll = (dir: number) => {
+    const el = ref.current;
+    if (el) el.scrollBy({ left: dir * el.clientWidth * 0.82, behavior: "smooth" });
+  };
+  return (
+    <div className="gallery-wrap">
+      <div className="gallery" ref={ref}>
+        {items.map((s, i) => {
+          const [src, focal] = s.split("|");
+          return (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              className="gi"
+              key={i}
+              src={img(src, 900)}
+              alt=""
+              loading="lazy"
+              style={focal ? { objectPosition: focal } : undefined}
+            />
+          );
+        })}
+      </div>
+      <button type="button" className="gallery-arrow ga-prev" onClick={() => scroll(-1)} aria-label="Imaginea anterioară">
+        ‹
+      </button>
+      <button type="button" className="gallery-arrow ga-next" onClick={() => scroll(1)} aria-label="Imaginea următoare">
+        ›
+      </button>
+    </div>
+  );
+}
+
 /* A clip too heavy to self-host, parked on YouTube. Rather than an iframe (a
    third-party player that ignores the site's look and loads on sight), show
    YouTube's own thumbnail: blurred to fill the band, sharp on the card, and a
@@ -546,9 +587,9 @@ export default function Portfolio() {
       <section id="hero">
         <div id="hero-bg" />
         <div className="hero-c r">
-          <p className="hero-eyebrow">Selected Works · 2023 — 2025</p>
+          <p className="hero-eyebrow">Selected Works · 2023 — 2026</p>
           <h1 className="h1">OUR<br /><FillText className="out">WORK</FillText><br />SPEAKS</h1>
-          <p className="hero-sub r d1">8 proiecte. 4 industrii. Un singur standard: calitate fără compromisuri.</p>
+          <p className="hero-sub r d1">Fiecare proiect din acest portofoliu a pornit de la aceeași idee: make it impossible to ignore.</p>
           <div className="hero-stats r d2">
             {HERO_STATS.map((s, i) => (
               <div className="stat" key={s.l}>
@@ -565,8 +606,9 @@ export default function Portfolio() {
       <section className="intro">
         <div className="sl r">Portofoliu</div>
         <p className="intro-t r d1">
-          <SplitWords className="dim" text="Fiecare proiect e o poveste." /><br />
-          O gândim strategic. O spunem creativ. O facem să conteze.
+          <SplitWords className="dim" text="FIECARE PROIECT E O OPORTUNITATE." /><br />
+          SĂ CONSTRUIM.<br />
+          CEVA CARE RĂMÂNE.
         </p>
       </section>
 
@@ -656,6 +698,7 @@ export default function Portfolio() {
                   type="button"
                   className="si si-video"
                   key={i}
+                  style={{ aspectRatio: p.stripRatio ?? "16 / 9" }}
                   onClick={() => setModalSrc(v)}
                   aria-label="Redă videoclipul pe tot ecranul"
                 >
@@ -694,13 +737,15 @@ export default function Portfolio() {
                 );
               })}
             </div>
+          ) : p.gallery ? (
+            <Gallery items={p.gallery} />
           ) : null}
 
           {p.youtube && <YouTubeCard id={p.youtube.id} poster={p.youtube.poster} />}
 
           {p.next && (
             <div className="conn r">
-              <span className="cl">Următor</span>
+              <span className="cl">Explorează mai departe</span>
               <div className="cln" />
               <span className="cn">{p.next}</span>
             </div>
