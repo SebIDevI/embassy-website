@@ -620,12 +620,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.75) contrast(1.08);
+  filter: brightness(0.85) contrast(1.06);
   transition: transform 8s ease, filter 0.4s;
 }
 .si:hover video {
   transform: scale(1.05);
-  filter: brightness(0.92);
+  filter: brightness(1);
 }
 .si-video,
 .si-img {
@@ -865,16 +865,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.62) contrast(1.06);
+  filter: brightness(0.72) contrast(1.05);
 }
 /* Maves bg video brighter — text stays legible via .ov-b/.ov-l overlays.
    Scoped so osteopath/flystack/drivinghero keep 0.42. */
 #maves .ps-bg-video {
-  filter: brightness(0.92) contrast(1.03);
+  filter: brightness(1) contrast(1.02);
 }
 /* Osteopath bg video brighter — text legible via .ov-b/.ov-l overlays. */
 #osteopath .ps-bg-video {
-  filter: brightness(0.92) contrast(1.03);
+  filter: brightness(1) contrast(1.02);
 }
 
 /* fullscreen video modal */
@@ -965,7 +965,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: brightness(0.72) contrast(1.06);
+  filter: brightness(0.82) contrast(1.05);
 }
 /* GOC + TDC + chiro reels a touch brighter than the shared 0.6 default */
 #goc .goc-reel,
@@ -974,7 +974,7 @@
 #tdc .goc-reels-mobile video,
 #chiropractor .goc-reel,
 #chiropractor .goc-reels-mobile video {
-  filter: brightness(0.96) contrast(1.04);
+  filter: brightness(1) contrast(1.03);
 }
 
 /* CONNECTOR */
