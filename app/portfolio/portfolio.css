@@ -876,6 +876,10 @@
 #osteopath .ps-bg-video {
   filter: brightness(1) contrast(1.02);
 }
+/* Flystack bg video at 90% brightness. */
+#flystack .ps-bg-video {
+  filter: brightness(0.9) contrast(1.02);
+}
 
 /* fullscreen video modal */
 .vmodal {
