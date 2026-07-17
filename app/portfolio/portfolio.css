@@ -700,6 +700,11 @@
 .strip-video .si-video {
   aspect-ratio: 16 / 9;
 }
+/* flystack's stacked strip videos go full-width on phone — the mobile
+   `.si { height: 50vw }` + 16/9 aspect would otherwise pin them to ~90%. */
+#flystack .si-video {
+  height: auto;
+}
 
 /* YOUTUBE CARD — self-hosting this one is too heavy, so it links out. The same
    thumbnail does both jobs: blurred + dimmed as the band fill, sharp on the
@@ -865,16 +870,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.52) contrast(1.08);
+  filter: brightness(0.62) contrast(1.06);
 }
 /* Maves bg video brighter — text stays legible via .ov-b/.ov-l overlays.
    Scoped so osteopath/flystack/drivinghero keep 0.42. */
 #maves .ps-bg-video {
-  filter: brightness(0.82) contrast(1.04);
+  filter: brightness(0.92) contrast(1.03);
 }
 /* Osteopath bg video brighter — text legible via .ov-b/.ov-l overlays. */
 #osteopath .ps-bg-video {
-  filter: brightness(0.82) contrast(1.04);
+  filter: brightness(0.92) contrast(1.03);
 }
 
 /* fullscreen video modal */
