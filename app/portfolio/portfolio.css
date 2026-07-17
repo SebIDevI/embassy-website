@@ -700,11 +700,6 @@
 .strip-video .si-video {
   aspect-ratio: 16 / 9;
 }
-/* flystack's stacked strip videos go full-width on phone — the mobile
-   `.si { height: 50vw }` + 16/9 aspect would otherwise pin them to ~90%. */
-#flystack .si-video {
-  height: auto;
-}
 
 /* YOUTUBE CARD — self-hosting this one is too heavy, so it links out. The same
    thumbnail does both jobs: blurred + dimmed as the band fill, sharp on the
@@ -1600,6 +1595,16 @@
   }
   .si {
     height: 50vw;
+  }
+  /* flystack stacks its 2 strip videos full-width on phone: block flow (no grid
+     stretch) + width 100%, height from the 16/9 aspect. Overrides `.si` above. */
+  #flystack .strip-video {
+    display: block;
+  }
+  #flystack .strip-video .si-video {
+    display: block;
+    width: 100%;
+    height: auto;
   }
   /* GOC/TDC gallery → embla carousel, one full slide per view on phone */
   .gi {
