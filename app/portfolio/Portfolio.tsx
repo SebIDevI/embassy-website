@@ -172,7 +172,7 @@ const PROJECTS: Project[] = [
       { n: "100%", l: "Creștere organică" },
       { n: "1 hub", l: "De specialiști medicali" },
     ],
-    strip: ["/chiropactor/IMG_5310.webp", "/chiropactor/IMG_5190.webp|center bottom"],
+    gallery: ["/chiropactor/IMG_5310.webp", "/chiropactor/IMG_5190.webp|center bottom"],
     heroReels: ["/chiropactor/Clip 22.mp4", "/chiropactor/giovani.mp4", "/chiropactor/Clip 5.mp4"],
     next: "06 — Flystack Drone Shows →",
   },
@@ -218,8 +218,7 @@ const PROJECTS: Project[] = [
       { n: "Event", l: "Identitate vizuală pentru festival" },
     ],
     bgVideo: "/drivinghero/POST 1 (1) (1).mp4",
-    stripVideos: ["/drivinghero/Post 1 (2).mp4", "/drivinghero/Post 1 (1) (2).mp4"],
-    stripRatio: "1 / 1", // these are 1280×1280 square social posts, not 16:9
+    strip: ["/drivinghero.webp", "/drivinghero2.webp"],
     next: "08 — Race Box →",
   },
   /* TODO: placeholder copy + borrowed Unsplash imagery — swap for real assets. */
@@ -245,15 +244,15 @@ const PROJECTS: Project[] = [
   },
 ];
 
-const PROMO = [
-  { img: "photo-1598488035139-bdbb2231ce04", alt: "Kiss FM", tag: "Radio · Entertainment", name: "KISS FM", desc: "Animații 3D și materiale motion graphics pentru campanii de promovare ale postului de radio lider național.", delay: "" },
-  { img: "photo-1629203851122-3726ecdf080e", alt: "Pepsi", tag: "FMCG · Beverage", name: "PEPSI", desc: "Producție animații 3D pentru activări de brand și campanii digitale. Visual storytelling de impact pentru audiențe de masă.", delay: "d1" },
+const PROMO: { img: string; video?: string; alt: string; tag: string; name: string; desc: string; delay: string }[] = [
+  { img: "photo-1598488035139-bdbb2231ce04", video: "/drivinghero/Post 1 (1) (2).mp4", alt: "Kiss FM", tag: "Radio · Entertainment", name: "KISS FM", desc: "Animații 3D și materiale motion graphics pentru campanii de promovare ale postului de radio lider național.", delay: "" },
+  { img: "photo-1629203851122-3726ecdf080e", video: "/drivinghero/Post 1 (2).mp4", alt: "Pepsi", tag: "FMCG · Beverage", name: "PEPSI", desc: "Producție animații 3D pentru activări de brand și campanii digitale. Visual storytelling de impact pentru audiențe de masă.", delay: "d1" },
   { img: "photo-1558618666-fcd25c85cd64", alt: "Michelin", tag: "Auto · Premium", name: "MICHELIN", desc: "Animații 3D pentru prezentarea produselor și comunicare premium. Motion graphics adaptate standardelor globale Michelin.", delay: "d2" },
 ];
 
-const GRAFICA = [
+const GRAFICA: { phLabel: string[]; img?: string; tag: string; name: string[]; desc: string; delay: string }[] = [
   { phLabel: ["Brand Book", "Maves Dental", "— upload imagine —"], tag: "Brand Book · Dental", name: ["MAVES DENTAL", "BRAND BOOK"], desc: "Identitate vizuală completă — paletă culori, tipografie, sistem grid, tone of voice, aplicații digital și print.", delay: "" },
-  { phLabel: ["Logo Design", "Vascony Atelier", "— upload imagine —"], tag: "Logo · Fashion Atelier", name: ["VASCONY", "ATELIER"], desc: "Design de logo pentru atelier de modă — identitate premium cu caracter artizanal și eleganță contemporană.", delay: "d1" },
+  { phLabel: ["Logo Design", "Vascony Atelier", "— upload imagine —"], img: "/vasconybrandbook.webp", tag: "Logo · Fashion Atelier", name: ["VASCONY", "ATELIER"], desc: "Design de logo pentru atelier de modă — identitate premium cu caracter artizanal și eleganță contemporană.", delay: "d1" },
 ];
 
 /* Each card shows real work: `video` when that's all the project shot, otherwise
@@ -790,8 +789,12 @@ export default function Portfolio() {
       <div className="promo-grid" style={{ margin: "0 64px", border: "1px solid var(--line)" }}>
         {PROMO.map((c) => (
           <div className={`promo-card r${c.delay ? ` ${c.delay}` : ""}`} key={c.name}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="promo-card-img" src={img(c.img, 800)} alt={c.alt} />
+            {c.video ? (
+              <LazyVideo base={c.video} className="promo-card-img" />
+            ) : (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img className="promo-card-img" src={img(c.img, 800)} alt={c.alt} />
+            )}
             <div className="promo-card-ov" />
             <div className="promo-card-content">
               <span className="promo-tag">{c.tag}</span>
@@ -800,10 +803,6 @@ export default function Portfolio() {
             </div>
           </div>
         ))}
-      </div>
-
-      <div className="promo-note">
-        <p>* Animațiile 3D și materialele de promovare vor fi vizualizate în această secțiune. Conținutul final va fi actualizat cu fișierele video exportate.</p>
       </div>
 
       {/* CAPITOL III — GRAFICĂ */}
@@ -818,9 +817,14 @@ export default function Portfolio() {
       <div className="grafica-grid" style={{ margin: "0 64px", border: "1px solid var(--line)" }}>
         {GRAFICA.map((g) => (
           <div className={`gc gc-tall r${g.delay ? ` ${g.delay}` : ""}`} key={g.tag}>
-            <div className="gc-placeholder">
-              <p className="gc-ph-label"><Lines items={g.phLabel} /></p>
-            </div>
+            {g.img ? (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img className="gc-img" src={g.img} alt={g.name.join(" ")} />
+            ) : (
+              <div className="gc-placeholder">
+                <p className="gc-ph-label"><Lines items={g.phLabel} /></p>
+              </div>
+            )}
             <div className="gc-ov" />
             <div className="gc-content">
               <span className="gc-tag">{g.tag}</span>

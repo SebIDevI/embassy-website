@@ -595,6 +595,13 @@
 .gallery-arrow {
   display: none;
 }
+/* a 2-photo gallery (chiro) fills the desktop row 2-up — big, one glance —
+   instead of two lonely 25% columns. Phone stays one-per-swipe (@media below). */
+@media (min-width: 901px) {
+  .gallery:has(.gi:nth-child(2):last-child) .gi {
+    flex-basis: 50%;
+  }
+}
 .si {
   overflow: hidden;
   position: relative;
