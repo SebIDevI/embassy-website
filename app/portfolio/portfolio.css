@@ -573,22 +573,25 @@
 }
 /* GOC portrait gallery — 4-up in one container on desktop, full brightness,
    no fullscreen modal. Becomes a swipe carousel on phone (see @media below). */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.gallery-wrap {
+  position: relative;
+}
+.gallery-viewport {
+  overflow: hidden;
   border-bottom: 1px solid var(--line);
 }
+.gallery {
+  display: flex; /* embla container */
+}
 .gi {
-  width: 100%;
+  flex: 0 0 25%; /* desktop: 4 slides fill the row (embla idle) */
+  min-width: 0;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   display: block;
   background: #000;
 }
-.gallery-wrap {
-  position: relative;
-}
-/* arrows are a phone-carousel affordance only; desktop is a static 4-up grid */
+/* arrows are a phone-carousel affordance only; desktop shows all 4 at once */
 .gallery-arrow {
   display: none;
 }
@@ -1593,21 +1596,9 @@
   .si {
     height: 50vw;
   }
-  /* GOC gallery → horizontal swipe carousel (native scroll-snap, no JS/deps) */
-  .gallery {
-    grid-template-columns: none;
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .gallery::-webkit-scrollbar {
-    display: none;
-  }
+  /* GOC/TDC gallery → embla carousel, one full slide per view on phone */
   .gi {
     flex: 0 0 100%;
-    scroll-snap-align: center;
   }
   /* carousel arrows — signal swipeability, tap to advance ~one card */
   .gallery-arrow {

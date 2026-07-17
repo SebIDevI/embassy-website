@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import CountUp from "./CountUp";
 import FillText from "./FillText";
 import SplitLines from "./SplitLines";
@@ -440,33 +441,33 @@ function ReelsHero({ videos, eager = false }: { videos: string[]; eager?: boolea
    Arrows are the carousel affordance — shown only on the phone layout (CSS),
    they scroll the native snap container by ~one card. */
 function Gallery({ items }: { items: string[] }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const scroll = (dir: number) => {
-    const el = ref.current;
-    if (el) el.scrollBy({ left: dir * el.clientWidth * 0.82, behavior: "smooth" });
-  };
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "center", containScroll: "trimSnaps" });
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
   return (
     <div className="gallery-wrap">
-      <div className="gallery" ref={ref}>
-        {items.map((s, i) => {
-          const [src, focal] = s.split("|");
-          return (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img
-              className="gi"
-              key={i}
-              src={img(src, 900)}
-              alt=""
-              loading="lazy"
-              style={focal ? { objectPosition: focal } : undefined}
-            />
-          );
-        })}
+      <div className="gallery-viewport" ref={emblaRef}>
+        <div className="gallery">
+          {items.map((s, i) => {
+            const [src, focal] = s.split("|");
+            return (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                className="gi"
+                key={i}
+                src={img(src, 900)}
+                alt=""
+                loading="lazy"
+                style={focal ? { objectPosition: focal } : undefined}
+              />
+            );
+          })}
+        </div>
       </div>
-      <button type="button" className="gallery-arrow ga-prev" onClick={() => scroll(-1)} aria-label="Imaginea anterioară">
+      <button type="button" className="gallery-arrow ga-prev" onClick={scrollPrev} aria-label="Imaginea anterioară">
         ‹
       </button>
-      <button type="button" className="gallery-arrow ga-next" onClick={() => scroll(1)} aria-label="Imaginea următoare">
+      <button type="button" className="gallery-arrow ga-next" onClick={scrollNext} aria-label="Imaginea următoare">
         ›
       </button>
     </div>
