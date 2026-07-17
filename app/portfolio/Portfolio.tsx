@@ -53,6 +53,7 @@ type Project = {
   bgVideo?: string;
   stripVideos?: string[]; // landscape (16:9) videos in the strip cells (1–2)
   stripRatio?: string; // aspect-ratio for stripVideos cells; default "16 / 9". Square social clips → "1 / 1"
+  stripStack?: boolean; // stack stripVideos vertically (one per row) instead of side by side
   reels?: string[]; // portrait (9:16) videos in the reels band
   heroReels?: string[]; // portrait reels shown as the hero background (GOC / TDC)
   youtube?: { id: string; poster: string }; // clip too big to self-host — links out
@@ -126,7 +127,7 @@ const PROJECTS: Project[] = [
       { n: "Ongoing", l: "Parteneriat activ" },
       { n: "Premium", l: "Poziționare de brand" },
     ],
-    strip: ["/truedental/image.webp|center 42%", "/truedental/image2.webp|center 62%"],
+    gallery: ["/truedental/image.webp", "/truedental/image2.webp", "/truedental/image3.webp", "/truedental/image4.webp"],
     heroReels: ["/truedental/1.mp4", "/truedental/2.mp4", "/truedental/4.mp4"],
     next: "04 — Osteopath Concept →",
   },
@@ -165,7 +166,7 @@ const PROJECTS: Project[] = [
       { label: "Proiect", value: "Embassy Original", text: "Un proiect inițiat și dezvoltat integral de Embassy Network, creat pentru a demonstra cum strategia, conținutul și consecvența pot transforma o nișă într-o comunitate activă și într-o sursă credibilă de informare.", tags: ["Owned Project", "Ongoing"] },
     ],
     results: [
-      { n: "48K+", l: "Urmăritori" },
+      { n: "+50K", l: "Urmăritori" },
       { n: "521", l: "Postări publicate" },
       { n: "100%", l: "Creștere organică" },
       { n: "1 hub", l: "De specialiști medicali" },
@@ -179,12 +180,12 @@ const PROJECTS: Project[] = [
     bg: "photo-1473968512647-3e447244af8f",
     cat: "Tech · Events · Entertainment",
     name: ["FLYSTACK DRONE SHOWS"],
-    headline: "Din cer, într-o prezență digitală completă",
-    desc: "Furnizor premium de spectacole cu drone. Am realizat website-ul, strategia și managementul social media, producția foto-video, aftermovie-uri, filmarea show-urilor și clipuri cu randări 3D.",
+    headline: "The show ends. The brand continues.",
+    desc: "Am construit un ecosistem care transformă fiecare spectacol într-un activ de brand. De la website și strategie până la conținut cinematic și randări 3D, fiecare livrabil a fost creat pentru ca impactul unui show să continue mult după stingerea luminilor.",
     details: [
-      { label: "Ce am făcut", value: "Full Digital", text: "Website, strategie și management social media, producție foto-video, aftermovie-uri, filmarea show-urilor cu drone și clipuri cu randări 3D.", tags: ["Web", "Social", "Video", "3D"] },
-      { label: "Rezultate", value: "Brand in Motion", text: "Am transformat spectacolele Flystack într-o prezență digitală completă, de la vizualizarea conceptelor în 3D până la conținutul final de eveniment.", tags: ["Digital Presence", "Multi-Format Content"] },
-      { label: "Status", value: "Completed", text: "Colaborare finalizată, cu livrabile dezvoltate pentru proiectele brandului din București și Londra.", tags: ["București & Londra", "Project Completed"] },
+      { label: "Rolul nostru", value: "Digital Ecosystem", text: "Am construit ecosistemul digital al Flystack Drone Shows, reunind website-ul, strategia de comunicare, producția foto-video, aftermovie-urile și conținutul 3D într-un sistem unitar, creat pentru un brand cu ambiții internaționale.", tags: ["Website", "Content", "Video", "3D"] },
+      { label: "Impact", value: "Brand in Motion", text: "Am transformat fiecare spectacol într-un activ de brand. De la randări 3D și conținut cinematic până la materiale pentru promovare și website, fiecare livrabil a fost gândit pentru ca impactul unui show să continue mult după stingerea luminilor.", tags: ["Digital Presence", "Multi-Format Content"] },
+      { label: "Status", value: "Project Completed", text: "Am livrat întregul ecosistem digital pentru proiectele Flystack din România și Marea Britanie, oferind brandului o bază solidă pentru comunicare și dezvoltare internațională.", tags: ["Romania & UK", "Completed"] },
     ],
     results: [
       { n: "1", l: "Website construit" },
@@ -192,8 +193,9 @@ const PROJECTS: Project[] = [
       { n: "360°", l: "Producție foto-video & 3D" },
       { n: "Global", l: "Prezență internațională" },
     ],
-    bgVideo: "/flystack/Aftermovie Neversea x Flystack (1).mp4",
-    stripVideos: ["/flystack/NOVA RENDER FINAL CUTS (1).mp4", "/flystack/Nova Render - No Sound.mp4"],
+    bgVideo: "/flystack/Aftermovie Casa Timis 17 Jan v4.mp4",
+    stripVideos: ["/flystack/Aftermovie Neversea x Flystack (1).mp4", "/flystack/NOVA RENDER FINAL CUTS (1).mp4"],
+    stripStack: true,
     next: "07 — Driving Hero →",
   },
   {
@@ -204,15 +206,15 @@ const PROJECTS: Project[] = [
     headline: "Primul festival auto de conducere defensivă din România",
     desc: "Bootcamp competitiv de conducere defensivă — parteneriat Romania Driving Experience & Politehnica București. Festival 3 zile la Motorpark, premiu 5.000€. Comunicare digitală completă a evenimentului.",
     details: [
-      { label: "Ce am făcut", value: "Event SM", text: "Comunicare lansare și festival, conținut pre/during/post eveniment, campanii awareness și înregistrări.", tags: ["Event Marketing", "Launch", "Community"] },
-      { label: "Rezultate", value: "Mii", text: "Mii de șoferi înscriși. Festival 3 zile, expo auto, drift taxi, karting. Acoperire media națională.", tags: ["@driving.hero", "Motorpark 2024"] },
-      { label: "Context", value: "2024", text: "7–9 Iunie 2024, Motorpark România. 16 finaliști, premiu 5.000€. Ediția 2025 în pregătire.", tags: ["Ediția I", "Național"] },
+      { label: "Rolul nostru", value: "Event Content", text: "Am dezvoltat identitatea vizuală a comunicării pentru Driving Hero prin conținut digital și materiale promoționale dedicate evenimentului. De la postările pentru social media până la vizualurile outdoor și materialele difuzate în parteneriate media, fiecare element a fost creat pentru a susține vizibilitatea festivalului.", tags: ["Digital Content", "Print", "Campaign Visuals"] },
+      { label: "Impact", value: "Visible before. During. After.", text: "Am creat un sistem vizual coerent pentru toate etapele campaniei, contribuind la promovarea evenimentului atât în mediul digital, cât și prin materiale offline dedicate.", tags: ["Digital Campaign", "Event Visuals"] },
+      { label: "Context", value: "National Event", text: "Driving Hero este un festival dedicat comunității auto, desfășurat la MotorPark România, care reunește competiții, demonstrații și experiențe dedicate pasionaților de motorsport.", tags: ["Edition I", "MotorPark România"] },
     ],
     results: [
-      { n: "3", l: "Zile festival" },
-      { n: "16", l: "Finaliști competiție" },
-      { n: "5K€", l: "Premiu mare" },
-      { n: "25K", l: "Audiență RDE" },
+      { n: "Social Media", l: "Comunicare digitală" },
+      { n: "Print", l: "Materiale promoționale" },
+      { n: "Outdoor", l: "Campanie Metro & locații partenere" },
+      { n: "Event", l: "Identitate vizuală pentru festival" },
     ],
     bgVideo: "/drivinghero/POST 1 (1) (1).mp4",
     stripVideos: ["/drivinghero/Post 1 (2).mp4", "/drivinghero/Post 1 (1) (2).mp4"],
@@ -257,11 +259,13 @@ const GRAFICA = [
    a still. The clips are purpose-built encodes (public/webcards) — the sources
    are 16:9, 9:16 and 1:1, and none of them fit a 16:10 browser mockup; each is
    letterboxed into frame over a blurred fill of itself. `img` is the fallback. */
-const WEBSITES = [
+const WEBSITES: { url: string; href: string; img: string; video: string; alt: string; tag: string; name: string; desc: string; delay: string; pos?: string }[] = [
   { url: "flystackdroneshows.com", href: "https://flystackdroneshows.com", img: "photo-1506947411487-a56738267384", video: "/webcards/flystack.mp4", alt: "Flystack website", tag: "Tech · Entertainment", name: "FLYSTACK DRONE SHOWS", desc: "Website complet pentru furnizorul premium global de spectacole cu drone. Design cinematic, animații, secțiuni de proiecte și contact.", delay: "" },
   { url: "osteopathconcept.com", href: "https://osteopathconcept.com", img: "photo-1576091160550-2173dba999ef", video: "/webcards/osteopath.mp4", alt: "Osteopath website", tag: "Medical · Multi-locație", name: "OSTEOPATH CONCEPT", desc: "Website pentru rețea de clinici de osteopatie și chiropractică — 4 locații, programări online, prezentare servicii și echipă.", delay: "d1" },
-  { url: "chiropractor.ro", href: "https://chiropractor.ro", img: "/webcards/chiropractor.webp", video: "", alt: "Chiropractor website", tag: "Medical · Community", name: "CHIROPRACTOR.RO", desc: "Platformă de comunitate pentru specialiști și pacienți în chiropractică. Creat și operat de Embassy Network.", delay: "" },
+  { url: "mavesdental.ro", href: "https://mavesdental.ro", img: "/webcards/maves-poster.webp", video: "/webcards/maves.mp4", alt: "Maves Dental website", tag: "Medical · Dental", name: "MAVES DENTAL", desc: "Website premium pentru clinica stomatologică Maves Dental — identitate de brand, prezentare servicii și experiență de programare clară.", delay: "" },
+  { url: "virgilmanescu.ro", href: "https://virgilmanescu.ro", img: "/webcards/virgil.webp", video: "", alt: "Virgil Mănescu website", tag: "Personal Brand", name: "VIRGIL MĂNESCU", desc: "Website de prezentare personal — identitate digitală și poziționare online pentru brandul personal.", delay: "d1" },
   { url: "drivinghero.ro", href: "https://drivinghero.ro", img: "photo-1568772585407-9361f9bf3a87", video: "/webcards/drivinghero.mp4", alt: "Driving Hero website", tag: "Auto · Festival", name: "DRIVING HERO", desc: "Website festival și competiție — inscrieri, program, bilete. Design auto dinamic adaptat publicului tânăr și pasionat.", delay: "d1" },
+  { url: "vasconylatelier.com", href: "https://www.vasconylatelier.com/", img: "/webcards/vascony.webp", video: "", alt: "Vascony l'Atelier website", tag: "Interior · Design", name: "VASCONY L'ATELIER", desc: "Website de prezentare pentru atelier de design interior și mobilier premium — galerie de proiecte și identitate rafinată.", delay: "", pos: "center" },
 ];
 
 /* "03 / 08" — derived from position so adding a project can't strand a stale count */
@@ -586,6 +590,8 @@ export default function Portfolio() {
       {/* HERO */}
       <section id="hero">
         <div id="hero-bg" />
+        {/* phone-only 2nd hero image; CSS crossfades it over #hero-bg every 10s */}
+        <div id="hero-bg-2" aria-hidden />
         <div className="hero-c r">
           <p className="hero-eyebrow">Selected Works · 2023 — 2026</p>
           <h1 className="h1">OUR<br /><FillText className="out">WORK</FillText><br />SPEAKS</h1>
@@ -606,8 +612,8 @@ export default function Portfolio() {
       <section className="intro">
         <div className="sl r">Portofoliu</div>
         <p className="intro-t r d1">
-          <SplitWords className="dim" text="FIECARE PROIECT E O OPORTUNITATE." /><br />
-          SĂ CONSTRUIM.<br />
+          <SplitWords className="dim" text="FIECARE PROIECT E O OPORTUNITATE" /><br />
+          SĂ CONSTRUIM<br />
           CEVA CARE RĂMÂNE.
         </p>
       </section>
@@ -691,7 +697,7 @@ export default function Portfolio() {
           {p.stripVideos ? (
             <div
               className="strip strip-video"
-              style={{ gridTemplateColumns: `repeat(${p.stripVideos.length}, 1fr)` }}
+              style={{ gridTemplateColumns: p.stripStack ? "1fr" : `repeat(${p.stripVideos.length}, 1fr)` }}
             >
               {p.stripVideos.map((v, i) => (
                 <button
@@ -702,7 +708,7 @@ export default function Portfolio() {
                   onClick={() => setModalSrc(v)}
                   aria-label="Redă videoclipul pe tot ecranul"
                 >
-                  <LazyVideo base={v} />
+                  <LazyVideo base={v} loop />
                   <span className="si-play" aria-hidden>
                     ⤢
                   </span>
@@ -850,7 +856,7 @@ export default function Portfolio() {
                   <LazyVideo base={w.video} />
                 ) : (
                   /* eslint-disable-next-line @next/next/no-img-element */
-                  <img src={img(w.img, 900)} alt={w.alt} />
+                  <img src={img(w.img, 900)} alt={w.alt} style={w.pos ? { objectPosition: w.pos } : undefined} />
                 )}
               </div>
             </div>

@@ -85,6 +85,10 @@
 .embassy-portfolio #hero:hover #hero-bg {
   transform: scale(1);
 }
+/* 2nd hero layer is phone-only (shown + animated in the mobile @media) */
+.embassy-portfolio #hero-bg-2 {
+  display: none;
+}
 .embassy-portfolio #hero::after {
   content: "";
   position: absolute;
@@ -341,6 +345,11 @@
 @media (prefers-reduced-motion: reduce) {
   .mq-t {
     animation: none;
+  }
+  /* no auto-crossfade — hold on the first hero image (wins over mobile @media) */
+  .embassy-portfolio #hero-bg-2 {
+    animation: none !important;
+    opacity: 0 !important;
   }
   .fx-fill {
     --fill: 100%;
@@ -608,12 +617,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.65) contrast(1.1);
+  filter: brightness(0.75) contrast(1.08);
   transition: transform 8s ease, filter 0.4s;
 }
 .si:hover video {
   transform: scale(1.05);
-  filter: brightness(0.8);
+  filter: brightness(0.92);
 }
 .si-video,
 .si-img {
@@ -812,7 +821,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: brightness(0.92) contrast(1.03);
+  filter: brightness(1) contrast(1.02);
   transition: filter 0.4s;
 }
 .reel-card:hover video {
@@ -853,16 +862,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.42) contrast(1.1);
+  filter: brightness(0.52) contrast(1.08);
 }
 /* Maves bg video brighter — text stays legible via .ov-b/.ov-l overlays.
    Scoped so osteopath/flystack/drivinghero keep 0.42. */
 #maves .ps-bg-video {
-  filter: brightness(0.72) contrast(1.05);
+  filter: brightness(0.82) contrast(1.04);
 }
 /* Osteopath bg video brighter — text legible via .ov-b/.ov-l overlays. */
 #osteopath .ps-bg-video {
-  filter: brightness(0.72) contrast(1.05);
+  filter: brightness(0.82) contrast(1.04);
 }
 
 /* fullscreen video modal */
@@ -953,7 +962,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: brightness(0.6) contrast(1.08);
+  filter: brightness(0.72) contrast(1.06);
 }
 /* GOC + TDC + chiro reels a touch brighter than the shared 0.6 default */
 #goc .goc-reel,
@@ -962,7 +971,7 @@
 #tdc .goc-reels-mobile video,
 #chiropractor .goc-reel,
 #chiropractor .goc-reels-mobile video {
-  filter: brightness(0.86) contrast(1.05);
+  filter: brightness(0.96) contrast(1.04);
 }
 
 /* CONNECTOR */
@@ -1597,7 +1606,7 @@
     display: none;
   }
   .gi {
-    flex: 0 0 82%;
+    flex: 0 0 100%;
     scroll-snap-align: center;
   }
   /* carousel arrows — signal swipeability, tap to advance ~one card */
@@ -1645,10 +1654,34 @@
      cuts the edge people off. Swap in a portrait-baked variant (full group over
      a blurred self-fill of itself) so it stays full-bleed AND everyone shows. */
   .embassy-portfolio #hero-bg {
-    background-image: url("/hero-phone.webp");
+    background-image: url("/hero-phone-first.webp");
     background-size: cover;
     background-position: center;
     transform: none;
+  }
+  /* crossfade to the 2nd image every 10s, starting on the first */
+  .embassy-portfolio #hero-bg-2 {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: url("/hero-phone-second.webp") center/cover;
+    filter: brightness(0.9) contrast(1);
+    transform: none;
+    opacity: 0;
+    animation: heroPhoneSwap 20s ease-in-out infinite;
+  }
+  @keyframes heroPhoneSwap {
+    0%,
+    42% {
+      opacity: 0;
+    }
+    50%,
+    92% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }
   .hero-stats {
     flex-direction: column;
@@ -1663,6 +1696,7 @@
   }
   .section-title {
     flex-direction: column;
+    align-items: flex-start;
     gap: 16px;
     padding-top: 64px;
     padding-bottom: 40px;
