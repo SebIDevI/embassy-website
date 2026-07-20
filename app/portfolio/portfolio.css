@@ -2078,60 +2078,24 @@ video.promo-card-img {
     padding: 44px 24px;
     gap: 18px;
   }
-  /* The phone shot is 2:3 — `cover` on a ~0.46 viewport would crop ~15% off
-     each side and cut the outer two people's arms. Fit it to the width instead
-     so the whole group survives, pin it to the top, and let the black page
-     colour take the strip underneath; #hero::after already ramps the lower
-     image to near-black, so the photo dissolves into it rather than ending on
-     an edge. .hero-c then sits in that strip (see below). */
+  /* Original full-bleed centred hero. The shot is baked to roughly the phone
+     ratio (studio sweep extended upward), so `cover` barely crops the sides
+     and the group survives — and the group sits low enough that the centred
+     copy lands on the sweep above their faces. */
   .embassy-portfolio #hero-bg {
-    background: #080808 url("/herophone.webp") center top / 100% auto no-repeat;
+    background-image: url("/herophone.webp");
+    background-size: cover;
+    background-position: center;
     transform: none;
+    /* the studio sweep fills the top half; at 0.9 it reads as flat washed grey */
+    filter: brightness(0.78) contrast(1.08);
   }
   /* single phone hero now — no crossfade partner */
   .embassy-portfolio #hero-bg-2 {
     display: none;
   }
-  /* Photo owns the top ~53%, copy the rest — so the copy has to fit in ~390px.
-     Stacking the stats blows straight past that and pushes the h1 back onto
-     their faces, so they stay a row here and the copy tightens up. */
-  .embassy-portfolio #hero {
-    justify-content: flex-end;
-  }
-  /* The copy block carries its own scrim rather than relying on the photo
-     ending above it: the copy's height moves with the viewport (the sub wraps
-     to 3 lines at 360px, stat labels wrap too), so any fixed split eventually
-     puts the eyebrow back on the photo. This way it reads on black wherever
-     the seam lands. */
-  .embassy-portfolio .hero-c {
-    align-self: stretch;
-    padding-bottom: 44px;
-    padding-top: 76px;
-    /* absolute stops, not %: the block's height changes with wrapping, and a
-       percentage ramp puts the eyebrow back in the transparent zone */
-    background: linear-gradient(to bottom, transparent 0, rgba(8, 8, 8, 0.72) 28px, rgba(8, 8, 8, 0.97) 60px, #080808 84px);
-  }
-  /* the cue would sit on the stats border in the space that's left, and the
-     photo/copy split already reads as "there's more below" */
-  .embassy-portfolio .hero-scroll {
-    display: none;
-  }
-  .embassy-portfolio .hero-eyebrow {
-    margin-bottom: 16px;
-  }
-  .embassy-portfolio .h1 {
-    font-size: 48px;
-  }
-  .embassy-portfolio .hero-sub {
-    margin-top: 16px;
-    line-height: 1.6;
-    padding: 0 24px;
-  }
   .hero-stats {
-    margin-top: 26px;
-  }
-  .stat {
-    padding: 14px 18px;
+    flex-direction: column;
   }
   .stat {
     border-right: none;
