@@ -409,6 +409,11 @@
 .ps:hover .ps-bg {
   transform: scale(1.04);
 }
+/* Driving Hero bg is the outdoor campaign itself — the poster has to read.
+   Text sits left/bottom where .ov-l/.ov-b already carry the contrast. */
+#drivinghero .ps-bg {
+  filter: brightness(0.65) contrast(1.05);
+}
 .ov-b {
   position: absolute;
   inset: 0;
@@ -875,7 +880,7 @@
   filter: brightness(0.72) contrast(1.05);
 }
 /* Maves bg video brighter — text stays legible via .ov-b/.ov-l overlays.
-   Scoped so osteopath/flystack/drivinghero keep 0.42. */
+   Scoped so the other bg videos keep 0.72. */
 #maves .ps-bg-video {
   filter: brightness(1) contrast(1.02);
 }
@@ -978,13 +983,18 @@
   display: block;
   filter: brightness(0.82) contrast(1.05);
 }
-/* GOC + TDC + chiro reels a touch brighter than the shared 0.6 default */
+/* GOC + TDC + chiro reels a touch brighter than the shared 0.82 default.
+   RaceBox joins them — racebox1 is a night shot with nothing to spare. */
 #goc .goc-reel,
 #goc .goc-reels-mobile video,
 #tdc .goc-reel,
 #tdc .goc-reels-mobile video,
 #chiropractor .goc-reel,
-#chiropractor .goc-reels-mobile video {
+#chiropractor .goc-reels-mobile video,
+#racebox .goc-reel,
+#racebox .goc-reels-mobile video,
+#virgil .goc-reel,
+#virgil .goc-reels-mobile video {
   filter: brightness(1) contrast(1.03);
 }
 
@@ -1035,7 +1045,11 @@
   inset: 0;
   background-size: cover;
   background-position: center;
-  filter: brightness(0.22) contrast(1.15);
+  /* 0.22 was tuned for the old dark stock office shot; the team photo is a
+     white studio backdrop, which that value crushed to near-black. 0.5 under
+     the .qo scrim lands the backdrop around 20% luminance — the photo reads,
+     and the white quote still clears 4:1 against it. */
+  filter: brightness(0.5) contrast(1.15);
 }
 .qo {
   position: absolute;
@@ -1062,6 +1076,7 @@
   letter-spacing: 0.02em;
   line-height: 1.15;
   color: var(--white);
+  white-space: pre-line; /* honours the \n in the quote; still wraps normally */
 }
 .qa {
   margin-top: 24px;
@@ -1090,15 +1105,15 @@
   background: var(--black);
   position: relative;
   overflow: hidden;
-  aspect-ratio: 4/5;
+  /* the 3D clips are square (1800x1800) — a 4/5 frame cropped their sides off */
+  aspect-ratio: 1/1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   transition: background 0.3s;
 }
 .promo-card:hover .promo-card-img {
-  transform: scale(1.06);
-  filter: brightness(0.55);
+  filter: brightness(1) contrast(1.1);
 }
 .promo-card-img {
   position: absolute;
@@ -1106,8 +1121,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.4) contrast(1.1);
-  transition: transform 8s ease, filter 0.4s;
+  /* was 0.4 — the renders were too dark to read. The bottom gradient in
+     .promo-card-ov carries the text contrast, so the media can stay bright. */
+  filter: brightness(0.85) contrast(1.1);
+  transition: filter 0.4s;
+}
+/* Never crop a 3D render: contain letterboxes anything that isn't square
+   instead of slicing it. (Stills stay `cover` — they're stock, and bars
+   around a photo look worse than a crop.) */
+video.promo-card-img {
+  object-fit: contain;
 }
 .promo-card-ov {
   position: absolute;
@@ -1181,8 +1204,6 @@
 
 /* GRAFICA */
 .grafica-grid {
-  max-width: 1100px;
-  margin: 0 auto 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1px;
@@ -1263,6 +1284,342 @@
   justify-content: center;
   flex-direction: column;
   gap: 12px;
+}
+
+/* ── EDITORIAL DOCUMENT MOCK-UPS ──────────────────────────────────────────
+   Four real PDF pages fanned in a shallow 3D stack. The card is a <button>,
+   so reset the UA styling first. */
+.gc-doc {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+/* 4/3 rather than the 3/4 of the photo cards: these are landscape print shots,
+   and the closer the card sits to the mock-up's native 3:2 the less `cover`
+   has to crop off the sides. */
+.gc-doc {
+  aspect-ratio: 4 / 3;
+}
+/* Tint sits on the stage, not the card: it is only a placeholder for the shot
+   while it decodes. On the card it would also paint behind the copy, which on
+   mobile flows below the image — white text on #dbd3ce. */
+.gc-light .doc-stage {
+  background: #dbd3ce;
+}
+.gc-dark .doc-stage {
+  background: #202125;
+}
+.doc-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transform: scale(1);
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+/* the discreet 2.5% zoom */
+.gc-doc:hover .doc-stage,
+.gc-doc:focus-visible .doc-stage {
+  transform: scale(1.025);
+}
+.doc-mock {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Scrim kept to the copy band only — enough to carry white text over the light
+   Maves paper, but shallow, so the shot stays the subject. Hover lifts it a
+   touch rather than filtering the image. */
+.gc-doc .gc-ov {
+  background: linear-gradient(to top, rgba(8, 8, 8, 0.95) 0%, rgba(8, 8, 8, 0.9) 22%, rgba(8, 8, 8, 0.62) 38%, rgba(8, 8, 8, 0.25) 52%, transparent 68%);
+  transition: background 0.4s;
+}
+.gc-doc:hover .gc-ov,
+.gc-doc:focus-visible .gc-ov {
+  background: linear-gradient(to top, rgba(8, 8, 8, 0.92) 0%, rgba(8, 8, 8, 0.84) 22%, rgba(8, 8, 8, 0.52) 38%, rgba(8, 8, 8, 0.16) 52%, transparent 70%);
+}
+/* the card is wide now — let the copy stay a readable column instead of
+   stretching a single line across the whole mock-up */
+.gc-doc .gc-content {
+  max-width: 62%;
+}
+.gc-meta {
+  margin-top: 12px;
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(242, 240, 234, 0.32);
+}
+.gc-cta {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--white);
+  border-bottom: 1px solid rgba(242, 240, 234, 0.3);
+  padding-bottom: 4px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s, transform 0.35s;
+}
+.gc-doc:hover .gc-cta,
+.gc-doc:focus-visible .gc-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* circular VIEW cursor — follows the pointer via --cx/--cy set in JS.
+   Pointer-device only: touch has no hover, and coarse pointers never move it. */
+.gc-cursor {
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .gc-doc {
+    cursor: none;
+  }
+  .gc-cursor {
+    display: flex;
+    position: absolute;
+    left: var(--cx, 50%);
+    top: var(--cy, 50%);
+    z-index: 5;
+    width: 76px;
+    height: 76px;
+    margin: -38px 0 0 -38px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(242, 240, 234, 0.5);
+    border-radius: 50%;
+    background: rgba(8, 8, 8, 0.3);
+    backdrop-filter: blur(4px);
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--white);
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  .gc-doc:hover .gc-cursor {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* On a phone the 3/4 card is far too short for the copy block, so the
+   absolutely-placed .gc-content lands on top of the sheets. Let the doc card
+   flow instead: stage on top at a fixed ratio, copy underneath, height auto —
+   no overlap regardless of how long the description runs. */
+@media (max-width: 900px) {
+  .gc-doc {
+    aspect-ratio: auto;
+  }
+  .gc-doc .doc-stage {
+    position: relative;
+    inset: auto;
+  }
+  .gc-doc .doc-mock {
+    height: auto;
+    display: block;
+  }
+  .gc-doc .gc-content {
+    position: relative;
+    max-width: none;
+    padding-top: 4px;
+  }
+  /* no image behind the copy once it flows below, so drop the scrim */
+  .gc-doc .gc-ov {
+    display: none;
+  }
+}
+/* the CTA is hover-revealed, and a touch device never hovers — pin it visible
+   there or the card loses its only affordance that it opens something */
+@media (hover: none) {
+  .gc-cta {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .doc-stage,
+  .gc-cta,
+  .gc-cursor {
+    transition: none;
+  }
+  .gc-doc:hover .doc-stage {
+    transform: none;
+  }
+}
+
+/* ── FULLSCREEN DOCUMENT VIEWER ───────────────────────────────────────── */
+/* NB: `.dv` is already taken by the detail-card value (line ~505) — hence the
+   docv- prefix here. Reusing it turned all 21 detail values into fullscreen
+   overlays. */
+.docv {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(8, 8, 8, 0.96);
+  backdrop-filter: blur(12px);
+  animation: vmodal-in 0.25s ease;
+}
+.docv-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 22px;
+  background: linear-gradient(to bottom, rgba(8, 8, 8, 0.9), transparent);
+}
+.docv-title {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.docv-count {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.docv-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.docv-dl {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(242, 240, 234, 0.7);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  transition: color 0.25s, border-color 0.25s;
+}
+.docv-dl:hover {
+  color: var(--white);
+  border-color: rgba(242, 240, 234, 0.35);
+}
+.docv-close {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  color: var(--white);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.25s;
+}
+.docv-close:hover {
+  opacity: 1;
+}
+/* one page per snap stop — the same gesture is a scroll on desktop and a
+   swipe on touch, so no separate mobile carousel is needed */
+.docv-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.docv-page {
+  height: 100%;
+  scroll-snap-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 68px 60px 44px;
+}
+.docv-page img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: #0d0d0d;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+}
+.docv-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  border: 1px solid var(--line);
+  background: rgba(8, 8, 8, 0.5);
+  backdrop-filter: blur(6px);
+  color: var(--white);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity 0.25s, border-color 0.25s;
+}
+.docv-nav:hover:not(:disabled) {
+  opacity: 1;
+  border-color: rgba(242, 240, 234, 0.35);
+}
+.docv-nav:disabled {
+  opacity: 0.16;
+  cursor: default;
+}
+.docv-prev { left: 14px; }
+.docv-next { right: 14px; }
+
+@media (max-width: 900px) {
+  /* landscape pages in a portrait viewport — give them the full width back */
+  .docv-page {
+    padding: 56px 10px 64px;
+  }
+  .docv-bar {
+    gap: 12px;
+    padding: 12px 14px;
+  }
+  .docv-title {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    /* the full document name wraps to two lines and shoves the actions down */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 42vw;
+  }
+  .docv-count {
+    white-space: nowrap;
+  }
+  .docv-actions {
+    gap: 10px;
+  }
+  .docv-dl {
+    padding: 7px 10px;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+  }
+  /* arrows sat on top of the page; park them at the bottom instead */
+  .docv-nav {
+    top: auto;
+    bottom: 14px;
+    margin-top: 0;
+    width: 40px;
+    height: 40px;
+  }
+  .docv-prev { left: calc(50% - 48px); }
+  .docv-next { right: calc(50% - 48px); }
 }
 .gc-ph-label {
   font-size: 9px;
@@ -1415,8 +1772,11 @@
 .cta-bg {
   position: absolute;
   inset: 0;
-  background: url("https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=2000&q=80") center/cover;
-  filter: brightness(0.28) contrast(1.1);
+  background: url("/cta.webp") center/cover;
+  /* 0.28 suited the dark cityscape this replaced. The team shot is a white
+     studio backdrop — same value here would blow the scrim out and drown the
+     small copy below, so it drops to 0.2. */
+  filter: brightness(0.2) contrast(1.1);
 }
 .cta-ov {
   position: absolute;
@@ -1429,11 +1789,24 @@
   text-align: center;
   padding: 0 24px;
 }
+/* --muted (0.42 alpha) leant on the near-black cityscape for its contrast.
+   Over the lighter team photo it fell to ~2.9:1, so the CTA's small copy gets
+   its own alpha — 9px and 14px text needs 4.5:1, and this clears it. */
+.cta-eye,
+.cta-e {
+  color: rgba(242, 240, 234, 0.62);
+}
+/* email + phone sit on one row, wrapping to two on narrow screens */
+.cta-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+}
 .cta-eye {
   font-size: 9px;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--muted);
   margin-bottom: 24px;
 }
 .cta-t {
@@ -1452,7 +1825,7 @@
   display: inline-block;
   font-size: 14px;
   letter-spacing: 0.1em;
-  color: var(--muted);
+  /* colour comes from the shared .cta-eye/.cta-e rule above */
   text-decoration: none;
   border-bottom: 1px solid var(--line);
   padding-bottom: 4px;

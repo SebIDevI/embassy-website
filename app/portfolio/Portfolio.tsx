@@ -9,6 +9,7 @@ import SplitLines from "./SplitLines";
 import SplitWords from "./SplitWords";
 import DetailCards from "./DetailCards";
 import Typewriter from "./Typewriter";
+import DocViewer, { type Doc } from "./DocViewer";
 import { useInViewport } from "./use-in-view";
 
 /* ── data ───────────────────────────────────────────────────────────────
@@ -30,7 +31,7 @@ const HERO_STATS = [
 const MARQUEE = [
   "Girls Own Cosmetics", "Maves Dental", "True Dental Care", "Flystack Drone Shows",
   "Driving Hero", "Osteopath Concept", "Chiropractor.ro", "Kiss FM", "Pepsi",
-  "Michelin", "Vascony Atelier",
+  "Michelin", "Vascony Atelier", "RaceBox", "Virgil Mănescu",
 ];
 
 type Detail = { label: string; value: string; text: string; tags: string[] };
@@ -39,10 +40,12 @@ type Project = {
   bg: string;
   cat: string;
   name: string[];
-  headline: string;
+  /* headline/details/results are all optional — a scene can be just the name
+     and a line of copy over its reels (RaceBox, Virgil Mănescu). */
+  headline?: string;
   desc: string;
-  details: [Detail, Detail, Detail];
-  results: { n: string; l: string }[];
+  details?: [Detail, Detail, Detail];
+  results?: { n: string; l: string }[];
   /* "<unsplash id | local path>" + optional "|<object-position>". The strip cell
      is landscape, so a portrait shot keeps only a ~46%-tall band of its height —
      the focal hint aims that band at the subject instead of the frame centre.
@@ -201,7 +204,7 @@ const PROJECTS: Project[] = [
   },
   {
     id: "drivinghero",
-    bg: "photo-1568772585407-9361f9bf3a87",
+    bg: "/drivinghero/drivinghero.webp",
     cat: "Auto · Events · Festival",
     name: ["DRIVING", "HERO"],
     headline: "Primul festival auto de conducere defensivă din România",
@@ -217,55 +220,80 @@ const PROJECTS: Project[] = [
       { n: "Outdoor", l: "Campanie Metro & locații partenere" },
       { n: "Event", l: "Identitate vizuală pentru festival" },
     ],
-    bgVideo: "/drivinghero/POST 1 (1) (1).mp4",
     strip: ["/drivinghero.webp", "/drivinghero2.webp"],
-    next: "08 — Race Box →",
+    next: "08 — RaceBox →",
   },
-  /* TODO: placeholder copy + borrowed Unsplash imagery — swap for real assets. */
   {
     id: "racebox",
-    bg: "photo-1568772585407-9361f9bf3a87",
-    cat: "Auto · Tech · Motorsport",
-    name: ["RACE", "BOX"],
-    headline: "Lorem ipsum dolor sit amet, consectetur.",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    details: [
-      { label: "Ce am făcut", value: "Lorem Ipsum", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua veniam quis.", tags: ["Lorem", "Ipsum", "Dolor"] },
-      { label: "Rezultate", value: "000K Views", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", tags: ["3 Months", "+000 Followers"] },
-      { label: "Status", value: "Lorem", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.", tags: ["Ongoing", "Lorem Ipsum"] },
-    ],
-    results: [
-      { n: "000K", l: "Lorem ipsum dolor" },
-      { n: "+000", l: "Consectetur adipiscing" },
-      { n: "00", l: "Sed do eiusmod" },
-      { n: "100%", l: "Tempor incididunt" },
-    ],
-    strip: ["photo-1552519507-da3b142c6e3d", "photo-1492144534655-ae79c964c9d7"],
+    bg: "/racebox/racebox2-poster.webp", // unused while heroReels render, kept as the fallback
+    cat: "Auto · Tuning · Supercars",
+    name: ["RACEBOX"],
+    headline: "Aceeași obsesie pentru detalii. De la mașină la comunicare.",
+    desc: "RaceBox dezvoltă unele dintre cele mai spectaculoase proiecte de tuning pentru supercaruri din România. Noi am transpus aceeași obsesie pentru detalii într-o comunicare vizuală construită pentru pasionații de performanță, exclusivitate și inginerie auto.",
+    heroReels: ["/racebox/racebox1.mp4", "/racebox/racebox2.mp4"],
+    next: "09 — Academia Virgil Mănescu →",
+  },
+  {
+    id: "virgil",
+    bg: "/virgil/virgil1-poster.webp", // unused while heroReels render, kept as the fallback
+    cat: "Protocol · Ospitalitate · Educație",
+    name: ["ACADEMIA DE PROTOCOL", "ȘI OSPITALITATE V.M."],
+    desc: "Într-o industrie în care prima impresie contează, comunicarea trebuie să inspire aceeași încredere ca experiența oferită.",
+    heroReels: ["/virgil/virgil1.mp4", "/virgil/virgil2.mp4"],
   },
 ];
 
 const PROMO: { img: string; video?: string; alt: string; tag: string; name: string; desc: string; delay: string }[] = [
   { img: "photo-1598488035139-bdbb2231ce04", video: "/drivinghero/Post 1 (1) (2).mp4", alt: "Kiss FM", tag: "Radio · Entertainment", name: "KISS FM", desc: "Animații 3D și materiale motion graphics pentru campanii de promovare ale postului de radio lider național.", delay: "" },
   { img: "photo-1629203851122-3726ecdf080e", video: "/drivinghero/Post 1 (2).mp4", alt: "Pepsi", tag: "FMCG · Beverage", name: "PEPSI", desc: "Producție animații 3D pentru activări de brand și campanii digitale. Visual storytelling de impact pentru audiențe de masă.", delay: "d1" },
-  { img: "photo-1558618666-fcd25c85cd64", alt: "Michelin", tag: "Auto · Premium", name: "MICHELIN", desc: "Animații 3D pentru prezentarea produselor și comunicare premium. Motion graphics adaptate standardelor globale Michelin.", delay: "d2" },
+  { img: "/shell-poster.webp", video: "/shell.mp4", alt: "Shell", tag: "Energy · Lubricants", name: "SHELL", desc: "Animații 3D pentru prezentarea produselor și comunicare premium. Motion graphics adaptate standardelor globale Shell.", delay: "d2" },
 ];
 
-const GRAFICA: { phLabel: string[]; img?: string; tag: string; name: string[]; desc: string; delay: string }[] = [
-  { phLabel: ["Brand Book", "Maves Dental", "— upload imagine —"], tag: "Brand Book · Dental", name: ["MAVES DENTAL", "BRAND BOOK"], desc: "Identitate vizuală completă — paletă culori, tipografie, sistem grid, tone of voice, aplicații digital și print.", delay: "" },
-  { phLabel: ["Logo Design", "Vascony Atelier", "— upload imagine —"], img: "/vasconybrandbook.webp", tag: "Logo · Fashion Atelier", name: ["VASCONY", "ATELIER"], desc: "Design de logo pentru atelier de modă — identitate premium cu caracter artizanal și eleganță contemporană.", delay: "d1" },
+/* Editorial mock-ups: a photographed print mock-up per document (3:2). `theme`
+   only picks the card tint that the shot's own backdrop fades into. */
+const GRAFICA: {
+  doc: Doc;
+  mock: string;
+  theme: "light" | "dark";
+  tag: string;
+  name: string[];
+  desc: string;
+  meta: string;
+  cta: string;
+  delay: string;
+}[] = [
+  {
+    doc: { id: "maves", dir: "/docs/maves", pages: 22, pdf: "/maves-dental-brand-guidelines.pdf", title: "Maves Dental — Brand Guidelines" },
+    mock: "/mavesbrand.webp",
+    theme: "light",
+    tag: "Brand Book · Medical",
+    name: ["MAVES DENTAL", "BRAND GUIDELINES"],
+    desc: "Identitate vizuală dezvoltată de la zero, de la strategie și construcția logo-ului până la paletă cromatică, tipografie și aplicațiile brandului.",
+    meta: "Brand Strategy · Visual Identity · Guidelines",
+    cta: "Vezi brand book-ul",
+    delay: "",
+  },
+  {
+    doc: { id: "flystack", dir: "/docs/flystack", pages: 37, pdf: "/flystack-product-brochure.pdf", title: "Flystack — Product Brochure" },
+    mock: "/flystackbook.webp",
+    theme: "dark",
+    tag: "Editorial Design · Technology",
+    name: ["FLYSTACK", "PRODUCT BROCHURE"],
+    desc: "Un document editorial construit pentru a transforma tehnologia, produsele și specificațiile Flystack într-o prezentare clară, coerentă și convingătoare.",
+    meta: "Editorial Design · Product Presentation · B2B Communication",
+    cta: "Vezi broșura",
+    delay: "d1",
+  },
 ];
 
-/* Each card shows real work: `video` when that's all the project shot, otherwise
-   a still. The clips are purpose-built encodes (public/webcards) — the sources
-   are 16:9, 9:16 and 1:1, and none of them fit a 16:10 browser mockup; each is
-   letterboxed into frame over a blurred fill of itself. `img` is the fallback. */
-const WEBSITES: { url: string; href: string; img: string; video: string; alt: string; tag: string; name: string; desc: string; delay: string; pos?: string }[] = [
-  { url: "flystackdroneshows.com", href: "https://flystackdroneshows.com", img: "photo-1506947411487-a56738267384", video: "/webcards/flystack.mp4", alt: "Flystack website", tag: "Tech · Entertainment", name: "FLYSTACK DRONE SHOWS", desc: "Website complet pentru furnizorul premium global de spectacole cu drone. Design cinematic, animații, secțiuni de proiecte și contact.", delay: "" },
-  { url: "osteopathconcept.com", href: "https://osteopathconcept.com", img: "photo-1576091160550-2173dba999ef", video: "/webcards/osteopath.mp4", alt: "Osteopath website", tag: "Medical · Multi-locație", name: "OSTEOPATH CONCEPT", desc: "Website pentru rețea de clinici de osteopatie și chiropractică — 4 locații, programări online, prezentare servicii și echipă.", delay: "d1" },
-  { url: "mavesdental.ro", href: "https://mavesdental.ro", img: "/webcards/maves-poster.webp", video: "/webcards/maves.mp4", alt: "Maves Dental website", tag: "Medical · Dental", name: "MAVES DENTAL", desc: "Website premium pentru clinica stomatologică Maves Dental — identitate de brand, prezentare servicii și experiență de programare clară.", delay: "" },
-  { url: "virgilmanescu.ro", href: "https://virgilmanescu.ro", img: "/webcards/virgil.webp", video: "", alt: "Virgil Mănescu website", tag: "Personal Brand", name: "VIRGIL MĂNESCU", desc: "Website de prezentare personal — identitate digitală și poziționare online pentru brandul personal.", delay: "d1" },
-  { url: "drivinghero.ro", href: "https://drivinghero.ro", img: "photo-1568772585407-9361f9bf3a87", video: "/webcards/drivinghero.mp4", alt: "Driving Hero website", tag: "Auto · Festival", name: "DRIVING HERO", desc: "Website festival și competiție — inscrieri, program, bilete. Design auto dinamic adaptat publicului tânăr și pasionat.", delay: "d1" },
-  { url: "vasconylatelier.com", href: "https://www.vasconylatelier.com/", img: "/webcards/vascony.webp", video: "", alt: "Vascony l'Atelier website", tag: "Interior · Design", name: "VASCONY L'ATELIER", desc: "Website de prezentare pentru atelier de design interior și mobilier premium — galerie de proiecte și identitate rafinată.", delay: "", pos: "center" },
+/* Each card shows the live homepage hero — captured at 1440x900 (the 16:10 of
+   the browser mockup) so the card frames the top of the site, nav and headline
+   included. `.browser-body` pins them with object-position: top. */
+const WEBSITES: { url: string; href: string; img: string; video?: string; alt: string; tag: string; name: string; desc: string; delay: string }[] = [
+  { url: "flystackdroneshows.com", href: "https://flystackdroneshows.com", img: "/webcards/flystack.webp", alt: "Flystack website", tag: "Tech · Entertainment", name: "FLYSTACK DRONE SHOWS", desc: "Website complet pentru furnizorul premium global de spectacole cu drone. Design cinematic, animații, secțiuni de proiecte și contact.", delay: "" },
+  { url: "osteopathconcept.com", href: "https://osteopathconcept.com", img: "/webcards/osteopath.webp", alt: "Osteopath website", tag: "Medical · Multi-locație", name: "OSTEOPATH CONCEPT", desc: "Website pentru rețea de clinici de osteopatie și chiropractică — 4 locații, programări online, prezentare servicii și echipă.", delay: "d1" },
+  { url: "mavesdental.ro", href: "https://mavesdental.ro", img: "/webcards/maves.webp", alt: "Maves Dental website", tag: "Medical · Dental", name: "MAVES DENTAL", desc: "Website premium pentru clinica stomatologică Maves Dental — identitate de brand, prezentare servicii și experiență de programare clară.", delay: "" },
+  { url: "virgilmanescu.ro", href: "https://virgilmanescu.ro", img: "/webcards/virgil.webp", alt: "Virgil Mănescu website", tag: "Personal Brand", name: "VIRGIL MĂNESCU", desc: "Website de prezentare personal — identitate digitală și poziționare online pentru brandul personal.", delay: "d1" },
 ];
 
 /* "03 / 08" — derived from position so adding a project can't strand a stale count */
@@ -550,6 +578,8 @@ export default function Portfolio() {
   const [scrolled, setScrolled] = useState(false);
   const [modalSrc, setModalSrc] = useState<string | null>(null);
   const closeModal = useCallback(() => setModalSrc(null), []);
+  const [docSrc, setDocSrc] = useState<Doc | null>(null);
+  const closeDoc = useCallback(() => setDocSrc(null), []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -656,24 +686,26 @@ export default function Portfolio() {
                 <SplitLines className="pn" items={p.name} />
               </div>
               <div className="pr r d1">
-                <div className="pt">{p.headline}</div>
+                {p.headline && <div className="pt">{p.headline}</div>}
                 <p className="pd">{p.desc}</p>
               </div>
             </div>
           </div>
 
-          <DetailCards details={p.details} />
+          {p.details && <DetailCards details={p.details} />}
 
-          <div className="res">
-            <div className="rg r">
-              {p.results.map((r, i) => (
-                <div className="rc" key={r.l}>
-                  <div className="rn"><CountUp value={r.n} index={i} /></div>
-                  <div className="rl">{r.l}</div>
-                </div>
-              ))}
+          {p.results && (
+            <div className="res">
+              <div className="rg r">
+                {p.results.map((r, i) => (
+                  <div className="rc" key={r.l}>
+                    <div className="rn"><CountUp value={r.n} index={i} /></div>
+                    <div className="rl">{r.l}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {p.reels && (
             <div className="reels-band">
@@ -761,11 +793,12 @@ export default function Portfolio() {
 
       {/* QUOTE */}
       <div className="qs">
-        <div className="qb" style={{ backgroundImage: `url('${img("photo-1557804506-669a67965ba0", 2000)}')` }} />
+        <div className="qb" style={{ backgroundImage: `url('${img("/portofoliosectiune.webp", 2000)}')` }} />
         <div className="qo" />
         <div className="qc r">
           <div className="qm">&ldquo;</div>
-          <Typewriter className="qt" text="Embassy Network nu e doar o agenție — e un partener care înțelege businessul tău și construiește comunicarea ca și cum ar fi a lor." />
+          {/* the \n is a deliberate break — .qt sets white-space: pre-line */}
+          <Typewriter className="qt" text={"NU LUCRĂM PENTRU BRANDURI.\nLUCRĂM ALĂTURI DE ELE."} />
           <p className="qa">Client · Portofoliu Embassy Network</p>
         </div>
       </div>
@@ -781,8 +814,8 @@ export default function Portfolio() {
 
       <div className="promo-intro">
         <p className="intro-t r" style={{ fontSize: "clamp(24px,2.8vw,40px)" }}>
-          <SplitWords className="dim" text="Producție vizuală care depășește ecranul." /><br />
-          Animații 3D și motion graphics pentru Kiss FM, Pepsi și Michelin.
+          <SplitWords className="dim" text="Ideile prind viață în mișcare." /><br />
+          3D, motion graphics și producție vizuală pentru branduri internaționale.
         </p>
       </div>
 
@@ -811,32 +844,38 @@ export default function Portfolio() {
           <div className="sl r">Capitol III</div>
           <h2 className="r d1">GRAFICĂ &amp;<br /><FillText className="out">IDENTITATE</FillText></h2>
         </div>
-        <p className="r d2">Brand books, identitate vizuală și design grafic pentru clienți cu standarde premium.</p>
+        <p className="r d2">O selecție de identități vizuale și materiale editoriale dezvoltate pentru branduri din industrii diferite.</p>
       </div>
 
       <div className="grafica-grid" style={{ margin: "0 64px", border: "1px solid var(--line)" }}>
         {GRAFICA.map((g) => (
-          <div className={`gc gc-tall r${g.delay ? ` ${g.delay}` : ""}`} key={g.tag}>
-            {g.img ? (
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img className="gc-img" src={g.img} alt={g.name.join(" ")} />
-            ) : (
-              <div className="gc-placeholder">
-                <p className="gc-ph-label"><Lines items={g.phLabel} /></p>
-              </div>
-            )}
+          <button
+            type="button"
+            className={`gc gc-tall gc-doc gc-${g.theme} r${g.delay ? ` ${g.delay}` : ""}`}
+            key={g.doc.id}
+            onClick={() => setDocSrc(g.doc)}
+            onMouseMove={(e) => {
+              const r = e.currentTarget.getBoundingClientRect();
+              e.currentTarget.style.setProperty("--cx", `${e.clientX - r.left}px`);
+              e.currentTarget.style.setProperty("--cy", `${e.clientY - r.top}px`);
+            }}
+            aria-label={`Deschide ${g.doc.title}`}
+          >
+            <div className="doc-stage">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="doc-mock" src={g.mock} alt="" loading="lazy" decoding="async" />
+            </div>
             <div className="gc-ov" />
             <div className="gc-content">
               <span className="gc-tag">{g.tag}</span>
               <div className="gc-name"><Lines items={g.name} /></div>
               <p className="gc-desc">{g.desc}</p>
+              <p className="gc-meta">{g.meta}</p>
+              <span className="gc-cta">{g.cta} →</span>
             </div>
-          </div>
+            <span className="gc-cursor" aria-hidden>View</span>
+          </button>
         ))}
-      </div>
-
-      <div className="promo-note" style={{ marginTop: "1px" }}>
-        <p>* Imaginile finale din brand book și logo vor fi uploadate în această secțiune. Placeholder-ele sunt rezervate pentru materialele livrate.</p>
       </div>
 
       {/* CAPITOL IV — WEBSITES */}
@@ -845,7 +884,7 @@ export default function Portfolio() {
           <div className="sl r">Capitol IV</div>
           <h2 className="r d1">WEB<br /><FillText className="out">DESIGN</FillText></h2>
         </div>
-        <p className="r d2">Website-uri construite pentru conversie, estetică premium și experiență de utilizator fără fricțiune.</p>
+        <p className="r d2">O selecție de website-uri dezvoltate de noi pentru branduri din industrii diferite, fiecare construit în jurul identității, obiectivelor și experienței digitale a clientului.</p>
       </div>
 
       <div className="web-grid" style={{ margin: "0 64px", border: "1px solid var(--line)" }}>
@@ -861,7 +900,7 @@ export default function Portfolio() {
                   <LazyVideo base={w.video} />
                 ) : (
                   /* eslint-disable-next-line @next/next/no-img-element */
-                  <img src={img(w.img, 900)} alt={w.alt} style={w.pos ? { objectPosition: w.pos } : undefined} />
+                  <img src={img(w.img, 900)} alt={w.alt} />
                 )}
               </div>
             </div>
@@ -881,9 +920,12 @@ export default function Portfolio() {
         <div className="cta-ov" />
         <div className="cta-c r">
           <p className="cta-eye">Vrei să fii următorul proiect?</p>
-          <h2 className="cta-t">HAI SĂ<br /><FillText className="out">CONSTRUIM</FillText><br />ÎMPREUNĂ</h2>
+          <h2 className="cta-t">POVESTEA CONTINUĂ.<br /><FillText className="out">CU URMĂTORUL</FillText><br />PROIECT.</h2>
           <br />
-          <a href="mailto:hello@embassynetwork.ro" className="cta-e">hello@embassynetwork.ro</a><br />
+          <div className="cta-contact">
+            <a href="mailto:hello@embassynetwork.ro" className="cta-e">hello@embassynetwork.ro</a>
+            <a href="tel:+40770458136" className="cta-e">+40 770 458 136</a>
+          </div>
           <Link href="/" className="btn-s" style={{ marginTop: "28px" }}>← Înapoi la site</Link>
         </div>
       </div>
@@ -905,6 +947,7 @@ export default function Portfolio() {
       </footer>
 
       <MediaModal src={modalSrc} onClose={closeModal} />
+      <DocViewer doc={docSrc} onClose={closeDoc} />
     </>
   );
 }
