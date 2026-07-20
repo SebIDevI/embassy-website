@@ -571,7 +571,7 @@
 /* STRIP */
 .strip {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(var(--cols, 2), 1fr);
   height: 55vh;
   min-height: 360px;
   border-bottom: 1px solid var(--line);
@@ -1632,9 +1632,16 @@ video.promo-card-img {
 }
 
 /* WEBSITES */
+/* Was an inline style on all three grids, which meant the mobile override
+   below could never win — on a 390px phone the 64px gutters left the cards
+   262px wide. */
+.promo-grid,
+.grafica-grid,
 .web-grid {
-  max-width: 1100px;
-  margin: 0 auto;
+  margin: 0 64px;
+  border: 1px solid var(--line);
+}
+.web-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1px;
@@ -1650,10 +1657,12 @@ video.promo-card-img {
 .wc:hover {
   background: rgba(242, 240, 234, 0.025);
 }
+/* Height comes from the bar + the body's own ratio. Pinning the ratio on the
+   wrapper instead made the body `100% - 44px`, i.e. shorter than the 16:10
+   screenshots, so `cover` sliced the bottom off every site. */
 .wc-browser {
   padding: 0;
   position: relative;
-  aspect-ratio: 16/10;
 }
 .browser-bar {
   background: #141414;
@@ -1683,8 +1692,9 @@ video.promo-card-img {
   color: var(--muted);
   margin: 0 16px;
 }
+/* 16:10 — the capture ratio of every screenshot, so the whole page shows */
 .browser-body {
-  height: calc(100% - 44px);
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   position: relative;
 }
@@ -1694,13 +1704,15 @@ video.promo-card-img {
   height: 100%;
   object-fit: cover;
   object-position: top;
-  filter: brightness(0.7) contrast(1.05);
-  transition: transform 6s ease;
+  filter: brightness(0.9) contrast(1.04);
+  transition: transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1), filter 0.4s;
   display: block;
 }
+/* a pan would now just drag the full shot out of frame — scale instead */
 .wc:hover .browser-body img,
 .wc:hover .browser-body video {
-  transform: translateY(-10%);
+  transform: scale(1.03);
+  filter: brightness(1) contrast(1.04);
 }
 .browser-placeholder {
   width: 100%;
@@ -1977,8 +1989,11 @@ video.promo-card-img {
     grid-template-columns: 1fr;
     height: auto;
   }
+  /* the strip posts are 3:4 portrait; a 50vw box is ~2:1, so `cover` used to
+     crop away most of the post including its baked-in headline */
   .si {
-    height: 50vw;
+    height: auto;
+    aspect-ratio: 3 / 4;
   }
   /* flystack stacks its 2 strip videos full-width on phone: block flow (no grid
      stretch) + width 100%, height from the 16/9 aspect. Overrides `.si` above. */
@@ -2028,48 +2043,95 @@ video.promo-card-img {
   .web-grid {
     grid-template-columns: 1fr;
   }
+  .promo-grid,
+  .grafica-grid,
+  .web-grid {
+    margin: 0 16px;
+  }
+  /* the copy block runs tall here (column layout), well past the point where
+     the base scrim has faded to 0.4 — lift it so it reads over the video */
+  .ov-b {
+    background: linear-gradient(
+      to top,
+      rgba(8, 8, 8, 0.98) 0%,
+      rgba(8, 8, 8, 0.9) 32%,
+      rgba(8, 8, 8, 0.55) 58%,
+      rgba(8, 8, 8, 0.18) 100%
+    );
+  }
+  /* .cl and .cn are both nowrap; side by side with the rule between them they
+     overran a 390px phone and the project name got clipped off the right edge */
   .conn {
-    padding: 36px 24px;
+    padding: 32px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .conn .cln {
+    display: none;
+  }
+  .cn {
+    white-space: normal;
+    font-size: 18px;
   }
   .yt {
     padding: 44px 24px;
     gap: 18px;
   }
-  /* hero photo is 3:2 landscape — a portrait phone `cover` crops the sides and
-     cuts the edge people off. Swap in a portrait-baked variant (full group over
-     a blurred self-fill of itself) so it stays full-bleed AND everyone shows. */
+  /* The phone shot is 2:3 — `cover` on a ~0.46 viewport would crop ~15% off
+     each side and cut the outer two people's arms. Fit it to the width instead
+     so the whole group survives, pin it to the top, and let the black page
+     colour take the strip underneath; #hero::after already ramps the lower
+     image to near-black, so the photo dissolves into it rather than ending on
+     an edge. .hero-c then sits in that strip (see below). */
   .embassy-portfolio #hero-bg {
-    background-image: url("/hero-phone-first.webp");
-    background-size: cover;
-    background-position: center;
+    background: #080808 url("/herophone.webp") center top / 100% auto no-repeat;
     transform: none;
   }
-  /* crossfade to the 2nd image every 10s, starting on the first */
+  /* single phone hero now — no crossfade partner */
   .embassy-portfolio #hero-bg-2 {
-    display: block;
-    position: absolute;
-    inset: 0;
-    background: url("/hero-phone-second.webp") center/cover;
-    filter: brightness(0.9) contrast(1);
-    transform: none;
-    opacity: 0;
-    animation: heroPhoneSwap 20s ease-in-out infinite;
+    display: none;
   }
-  @keyframes heroPhoneSwap {
-    0%,
-    42% {
-      opacity: 0;
-    }
-    50%,
-    92% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
+  /* Photo owns the top ~53%, copy the rest — so the copy has to fit in ~390px.
+     Stacking the stats blows straight past that and pushes the h1 back onto
+     their faces, so they stay a row here and the copy tightens up. */
+  .embassy-portfolio #hero {
+    justify-content: flex-end;
+  }
+  /* The copy block carries its own scrim rather than relying on the photo
+     ending above it: the copy's height moves with the viewport (the sub wraps
+     to 3 lines at 360px, stat labels wrap too), so any fixed split eventually
+     puts the eyebrow back on the photo. This way it reads on black wherever
+     the seam lands. */
+  .embassy-portfolio .hero-c {
+    align-self: stretch;
+    padding-bottom: 44px;
+    padding-top: 76px;
+    /* absolute stops, not %: the block's height changes with wrapping, and a
+       percentage ramp puts the eyebrow back in the transparent zone */
+    background: linear-gradient(to bottom, transparent 0, rgba(8, 8, 8, 0.72) 28px, rgba(8, 8, 8, 0.97) 60px, #080808 84px);
+  }
+  /* the cue would sit on the stats border in the space that's left, and the
+     photo/copy split already reads as "there's more below" */
+  .embassy-portfolio .hero-scroll {
+    display: none;
+  }
+  .embassy-portfolio .hero-eyebrow {
+    margin-bottom: 16px;
+  }
+  .embassy-portfolio .h1 {
+    font-size: 48px;
+  }
+  .embassy-portfolio .hero-sub {
+    margin-top: 16px;
+    line-height: 1.6;
+    padding: 0 24px;
   }
   .hero-stats {
-    flex-direction: column;
+    margin-top: 26px;
+  }
+  .stat {
+    padding: 14px 18px;
   }
   .stat {
     border-right: none;

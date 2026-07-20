@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Fragment, useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState, type CSSProperties } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import CountUp from "./CountUp";
 import FillText from "./FillText";
@@ -729,7 +729,10 @@ export default function Portfolio() {
           {p.stripVideos ? (
             <div
               className="strip strip-video"
-              style={{ gridTemplateColumns: p.stripStack ? "1fr" : `repeat(${p.stripVideos.length}, 1fr)` }}
+              /* a custom property, not gridTemplateColumns directly: an inline
+                 track list outranks the phone media query that collapses the
+                 strip to one column */
+              style={{ "--cols": p.stripStack ? 1 : p.stripVideos.length } as CSSProperties}
             >
               {p.stripVideos.map((v, i) => (
                 <button
@@ -750,7 +753,7 @@ export default function Portfolio() {
           ) : p.strip ? (
             <div
               className="strip"
-              style={{ gridTemplateColumns: `repeat(${p.strip.length}, 1fr)` }}
+              style={{ "--cols": p.strip.length } as CSSProperties}
             >
               {p.strip.map((s, i) => {
                 const [src, focal] = s.split("|");
@@ -819,7 +822,7 @@ export default function Portfolio() {
         </p>
       </div>
 
-      <div className="promo-grid" style={{ margin: "0 64px", border: "1px solid var(--line)" }}>
+      <div className="promo-grid">
         {PROMO.map((c) => (
           <div className={`promo-card r${c.delay ? ` ${c.delay}` : ""}`} key={c.name}>
             {c.video ? (
@@ -847,7 +850,7 @@ export default function Portfolio() {
         <p className="r d2">O selecție de identități vizuale și materiale editoriale dezvoltate pentru branduri din industrii diferite.</p>
       </div>
 
-      <div className="grafica-grid" style={{ margin: "0 64px", border: "1px solid var(--line)" }}>
+      <div className="grafica-grid">
         {GRAFICA.map((g) => (
           <button
             type="button"
@@ -887,7 +890,7 @@ export default function Portfolio() {
         <p className="r d2">O selecție de website-uri dezvoltate de noi pentru branduri din industrii diferite, fiecare construit în jurul identității, obiectivelor și experienței digitale a clientului.</p>
       </div>
 
-      <div className="web-grid" style={{ margin: "0 64px", border: "1px solid var(--line)" }}>
+      <div className="web-grid">
         {WEBSITES.map((w) => (
           <div className={`wc r${w.delay ? ` ${w.delay}` : ""}`} key={w.url}>
             <div className="wc-browser">
