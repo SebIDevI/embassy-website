@@ -23,6 +23,15 @@
 .embassy-portfolio .logo-svg polygon {
   fill: currentColor;
 }
+/* Client work — make it awkward to walk off with. Kills drag-to-desktop and
+   the selection halo; Portfolio.tsx blocks the right-click menu on media too.
+   Deterrent only: every asset is still a plain URL in the Network tab. */
+.embassy-portfolio img,
+.embassy-portfolio video {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
 
 /* NAV */
 .embassy-portfolio nav {
@@ -56,12 +65,9 @@
   text-decoration: none;
   transition: color 0.2s;
 }
-.nav-back::before {
-  content: "← ";
-}
-.nav-back:hover {
-  color: var(--white);
-}
+/* The "← " prefix and the hover colour went with the link: this is the site
+   root now, so .nav-back is a plain brand mark and an arrow would promise a
+   navigation that no longer exists. */
 
 /* HERO */
 .embassy-portfolio #hero {
@@ -342,13 +348,53 @@
   }
 }
 
+/* Phone hero slider (see the mobile @media block). The 50% → 50.01% jump is the
+   teleport: the slide has just cleared the right edge, so snapping it behind
+   the left edge is invisible and every visible move reads left→right. */
+/* Slow drift across the team shot, timed against hero-slide's own phases: pan
+   only while the slide is parked (0–44%), hold through the exit (44–50%), then
+   rewind to the left edge at 50.01% — off-screen, so the reset is never seen. */
+@keyframes hero-pan {
+  0% {
+    background-position-x: 0%;
+  }
+  44%,
+  50% {
+    background-position-x: 100%;
+  }
+  50.01%,
+  100% {
+    background-position-x: 0%;
+  }
+}
+
+@keyframes hero-slide {
+  0%,
+  44% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  50.01%,
+  94% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mq-t {
     animation: none;
   }
-  /* no auto-crossfade — hold on the first hero image (wins over mobile @media) */
+  /* no auto-slide — hold on the first hero image (wins over mobile @media) */
+  .embassy-portfolio #hero-bg,
   .embassy-portfolio #hero-bg-2 {
     animation: none !important;
+  }
+  .embassy-portfolio #hero-bg-2 {
     opacity: 0 !important;
   }
   .fx-fill {
@@ -412,7 +458,7 @@
 /* Driving Hero bg is the outdoor campaign itself — the poster has to read.
    Text sits left/bottom where .ov-l/.ov-b already carry the contrast. */
 #drivinghero .ps-bg {
-  filter: brightness(0.65) contrast(1.05);
+  filter: brightness(0.93) contrast(1.05);
 }
 .ov-b {
   position: absolute;
@@ -606,6 +652,11 @@
   .gallery:has(.gi:nth-child(2):last-child) .gi {
     flex-basis: 50%;
   }
+  /* likewise a 3-photo gallery (chiro) fills the row 3-up — at the 25% default
+     the last quarter sat empty */
+  .gallery:has(.gi:nth-child(3):last-child) .gi {
+    flex-basis: 33.3333%;
+  }
 }
 .si {
   overflow: hidden;
@@ -622,10 +673,15 @@
   transform: scale(1.05);
   filter: brightness(0.8);
 }
-/* TDC strip photos — no darkening at all (full brightness), hover keeps zoom.
-   Scoped so chiro strip stays at 0.65. */
-#tdc .si img {
-  filter: none;
+/* Per-scene strip tints. These key off [data-p], not the scene id: the strip is
+   a *sibling* of its .ps, so `#drivinghero .si` never matched anything.
+   Driving Hero posts carry their own baked headline — near-full brightness so
+   the campaign reads exactly as it ran. */
+.strip[data-p="drivinghero"] .si img {
+  filter: brightness(0.93) contrast(1.05);
+}
+.strip[data-p="drivinghero"] .si:hover img {
+  filter: brightness(1);
 }
 /* landscape (16:9) video in a strip cell → clickable, opens fullscreen modal */
 .si video {
@@ -638,6 +694,10 @@
 .si:hover video {
   transform: scale(1.05);
   filter: brightness(1);
+}
+/* Flystack strip clips match its bg video at 0.90 — one tint across the scene */
+.strip[data-p="flystack"] .si video {
+  filter: brightness(0.9) contrast(1.02);
 }
 .si-video,
 .si-img {
@@ -983,19 +1043,29 @@
   display: block;
   filter: brightness(0.82) contrast(1.05);
 }
-/* GOC + TDC + chiro reels a touch brighter than the shared 0.82 default.
+/* GOC + TDC reels a touch brighter than the shared 0.82 default.
    RaceBox joins them — racebox1 is a night shot with nothing to spare. */
 #goc .goc-reel,
 #goc .goc-reels-mobile video,
 #tdc .goc-reel,
 #tdc .goc-reels-mobile video,
+#racebox .goc-reel,
+#racebox .goc-reels-mobile video {
+  filter: brightness(1) contrast(1.03);
+}
+/* chiro + Virgil sit between the two — bright enough to read, still dark
+   enough that the white .pc copy holds over them. */
 #chiropractor .goc-reel,
 #chiropractor .goc-reels-mobile video,
-#racebox .goc-reel,
-#racebox .goc-reels-mobile video,
 #virgil .goc-reel,
 #virgil .goc-reels-mobile video {
-  filter: brightness(1) contrast(1.03);
+  filter: brightness(0.85) contrast(1.03);
+}
+/* racebox2 is the daylight clip (white G-Wagon, halo headlights) — it only
+   needs a trim, unlike the night one beside it. Same id-weight as the rule
+   above, so source order decides. */
+#racebox .clip-racebox2 {
+  filter: brightness(0.9) contrast(1.03);
 }
 
 /* CONNECTOR */
@@ -1123,7 +1193,7 @@
   object-fit: cover;
   /* was 0.4 — the renders were too dark to read. The bottom gradient in
      .promo-card-ov carries the text contrast, so the media can stay bright. */
-  filter: brightness(0.85) contrast(1.1);
+  filter: brightness(0.9) contrast(1.1);
   transition: filter 0.4s;
 }
 /* Never crop a 3D render: contain letterboxes anything that isn't square
@@ -1497,20 +1567,6 @@ video.promo-card-img {
   align-items: center;
   gap: 18px;
 }
-.docv-dl {
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(242, 240, 234, 0.7);
-  text-decoration: none;
-  border: 1px solid var(--line);
-  padding: 8px 14px;
-  transition: color 0.25s, border-color 0.25s;
-}
-.docv-dl:hover {
-  color: var(--white);
-  border-color: rgba(242, 240, 234, 0.35);
-}
 .docv-close {
   width: 40px;
   height: 40px;
@@ -1604,11 +1660,6 @@ video.promo-card-img {
   }
   .docv-actions {
     gap: 10px;
-  }
-  .docv-dl {
-    padding: 7px 10px;
-    letter-spacing: 0.14em;
-    white-space: nowrap;
   }
   /* arrows sat on top of the page; park them at the bottom instead */
   .docv-nav {
@@ -1996,14 +2047,43 @@ video.promo-card-img {
     aspect-ratio: 3 / 4;
   }
   /* flystack stacks its 2 strip videos full-width on phone: block flow (no grid
-     stretch) + width 100%, height from the 16/9 aspect. Overrides `.si` above. */
-  #flystack .strip-video {
+     stretch) + width 100%, height from the 16/9 aspect. Overrides `.si` above.
+     Keyed off [data-p], not `#flystack` — the strip is a sibling of the scene,
+     so the old id-descendant selector never matched. */
+  .strip-video[data-p="flystack"] {
     display: block;
   }
-  #flystack .strip-video .si-video {
+  .strip-video[data-p="flystack"] .si-video {
     display: block;
     width: 100%;
     height: auto;
+  }
+  /* Driving Hero's two posts are one sentence split across a carousel
+     ("Când două branduri de top se întâlnesc," / "designul trebuie să țină
+     pasul."). Stacked they read as two unrelated cards, so keep them glued
+     side by side and swipeable — the neighbour peeking past the snap point is
+     what tells you the line continues. */
+  .strip[data-p="drivinghero"] {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .strip[data-p="drivinghero"]::-webkit-scrollbar {
+    display: none;
+  }
+  .strip[data-p="drivinghero"] .si {
+    flex: 0 0 88%;
+    scroll-snap-align: center;
+  }
+  /* the scene bg is one of those 3:4 posts — `cover` on a 9:20 phone sliced the
+     baked headline clean off. Frame the whole post at the top instead and let
+     the .pc copy sit on the black beneath it. */
+  #drivinghero .ps-bg {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
   }
   /* GOC/TDC gallery → embla carousel, one full slide per view on phone */
   .gi {
@@ -2078,20 +2158,43 @@ video.promo-card-img {
     padding: 44px 24px;
     gap: 18px;
   }
-  /* Original full-bleed centred hero. The shot is baked to roughly the phone
-     ratio (studio sweep extended upward), so `cover` barely crops the sides
-     and the group survives — and the group sits low enough that the centred
-     copy lands on the sweep above their faces. */
-  .embassy-portfolio #hero-bg {
-    background-image: url("/herophone.webp");
+  /* Phone hero is a two-slide carousel: the trio, then the whole team. Both
+     shots are baked to the phone ratio (studio sweep extended upward), so
+     `cover` barely crops the sides and everyone survives — and both groups sit
+     low enough that the centred copy lands on the sweep above their faces.
+     Every move runs left→right: a slide exits past the right edge, teleports
+     behind the left edge while it is off-screen, then rides back in. One
+     keyframe set drives both layers; #hero-bg-2 only runs half a cycle out of
+     phase, so the outgoing and incoming slides tile edge to edge mid-swap. */
+  .embassy-portfolio #hero-bg,
+  .embassy-portfolio #hero-bg-2 {
+    display: block;
+    /* #hero-bg-2 only ever carried `display: none` at the top of this file, so
+       it needs the whole layer geometry here — left in the flex flow it is a
+       0x0 box that paints nothing, and translateX(100%) of zero width is 0px. */
+    position: absolute;
+    inset: 0;
     background-size: cover;
     background-position: center;
-    transform: none;
     filter: brightness(0.92) contrast(1.06);
+    transition: none;
+    animation: hero-slide 16s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
-  /* single phone hero now — no crossfade partner */
+  .embassy-portfolio #hero-bg {
+    background-image: url("/herophone.webp");
+  }
+  /* The team shot is 3:2 — squeezed into a 9:20 phone the six of them came out
+     tiny. So run it at full height instead (it overflows ~880px sideways) and
+     pan that overflow left→right while the slide is parked on screen. Nobody
+     gets cropped out, everyone just arrives in turn, at full size.
+     `hero-pan` rides background-position-x, so it composes with the translateX
+     that `hero-slide` is already using for the carousel. */
   .embassy-portfolio #hero-bg-2 {
-    display: none;
+    background-image: url("/hero.webp");
+    animation:
+      hero-slide 16s cubic-bezier(0.65, 0, 0.35, 1) infinite,
+      hero-pan 16s linear infinite;
+    animation-delay: -8s;
   }
   /* the base scrims are tuned for a dark hero video; over this bright studio
      shot they crushed the whole lower half to black and buried the group */

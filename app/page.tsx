@@ -1,45 +1,44 @@
-// app/page.tsx (App Router) or pages/index.tsx (Pages Router)
+import type { Metadata } from "next";
+import { Bebas_Neue, Inter } from "next/font/google";
+import Portfolio from "./_portfolio/Portfolio";
+import { SITE, buildJsonLd } from "./site";
+import "./_portfolio/portfolio.css";
 
-export default function Home() {
+const bebas = Bebas_Neue({
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
+  variable: "--font-bebas",
+});
+
+const inter = Inter({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-inter",
+});
+
+/* `title.absolute` skips the "%s | Embassy Network" template from the layout —
+   the brand is already in this title and would otherwise appear twice. */
+export const metadata: Metadata = {
+  title: { absolute: SITE.title },
+  description: SITE.description,
+  alternates: { canonical: "/" },
+};
+
+export default function HomePage() {
   return (
-    <main className="flex h-screen w-full items-center justify-center bg-gradient-to-b from-white via-gray-50 to-white text-gray-900">
-      <div className="max-w-2xl px-6 text-center">
-        {/* Logo / Agency Name */}
-        <h2 className="mb-6 text-sm font-semibold uppercase tracking-[0.2em] text-gray-500">
-          Embassy Network
-        </h2>
-
-        {/* Main Headline */}
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl">
-          A New Era of Media
-          <br />
-          <span className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent">
-            Coming Soon
-          </span>
-        </h1>
-
-        {/* Divider */}
-        <div className="mx-auto my-10 h-[2px] w-24 rounded-full bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300" />
-
-        {/* Tagline */}
-        <p className="mb-12 text-lg leading-relaxed text-gray-600 sm:text-xl">
-          We’re reimagining digital storytelling. Premium media creation,
-          strategy, and design tailored for visionaries.
-        </p>
-
-        {/* Call to Action */}
-        <a
-          href="mailto:contact@embassynetwork.ro"
-          className="inline-block rounded-full bg-gradient-to-r from-gray-900 to-gray-700 px-8 py-4 text-sm font-medium text-white shadow-lg transition hover:shadow-xl"
-        >
-          Contact Us — contact@embassynetwork.ro
-        </a>
-
-        {/* Footer note */}
-        <p className="mt-12 text-xs text-gray-400">
-          © {new Date().getFullYear()} Embassy Network. All rights reserved.
-        </p>
-      </div>
-    </main>
+    <div className={`embassy-portfolio ${bebas.variable} ${inter.variable}`}>
+      {/* The hero background is a CSS background-image, so the browser only
+          discovers it after the stylesheet parses — it is the LCP element and
+          was starting late. Preload the one the viewport will actually use;
+          `media` keeps the phone from fetching the 3000px desktop crop. */}
+      <link rel="preload" as="image" href="/hero.webp" media="(min-width: 901px)" />
+      <link rel="preload" as="image" href="/herophone.webp" media="(max-width: 900px)" />
+      {/* Identity graph for the brand. Rendered on the homepage only — one
+          canonical @id per site is what search engines expect. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd()) }}
+      />
+      <Portfolio />
+    </div>
   );
 }

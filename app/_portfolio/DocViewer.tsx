@@ -77,9 +77,6 @@ export default function DocViewer({ doc, onClose }: { doc: Doc | null; onClose: 
           {page} / {doc.pages}
         </span>
         <div className="docv-actions">
-          <a className="docv-dl" href={doc.pdf} download>
-            Download PDF
-          </a>
           <button className="docv-close" onClick={onClose} aria-label="Închide">
             ×
           </button>

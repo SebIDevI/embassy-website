@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Fragment, useCallback, useEffect, useState, type CSSProperties } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import CountUp from "./CountUp";
@@ -175,7 +174,7 @@ const PROJECTS: Project[] = [
       { n: "100%", l: "Creștere organică" },
       { n: "1 hub", l: "De specialiști medicali" },
     ],
-    gallery: ["/chiropactor/IMG_5310.webp", "/chiropactor/IMG_5190.webp|center bottom"],
+    gallery: ["/chiropactor/IMG_4015.webp", "/chiropactor/IMG_7391.webp", "/chiropactor/IMG_5310.webp"],
     heroReels: ["/chiropactor/Clip 22.mp4", "/chiropactor/giovani.mp4", "/chiropactor/Clip 5.mp4"],
     next: "06 — Flystack Drone Shows →",
   },
@@ -290,9 +289,9 @@ const GRAFICA: {
    the browser mockup) so the card frames the top of the site, nav and headline
    included. `.browser-body` pins them with object-position: top. */
 const WEBSITES: { url: string; href: string; img: string; video?: string; alt: string; tag: string; name: string; desc: string; delay: string }[] = [
-  { url: "flystackdroneshows.com", href: "https://flystackdroneshows.com", img: "/webcards/flystack.webp", alt: "Flystack website", tag: "Tech · Entertainment", name: "FLYSTACK DRONE SHOWS", desc: "Website complet pentru furnizorul premium global de spectacole cu drone. Design cinematic, animații, secțiuni de proiecte și contact.", delay: "" },
-  { url: "osteopathconcept.com", href: "https://osteopathconcept.com", img: "/webcards/osteopath.webp", alt: "Osteopath website", tag: "Medical · Multi-locație", name: "OSTEOPATH CONCEPT", desc: "Website pentru rețea de clinici de osteopatie și chiropractică — 4 locații, programări online, prezentare servicii și echipă.", delay: "d1" },
-  { url: "mavesdental.ro", href: "https://mavesdental.ro", img: "/webcards/maves.webp", alt: "Maves Dental website", tag: "Medical · Dental", name: "MAVES DENTAL", desc: "Website premium pentru clinica stomatologică Maves Dental — identitate de brand, prezentare servicii și experiență de programare clară.", delay: "" },
+  { url: "flystackdroneshows.com", href: "https://flystackdroneshows.com", img: "/webcards/flystack.webp", video: "/webcards/flystack.mp4", alt: "Flystack website", tag: "Tech · Entertainment", name: "FLYSTACK DRONE SHOWS", desc: "Website complet pentru furnizorul premium global de spectacole cu drone. Design cinematic, animații, secțiuni de proiecte și contact.", delay: "" },
+  { url: "osteopathconcept.com", href: "https://osteopathconcept.com", img: "/webcards/osteopath.webp", video: "/webcards/osteopath.mp4", alt: "Osteopath website", tag: "Medical · Multi-locație", name: "OSTEOPATH CONCEPT", desc: "Website pentru rețea de clinici de osteopatie și chiropractică — 4 locații, programări online, prezentare servicii și echipă.", delay: "d1" },
+  { url: "mavesdental.ro", href: "https://mavesdental.ro", img: "/webcards/maves.webp", video: "/webcards/maves.mp4", alt: "Maves Dental website", tag: "Medical · Dental", name: "MAVES DENTAL", desc: "Website premium pentru clinica stomatologică Maves Dental — identitate de brand, prezentare servicii și experiență de programare clară.", delay: "" },
   { url: "virgilmanescu.ro", href: "https://virgilmanescu.ro", img: "/webcards/virgil.webp", alt: "Virgil Mănescu website", tag: "Personal Brand", name: "VIRGIL MĂNESCU", desc: "Website de prezentare personal — identitate digitală și poziționare online pentru brandul personal.", delay: "d1" },
 ];
 
@@ -365,6 +364,12 @@ const videoVariant = (path: string, mobile: boolean) =>
 
 /* poster frame shown while the video loads: foo.mp4 → foo-poster.webp */
 const videoPoster = (path: string) => path.replace(/\.mp4$/i, "-poster.webp");
+
+/* file base name → a class, so one clip in a scene can be tinted on its own
+   (racebox2 rides at 0.90 while the night clip next to it keeps full brightness).
+   Works on both layouts — desktop grid and the mobile one-at-a-time cycler. */
+const clipClass = (path: string) =>
+  `clip-${path.split("/").pop()!.replace(/\.mp4$/i, "").replace(/[^a-z0-9]+/gi, "-")}`;
 
 /* track the mobile breakpoint (matches the CSS 900px switch) */
 function useIsMobile() {
@@ -443,6 +448,7 @@ function ReelsHero({ videos, eager = false }: { videos: string[]; eager?: boolea
         <LazyVideo
           key={idx}
           base={videos[idx]}
+          className={clipClass(videos[idx])}
           forceMobile
           eager={eager}
           loop={false}
@@ -458,7 +464,7 @@ function ReelsHero({ videos, eager = false }: { videos: string[]; eager?: boolea
       style={{ gridTemplateColumns: `repeat(${videos.length}, 1fr)` }}
     >
       {videos.map((v) => (
-        <LazyVideo key={v} base={v} className="goc-reel" forceMobile={false} eager={eager} />
+        <LazyVideo key={v} base={v} className={`goc-reel ${clipClass(v)}`} forceMobile={false} eager={eager} />
       ))}
     </div>
   );
@@ -467,7 +473,7 @@ function ReelsHero({ videos, eager = false }: { videos: string[]; eager?: boolea
 /* Portrait still gallery: 4-up grid on desktop, swipe carousel on phone.
    Arrows are the carousel affordance — shown only on the phone layout (CSS),
    they scroll the native snap container by ~one card. */
-function Gallery({ items }: { items: string[] }) {
+function Gallery({ items, label }: { items: string[]; label: string }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "center", containScroll: "trimSnaps" });
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -483,7 +489,7 @@ function Gallery({ items }: { items: string[] }) {
                 className="gi"
                 key={i}
                 src={img(src, 900)}
-                alt=""
+                alt={`${label} — fotografie din proiect ${i + 1}`}
                 loading="lazy"
                 style={focal ? { objectPosition: focal } : undefined}
               />
@@ -517,7 +523,7 @@ function YouTubeCard({ id, poster }: { id: string; poster: string }) {
       <img className="yt-bg" src={poster} alt="" aria-hidden />
       <div className="yt-card">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="yt-thumb" src={poster} alt="" />
+        <img className="yt-thumb" src={poster} alt="Previzualizare videoclip pe YouTube" />
         <div className="yt-play" aria-hidden>
           ▶
         </div>
@@ -601,8 +607,20 @@ export default function Portfolio() {
     );
     els.forEach((el) => obs.observe(el));
 
+    /* Take the easy save routes off the table: right-click → "Save image as"
+       and drag-to-desktop. A deterrent, not protection — the files are still
+       plain URLs any devtools Network tab will hand over. */
+    const blockSave = (e: Event) => {
+      const t = e.target as HTMLElement;
+      if (t.tagName === "IMG" || t.tagName === "VIDEO") e.preventDefault();
+    };
+    document.addEventListener("contextmenu", blockSave);
+    document.addEventListener("dragstart", blockSave);
+
     return () => {
       window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("contextmenu", blockSave);
+      document.removeEventListener("dragstart", blockSave);
       obs.disconnect();
     };
   }, []);
@@ -611,7 +629,9 @@ export default function Portfolio() {
     <>
       {/* NAV */}
       <nav className={scrolled ? "scrolled" : undefined}>
-        <Link href="/" className="nav-back">Embassy Network</Link>
+        {/* This page is now the site root, so the old "back to /" link pointed
+            at itself. Kept as the brand mark, not a link. */}
+        <span className="nav-back">Embassy Network</span>
         <a href="#hero" className="nav-logo" aria-label="Embassy Network — sus">
           <NavLogo />
         </a>
@@ -683,7 +703,7 @@ export default function Portfolio() {
               <div className="r">
                 <div className="pi">{sceneIndex(i, PROJECTS.length)}</div>
                 <div className="p-ind">{p.cat}</div>
-                <SplitLines className="pn" items={p.name} />
+                <SplitLines className="pn" items={p.name} as="h3" />
               </div>
               <div className="pr r d1">
                 {p.headline && <div className="pt">{p.headline}</div>}
@@ -729,6 +749,9 @@ export default function Portfolio() {
           {p.stripVideos ? (
             <div
               className="strip strip-video"
+              /* the strip is a *sibling* of the .ps scene, so `#flystack .strip`
+                 never matched — carry the project id here for per-scene tints */
+              data-p={p.id}
               /* a custom property, not gridTemplateColumns directly: an inline
                  track list outranks the phone media query that collapses the
                  strip to one column */
@@ -753,6 +776,7 @@ export default function Portfolio() {
           ) : p.strip ? (
             <div
               className="strip"
+              data-p={p.id}
               style={{ "--cols": p.strip.length } as CSSProperties}
             >
               {p.strip.map((s, i) => {
@@ -768,7 +792,8 @@ export default function Portfolio() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={img(src, 900)}
-                      alt=""
+                      alt={`${p.name.join(" ")} — ${p.cat}, material ${i + 1}`}
+                      loading="lazy"
                       style={focal ? { objectPosition: focal } : undefined}
                     />
                     <span className="si-zoom" aria-hidden>
@@ -779,7 +804,7 @@ export default function Portfolio() {
               })}
             </div>
           ) : p.gallery ? (
-            <Gallery items={p.gallery} />
+            <Gallery items={p.gallery} label={p.name.join(" ")} />
           ) : null}
 
           {p.youtube && <YouTubeCard id={p.youtube.id} poster={p.youtube.poster} />}
@@ -802,7 +827,7 @@ export default function Portfolio() {
           <div className="qm">&ldquo;</div>
           {/* the \n is a deliberate break — .qt sets white-space: pre-line */}
           <Typewriter className="qt" text={"NU LUCRĂM PENTRU BRANDURI.\nLUCRĂM ALĂTURI DE ELE."} />
-          <p className="qa">Client · Portofoliu Embassy Network</p>
+          <p className="qa">Embassy Network</p>
         </div>
       </div>
 
@@ -866,7 +891,7 @@ export default function Portfolio() {
           >
             <div className="doc-stage">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="doc-mock" src={g.mock} alt="" loading="lazy" decoding="async" />
+              <img className="doc-mock" src={g.mock} alt={`${g.name.join(" ")} — mock-up tipărit`} loading="lazy" decoding="async" />
             </div>
             <div className="gc-ov" />
             <div className="gc-content">
@@ -903,7 +928,7 @@ export default function Portfolio() {
                   <LazyVideo base={w.video} />
                 ) : (
                   /* eslint-disable-next-line @next/next/no-img-element */
-                  <img src={img(w.img, 900)} alt={w.alt} />
+                  <img src={img(w.img, 900)} alt={w.alt} loading="lazy" />
                 )}
               </div>
             </div>
@@ -928,8 +953,9 @@ export default function Portfolio() {
           <div className="cta-contact">
             <a href="mailto:hello@embassynetwork.ro" className="cta-e">hello@embassynetwork.ro</a>
             <a href="tel:+40770458136" className="cta-e">+40 770 458 136</a>
+            <a href="tel:+40720846002" className="cta-e">+40 720 846 002</a>
           </div>
-          <Link href="/" className="btn-s" style={{ marginTop: "28px" }}>← Înapoi la site</Link>
+          <a href="#hero" className="btn-s" style={{ marginTop: "28px" }}>↑ Înapoi sus</a>
         </div>
       </div>
 
