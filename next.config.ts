@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  /* Dev-only: lets the phone on the LAN hit `next dev` for mobile testing.
+     Ignored in production builds. */
+  allowedDevOrigins: ["192.168.137.214"],
   async redirects() {
     return [
       /* The portfolio used to live at /portfolio and is now the homepage.

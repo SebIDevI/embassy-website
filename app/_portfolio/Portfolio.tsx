@@ -629,9 +629,6 @@ export default function Portfolio() {
     <>
       {/* NAV */}
       <nav className={scrolled ? "scrolled" : undefined}>
-        {/* This page is now the site root, so the old "back to /" link pointed
-            at itself. Kept as the brand mark, not a link. */}
-        <span className="nav-back">Embassy Network</span>
         <a href="#hero" className="nav-logo" aria-label="Embassy Network — sus">
           <NavLogo />
         </a>
@@ -640,8 +637,6 @@ export default function Portfolio() {
       {/* HERO */}
       <section id="hero">
         <div id="hero-bg" />
-        {/* phone-only 2nd hero image; CSS crossfades it over #hero-bg every 10s */}
-        <div id="hero-bg-2" aria-hidden />
         <div className="hero-c r">
           <p className="hero-eyebrow">Selected Works · 2023 — 2026</p>
           <h1 className="h1">OUR<br /><FillText className="out">WORK</FillText><br />SPEAKS</h1>

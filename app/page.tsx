@@ -28,10 +28,8 @@ export default function HomePage() {
     <div className={`embassy-portfolio ${bebas.variable} ${inter.variable}`}>
       {/* The hero background is a CSS background-image, so the browser only
           discovers it after the stylesheet parses — it is the LCP element and
-          was starting late. Preload the one the viewport will actually use;
-          `media` keeps the phone from fetching the 3000px desktop crop. */}
-      <link rel="preload" as="image" href="/hero.webp" media="(min-width: 901px)" />
-      <link rel="preload" as="image" href="/herophone.webp" media="(max-width: 900px)" />
+          was starting late. One shot for every viewport now, so no `media`. */}
+      <link rel="preload" as="image" href="/hero.webp" />
       {/* Identity graph for the brand. Rendered on the homepage only — one
           canonical @id per site is what search engines expect. */}
       <script

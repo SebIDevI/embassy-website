@@ -43,7 +43,9 @@
   padding: 30px 64px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* logo is the only nav child now — flex-end keeps it on the right where
+     space-between used to park it opposite the brand text */
+  justify-content: flex-end;
   transition: background 0.4s, padding 0.4s;
 }
 .embassy-portfolio nav.scrolled {
@@ -57,18 +59,6 @@
   display: block;
   text-decoration: none;
 }
-.nav-back {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-/* The "← " prefix and the hover colour went with the link: this is the site
-   root now, so .nav-back is a plain brand mark and an arrow would promise a
-   navigation that no longer exists. */
-
 /* HERO */
 .embassy-portfolio #hero {
   position: relative;
@@ -90,10 +80,6 @@
 }
 .embassy-portfolio #hero:hover #hero-bg {
   transform: scale(1);
-}
-/* 2nd hero layer is phone-only (shown + animated in the mobile @media) */
-.embassy-portfolio #hero-bg-2 {
-  display: none;
 }
 .embassy-portfolio #hero::after {
   content: "";
@@ -348,40 +334,19 @@
   }
 }
 
-/* Phone hero slider (see the mobile @media block). The 50% → 50.01% jump is the
-   teleport: the slide has just cleared the right edge, so snapping it behind
-   the left edge is invisible and every visible move reads left→right. */
-/* Slow drift across the team shot, timed against hero-slide's own phases: pan
-   only while the slide is parked (0–44%), hold through the exit (44–50%), then
-   rewind to the left edge at 50.01% — off-screen, so the reset is never seen. */
+/* Phone hero drift (see the mobile @media block). The team shot is 3:2 and
+   overflows a 9:20 phone sideways, so it pans across instead of cropping
+   anyone out. Ping-pong rather than a reset jump: it eases to the right edge,
+   then eases back, so there is no seam to hide. */
 @keyframes hero-pan {
   0% {
     background-position-x: 0%;
   }
-  44%,
   50% {
     background-position-x: 100%;
   }
-  50.01%,
   100% {
     background-position-x: 0%;
-  }
-}
-
-@keyframes hero-slide {
-  0%,
-  44% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(100%);
-  }
-  50.01%,
-  94% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
   }
 }
 
@@ -389,13 +354,9 @@
   .mq-t {
     animation: none;
   }
-  /* no auto-slide — hold on the first hero image (wins over mobile @media) */
-  .embassy-portfolio #hero-bg,
-  .embassy-portfolio #hero-bg-2 {
+  /* no drift — hold the hero still (wins over mobile @media) */
+  .embassy-portfolio #hero-bg {
     animation: none !important;
-  }
-  .embassy-portfolio #hero-bg-2 {
-    opacity: 0 !important;
   }
   .fx-fill {
     --fill: 100%;
@@ -1998,11 +1959,6 @@ video.promo-card-img {
   .nav-logo {
     width: 96px;
   }
-  .nav-back {
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    white-space: nowrap;
-  }
   .intro,
   .promo-intro,
   .promo-note,
@@ -2158,43 +2114,20 @@ video.promo-card-img {
     padding: 44px 24px;
     gap: 18px;
   }
-  /* Phone hero is a two-slide carousel: the trio, then the whole team. Both
-     shots are baked to the phone ratio (studio sweep extended upward), so
-     `cover` barely crops the sides and everyone survives — and both groups sit
-     low enough that the centred copy lands on the sweep above their faces.
-     Every move runs left→right: a slide exits past the right edge, teleports
-     behind the left edge while it is off-screen, then rides back in. One
-     keyframe set drives both layers; #hero-bg-2 only runs half a cycle out of
-     phase, so the outgoing and incoming slides tile edge to edge mid-swap. */
-  .embassy-portfolio #hero-bg,
-  .embassy-portfolio #hero-bg-2 {
+  /* One shot on phone: the desktop team photo, no carousel. It is 3:2 — squeezed
+     into a 9:20 phone the six of them came out tiny — so it runs at full height
+     instead (overflowing ~880px sideways) and drifts across that overflow.
+     Nobody gets cropped out, everyone just arrives in turn, at full size.
+     60s round trip: slow enough to read as a still frame you keep noticing. */
+  .embassy-portfolio #hero-bg {
     display: block;
-    /* #hero-bg-2 only ever carried `display: none` at the top of this file, so
-       it needs the whole layer geometry here — left in the flex flow it is a
-       0x0 box that paints nothing, and translateX(100%) of zero width is 0px. */
-    position: absolute;
-    inset: 0;
+    background-image: url("/hero.webp");
     background-size: cover;
     background-position: center;
     filter: brightness(0.92) contrast(1.06);
+    transform: none;
     transition: none;
-    animation: hero-slide 16s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-  }
-  .embassy-portfolio #hero-bg {
-    background-image: url("/herophone.webp");
-  }
-  /* The team shot is 3:2 — squeezed into a 9:20 phone the six of them came out
-     tiny. So run it at full height instead (it overflows ~880px sideways) and
-     pan that overflow left→right while the slide is parked on screen. Nobody
-     gets cropped out, everyone just arrives in turn, at full size.
-     `hero-pan` rides background-position-x, so it composes with the translateX
-     that `hero-slide` is already using for the carousel. */
-  .embassy-portfolio #hero-bg-2 {
-    background-image: url("/hero.webp");
-    animation:
-      hero-slide 16s cubic-bezier(0.65, 0, 0.35, 1) infinite,
-      hero-pan 16s linear infinite;
-    animation-delay: -8s;
+    animation: hero-pan 60s ease-in-out infinite;
   }
   /* the base scrims are tuned for a dark hero video; over this bright studio
      shot they crushed the whole lower half to black and buried the group */
