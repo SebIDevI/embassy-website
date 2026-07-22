@@ -1028,6 +1028,11 @@
 #racebox .clip-racebox2 {
   filter: brightness(0.9) contrast(1.03);
 }
+/* Both RaceBox clips are already dark, so the left-edge scrim only muddied
+   them. Dropped here alone — .ov-b at the bottom still carries the .pc copy. */
+#racebox .ov-l {
+  display: none;
+}
 
 /* CONNECTOR */
 .conn {
