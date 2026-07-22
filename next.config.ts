@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
          Permanent (308) so anything already linking to or indexed at that URL
          passes its value on to / instead of turning into a 404. */
       { source: "/portfolio", destination: "/", permanent: true },
+      { source: "/portofolio", destination: "/", permanent: true },
     ];
   },
 };
